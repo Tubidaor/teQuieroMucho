@@ -1,0 +1,35 @@
+.regSection {
+  margin-top: 100px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.regFormH2 {
+  text-align: center;
+}
+.emailCon, .pwCon, .pwCCon, .bdCon, .genderCon {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6px;
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+}
+#emailLab, #pwLab, #pwConfirm {
+  border-radius: 4px;
+}
+#monthSelect {
+  width: 64px;
+}
+#daysSelect {
+  width: 50px;
+}
+#yearSelect {
+  width: 55px;
+}
+.regSubmit {
+  display: block;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}

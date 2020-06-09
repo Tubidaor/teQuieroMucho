@@ -1,0 +1,51 @@
+.introPageContainer {
+  background-color: rgba(240, 240, 240, 1);
+  background-image: linear-gradient(180deg, rgba(195, 202, 208, 1) 5%, rgba(240, 240, 240, 1) ,rgba(240, 240, 240, 1) 98%);
+  height: 100vh;
+  padding-top: 100px;
+}
+.introH1 {
+  text-align: center;
+  color: rgba(19, 115, 127, 1);
+}
+.introImg {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 25px;
+}
+.introP {
+  padding: 20px;
+}
+.introButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.introButtonContainer button {
+  width: 80px;
+  text-align: center;
+  background-color: rgba(152, 113, 84, .9);
+  /* background-image: linear-gradient(to right,#b16330,#b16330 ,#c46a34,#934f22); */
+  border-radius: 4px;
+  color: rgba(240, 240, 240, 1);
+  font-weight: bold;
+  border: none;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.introLighting {
+  background-color: rgba(244, 247, 238, 1);
+  background-image: radial-gradient(circle at 50%, rgba(244, 247, 238, 1), rgba(255, 201, 157, 1));
+  height: 50px;
+  width: 100%;
+  position: relative;
+  top: -400px;
+  box-shadow: 0px 0px 10px 8px rgba(255, 201, 157, 1);
+}

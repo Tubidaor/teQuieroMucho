@@ -1,0 +1,35 @@
+.loginForm {
+  width: 230px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.loginH2 {
+  text-align: center;
+}
+.userName {
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+.loginContainer {
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+}
+.userName, .password {
+  width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+#password, #loginForm_userName {
+  
+  border-radius: 4px;
+}
+.loginButton {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
