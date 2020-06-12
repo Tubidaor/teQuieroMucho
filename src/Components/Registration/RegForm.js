@@ -43,6 +43,7 @@ export default class RegForm extends Component {
   const monthDisplay = bdayMonth.map(mon => <option value={mon}> {mon} </option>)
 
   const gender = [
+    "Please Choose",
     "Agender",
     "Androgyne",
     "Androgynous",

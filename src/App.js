@@ -4,6 +4,8 @@ import IntroPage from './Pages/IntroPage/IntroPage';
 import './App.css';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import RegPage from './Components/Registration/RegForm';
+import OpeningQs from './Pages/OpeningQs/OpeningQs';
+import HomePage from './Pages/HomePage/HomePage';
 
 function App() {
   return (
@@ -23,6 +25,16 @@ function App() {
           exact
           path={"/register"}
           component={RegPage}
+        />
+        <Route
+        exact
+        path={"/openingQs"}
+        component={OpeningQs}
+        />
+        <Route
+        exact
+        path={"/home"}
+        component={HomePage}
         />
       </Switch>
     </div>

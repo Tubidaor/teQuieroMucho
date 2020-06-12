@@ -1,0 +1,94 @@
+.figureConLeft {
+  margin-left: 0px;
+  width: 40px;
+  position: relative;
+
+}
+.figureConLeft li {
+  list-style: none;
+}
+.homeNav {
+  height: 40px;
+  width: 100vw;
+  border: 2px solid black;
+}
+.navLi1 {
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.navLi2 {
+  border: 1px solid black;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 14px;
+  width: 10px;
+  margin-left: -1px;
+}
+.navLi3 {
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-radius: 20%;
+  height: 14px;
+  width: 10px;
+  margin-top: -12px;
+  margin-left: -4px;
+  transform: rotate(10deg)
+
+}
+.navLi4 {
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-radius: 50%;
+  height: 14px;
+  width: 10px;
+  margin-top: -17px;
+  margin-left: 10px;
+  transform: rotate(-75deg)
+}
+.navLi5 {
+  height: 14px;
+  width: 3px;
+  background-color: black;
+  margin-top: 2px;
+  position: relative;
+}
+.navLi6 {
+  height: 18px;
+  width: 3px;
+  background-color: black;
+  margin-top: -16px;
+  margin-left: 12px;
+  position: relative;
+  transform: rotate(-45deg)
+}
+.navLi7 {
+  border-bottom-width: 1px;
+  height: 1px;
+  width: 9px;
+  border-style: solid;
+  margin-top: -18px;
+  border-radius: 38%;
+}
+
+.figureConRight {
+  margin-left: 82px;
+  width: 40px;
+  transform: scale(-1,1);
+  margin-top: -25px;
+  position: relative;
+
+}
+.figureConRight li {
+  list-style: none;
+}
+.menuCon {
+  width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
