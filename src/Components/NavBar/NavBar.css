@@ -37,7 +37,7 @@
   height: 14px;
   width: 10px;
   margin-top: -12px;
-  margin-left: -4px;
+  margin-left: -3px;
   transform: rotate(10deg)
 
 }
@@ -91,4 +91,36 @@
   width: 120px;
   margin-left: auto;
   margin-right: auto;
+}
+.expand {
+  height: 200px;
+}
+.menuListCon {
+  display: none;
+}
+.expandList {
+  display: block;
+  border-top: 2px solid black;
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.ulListCon {
+  width: 120%;
+  position: relative;
+  left: -40px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  border-top: 2px solid black;
+  padding-top: 10px;
+  overflow: hidden;
+}
+.ulListCon li {
+  margin-left: 1px;
+  margin-right: 1px;
 }

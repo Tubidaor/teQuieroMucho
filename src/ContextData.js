@@ -1,3 +1,12 @@
+export const topics = [
+  "How do you feel about your sex life?",
+  "How do you feel about your relationship overall",
+  "How do you feel about house work",
+  "How do you feel about the finances",
+]
+
+
+
 let partner = "Megan"
 
 export const introQuestions = [
@@ -51,4 +60,5 @@ export const introQuestions = [
 
 export default {
   introQuestions,
+  topics,
 }

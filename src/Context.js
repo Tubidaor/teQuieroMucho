@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { topics, introQuestions } from './ContextData.js'
 
 const TeQuieroContext = React.createContext({
   stateofMind: null,
   rQuality: null,
   error: null,
   setStateofMind: () => {},
+  openingQs: [],
+  relationshipQ: [],
+
 })
 
 export default TeQuieroContext
@@ -14,6 +18,8 @@ export class TeQuieroProvider extends Component {
     stateofMind: "Happy",
     rQuality: "Happy",
     error: null,
+    openingQs: introQuestions,
+    relationshipQ: topics,
   }
 
   setStateofMind = (stateofMind) => {
@@ -26,6 +32,8 @@ export class TeQuieroProvider extends Component {
       rQuality: this.state.rQuality,
       error: this.state.error,
       setStateofMind: this.setStateofMind,
+      openingQs: this.state.openingQs,
+      relationshipQ: this.state.relationshipQ,
     }
     return(
       <TeQuieroContext.Provider value={value}>

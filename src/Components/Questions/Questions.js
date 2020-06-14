@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import QuestionFaces from './QuestionFaces';
-import { introQuestions } from './QuestionsData';
+import TeQuieroContext from '../../Context';
 
 export default class Questions extends Component {
   constructor(props){
@@ -9,6 +9,8 @@ export default class Questions extends Component {
       qNum: 0,
     }
   }
+
+  static contextType = TeQuieroContext
 
   handleQSubmit = (e) => {
     e.preventDefault()
@@ -24,8 +26,10 @@ export default class Questions extends Component {
   }
 
   render() {
-    let qs = introQuestions
+    let qs = this.context.openingQs
     let {qNum} = this.state
+
+    console.log(qs)
 
     return (
       <QuestionFaces
