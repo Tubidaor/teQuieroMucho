@@ -1,5 +1,6 @@
 import React from 'react';
 import './NavBar.css'
+import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
 
@@ -18,17 +19,18 @@ export default function NavBar(props) {
   }
 
   const menu = [
-    "Tournal",
+    "Journal",
     "Topics",
     "Memories",
     "Language",
-    "Grievances",
   ]
+
+
 
   let menuDisplay = function(menu) {
     let section = []
-    for(let i = 1; i <= menu.length; i++) {
-      section.push(<li className={`menuLi${i}`}>{menu[i]}</li>)
+    for(let i = 0; i <= menu.length; i++) {
+      section.push(<li className={`menuLi${i}`}><Link onClick={e => props.handleClick(menu[i])}>{menu[i]}</Link></li>)
     }
     return section
   }

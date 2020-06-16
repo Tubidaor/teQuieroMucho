@@ -98,6 +98,15 @@
 .menuListCon {
   display: none;
 }
+.menuListCon::after {
+  content: "";
+  display: block;
+  border-top: 2px solid black;
+  margin-top: -42px;
+  margin-left: -10px;
+  width: 110%;
+
+}
 .expandList {
   display: block;
   border-top: 2px solid black;
@@ -107,16 +116,14 @@
 
 }
 .ulListCon {
-  width: 120%;
+  width: 80%;
   position: relative;
-  left: -40px;
   list-style: none;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 10px;
-  border-top: 2px solid black;
   padding-top: 10px;
   overflow: hidden;
 }
