@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
 
-  let bodyParts = function(number) {
+  const bodyParts = function(number) {
     let section = []
     for(let i = 1; i <= number; i++) {
       section.push(<li className={`navLi${i}`}></li>)
@@ -12,7 +12,7 @@ export default function NavBar(props) {
     return section
   }
 
-  let expand = function() {
+  const expand = function() {
     console.log("expandrand")
     document.getElementById("menuExpand").classList.toggle("expand")
     document.getElementById("menuListExpand").classList.toggle("expandList")

@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
+import './JournalPage.css';
+import JournalMenu from '../../Components/JournalMenu/JournalMenu';
+import { JournalEntry, PhotoEntry, AudioEntry } from '../../Components/JournalMenu/JournalMenuItems';
+
 
 export default class JournalPage extends Component {
-
+  state = {
+    currentSection: "home"
+  }
+  handleClick = (currentSection) => {
+    this.setState({
+      currentSection
+    })
+  }
   render() {
-    let dt = new Date()
-    let mm = dt.getMonth() + 1
-    let dd = dt.getDate()
-    let yy = dt.getFullYear()
-    let todaysDate = mm + "-" + dd + "-" + yy
+
+    let { currentSection } = this.state
 
     return (
       <div className="journalCon">
-        <h3>Today's Date: {todaysDate}</h3>
+        <JournalMenu handleClick={this.handleClick}/>
+        
+        { currentSection === "journalEntry" && <JournalEntry/>}
+        { currentSection === "photoEntry" && <PhotoEntry/>}
+        { currentSection === "audioEntry" && <AudioEntry/>}
       </div>
     )
   }

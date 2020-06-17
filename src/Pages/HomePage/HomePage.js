@@ -5,7 +5,8 @@ import StatusBar from '../../Components/StatusBar/StatusBar';
 import NavBar from '../../Components/NavBar/NavBar';
 import './HomePage.css'
 import JournalPage from '../JournalPage/JournalPage';
-import JournalMenu from '../../Components/JournalMenu/JournalMenu';
+
+
 
 
 
@@ -18,11 +19,16 @@ export default class HomePage extends Component {
   }
 
   handleClick = (currentSection) => {
-    
+    const expand = function() {
+      console.log("expandrand")
+      document.getElementById("menuExpand").classList.toggle("expand")
+      document.getElementById("menuListExpand").classList.toggle("expandList")
+    }
+    expand()
     this.setState({
       currentSection
     })
-    console.log(this.state.currentSection)
+
   }
 
   render() {
@@ -32,7 +38,8 @@ export default class HomePage extends Component {
       <div>
 
         <StatusBar stateofMind={stateofMind} rQuality={rQuality}></StatusBar>
-        {currentSection === "Journal" && <JournalMenu/>}
+        {currentSection === "Journal" && <JournalPage/>}
+
         <footer className="homeFooter">
         <NavBar handleClick={this.handleClick}></NavBar>
         </footer>
