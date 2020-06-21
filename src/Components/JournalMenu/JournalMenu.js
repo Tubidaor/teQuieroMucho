@@ -12,7 +12,7 @@ export default function JournalMenu(props) {
       <Link className="journalMenuItem" onClick={e => props.handleClick("journalEntry")}>New <FontAwesomeIcon icon={faFileWord}/></Link>
       <Link className="journalMenuItem" onClick={e => props.handleClick("photoEntry")}>New <FontAwesomeIcon icon={faImages}/></Link>
       <Link className="journalMenuItem" onClick={e => props.handleClick("audioEntry")}>New <FontAwesomeIcon icon={faMicrophoneAlt}/></Link>
-      <Link className="journalMenuItem">New <FontAwesomeIcon icon={faVideo}/></Link>
+      <Link className="journalMenuItem"onClick={e => props.handleClick("videoEntry")}>New <FontAwesomeIcon icon={faVideo}/></Link>
 
     </div>
   )

@@ -29,7 +29,15 @@
   margin-left: auto;
   margin-right: auto;
 }
-.jInputButton, .pInputButton {
+.aDateButtonCon {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.jInputButton, .pInputButton, .aButton {
   padding: 0px;
   height: 10px;
   align-self: flex-end;
@@ -42,4 +50,26 @@
   margin-right: auto;
   margin-top: 20px;
   text-align: center;
+}
+.rhap_container.aPlayer{
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+  margin-top: 20px;
+}
+.audioSection {
+  margin-top: 20px;
+}
+.vSection {
+  width: 90%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.vCon, .vPlay {
+  height: 300px;
+  width: 300px;
 }

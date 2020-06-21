@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import './JournalPage.css';
 import JournalMenu from '../../Components/JournalMenu/JournalMenu';
-import { JournalEntry, PhotoEntry, AudioEntry } from '../../Components/JournalMenu/JournalMenuItems';
+import { JournalEntry, PhotoEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';
 
 
 export default class JournalPage extends Component {
   state = {
-    currentSection: "home"
+    currentSection: "home",
+    recording: true,
   }
   handleClick = (currentSection) => {
     this.setState({
       currentSection
+    })
+  }
+  handleUpdateRec = () => {
+    this.setState({
+      recording: !true,
     })
   }
   render() {
@@ -24,6 +30,7 @@ export default class JournalPage extends Component {
         { currentSection === "journalEntry" && <JournalEntry/>}
         { currentSection === "photoEntry" && <PhotoEntry/>}
         { currentSection === "audioEntry" && <AudioEntry/>}
+        { currentSection === "videoEntry" && <VideoEntry updateRec={this.handleUpdateRec}/>}
       </div>
     )
   }
