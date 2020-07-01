@@ -19,19 +19,26 @@ export default class JournalPage extends Component {
       recording: !true,
     })
   }
+
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.setState({
+      currentSection: 'home'
+    })
+  }
   render() {
 
     let { currentSection } = this.state
 
     return (
-      <div className="journalCon">
+      <section className="journalCon">
         <JournalMenu handleClick={this.handleClick}/>
         
-        { currentSection === "journalEntry" && <JournalEntry/>}
+        { currentSection === "journalEntry" && <JournalEntry handleCancel={this.handleCancel}/>}
         { currentSection === "photoEntry" && <PhotoEntry/>}
         { currentSection === "audioEntry" && <AudioEntry/>}
         { currentSection === "videoEntry" && <VideoEntry updateRec={this.handleUpdateRec}/>}
-      </div>
+      </section>
     )
   }
 }

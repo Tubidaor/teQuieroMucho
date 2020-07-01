@@ -7,58 +7,121 @@ export const topics = [
 
 
 
-let partner = "Megan"
+let partner = "your partner"
 
 export const introQuestions = [
   {
     id: 1,
     question: "How do you feel mentally, today?",
-    optionValue1: 1,
-    optionValue2: 2,
-    optionValue3: 3,
-    optionValue4: 4,
-    optionValue5: 5,
-    optionValue6: 6,
-    optionValue7: 7,
+    category: "you",
   },
   {
     id: 2,
     question: "How do you feel emotionally, today?",
-    optionValue1: 1,
-    optionValue2: 2,
-    optionValue3: 3,
-    optionValue4: 4,
-    optionValue5: 5,
-    optionValue6: 6,
-    optionValue7: 7,
+    category: "you",
   },
   {
     id: 3,
     question: "How do you feel physically, today?",
-    optionValue1: 1,
-    optionValue2: 2,
-    optionValue3: 3,
-    optionValue4: 4,
-    optionValue5: 5,
-    optionValue6: 6,
-    optionValue7: 7,
+    category: "you",
+  },
+]
+
+export const relationshipQuestions = [
+  {
+    id: 1,
+    question: `How do you feel about your relationship with ${partner}?`,
+    category: 'overall',
+  },
+  {
+    id: 2,
+    question: `How do you feel about your sex life with ${partner}?`,
+    category: 'sex',
+  },
+  {
+    id: 3,
+    question: `How do you feel about your emotional connection with ${partner}?`,
+    category: 'friendship',
   },
   {
     id: 4,
-    question: `How do you feel about your relationship with ${partner}?`,
-    optionValue1: 1,
-    optionValue2: 2,
-    optionValue3: 3,
-    optionValue4: 4,
-    optionValue5: 5,
-    optionValue6: 6,
-    optionValue7: 7,
+    question: `How do you feel about the trust between you and ${partner}?`,
+    category: 'trust',
+  },
+  {
+    id: 5,
+    question: `How do you feel about the honesty between you and ${partner}?`,
+    category: 'communication',
+  },
+  {
+    id: 6,
+    question: `How do you feel about the communication between you and ${partner}?`,
+    category: 'communication',
+  },
+  {
+    id: 7,
+    question: `How do you feel about the compromises made between you and ${partner}?`,
+    category: 'compromises',
+  },
+  {
+    id: 8,
+    question: `How do you feel about your independece?`,
+    category: 'you',
+  },
+  {
+    id: 9,
+    question: `How do you feel about your partnership with ${partner}?`,
+    category: 'friendship'
+  },
+  {
+    id: 10,
+    question: `How do you feel about your friendship with ${partner}?`,
+    category: 'friendship'
+  },
+  {
+    id: 11,
+    question: `How do you feel about parenting with ${partner}?`,
+    category: 'parenting'
+  },
+]
+
+export const alerts = [
+  {
+    id: 1,
+    category: "sex",
+    alert: "You and your partner have reached a threshold. This marker was reached over a period of time and indicates disatisfaction on this topic. You should talk and attune to your partner."
+  },
+  {
+    id: 2,
+    category: "chores",
+    alert: "You and your partner have reached a threshold. This marker was reached over a period of time and indicates disatisfaction on this topic. You should talk and attune to your partner."
+  },
+  {
+    id: 3,
+    category: "communication",
+    alert: "You and your partner have reached a threshold. This marker was reached over a period of time and indicates disatisfaction on this topic. You should talk and attune to your partner."
+  },
+  {
+    id: 4,
+    category: "parenting",
+    alert: "You and your partner have reached a threshold. This marker was reached over a period of time and indicates disatisfaction on this topic. You should talk and attune to your partner."
   },
 
 ]
 
+export const categories = [
+  'sex',
+  'chores',
+  'communication',
+  'parenting',
+  'friendship',
+  'trust'
+]
 
 export default {
   introQuestions,
   topics,
+  relationshipQuestions,
+  alerts,
+  categories
 }

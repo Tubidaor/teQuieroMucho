@@ -7,6 +7,7 @@ export default class Questions extends Component {
     super(props)
     this.state = {
       qNum: 0,
+      questions: props.qType,
     }
   }
 
@@ -25,25 +26,25 @@ export default class Questions extends Component {
     console.log(this.state.qNum)
   }
 
+  questions = () => {
+    if(this.state.questions === "opening") {
+      return this.context.openingQs
+    }
+    if(this.state.questions === "relationship") {
+      return this.context.relationshipQs
+    }
+  }
   render() {
-    let qs = this.context.openingQs
-    let {qNum} = this.state
 
-    console.log(qs)
+    let {qNum} = this.state
+    let qs = this.questions()
 
     return (
       <QuestionFaces
-      id={qs[qNum].id}
-      question={qs[qNum].question}
-      value1={qs[qNum].optionValue1}
-      value2={qs[qNum].optionValue2}
-      value3={qs[qNum].optionValue3}
-      value4={qs[qNum].optionValue4}
-      value5={qs[qNum].optionValue5}
-      value6={qs[qNum].optionValue6}
-      value7={qs[qNum].optionValue7}
-      handleQSubmit={this.handleQSubmit}
-    />
+        id={qs[qNum].id}
+        question={qs[qNum].question}
+        handleQSubmit={this.handleQSubmit}
+      />
     )
   }
 }

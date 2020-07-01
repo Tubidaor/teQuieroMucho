@@ -4,22 +4,27 @@ import { getDate } from '../Misc/Misc';
 import MicRecorder from 'mic-recorder-to-mp3';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import { Stream } from 'stream';
-import { turquoise } from 'color-name';
+import { JournalServices } from '../../Services/APIServices'
 
 
 
-export function JournalEntry() {
 
+export function JournalEntry(props) {
+  function handlePostEntry(e) {
+    e.preventDefault()
+
+    const text = document.getElementById('jInputBox').value
+    JournalServices.postJournalEntry(text)
+  }
   return(
     <section className="jEntrySection">
       <div className="dateButtonCon">
         <h5 className="jPageH5">Today's Date: {getDate()}</h5>
-        <button className="jInputButton">cancel</button>
-        <button form={"jForm"} className="jInputButton">done</button>
+        <button className="jInputButton" onClick={e => props.handleCancel(e)}>Cancel</button>
+        <button form="jForm" className="jInputButton" onClick={e => handlePostEntry(e)}>Submit</button>
       </div>
       <form id="jForm">
-        <input type="text" id="jInputBox" className="jInputBox"></input>
+        <textarea type="paragraph" id="jInputBox" className="jInputBox" cols="50"></textarea>
       </form>    
         
     </section>
@@ -55,9 +60,9 @@ export class AudioEntry extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     
-    navigator.mediaDevices.getUserMedia({audio: true},
+    this.stream = await navigator.mediaDevices.getUserMedia({audio: true},
     () => {
       this.setState({ isBlocked: false })
     },
@@ -67,6 +72,12 @@ export class AudioEntry extends Component {
     )
   }
 
+  componentWillUnmount() {
+    this.stream.getTracks().forEach(function(track) {
+      track.stop()
+      })
+  }
+    
   start = () => {
     if (this.state.isBlocked) {
       console.log("Permission Denied")
@@ -171,6 +182,14 @@ export class VideoEntry extends Component {
     console.log(this.mediaRecorder.state)
   }
 
+  componentWillUnmount() {
+    this.stream.getTracks().forEach(function(track) {
+      track.stop()
+      })
+  }
+    
+  
+
   stopRec = () => {
     this.mediaRecorder
       .stop()
@@ -185,7 +204,7 @@ export class VideoEntry extends Component {
       this.videoPlay.src = videoURL
     }
   }
-  
+
   play = () => {
     this.videoPlay.play()
   }

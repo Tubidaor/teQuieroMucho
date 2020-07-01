@@ -20,9 +20,7 @@ export default function NavBar(props) {
 
   const menu = [
     "Journal",
-    "Topics",
-    "Memories",
-    "Language",
+    "Relationship",
   ]
 
 

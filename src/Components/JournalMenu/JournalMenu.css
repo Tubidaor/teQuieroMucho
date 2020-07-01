@@ -1,24 +1,28 @@
 .journalMenuCon {
-  margin-left: auto;
-  margin-right: auto;
+  top: 65px;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 20px;
+  position: fixed;
+  width: 100%;
 }
 .journalMenuItem {
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
-.pEntrySection, .jEntrySection {
-  margin-top: 10px;
+.pEntrySection, .jEntrySection, .audioSection, .vSection {
+  margin-top: 110px;
 }
 .jInputBox {
   display: block;
   margin-top: 10px;
-  height: 340px;
+  height: 380px;
   width: 280px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 20px;
+  border-radius: 10px;
+  padding: 10px;
 
 }
 .dateButtonCon {
@@ -58,18 +62,13 @@
   border: 2px solid black;
   margin-top: 20px;
 }
-.audioSection {
-  margin-top: 20px;
-}
-.vSection {
-  width: 90%;
-  border-radius: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-}
 
 .vCon, .vPlay {
   height: 300px;
   width: 300px;
+}
+
+span {
+  align-self: center;
+  font-size: .8em;
 }

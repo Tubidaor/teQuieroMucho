@@ -9,7 +9,7 @@ export default class OpeningQs extends Component {
 
     return (
       <section className="qsSection">
-        <Questions></Questions>
+        <Questions qType="opening"></Questions>
       </section>
     )
   }

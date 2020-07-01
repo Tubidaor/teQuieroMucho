@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Slider.css'
-import { render } from '@testing-library/react';
+
 
 
 export default class Slider extends Component {

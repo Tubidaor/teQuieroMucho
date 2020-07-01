@@ -5,6 +5,7 @@ import StatusBar from '../../Components/StatusBar/StatusBar';
 import NavBar from '../../Components/NavBar/NavBar';
 import './HomePage.css'
 import JournalPage from '../JournalPage/JournalPage';
+import RelationshipPage from '../RelationshipPage/RelationshipPage';
 
 
 
@@ -31,6 +32,13 @@ export default class HomePage extends Component {
 
   }
 
+  // handleCancel = () => {
+  //   this.setState({
+  //     currentSection: 'Journal'
+  //   })
+
+  // }
+
   render() {
     let { stateofMind, rQuality } = this.context
     let currentSection = this.state.currentSection
@@ -39,6 +47,7 @@ export default class HomePage extends Component {
 
         <StatusBar stateofMind={stateofMind} rQuality={rQuality}></StatusBar>
         {currentSection === "Journal" && <JournalPage/>}
+        {currentSection === "Relationship" && <RelationshipPage/>}
 
         <footer className="homeFooter">
         <NavBar handleClick={this.handleClick}></NavBar>

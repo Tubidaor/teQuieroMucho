@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { topics, introQuestions } from './ContextData.js'
+import { alerts, introQuestions, relationshipQuestions, categories } from './ContextData.js'
 
 const TeQuieroContext = React.createContext({
   stateofMind: null,
@@ -7,8 +7,9 @@ const TeQuieroContext = React.createContext({
   error: null,
   setStateofMind: () => {},
   openingQs: [],
-  relationshipQ: [],
-
+  relationshipQs: [],
+  alerts: [],
+  categories: []
 })
 
 export default TeQuieroContext
@@ -19,7 +20,9 @@ export class TeQuieroProvider extends Component {
     rQuality: "Happy",
     error: null,
     openingQs: introQuestions,
-    relationshipQ: topics,
+    relationshipQs: relationshipQuestions,
+    alerts: alerts,
+    categories: categories,
   }
 
   setStateofMind = (stateofMind) => {
@@ -33,7 +36,9 @@ export class TeQuieroProvider extends Component {
       error: this.state.error,
       setStateofMind: this.setStateofMind,
       openingQs: this.state.openingQs,
-      relationshipQ: this.state.relationshipQ,
+      relationshipQs: this.state.relationshipQs,
+      alerts: this.state.alerts,
+      categories: this.state.categories
     }
     return(
       <TeQuieroContext.Provider value={value}>

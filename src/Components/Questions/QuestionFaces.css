@@ -2,19 +2,21 @@
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 110px;
 }
 .qForm {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 .faceInputCon {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   height: 60px;
-  margin-top: 10px;
+  margin-top: -10px;
 }
 .facesH3{
   text-align: center;
@@ -588,7 +590,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 .slideCon {
   margin-top: auto;
