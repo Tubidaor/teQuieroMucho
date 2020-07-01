@@ -1,5 +1,5 @@
 import config from '../config';
-import { v4 as uuidv4 } from 'uuid';
+
 
 export const analyticsData = [
   {
@@ -232,8 +232,7 @@ export const JournalServices = {
 
   postJournalEntry(text) {
 
-    const id = uuidv4()
-    console.log(id, text)
+    console.log(text)
     
     // return fetch(`${config.API_ENDPOINT}/journalEntry`, {
     //   method: 'POST',
@@ -242,15 +241,61 @@ export const JournalServices = {
     //     //authorization pending
     //   },
     //   body: JSON.stringify({
-    //     id: id,
-    //     text: text,
+    //    text
     //   })
     // })
-  }
+    // .then(res =>
+    //   (!res.ok)
+    //   ? res.json().then(e => Promise.reject(e))
+    //   : res.json()
+    //   )
+  },
+
+
+
+
+
+
 }
 
+export const AuthServices = {
+
+  login(credentials) {
+    console.log(credentials)
+  //   return fetch(`${config.API_ENDPOINT}/auth/login`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //      //needs bearer token auth
+  //     },
+  //     body: JSON.stringify(credentials)
+  //   })
+  //   .then(res =>
+  //     (!res.ok)
+  //     ? res.json().then(e => Promise.reject(e))
+  //     : res.json()
+  //     )
+  },
+  register(newUser) {
+    console.log(newUser)
+    // fetch(`${config.API_ENDPOINT}/register`, {
+    //   method: 'POST',
+    //   header: {
+    //     'content-type': 'application/json' 
+    //   },
+    //   body: JSON.stringify(newUser)
+    // })
+    // .then(res =>
+    //   (!res.ok)
+    //   ? res.json().then(e => Promise.reject(e))
+    //   : res.json()
+    // )
+  },
+
+}
 export default {
   JournalServices,
   analyticsData,
+  AuthServices
   
 }

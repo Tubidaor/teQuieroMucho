@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './JournalPage.css';
 import JournalMenu from '../../Components/JournalMenu/JournalMenu';
-import { JournalEntry, PhotoEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';
+import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';
 
 
 export default class JournalPage extends Component {
@@ -35,7 +35,7 @@ export default class JournalPage extends Component {
         <JournalMenu handleClick={this.handleClick}/>
         
         { currentSection === "journalEntry" && <JournalEntry handleCancel={this.handleCancel}/>}
-        { currentSection === "photoEntry" && <PhotoEntry/>}
+        { currentSection === "fileEntry" && <FileEntry handleCancel={this.handleCancel}/>}
         { currentSection === "audioEntry" && <AudioEntry/>}
         { currentSection === "videoEntry" && <VideoEntry updateRec={this.handleUpdateRec}/>}
       </section>

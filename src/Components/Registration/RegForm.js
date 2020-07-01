@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
+import { AuthServices } from '../../Services/APIServices';
 import './RegForm.css';
 
 export default class RegForm extends Component {
 
+  handleRegistration = (e) => {
+    e.preventDefault()
+    const { firstName, lastName, email, pw, month, day, year, gender } = e.target
+
+    const newUser = {
+      first_name: firstName.value,
+      last_name: lastName.value,
+      email: email.value,
+      password: pw.value,
+      birthday: month.value + "/" + day.value + "/" + year.value,
+      gender: gender.value
+    }
+    AuthServices.register(newUser)
+    //.then(clear form and send user to login page)
+
+  }
   render() {
     const bdayMonth = [
       "Month",
@@ -104,17 +121,26 @@ export default class RegForm extends Component {
 
   let genderDisplay = gender.map(gen => <option value={gen}>{gen}</option>)
 
+
     return (
       <section className="regSection">
         <h2 className="regFormH2">Sign Up</h2>
-        <form>
+        <form onSubmit={this.handleRegistration}>
+          <div className="firstNameCon">
+            <label htmlFor="firstName">First name</label>
+            <input name="firstName" id="firstName"></input>
+          </div>
+          <div className="lastNameCon">
+            <label htmlFor="lastName">Last name</label>
+            <input name="lastName" id="lastName"></input>
+          </div>
           <div className="emailCon">
-            <label htmlFor="emailLab">Email</label>
-            <input name="emailLab" id="emailLab"></input>
+            <label htmlFor="email">Email</label>
+            <input name="email" id="email"></input>
           </div>
           <div className="pwCon">
-            <label htmlFor="pwLab">Password</label>
-            <input name="pwLab" id="pwLab"></input>
+            <label htmlFor="pw">Password</label>
+            <input name="pw" id="pw"></input>
           </div>
           <div className="pwCCon">
             <label htmlFor="pwConfirm">Confirm</label>
@@ -122,13 +148,13 @@ export default class RegForm extends Component {
           </div>
           <div className="bdCon">
             <label htmlFor="birthday" aria-label="month">Birthday</label>
-            <select name="birthday" id="monthSelect">
+            <select name="month" id="monthSelect">
                 {monthDisplay}
             </select>
-            <select name="birthday" id="daysSelect">
+            <select name="day" id="daysSelect">
                 {days()}
             </select>
-            <select name="birthday" id="yearSelect">
+            <select name="year" id="yearSelect">
                 {year()}
             </select>
           </div>

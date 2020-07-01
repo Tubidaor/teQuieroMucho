@@ -17,7 +17,7 @@ export default function JournalMenu(props) {
           Journal
         </span>
       </Link>
-      <Link className="journalMenuItem" onClick={e => props.handleClick("photoEntry")}>
+      <Link className="journalMenuItem" onClick={e => props.handleClick("fileEntry")}>
         <span>
           <FontAwesomeIcon icon={faImages}/>
         </span>

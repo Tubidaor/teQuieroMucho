@@ -5,6 +5,22 @@ import MicRecorder from 'mic-recorder-to-mp3';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { JournalServices } from '../../Services/APIServices'
+import { FilePond, registerPlugin } from 'react-filepond';
+import 'filepond/dist/filepond.min.css';
+import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+import 'tui-image-editor/dist/tui-image-editor.css'
+import ImageEditor from '@toast-ui/react-image-editor'
+
+registerPlugin(
+  FilePondPluginFileEncode,
+  FilePondPluginFileValidateSize,
+  FilePondPluginImageExifOrientation,
+  FilePondPluginImagePreview,
+  )
 
 
 
@@ -31,17 +47,26 @@ export function JournalEntry(props) {
   )
 }
 
-export function PhotoEntry() {
+export function FileEntry(props) {
+
+  // const inputElement = document.querySelector('input[type=file]');
+  // FilePond.create(inputElement)
+  
 
   return (
     <section className="pEntrySection">
       <div className="dateButtonCon">
       <h5 className="pPageH5">Today's Date: {getDate()}</h5>
-        <button className="pInputButton">cancel</button>
-        <button form={"pForm"} className="pInputButton">done</button>
+        <button className="pInputButton" onClick={e => props.handleCancel(e)}>Cancel</button>
+        <button form={"pForm"} className="pInputButton">Submit</button>
       </div>
       <form action="/action_page.php" id="pForm">
-        <input type="file" id="pInputBox" className="pInputBox" multiple></input>
+        <input
+          type="file"
+          id="pInputBox"
+          className="pInputBox"
+          multiple
+        />
       </form>   
     </section>
   )

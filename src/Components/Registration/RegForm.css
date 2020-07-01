@@ -7,7 +7,7 @@
 .regFormH2 {
   text-align: center;
 }
-.emailCon, .pwCon, .pwCCon, .bdCon, .genderCon {
+.firstNameCon, .lastNameCon, .emailCon, .pwCon, .pwCCon, .bdCon, .genderCon {
   margin-left: auto;
   margin-right: auto;
   margin-top: 6px;
