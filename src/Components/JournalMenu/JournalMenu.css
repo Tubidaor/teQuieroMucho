@@ -72,3 +72,66 @@ span {
   align-self: center;
   font-size: .8em;
 }
+.recordMenu {
+  display:flex;
+  justify-content: space-between;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.recStopCon {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60px;
+}
+.playMenu {
+  display: flex;
+  justify-content: space-evenly;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto
+}
+.vMenuCon {
+  display: flex;
+  justify-content: space-evenly;
+  width: 120px;
+}
+.cancelUploadCon {
+  display: flex;
+  justify-content: space-between;
+  width: 55px;
+}
+.btnStartRec, .vCancelBtn, .btnRwn, .btnPlay, .btnFwd, .btnUpload, .jInputButton, .pInputButton, .aButton {
+  font-size: 1.2em;
+  background-color: rgba(50, 96, 199, 1);
+  color: #f7523c;
+  border: 2px;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+}
+.btnStop {
+  background:  linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+  color: black;
+  font-size: 1.2em;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  border: 2px;
+}
+
+.svg-inline--fa {
+  margin-left: -5px;
+}
+.jEntryIcon, .aIcon {
+  margin-left: 0px !important;
+}
+.jPageH5, .pPageH5, .vPageH5, .aPageH5 {
+  align-self: center;
+}
+
+.aBtnCon {
+  display: flex;
+  justify-content: space-between;
+  width: 55px;
+}

@@ -250,8 +250,15 @@ export const JournalServices = {
     //   : res.json()
     //   )
   },
-
-
+  postFileEntry(file) {
+    //post file to server
+  },
+  postAudioEntry(file) {
+    //post file to server
+  },
+  postVideoEntry(file) {
+    //post file to server
+  }
 
 
 
@@ -262,6 +269,24 @@ export const AuthServices = {
 
   login(credentials) {
     console.log(credentials)
+    const promiseA = new Promise( (resolutionFunc, rejectionFunc) => {
+      const user_name = 'juan'
+      const password = 'juan'
+
+      if(user_name === credentials.user_name && password === credentials.password) {
+        resolutionFunc(()=> {
+          return {user: 'juan'}
+        })
+      } else {
+        rejectionFunc(()=> {
+          return {error: 'wrong'}
+        })
+      }
+    })
+
+    return promiseA
+    
+
   //   return fetch(`${config.API_ENDPOINT}/auth/login`, {
   //     method: 'POST',
   //     headers: {
@@ -276,8 +301,22 @@ export const AuthServices = {
   //     : res.json()
   //     )
   },
-  register(newUser) {
+  registerUser(newUser) {
     console.log(newUser)
+    const promiseA = new Promise((resolutionFunc, rejectionFunc) => {
+      console.log(newUser.email)
+      if(newUser.email === 'juan@gmail.com') {
+        resolutionFunc(() => {
+          return { user: 'juan'}
+        })
+      } else {
+        rejectionFunc(() => {
+          return { error: 'wrong'}
+        })
+      }
+    })
+
+    return promiseA
     // fetch(`${config.API_ENDPOINT}/register`, {
     //   method: 'POST',
     //   header: {

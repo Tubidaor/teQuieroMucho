@@ -1,26 +1,114 @@
 import React, { Component } from 'react';
 import { AuthServices } from '../../Services/APIServices';
 import './RegForm.css';
+import TeQuieroContext from '../../Context';
+
 
 export default class RegForm extends Component {
 
+  static contextType = TeQuieroContext
+
+  
+
   handleRegistration = (e) => {
     e.preventDefault()
-    const { firstName, lastName, email, pw, month, day, year, gender } = e.target
+    this.context.setError(null)
+    const { firstName, lastName, email, pw, pwConfirm, month, day, year, gender } = e.target
+    try {
+      if(!firstName.value) {
+        throw {
+          name: 'NoFirstName',
+          message: 'A first name must be provided.'
+        }
+      }
+      if(!lastName.value) {
+        throw {
+          name: 'NoLastName',
+          message:'A last name must be provided.'
+        }
+      }
+      if(!email.value) {
+        throw {
+          name: 'NoEmail',
+          message: 'An email must be provided.'
+        }
+      }
+      if(!pw.value) {
+        throw {
+          name: 'NoPassword',
+          message: 'A password must be provided.'
+        }
+      }
+      if(pw.value != pwConfirm.value ) {
+        throw {
+          name: 'NoMatchPw',
+          message: 'Password does not match'
+        }
+      }
+      if(month.value === "Month") {
+        throw {
+          name: 'NoMonth',
+          message: 'A month must be provided.'
+        }
+      }
+      if(day.value === "Day") {
+        throw {
+          name: 'NoDay',
+          message: 'A day must be provided.'
+        }
+      }
+      if(year.value === "Year") {
+        throw {
+          name: 'NoYear',
+          message: 'A year must be provided.'
+        }
+      }
+      if(gender.value === "Please Choose") {
+        throw {
+          name: 'NoGender',
+          message: 'Please select your gender.'
+        }
+      }
+      else {
 
-    const newUser = {
-      first_name: firstName.value,
-      last_name: lastName.value,
-      email: email.value,
-      password: pw.value,
-      birthday: month.value + "/" + day.value + "/" + year.value,
-      gender: gender.value
+        const newUser = {
+          first_name: firstName.value,
+          last_name: lastName.value,
+          email: email.value,
+          password: pw.value,
+          birthday: month.value + "/" + day.value + "/" + year.value,
+          gender: gender.value
+        }
+        
+        AuthServices.registerUser(newUser)
+          .then(res => {
+            firstName.value = ''
+            lastName.value = ''
+            email.value = ''
+            pw.value = ''
+            pwConfirm.value = ''
+            month.value = ''
+            day.value = ''
+            year.value = ''
+            gender.value = ''
+            
+            this.props.onRegSuccess()
+          })
+          .catch(e => this.context.setError(e.error))
+          console.log(this.context.error)
+      }
     }
-    AuthServices.register(newUser)
-    //.then(clear form and send user to login page)
+      catch(e) {
+        console.log(e.message)
+        this.context.setError(e.message)
+      } 
 
-  }
+}
+
   render() {
+
+    console.log(this.props.firstName)
+
     const bdayMonth = [
       "Month",
       "01",
@@ -123,8 +211,6 @@ export default class RegForm extends Component {
 
 
     return (
-      <section className="regSection">
-        <h2 className="regFormH2">Sign Up</h2>
         <form onSubmit={this.handleRegistration}>
           <div className="firstNameCon">
             <label htmlFor="firstName">First name</label>
@@ -166,7 +252,6 @@ export default class RegForm extends Component {
           </div>
           <button className="regSubmit" type="submit">Submit</button>
         </form>
-      </section>
     )
   }
 }

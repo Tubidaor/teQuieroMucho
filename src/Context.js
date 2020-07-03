@@ -6,6 +6,7 @@ const TeQuieroContext = React.createContext({
   rQuality: null,
   error: null,
   setStateofMind: () => {},
+  setError: () => {},
   openingQs: [],
   relationshipQs: [],
   alerts: [],
@@ -28,13 +29,18 @@ export class TeQuieroProvider extends Component {
   setStateofMind = (stateofMind) => {
     this.setState({ stateofMind})
   }
-
+  setError = (error) => {
+    this.setState({
+      error
+    })
+  }
   render() {
     const value = {
       stateofMind: this.state.stateofMind,
       rQuality: this.state.rQuality,
       error: this.state.error,
       setStateofMind: this.setStateofMind,
+      setError: this.setError,
       openingQs: this.state.openingQs,
       relationshipQs: this.state.relationshipQs,
       alerts: this.state.alerts,

@@ -12,8 +12,19 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import 'tui-image-editor/dist/tui-image-editor.css'
-import ImageEditor from '@toast-ui/react-image-editor'
+// import 'tui-image-editor/dist/tui-image-editor.css';
+// import ImageEditor from '@toast-ui/react-image-editor';
+import AuthServices from '../../Services/APIServices';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFastForward,
+  faFastBackward,
+  faRecordVinyl,
+  faSmokingBan, 
+  faUpload,
+} from '@fortawesome/free-solid-svg-icons';
+import { faGooglePlay } from '@fortawesome/free-brands-svg-icons';
+import { faHandPaper } from '@fortawesome/free-regular-svg-icons';
 
 registerPlugin(
   FilePondPluginFileEncode,
@@ -32,12 +43,17 @@ export function JournalEntry(props) {
     const text = document.getElementById('jInputBox').value
     JournalServices.postJournalEntry(text)
   }
+
   return(
     <section className="jEntrySection">
       <div className="dateButtonCon">
         <h5 className="jPageH5">Today's Date: {getDate()}</h5>
-        <button className="jInputButton" onClick={e => props.handleCancel(e)}>Cancel</button>
-        <button form="jForm" className="jInputButton" onClick={e => handlePostEntry(e)}>Submit</button>
+        <button className="jInputButton" onClick={e => props.handleCancel(e)}>
+          <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
+        </button>
+        <button form="jForm" className="jInputButton" onClick={e => handlePostEntry(e)}>
+          <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
+        </button>
       </div>
       <form id="jForm">
         <textarea type="paragraph" id="jInputBox" className="jInputBox" cols="50"></textarea>
@@ -51,16 +67,24 @@ export function FileEntry(props) {
 
   // const inputElement = document.querySelector('input[type=file]');
   // FilePond.create(inputElement)
-  
+  function handleFileSubmit(e) {
+    e.preventDefault();
+    //need to get files, and submit to server through fetch 'post'
+  JournalServices.postFileEntry() 
+  }
 
   return (
     <section className="pEntrySection">
       <div className="dateButtonCon">
       <h5 className="pPageH5">Today's Date: {getDate()}</h5>
-        <button className="pInputButton" onClick={e => props.handleCancel(e)}>Cancel</button>
-        <button form={"pForm"} className="pInputButton">Submit</button>
+        <button className="pInputButton" onClick={e => props.handleCancel(e)}>
+          <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
+        </button>
+        <button form={"pForm"} className="pInputButton">
+          <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
+        </button>
       </div>
-      <form action="/action_page.php" id="pForm">
+      <form action="/action_page.php" id="pForm" onSubmit={e => handleFileSubmit(e)}>
         <input
           type="file"
           id="pInputBox"
@@ -82,6 +106,7 @@ export class AudioEntry extends Component {
       isRecording: false,
       blobURL: '',
       isBlocked: false,
+      menu: "rec",
     }
   }
 
@@ -123,30 +148,85 @@ export class AudioEntry extends Component {
         const blobURL = URL.createObjectURL(blob)
         this.setState({ blobURL, isRecording: false });
       }).catch((e) => console.log(e));
+    this.setState({
+      menu: "play"
+    })
   };
   
-
+  handleAudioSubmit = (e) => {
+    e.preventDefault()
+    // post audiot entry 
+    JournalServices.postAudioEntry()
+  }
   render() {
 
-    
+    const recMenu = (
+      <form onSubmit={e => this.handleAudioSubmit(e)} className="aDateButtonCon">
+        <h5 className="aPageH5">Today's Date: {getDate()}</h5>
+        <div className="aBtnCon">
+          <button  className="aButton" onClick={this.start} disabled={this.state.isRecording}>
+            <FontAwesomeIcon className="aIcon"icon={faRecordVinyl}/>
+          </button>
+          <button className="btnStop" onClick={this.stop} disabled={!this.state.isRecording}>
+            <FontAwesomeIcon  icon={faHandPaper}/>
+          </button>
+        </div>
+        <div className="aBtnCon">
+          <button
+              id="vCancelBtn"
+              type="reset"
+              className="vCancelBtn"
+              onClick={e => this.props.handleCancel(e)}
+              >
+            <FontAwesomeIcon className="fStopIcon" icon={faSmokingBan}/>
+          </button>
+          <button className="aButton">
+            <FontAwesomeIcon className="aIcon" icon={faUpload}/>
+          </button>
+        </div>
+      </form>
+    )
 
+    const playMenu = (
+      <form onSubmit={e => this.handleAudioSubmit(e)} className="aDateButtonCon">
+
+        <div className="playMenu">
+          <div className="vMenuCon">
+            <button className="btnRwn" >
+              <FontAwesomeIcon icon={faFastBackward}/>
+            </button>
+            <button className="btnPlay" onClick={this.play}>
+              <FontAwesomeIcon icon={faGooglePlay}/>
+              <span id="demo"></span>
+            </button>
+            <button className="btnFwd">
+              <FontAwesomeIcon icon={faFastForward}/>
+            </button> 
+            <button className="btnStop" onClick={this.stop}>
+              <FontAwesomeIcon icon={faHandPaper}/>
+            </button>
+          </div>
+          <div className="cancelUploadCon">
+            <button className="vCancelBtn" type="reset"
+              onClick={e => this.props.handleCancel(e)}
+              className="vCancelBtn"
+            >
+              <FontAwesomeIcon icon={faSmokingBan}/>
+            </button>
+            <button className="btnUpload" type="submit">
+              <FontAwesomeIcon icon={faUpload}/>
+            </button>
+          </div>
+        </div>
+      </form>
+    )
 
     return (
       <section className="audioSection">
-        <div className="aDateButtonCon">
-          <h5 className="pPageH5">Today's Date: {getDate()}</h5>
-          <button  className="aButton" onClick={this.start} disabled={this.state.isRecording}>
-            Record
-          </button>
-          <button className="aButton" onClick={this.stop} disabled={!this.state.isRecording}>
-            Stop
-          </button>
-          <button className="aButton">
-            Save
-          </button>
-        </div>
+        {this.state.menu === "rec" && recMenu}
+        {this.state.menu === "play" && playMenu }
         {/* <audio controls="controls" src={this.state.blobURL} type="audio/mpeg"/> */}
-        <AudioPlayer className="rhap_container aPlayer" src={this.state.blobURL}/>
+        <audio className="rhap_container aPlayer" src={this.state.blobURL} controls/>
       </section>
     )
   }
@@ -244,32 +324,82 @@ export class VideoEntry extends Component {
   }
   
 
+  handleVideoSubmit = (e) => {
+    e.preventDefault();
+  } 
   render() {
 
-
+    //MAKE RECORD CHANGE COLOR WHILE RECORDING
     const recordMenu = (
-      <div className="recordMenu">
-        <button id="btnStartRec" onClick={this.startRec}>START RECORDING</button>
-        <button id="btnStopRec" onClick={this.stopRec}>STOP RECORDING</button>
+      <>
+        <div className="recordMenu">
+          <h5 className="vPageH5">Today's Date: {getDate()}</h5>
+          <div className="recStopCon">
+            <button className="btnStartRec" onClick={this.startRec}>
+              <FontAwesomeIcon icon={faRecordVinyl}/>
+            </button>
+            <button className="btnStop" onClick={this.stopRec}>
+              <FontAwesomeIcon className="fStopIcon" icon={faHandPaper}/>
+            </button>
+          </div>
+          <div className="cancelCon">
+            <button
+              id="vCancelBtn"
+              type="reset"
+              className="vCancelBtn"
+              onClick={e => this.props.handleCancel(e)}
+              >
+              <FontAwesomeIcon icon={faSmokingBan}/>
+            </button>
+          </div>
+        </div>
         <video id="vidRec" className="vCon"></video>
-      </div>
+      </>
     )
     
+    //make handstop multiple colors of raibow as to not have it be hands
     const playMenu = (
-      <div className="recordMenu">
-      <button id="btnPlay" onClick={this.play}>Play</button>
-      <button id="btnStopVid" onClick={this.stop}>Stop</button>
-      <span id="demo"></span>
+      <>
+        <div className="playMenu">
+          <div className="vMenuCon">
+            <button className="btnRwn" >
+              <FontAwesomeIcon icon={faFastBackward}/>
+            </button>
+            <button className="btnPlay" onClick={this.play}>
+              <FontAwesomeIcon icon={faGooglePlay}/>
+              <span id="demo"></span>
+            </button>
+            <button className="btnFwd">
+              <FontAwesomeIcon icon={faFastForward}/>
+            </button> 
+            <button className="btnStop" onClick={this.stop}>
+              <FontAwesomeIcon icon={faHandPaper}/>
+            </button>
+          </div>
+          <div className="cancelUploadCon">
+            <button className="vCancelBtn" type="reset"
+              onClick={e => this.props.handleCancel(e)}
+              className="vCancelBtn"
+            >
+              <FontAwesomeIcon icon={faSmokingBan}/>
+            </button>
+            <button className="btnUpload" type="submit">
+              <FontAwesomeIcon icon={faUpload}/>
+            </button>
+          </div>
+        </div>
         <video id="vidPlay" className="vPlay" onTimeUpdate={this.updateTime}></video>
-      </div>
+      </>
     )
     
     let { recording } = this.state
 
     return (
       <section className="vSection">
-        {recording === true && recordMenu}
-        {recording === false && playMenu}
+        <form onSubmit={this.handleVideoSubmit}className="vForm" id="vForm">
+          {recording === true && recordMenu}
+          {recording === false && playMenu}
+        </form>
       </section>
     )
   }

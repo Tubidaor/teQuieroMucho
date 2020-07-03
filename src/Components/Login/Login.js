@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import TeQuieroContext from '../../Context';
 import './Login.css'
 import { AuthServices } from '../../Services/APIServices';
 
 export default class Login extends Component {
 
+static contextType = TeQuieroContext
 
   handleLoginJwtAuth = (e) => {
     e.preventDefault()
@@ -13,12 +15,15 @@ export default class Login extends Component {
       password: password.value
     }
     AuthServices.login(credentials)
-      // .then(res => {
-      //   userName.value = ''
-      //   password.value = ''
-      //   //saveAuthToken
-      //   //handlelogin sucess.
-      // })
+      .then(res => {
+        userName.value = ''
+        password.value = ''
+        console.log(res)
+        // TokenServices.saveAuthToken(res)
+        this.props.handleLoginSuccess()
+      })
+      .catch(e => this.context.setError(e))
+      console.log(this.context.error)
   }
 
 

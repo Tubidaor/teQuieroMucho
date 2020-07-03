@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useHistory } from "react-router-dom";
 import './JournalPage.css';
 import JournalMenu from '../../Components/JournalMenu/JournalMenu';
 import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';
@@ -26,6 +27,8 @@ export default class JournalPage extends Component {
       currentSection: 'home'
     })
   }
+
+  
   render() {
 
     let { currentSection } = this.state
@@ -36,8 +39,8 @@ export default class JournalPage extends Component {
         
         { currentSection === "journalEntry" && <JournalEntry handleCancel={this.handleCancel}/>}
         { currentSection === "fileEntry" && <FileEntry handleCancel={this.handleCancel}/>}
-        { currentSection === "audioEntry" && <AudioEntry/>}
-        { currentSection === "videoEntry" && <VideoEntry updateRec={this.handleUpdateRec}/>}
+        { currentSection === "audioEntry" && <AudioEntry handleCancel={this.handleCancel}/>}
+        { currentSection === "videoEntry" && <VideoEntry handleCancel={this.handleCancel} updateRec={this.handleUpdateRec}/>}
       </section>
     )
   }
