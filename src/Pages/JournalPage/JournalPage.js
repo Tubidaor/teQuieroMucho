@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useHistory } from "react-router-dom";
 import './JournalPage.css';
 import JournalMenu from '../../Components/JournalMenu/JournalMenu';
 import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';

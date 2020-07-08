@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { analyticsData, APIServices } from '../../Services/APIServices';
+// import { analyticsData} from '../../Services/APIServices';
 import Graphs from '../Graphs/Graphs';
 import TeQuieroContext from '../../Context';
 
@@ -24,7 +24,7 @@ export class Analytics extends Component {
 
 
   render() {
-    const data = analyticsData
+    // const data = analyticsData
 
     const displayYouSec = () => {
       return (

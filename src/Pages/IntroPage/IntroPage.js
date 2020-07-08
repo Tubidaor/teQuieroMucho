@@ -8,7 +8,7 @@ export default class IntroPage extends Component {
     return (
       <div className="introPageContainer">
         <h1 className="introH1">Te Quiero Mucho</h1>
-        <img className="introImg" src="https://i.ibb.co/4tJQSVw/two-trees-love-looks-like-600w-426826279.jpg"/>
+        <img className="introImg" alt="logo for app" src="https://i.ibb.co/4tJQSVw/two-trees-love-looks-like-600w-426826279.jpg"/>
         <p className="introP">We would like to think that all you need is love. However, a relationship can only grow if two people are committed to each other and the relationship.</p>
         <div className="introButtonContainer">
           <Link to="/login">

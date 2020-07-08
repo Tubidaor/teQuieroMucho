@@ -16,58 +16,58 @@ export default class RegForm extends Component {
     const { firstName, lastName, email, pw, pwConfirm, month, day, year, gender } = e.target
     try {
       if(!firstName.value) {
-        throw {
+        throw new Error({
           name: 'NoFirstName',
           message: 'A first name must be provided.'
-        }
+        })
       }
       if(!lastName.value) {
-        throw {
+        throw new Error({
           name: 'NoLastName',
           message:'A last name must be provided.'
-        }
+        })
       }
       if(!email.value) {
-        throw {
+        throw new Error({
           name: 'NoEmail',
           message: 'An email must be provided.'
-        }
+        })
       }
       if(!pw.value) {
-        throw {
+        throw new Error({
           name: 'NoPassword',
           message: 'A password must be provided.'
-        }
+        })
       }
-      if(pw.value != pwConfirm.value ) {
-        throw {
+      if(pw.value !== pwConfirm.value ) {
+        throw new Error({
           name: 'NoMatchPw',
           message: 'Password does not match'
-        }
+        })
       }
       if(month.value === "Month") {
-        throw {
+        throw new Error({
           name: 'NoMonth',
           message: 'A month must be provided.'
-        }
+        })
       }
       if(day.value === "Day") {
-        throw {
+        throw new Error({
           name: 'NoDay',
           message: 'A day must be provided.'
-        }
+        })
       }
       if(year.value === "Year") {
-        throw {
+        throw new Error({
           name: 'NoYear',
           message: 'A year must be provided.'
-        }
+        })
       }
       if(gender.value === "Please Choose") {
-        throw {
+        throw new Error({
           name: 'NoGender',
           message: 'Please select your gender.'
-        }
+        })
       }
       else {
 

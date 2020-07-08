@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+// import { Link, Switch, Route } from 'react-router-dom';
 import TeQuieroContext from '../../Context';
 import StatusBar from '../../Components/StatusBar/StatusBar';
 import NavBar from '../../Components/NavBar/NavBar';
@@ -46,6 +46,7 @@ export default class HomePage extends Component {
       <div>
 
         <StatusBar stateofMind={stateofMind} rQuality={rQuality}></StatusBar>
+
         {currentSection === "Journal" && <JournalPage/>}
         {currentSection === "Relationship" && <RelationshipPage/>}
 

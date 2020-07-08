@@ -23,7 +23,6 @@ export default class Questions extends Component {
         qNum: this.state.qNum + 1
       }
     )
-    console.log(this.state.qNum)
   }
 
   questions = () => {
@@ -34,16 +33,29 @@ export default class Questions extends Component {
       return this.context.relationshipQs
     }
   }
+
+  lastQuestion = () => {
+    if(this.state.questions === "opening") {
+      let lastQ = this.context.openingQs.length - 2
+      return this.context.openingQs[lastQ].id
+    }
+    if(this.state.questions === "relationship") {
+      let lastQ = this.context.relationshipQs.length - 2
+      return  this.context.relationshipQs[lastQ].id
+    }
+  }
   render() {
 
     let {qNum} = this.state
     let qs = this.questions()
+    let lastQ = this.lastQuestion()
 
     return (
       <QuestionFaces
-        id={qs[qNum].id}
-        question={qs[qNum].question}
+        currentQ={qNum}
+        questions={qs}
         handleQSubmit={this.handleQSubmit}
+        lastQ={lastQ}
       />
     )
   }

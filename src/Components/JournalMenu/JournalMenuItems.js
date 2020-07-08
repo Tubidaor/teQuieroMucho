@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './JournalMenu.css';
 import { getDate } from '../Misc/Misc';
 import MicRecorder from 'mic-recorder-to-mp3';
-import AudioPlayer from 'react-h5-audio-player';
+// import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { JournalServices } from '../../Services/APIServices'
-import { FilePond, registerPlugin } from 'react-filepond';
+import { registerPlugin } from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
@@ -14,7 +14,7 @@ import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 // import 'tui-image-editor/dist/tui-image-editor.css';
 // import ImageEditor from '@toast-ui/react-image-editor';
-import AuthServices from '../../Services/APIServices';
+// import AuthServices from '../../Services/APIServices';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFastForward,
@@ -209,7 +209,6 @@ export class AudioEntry extends Component {
           <div className="cancelUploadCon">
             <button className="vCancelBtn" type="reset"
               onClick={e => this.props.handleCancel(e)}
-              className="vCancelBtn"
             >
               <FontAwesomeIcon icon={faSmokingBan}/>
             </button>
@@ -379,7 +378,6 @@ export class VideoEntry extends Component {
           <div className="cancelUploadCon">
             <button className="vCancelBtn" type="reset"
               onClick={e => this.props.handleCancel(e)}
-              className="vCancelBtn"
             >
               <FontAwesomeIcon icon={faSmokingBan}/>
             </button>
