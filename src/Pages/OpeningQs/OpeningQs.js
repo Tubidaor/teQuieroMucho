@@ -5,13 +5,26 @@ import './OpeningQs.css';
 
 export default class OpeningQs extends Component {
 
-  
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {}
+    }
+  }
+
+  handlePushToHome = () => {
+  const { history, location } = this.props
+  const destination = (location.state || {}).from || '/home'
+  console.log(destination, history)
+  history.push(destination)
+  }
+
 
   render() {
 
     return (
       <section className="qSection">
-        <Questions qType="opening"/>
+        <Questions handlePushToHome={this.handlePushToHome} qType="opening"/>
       </section>
     )
   }

@@ -14,7 +14,7 @@ export default class LoginPage extends Component {
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/openingQs'
     history.push(destination)
-    console.log(location.state)
+    console.log(location.state, history)
   }
 
   render() {

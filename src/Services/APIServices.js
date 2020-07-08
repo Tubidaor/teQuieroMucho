@@ -258,8 +258,23 @@ export const JournalServices = {
   },
   postVideoEntry(file) {
     //post file to server
+  },
+  submitAnswer(answer) {
+    console.log(answer)
+    // return fetch(`${config.API_ENDPOINT}/answer`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'content-type': 'application/json',
+    //     //authorization pending
+    //   },
+    //   body: JSON.stringify({answer})
+    // })
+    // .then(res => {
+    //   (!res.ok)
+    //   ? res.json().then(e => Promise.reject(e))
+    //   : res.json()
+    // })
   }
-
 
 
 

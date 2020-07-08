@@ -67,7 +67,7 @@ export class Alerts extends Component {
     const { alerts } = this.context
 
     let displayAlerts = alerts.map(alert =>
-      <li className="alertsLi" id={alert.id}>
+      <li key={alert.id} className="alertsLi" id={alert.id}>
         <span className="alertsSpan">{alert.alert} </span>
         <div className="alertsBtnCon">
           <button>Dismiss</button>
@@ -93,7 +93,7 @@ export class AddIssue extends Component {
 
     const { categories } = this.context
 
-    const options = categories.map(cat => <option>{cat}</option>)
+    const options = categories.map(cat => <option key={cat}>{cat}</option>)
     return (
       <section className="addIssueCon">
         <form>

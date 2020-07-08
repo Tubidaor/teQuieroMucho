@@ -1,13 +1,13 @@
 import React from 'react';
 import './NavBar.css'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
 
   const bodyParts = function(number) {
     let section = []
     for(let i = 1; i <= number; i++) {
-      section.push(<li className={`navLi${i}`}></li>)
+      section.push(<li key={i} className={`navLi${i}`}></li>)
     }
     return section
   }
@@ -28,7 +28,7 @@ export default function NavBar(props) {
   let menuDisplay = function(menu) {
     let section = []
     for(let i = 0; i <= menu.length; i++) {
-      section.push(<li className={`menuLi${i}`}><Link onClick={e => props.handleClick(menu[i])}>{menu[i]}</Link></li>)
+      section.push(<li key={i} className={`menuLi${i}`}><button onClick={e => props.handleClick(menu[i])}>{menu[i]}</button></li>)
     }
     return section
   }

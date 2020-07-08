@@ -39,14 +39,6 @@ export default class QuestionFaces extends Component {
 
   updateState = (state) => {
     
-    // let keys = Object.keys(state).filter(key => key !== emotion)
-    // let filteredObject = keys.map((key) => {return state[key].value}) 
-    // let sum = 0
-    // for(let i = 0; i < filteredObject.length; i++) {
-    //   sum = sum + parseInt(filteredObject[i])
-
-    //   console.log(filteredObject[i])
-    // }
     let noJoySum = state.disgust.value + state.sadness.value + state.anger.value + state.fear.value
     let noDisgust = state.joy.value + state.sadness.value + state.anger.value + state.fear.value
     let noSad = state.joy.value + state.disgust.value + state.anger.value + state.fear.value
@@ -244,7 +236,7 @@ export default class QuestionFaces extends Component {
         }
         {this.state.lastQ === currentQ &&
         <button
-          onClick={this.props.handleQSubmit}
+          onClick={this.props.handleEndSubmit}
           form={`id${this.props.id}`}
           className="facesBtnEnd"
           type="submit"

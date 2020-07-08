@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import QuestionFaces from './QuestionFaces';
 import TeQuieroContext from '../../Context';
+import { JournalServices } from '../../Services/APIServices';
 
 export default class Questions extends Component {
+
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {}
+    }
+  }
   constructor(props){
     super(props)
     this.state = {
@@ -15,14 +23,25 @@ export default class Questions extends Component {
 
   handleQSubmit = (e) => {
     e.preventDefault()
-    // if(this.state.qNum === introQuestions.length-1) {
-    //   //send user to home screen and submit answer/  
-    // }
+    JournalServices.submitAnswer('answer')
+
     this.setState(
       {
         qNum: this.state.qNum + 1
       }
     )
+  }
+
+  handleEndSubmit = (e) => {
+    e.preventDefault()
+    JournalServices.submitAnswer('lastAnswer')
+    
+    this.setState({
+      qNum: 0
+    })
+
+    this.props.handlePushToHome()
+
   }
 
   questions = () => {
@@ -55,6 +74,7 @@ export default class Questions extends Component {
         currentQ={qNum}
         questions={qs}
         handleQSubmit={this.handleQSubmit}
+        handleEndSubmit={this.handleEndSubmit}
         lastQ={lastQ}
       />
     )

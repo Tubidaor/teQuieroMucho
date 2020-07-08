@@ -610,9 +610,13 @@
 }
 .facesBtnNext:active {
   color: #5effb2;
+  border: none;
+  background: none;
 }
 .facesBtnEnd:active {
   color: #5effb2;
+  border: none;
+  background: none;
 }
 .slideCon {
   margin-top: auto;
