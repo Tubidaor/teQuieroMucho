@@ -1,4 +1,4 @@
-// import config from '../config';
+import config from '../config';
 
 
 export const analyticsData = [
@@ -283,67 +283,34 @@ export const JournalServices = {
 export const AuthServices = {
 
   login(credentials) {
-    console.log(credentials)
-    const promiseA = new Promise( (resolutionFunc, rejectionFunc) => {
-      const user_name = 'juan'
-      const password = 'juan'
 
-      if(user_name === credentials.user_name && password === credentials.password) {
-        resolutionFunc(()=> {
-          return {user: 'juan'}
-        })
-      } else {
-        rejectionFunc(()=> {
-          return {error: 'wrong'}
-        })
-      }
+    return fetch(`${config.API_ENDPOINT}/login`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(credentials)
     })
-
-    return promiseA
-    
-
-  //   return fetch(`${config.API_ENDPOINT}/auth/login`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //      //needs bearer token auth
-  //     },
-  //     body: JSON.stringify(credentials)
-  //   })
-  //   .then(res =>
-  //     (!res.ok)
-  //     ? res.json().then(e => Promise.reject(e))
-  //     : res.json()
-  //     )
+    .then(res =>
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+      )
   },
-  registerUser(newUser) {
-    console.log(newUser)
-    const promiseA = new Promise((resolutionFunc, rejectionFunc) => {
-      console.log(newUser.email)
-      if(newUser.email === 'juan@gmail.com') {
-        resolutionFunc(() => {
-          return { user: 'juan'}
-        })
-      } else {
-        rejectionFunc(() => {
-          return { error: 'wrong'}
-        })
-      }
-    })
 
-    return promiseA
-    // fetch(`${config.API_ENDPOINT}/register`, {
-    //   method: 'POST',
-    //   header: {
-    //     'content-type': 'application/json' 
-    //   },
-    //   body: JSON.stringify(newUser)
-    // })
-    // .then(res =>
-    //   (!res.ok)
-    //   ? res.json().then(e => Promise.reject(e))
-    //   : res.json()
-    // )
+  registerUser(newUser) {
+    fetch(`${config.API_ENDPOINT}/users`, {
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' 
+      },
+      body: JSON.stringify(newUser)
+    })
+    .then(res =>
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+    )
   },
 
 }

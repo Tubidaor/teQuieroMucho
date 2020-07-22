@@ -2,27 +2,33 @@ import React, { Component } from 'react';
 import TeQuieroContext from '../../Context';
 import './Login.css'
 import { AuthServices } from '../../Services/APIServices';
+import Error from '../Error/Error';
+import TokenServices from '../../Services/token-services';
 
 export default class Login extends Component {
 
 static contextType = TeQuieroContext
 
+componentWillUnmount() {
+  this.context.setError(null)
+}
+
   handleLoginJwtAuth = (e) => {
     e.preventDefault()
-    const { userName, password } = e.target
+    const { email, password } = e.target
     const credentials = {
-      user_name: userName.value,
+      email: email.value,
       password: password.value
     }
     AuthServices.login(credentials)
       .then(res => {
-        userName.value = ''
+        email.value = ''
         password.value = ''
         console.log(res)
-        // TokenServices.saveAuthToken(res)
+        TokenServices.saveAuthToken(res)
         this.props.handleLoginSuccess()
       })
-      .catch(e => this.context.setError(e))
+      .catch(e => this.context.setError(e.error))
       console.log(this.context.error)
   }
 
@@ -35,9 +41,10 @@ static contextType = TeQuieroContext
       <div className="loginContainer">
         <form className="loginForm" onSubmit={this.handleLoginJwtAuth}>
           <h2 className="loginH2">Login</h2>
-          <div className="userName">
-            <label htmlFor="loginForm_userName">User name</label>
-            <input name="userName" id="loginForm_userName"></input>
+          {this.context.error && <Error/>}
+          <div className="email">
+            <label htmlFor="loginForm_email">Email</label>
+            <input name="email" id="loginForm_email"></input>
           </div>
           <div className="password">
             <label htmlFor="password">Password</label>
