@@ -25,7 +25,7 @@ componentWillUnmount() {
         email.value = ''
         password.value = ''
         console.log(res)
-        TokenServices.saveAuthToken(res)
+        TokenServices.saveAuthToken(res.authToken)
         this.props.handleLoginSuccess()
       })
       .catch(e => this.context.setError(e.error))

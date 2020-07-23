@@ -6,6 +6,9 @@ const TokenServices = {
     window.sessionStorage.setItem(config.TOKEN_KEY, token)
   },
 
+  getAuthToken() {
+    return window.sessionStorage.getItem(config.TOKEN_KEY)
+  }
 
 }
 

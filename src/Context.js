@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { alerts, introQuestions, relationshipQuestions, categories } from './ContextData.js'
+import { alerts, categories } from './ContextData.js'
 
 const TeQuieroContext = React.createContext({
   stateofMind: null,
   rQuality: null,
   error: null,
-  setStateofMind: () => {},
-  setError: () => {},
   openingQs: [],
   relationshipQs: [],
+  userQs: [],
   alerts: [],
-  categories: []
+  categories: [],
+  setStateofMind: () => {},
+  setError: () => {},
+  setOpeningQuestions: () => {},
+  setRelationshipQuestions: () => {},
+  setUserQuestions: () => {}
 })
 
 export default TeQuieroContext
@@ -20,8 +24,9 @@ export class TeQuieroProvider extends Component {
     stateofMind: "Happy",
     rQuality: "Happy",
     error: null,
-    openingQs: introQuestions,
-    relationshipQs: relationshipQuestions,
+    openingQs: [],
+    relationshipQs: [],
+    userQs: [],
     alerts: alerts,
     categories: categories,
   }
@@ -34,17 +39,30 @@ export class TeQuieroProvider extends Component {
       error
     })
   }
+  setOpeningQuestions(openingQs) {
+    this.setState({openingQs})
+  }
+  setRelationshipQuestions(relationshipQs) {
+    this.setState({relationshipQs})
+  }
+  setUserQuestions(userQs) {
+    this.setState({userQs})
+  }
+
   render() {
     const value = {
       stateofMind: this.state.stateofMind,
       rQuality: this.state.rQuality,
       error: this.state.error,
-      setStateofMind: this.setStateofMind,
-      setError: this.setError,
       openingQs: this.state.openingQs,
       relationshipQs: this.state.relationshipQs,
       alerts: this.state.alerts,
-      categories: this.state.categories
+      categories: this.state.categories,
+      setStateofMind: this.setStateofMind,
+      setError: this.setError,
+      setOpeningQuestions: this.setOpeningQuestions,
+      setRelationshipQuestions: this.setRelationshipQuestions,
+      setUserQuestions: this.setUserQuestions
     }
     return(
       <TeQuieroContext.Provider value={value}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import QuestionFaces from './QuestionFaces';
 import TeQuieroContext from '../../Context';
-import { JournalServices } from '../../Services/APIServices';
+import { JournalServices, QServices } from '../../Services/APIServices';
 
 export default class Questions extends Component {
 
@@ -20,6 +20,11 @@ export default class Questions extends Component {
   }
 
   static contextType = TeQuieroContext
+
+  componentDidMount() {
+    
+  }
+
 
   handleQSubmit = (e) => {
     e.preventDefault()

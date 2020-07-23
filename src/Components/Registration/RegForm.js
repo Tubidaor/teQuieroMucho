@@ -8,7 +8,9 @@ export default class RegForm extends Component {
 
   static contextType = TeQuieroContext
 
-  
+  componentWillUnmount() {
+    this.context.setError(null)
+  }
 
   handleRegistration = (e) => {
     e.preventDefault()
@@ -52,6 +54,7 @@ export default class RegForm extends Component {
           gender: gender.value
         }
         
+        console.log(newUser)
         AuthServices.registerUser(newUser)
           .then(res => {
             firstName.value = ''

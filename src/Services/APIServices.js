@@ -1,4 +1,6 @@
 import config from '../config';
+import TokenServices from './token-services';
+
 
 
 export const analyticsData = [
@@ -227,7 +229,44 @@ export const analyticsData = [
     ]
   }
 ]
+export const QServices = {
 
+  getGenQuestions() {
+    console.log(TokenServices.getAuthToken())
+    return fetch(`${config.API_ENDPOINT}/general-questions`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
+  getUserQuestions() {
+    return fetch(`${config.API_ENDPOINT}/user-questions`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
+
+
+
+
+}
 export const JournalServices = {
 
   postJournalEntry(text) {
@@ -299,9 +338,10 @@ export const AuthServices = {
   },
 
   registerUser(newUser) {
-    fetch(`${config.API_ENDPOINT}/users`, {
+    console.log(newUser)
+    return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
-      header: {
+      headers: {
         'content-type': 'application/json' 
       },
       body: JSON.stringify(newUser)
@@ -317,6 +357,7 @@ export const AuthServices = {
 export default {
   JournalServices,
   analyticsData,
-  AuthServices
+  AuthServices,
+  QServices
   
 }
