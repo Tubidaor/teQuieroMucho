@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Questions from '../../Components/Questions/Questions';
+import TeQuieroContext from '../../Context';
 import './OpeningQs.css';
-
 
 export default class OpeningQs extends Component {
 
@@ -11,6 +11,11 @@ export default class OpeningQs extends Component {
       push: () => {}
     }
   }
+
+  static contextType = TeQuieroContext
+
+
+
 
   handlePushToHome = () => {
   const { history, location } = this.props
@@ -24,7 +29,7 @@ export default class OpeningQs extends Component {
 
     return (
       <section className="qSection">
-        <Questions handlePushToHome={this.handlePushToHome} qType="opening"/>
+        <Questions handlePushToHome={this.handlePushToHome} qType="Opening"/>
       </section>
     )
   }

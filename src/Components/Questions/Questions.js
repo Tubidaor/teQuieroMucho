@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
 import QuestionFaces from './QuestionFaces';
 import TeQuieroContext from '../../Context';
-import { JournalServices, QServices } from '../../Services/APIServices';
+import { JournalServices } from '../../Services/APIServices';
 
 export default class Questions extends Component {
-
+  
   static defaultProps = {
     location: {},
     history: {
       push: () => {}
     }
   }
-  constructor(props){
+  
+  static contextType = TeQuieroContext
+
+  constructor(props) {
     super(props)
     this.state = {
       qNum: 0,
-      questions: props.qType,
+      questions: 'Opening',
     }
   }
 
-  static contextType = TeQuieroContext
 
   componentDidMount() {
-    
+    this.setState({
+      questions: this.props.qType
+    })
   }
-
 
   handleQSubmit = (e) => {
     e.preventDefault()
@@ -50,29 +53,31 @@ export default class Questions extends Component {
   }
 
   questions = () => {
-    if(this.state.questions === "opening") {
+    if(this.state.questions === "Opening") {
       return this.context.openingQs
     }
-    if(this.state.questions === "relationship") {
+    if(this.state.questions === "Relationship") {
       return this.context.relationshipQs
     }
   }
 
   lastQuestion = () => {
-    if(this.state.questions === "opening") {
+    if(this.state.questions === "Opening") {
       let lastQ = this.context.openingQs.length - 2
       return this.context.openingQs[lastQ].id
     }
-    if(this.state.questions === "relationship") {
+    if(this.state.questions === "Relationship") {
       let lastQ = this.context.relationshipQs.length - 2
       return  this.context.relationshipQs[lastQ].id
     }
   }
   render() {
 
+
     let {qNum} = this.state
-    let qs = this.questions()
-    let lastQ = this.lastQuestion()
+    const qs = this.questions()
+    const lastQ = this.lastQuestion()
+    
 
     return (
       <QuestionFaces

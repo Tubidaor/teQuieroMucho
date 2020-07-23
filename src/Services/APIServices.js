@@ -232,7 +232,6 @@ export const analyticsData = [
 export const QServices = {
 
   getGenQuestions() {
-    console.log(TokenServices.getAuthToken())
     return fetch(`${config.API_ENDPOINT}/general-questions`, {
       method: 'GET',
       headers: {
@@ -240,11 +239,11 @@ export const QServices = {
         'Authorization': `Bearer ${TokenServices.getAuthToken()}`
       }
     })
-    .then(res => {
+    .then(res =>
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()
-    })
+    )
   },
 
   getUserQuestions() {
@@ -255,11 +254,11 @@ export const QServices = {
         'Authorization': `Bearer ${TokenServices.getAuthToken()}`
       }
     })
-    .then(res => {
+    .then(res =>
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()
-    })
+    )
   },
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TeQuieroContext from '../../Context';
 import './Login.css'
-import { AuthServices } from '../../Services/APIServices';
+import { AuthServices, QServices } from '../../Services/APIServices';
 import Error from '../Error/Error';
 import TokenServices from '../../Services/token-services';
 
@@ -26,8 +26,21 @@ componentWillUnmount() {
         password.value = ''
         console.log(res)
         TokenServices.saveAuthToken(res.authToken)
-        this.props.handleLoginSuccess()
+        
+        
       })
+      .then(
+        QServices.getGenQuestions()
+          .then(questions => {
+            console.log('genQsran')
+            console.log(questions)
+            const openingQs = questions.filter(item => item.section === 'Opening')
+            console.log(openingQs)
+            this.context.setOpeningQuestions(openingQs)
+
+            this.props.handleLoginSuccess()
+          })
+      )
       .catch(e => this.context.setError(e.error))
       console.log(this.context.error)
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Login from '../../Components/Login/Login';
-import { QServices } from '../../Services/APIServices';
+import TeQuieroContext from '../../Context';
 
 
 
@@ -11,15 +11,11 @@ export default class LoginPage extends Component {
       push: () => {},
     }
   }
- handleLoginSuccess = () => {
-    QServices.getGenQuestions()
-      .then(res => {
-        console.log('genQsran')
-        const openingQs = res.filter(item => item.section === 'Opening')
-        console.log(openingQs)
-        this.context.setOpeningQuestions(openingQs)
-      })
-  
+
+  static contextType = TeQuieroContext
+
+  handleLoginSuccess = () => {
+    
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/openingQs'
     history.push(destination)
