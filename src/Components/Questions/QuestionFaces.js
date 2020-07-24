@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './QuestionFaces.css';
 import Slider from '../Slider/Slider';
+import  { JournalServices } from '../../Services/APIServices'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronCircleRight,
@@ -33,10 +34,17 @@ export default class QuestionFaces extends Component {
         value: 0,
         max: 0
       },
-      lastQ: this.props.lastQ
+      lastQ: 1,
+      currentQ: 1,
     }
   }
 
+  componentDidMount() {
+    this.setState({
+      lastQ: this.props.lastQ
+    })
+  }
+  
   updateState = (state) => {
     
     let noJoySum = state.disgust.value + state.sadness.value + state.anger.value + state.fear.value
@@ -105,17 +113,62 @@ export default class QuestionFaces extends Component {
     state.fear.value = value
 
     this.updateState(state)
-  } 
+  }
+
+  handleQSubmit = (e, question_id) => {
+    e.preventDefault()
+    const {joy, disgust, sadness, anger, fear } = document.getElementById('qsForm')
+    const mood = joy.value - (disgust.value - sadness.value - anger.value - fear.value)
+    const answer = {
+      question_id,
+      joy: joy.value,
+      disgust: disgust.value,
+      sadness: sadness.value,
+      anger: anger.value,
+      fear: fear.value,
+      mood
+    }
+    JournalServices.submitAnswer(answer)
+
+    this.setState(
+      {
+        currentQ: this.state.currentQ + 1
+      }
+    )
+  }
+
+  handleEndSubmit = (e, question_id) => {
+    e.preventDefault()
+    const {joy, disgust, sadness, anger, fear } = document.getElementById('qsForm')
+    const mood = joy.value - (disgust.value - sadness.value - anger.value - fear.value)
+    const answer = {
+      question_id,
+      joy: joy.value,
+      disgust: disgust.value,
+      sadness: sadness.value,
+      anger: anger.value,
+      fear: fear.value,
+      mood
+    }
+    JournalServices.submitAnswer(answer)
+    
+    this.setState({
+      currentQ: 0
+    })
+
+    this.props.handlePushToHome()
+
+  }
 
   render() {
 
   let questions = this.props.questions
-  let currentQ = this.props.currentQ
-  console.log(currentQ, this.state.lastQ)
+  let currentQ = this.state.currentQ
+  
   return (
     <div className={`facesCon id${questions[currentQ].id}`}>
       <h3 className="facesH3">{questions[currentQ].question}</h3>
-      <form className="qForm" id={`form${questions[currentQ].id}`} action="">
+      <form className="qForm" id={`qsForm`} >
         <div className="faceInputCon">
           <div className="joyFace">
             <ul className="joyFaceEyesCon">
@@ -132,7 +185,8 @@ export default class QuestionFaces extends Component {
           <Slider
             maxValue={this.state.joy.max}
             face="Joy"
-            id={"joyInput"}
+            name="joy"
+            id="joyInput"
             value={this.state.joy.value}
             changeOnSlider={this.changeJoy}
           />
@@ -153,7 +207,8 @@ export default class QuestionFaces extends Component {
           <Slider
             maxValue={this.state.disgust.max}
             face="Disgust"
-            id={"disgustInput"}
+            name="disgust"
+            id="disgustInput"
             value={this.state.disgust.value}
             changeOnSlider={this.changeDisgust}
           />
@@ -174,7 +229,8 @@ export default class QuestionFaces extends Component {
           <Slider
             maxValue={this.state.sadness.max}
             face="Sadness"
-            id={"sadnessInput"}
+            name="sadness"
+            id="sadnessInput"
             value={this.state.sadness.value}
             changeOnSlider={this.changeSadness}
             />
@@ -195,7 +251,8 @@ export default class QuestionFaces extends Component {
           <Slider
             maxValue={this.state.anger.max}
             face="Anger"
-            id={"angerInput"}
+            name="anger"
+            id="angerInput"
             value={this.state.anger.value}
             changeOnSlider={this.changeAnger}
           />
@@ -216,18 +273,18 @@ export default class QuestionFaces extends Component {
           <Slider
             maxValue={this.state.fear.max}
             face="Fear"
-            id={"fearInput"}
+            name="fear"
+            id="fearInput"
             value={this.state.fear.value}
             changeOnSlider={this.changeFear}
           />
         </div>
 
-      </form>
       <div className='qBtnCon'>
         {this.state.lastQ > currentQ &&
         <button
-          onClick={this.props.handleQSubmit}
-          form={`id${this.props.id}`}
+          onClick={event => this.handleQSubmit(event,questions[currentQ].question_id)}
+          form={`qsForm`}
           className="facesBtnNext"
           type="submit"
         >
@@ -236,14 +293,15 @@ export default class QuestionFaces extends Component {
         }
         {this.state.lastQ === currentQ &&
         <button
-          onClick={this.props.handleEndSubmit}
-          form={`id${this.props.id}`}
+          onClick={event => this.handleEndSubmit(event,questions[currentQ].question_id)}
+          form={`qsForm`}
           className="facesBtnEnd"
           type="submit"
         >
           <FontAwesomeIcon icon={faHome}/>
         </button>}
       </div>
+      </form>
     </div>
   )
 }

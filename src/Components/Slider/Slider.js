@@ -21,6 +21,7 @@ export default class Slider extends Component {
           min="0"
           max={this.props.maxValue}
           value={this.props.value}
+          name={this.props.name}
           className={`slider ${this.props.id}`}
           onInput={this.handleChange}
           onChange={this.handleChange}

@@ -26,21 +26,17 @@ componentWillUnmount() {
         password.value = ''
         console.log(res)
         TokenServices.saveAuthToken(res.authToken)
-        
-        
+        let token = res.authToken
+        return token
       })
-      .then(
-        QServices.getGenQuestions()
+      .then(token => {
+        QServices.getGenQuestions(token)
           .then(questions => {
-            console.log('genQsran')
-            console.log(questions)
             const openingQs = questions.filter(item => item.section === 'Opening')
-            console.log(openingQs)
             this.context.setOpeningQuestions(openingQs)
-
             this.props.handleLoginSuccess()
           })
-      )
+        })
       .catch(e => this.context.setError(e.error))
       console.log(this.context.error)
   }

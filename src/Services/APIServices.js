@@ -231,12 +231,13 @@ export const analyticsData = [
 ]
 export const QServices = {
 
-  getGenQuestions() {
+  getGenQuestions(token) {
+    console.log(TokenServices.getAuthToken())
     return fetch(`${config.API_ENDPOINT}/general-questions`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+        'Authorization': `Bearer ${token}`
       }
     })
     .then(res =>
@@ -299,19 +300,19 @@ export const JournalServices = {
   },
   submitAnswer(answer) {
     console.log(answer)
-    // return fetch(`${config.API_ENDPOINT}/answer`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //     //authorization pending
-    //   },
-    //   body: JSON.stringify({answer})
-    // })
-    // .then(res => {
-    //   (!res.ok)
-    //   ? res.json().then(e => Promise.reject(e))
-    //   : res.json()
-    // })
+    return fetch(`${config.API_ENDPOINT}/questionaire`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      },
+      body: JSON.stringify(answer)
+    })
+    .then(res => {
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+    })
   }
 
 

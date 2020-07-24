@@ -17,7 +17,6 @@ export default class Questions extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      qNum: 0,
       questions: 'Opening',
     }
   }
@@ -29,28 +28,7 @@ export default class Questions extends Component {
     })
   }
 
-  handleQSubmit = (e) => {
-    e.preventDefault()
-    JournalServices.submitAnswer('answer')
 
-    this.setState(
-      {
-        qNum: this.state.qNum + 1
-      }
-    )
-  }
-
-  handleEndSubmit = (e) => {
-    e.preventDefault()
-    JournalServices.submitAnswer('lastAnswer')
-    
-    this.setState({
-      qNum: 0
-    })
-
-    this.props.handlePushToHome()
-
-  }
 
   questions = () => {
     if(this.state.questions === "Opening") {
@@ -74,18 +52,19 @@ export default class Questions extends Component {
   render() {
 
 
-    let {qNum} = this.state
+
     const qs = this.questions()
     const lastQ = this.lastQuestion()
     
 
     return (
       <QuestionFaces
-        currentQ={qNum}
         questions={qs}
         handleQSubmit={this.handleQSubmit}
         handleEndSubmit={this.handleEndSubmit}
         lastQ={lastQ}
+        handlePushToHome={this.props.handlePushToHome}
+
       />
     )
   }
