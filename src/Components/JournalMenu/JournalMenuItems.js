@@ -37,12 +37,8 @@ registerPlugin(
 
 
 export function JournalEntry(props) {
-  function handlePostEntry(e) {
-    e.preventDefault()
 
-    const text = document.getElementById('jInputBox').value
-    JournalServices.postJournalEntry(text)
-  }
+ 
 
   return(
     <section className="jEntrySection">
@@ -51,12 +47,12 @@ export function JournalEntry(props) {
         <button className="jInputButton" onClick={e => props.handleCancel(e)}>
           <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
         </button>
-        <button form="jForm" className="jInputButton" onClick={e => handlePostEntry(e)}>
+        <button form="jForm" className="jInputButton" onClick={e => props.handlePostEntry(e)}>
           <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
         </button>
       </div>
       <form id="jForm">
-        <textarea type="paragraph" id="jInputBox" className="jInputBox" cols="50"></textarea>
+        <textarea type="paragraph" id="jInputBox" name='jEText' className="jInputBox" cols="50"></textarea>
       </form>    
         
     </section>

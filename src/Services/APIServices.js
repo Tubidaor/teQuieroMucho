@@ -273,21 +273,20 @@ export const JournalServices = {
 
     console.log(text)
     
-    // return fetch(`${config.API_ENDPOINT}/journalEntry`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //     //authorization pending
-    //   },
-    //   body: JSON.stringify({
-    //    text
-    //   })
-    // })
-    // .then(res =>
-    //   (!res.ok)
-    //   ? res.json().then(e => Promise.reject(e))
-    //   : res.json()
-    //   )
+    return fetch(`${config.API_ENDPOINT}/text-entry`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      },
+      body: JSON.stringify(text)
+      
+    })
+    .then(res =>
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+      )
   },
   postFileEntry(file) {
     //post file to server

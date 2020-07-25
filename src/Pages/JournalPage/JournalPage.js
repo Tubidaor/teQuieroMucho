@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './JournalPage.css';
 import JournalMenu from '../../Components/JournalMenu/JournalMenu';
+import { JournalServices } from '../../Services/APIServices';
 import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 
 export default class JournalPage extends Component {
@@ -26,6 +28,18 @@ export default class JournalPage extends Component {
       currentSection: 'home'
     })
   }
+  handlePostEntry = (e) => {
+    e.preventDefault()
+
+    const { jEText } = document.getElementById('jForm')
+    const newTextEntry = {
+      text: jEText.value
+    }
+    JournalServices.postJournalEntry(newTextEntry)
+    this.setState({
+      currentSection: 'home'
+    })
+  }
 
   
   render() {
@@ -36,7 +50,7 @@ export default class JournalPage extends Component {
       <section className="journalCon">
         <JournalMenu handleClick={this.handleClick}/>
         
-        { currentSection === "journalEntry" && <JournalEntry handleCancel={this.handleCancel}/>}
+        { currentSection === "journalEntry" && <JournalEntry handlePostEntry={this.handlePostEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "fileEntry" && <FileEntry handleCancel={this.handleCancel}/>}
         { currentSection === "audioEntry" && <AudioEntry handleCancel={this.handleCancel}/>}
         { currentSection === "videoEntry" && <VideoEntry handleCancel={this.handleCancel} updateRec={this.handleUpdateRec}/>}
