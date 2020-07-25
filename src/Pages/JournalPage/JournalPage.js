@@ -11,6 +11,12 @@ export default class JournalPage extends Component {
     currentSection: "home",
     recording: true,
   }
+  
+  setStateToHome = () => {
+    this.setState({
+      currentSection: 'home'
+    })
+  }
   handleClick = (currentSection) => {
     this.setState({
       currentSection
@@ -24,9 +30,7 @@ export default class JournalPage extends Component {
 
   handleCancel = (e) => {
     e.preventDefault();
-    this.setState({
-      currentSection: 'home'
-    })
+    this.setStateToHome()
   }
   handlePostEntry = (e) => {
     e.preventDefault()
@@ -36,9 +40,24 @@ export default class JournalPage extends Component {
       text: jEText.value
     }
     JournalServices.postJournalEntry(newTextEntry)
-    this.setState({
-      currentSection: 'home'
-    })
+    this.setStateToHome()
+  }
+
+  handleAudioEntry = (e) => {
+    e.preventDefault()
+    const { files } = document.getElementById('pForm')
+    console.log( files.files[0])
+    const formData = new FormData();
+    for(let i = 0; i < files.files.length; i++) {
+      formData.append('files', files.files[i])
+    }
+
+    console.log(formData)
+    JournalServices.postFileEntry(formData)
+      .then(res => console.log(res))
+
+    this.setStateToHome()
+
   }
 
   
@@ -51,7 +70,7 @@ export default class JournalPage extends Component {
         <JournalMenu handleClick={this.handleClick}/>
         
         { currentSection === "journalEntry" && <JournalEntry handlePostEntry={this.handlePostEntry} handleCancel={this.handleCancel}/>}
-        { currentSection === "fileEntry" && <FileEntry handleCancel={this.handleCancel}/>}
+        { currentSection === "fileEntry" && <FileEntry handleAudioEntry={this.handleAudioEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "audioEntry" && <AudioEntry handleCancel={this.handleCancel}/>}
         { currentSection === "videoEntry" && <VideoEntry handleCancel={this.handleCancel} updateRec={this.handleUpdateRec}/>}
       </section>

@@ -61,13 +61,6 @@ export function JournalEntry(props) {
 
 export function FileEntry(props) {
 
-  // const inputElement = document.querySelector('input[type=file]');
-  // FilePond.create(inputElement)
-  function handleFileSubmit(e) {
-    e.preventDefault();
-    //need to get files, and submit to server through fetch 'post'
-  JournalServices.postFileEntry() 
-  }
 
   return (
     <section className="pEntrySection">
@@ -80,11 +73,12 @@ export function FileEntry(props) {
           <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
         </button>
       </div>
-      <form action="/action_page.php" id="pForm" onSubmit={e => handleFileSubmit(e)}>
+      <form action="/action_page.php" id="pForm" onSubmit={e => props.handleAudioEntry(e)}>
         <input
           type="file"
           id="pInputBox"
           className="pInputBox"
+          name='files'
           multiple
         />
       </form>   

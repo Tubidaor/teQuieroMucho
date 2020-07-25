@@ -288,13 +288,37 @@ export const JournalServices = {
       : res.json()
       )
   },
-  postFileEntry(file) {
-    //post file to server
+  postFileEntry(files) {
+    console.log(files)
+    return fetch(`${config.API_ENDPOINT}/files`, {
+      method: 'POST',
+      // headers: {
+      //   'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      // },
+      body: files
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
   },
-  postAudioEntry(file) {
-    //post file to server
+  postAudioEntry(files) {
+    return fetch(`${config.API_ENDPOINT}/files`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      },
+      body: files
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
   },
-  postVideoEntry(file) {
+
+  postVideoEntry(files) {
     //post file to server
   },
   submitAnswer(answer) {
