@@ -73,7 +73,7 @@ export function FileEntry(props) {
           <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
         </button>
       </div>
-      <form action="/action_page.php" id="pForm" onSubmit={e => props.handleAudioEntry(e)}>
+      <form action="/action_page.php" id="pForm" onSubmit={e => props.handleFileEntry(e)}>
         <input
           type="file"
           id="pInputBox"
@@ -118,7 +118,8 @@ export class AudioEntry extends Component {
       })
   }
     
-  start = () => {
+  start = (e) => {
+    e.preventDefault()
     if (this.state.isBlocked) {
       console.log("Permission Denied")
     } else {
@@ -143,15 +144,11 @@ export class AudioEntry extends Component {
     })
   };
   
-  handleAudioSubmit = (e) => {
-    e.preventDefault()
-    // post audiot entry 
-    JournalServices.postAudioEntry()
-  }
+
   render() {
 
     const recMenu = (
-      <form onSubmit={e => this.handleAudioSubmit(e)} className="aDateButtonCon">
+      <form  className="aDateButtonCon">
         <h5 className="aPageH5">Today's Date: {getDate()}</h5>
         <div className="aBtnCon">
           <button  className="aButton" onClick={this.start} disabled={this.state.isRecording}>
@@ -178,7 +175,7 @@ export class AudioEntry extends Component {
     )
 
     const playMenu = (
-      <form onSubmit={e => this.handleAudioSubmit(e)} className="aDateButtonCon">
+      <form  className="aDateButtonCon">
 
         <div className="playMenu">
           <div className="vMenuCon">
@@ -202,7 +199,7 @@ export class AudioEntry extends Component {
             >
               <FontAwesomeIcon icon={faSmokingBan}/>
             </button>
-            <button className="btnUpload" type="submit">
+            <button className="btnUpload" type="submit" onClick={event => this.props.handleAudioEntry(event, this.state.blobURL)}>
               <FontAwesomeIcon icon={faUpload}/>
             </button>
           </div>

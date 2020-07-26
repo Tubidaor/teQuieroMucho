@@ -43,14 +43,27 @@ export default class JournalPage extends Component {
     this.setStateToHome()
   }
 
-  handleAudioEntry = (e) => {
+  handleFileEntry = (e) => {
     e.preventDefault()
     const { files } = document.getElementById('pForm')
-    console.log( files.files[0])
+    
     const formData = new FormData();
     for(let i = 0; i < files.files.length; i++) {
       formData.append('files', files.files[i])
     }
+
+    JournalServices.postFileEntry(formData)
+      .then(res => console.log(res))
+
+    this.setStateToHome()
+
+  }
+
+  handleBlobEntry = async (e, blobURL) => {
+    e.preventDefault()
+    const blob = await fetch(blobURL).then(res => res.blob() )
+    const formData = new FormData();
+    formData.append('files', blob)
 
     console.log(formData)
     JournalServices.postFileEntry(formData)
@@ -61,6 +74,7 @@ export default class JournalPage extends Component {
   }
 
   
+  
   render() {
 
     let { currentSection } = this.state
@@ -70,8 +84,8 @@ export default class JournalPage extends Component {
         <JournalMenu handleClick={this.handleClick}/>
         
         { currentSection === "journalEntry" && <JournalEntry handlePostEntry={this.handlePostEntry} handleCancel={this.handleCancel}/>}
-        { currentSection === "fileEntry" && <FileEntry handleAudioEntry={this.handleAudioEntry} handleCancel={this.handleCancel}/>}
-        { currentSection === "audioEntry" && <AudioEntry handleCancel={this.handleCancel}/>}
+        { currentSection === "fileEntry" && <FileEntry handleFileEntry={this.handleFileEntry} handleCancel={this.handleCancel}/>}
+        { currentSection === "audioEntry" && <AudioEntry handleAudioEntry={this.handleBlobEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "videoEntry" && <VideoEntry handleCancel={this.handleCancel} updateRec={this.handleUpdateRec}/>}
       </section>
     )
