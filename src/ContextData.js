@@ -110,12 +110,12 @@ export const alerts = [
 ]
 
 export const categories = [
-  'sex',
-  'chores',
-  'communication',
-  'parenting',
-  'friendship',
-  'trust'
+  'Sex',
+  'Chores',
+  'Communication',
+  'Parenting',
+  'Friendship',
+  'Trust'
 ]
 
 export default {

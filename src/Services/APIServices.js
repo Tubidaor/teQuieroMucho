@@ -317,7 +317,6 @@ export const JournalServices = {
         : res.json()
     })
   },
-
   postVideoEntry(files) {
     //post file to server
   },
@@ -336,7 +335,23 @@ export const JournalServices = {
       ? res.json().then(e => Promise.reject(e))
       : res.json()
     })
+  },
+  postNewUserQuestions(newQuestion) {
+    return fetch(`${config.API_ENDPOINT}/user-questions`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      },
+      body: JSON.stringify(newQuestion)
+    })
+    .then(res => {
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
   }
+
 
 
 

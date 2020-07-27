@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { analyticsData} from '../../Services/APIServices';
 import Graphs from '../Graphs/Graphs';
 import TeQuieroContext from '../../Context';
+import { JournalServices } from '../../Services/APIServices';
 
 export class Analytics extends Component {
   state = {
@@ -89,6 +90,25 @@ export class Alerts extends Component {
 export class AddIssue extends Component {
   static contextType = TeQuieroContext
 
+  submitNewQuestion = (e) => {
+    e.preventDefault()
+    const { question, category } = e.target
+    const newQuestion = {
+      question: question.value,
+      category: category.value
+    }
+
+    JournalServices.postNewUserQuestions(newQuestion)
+      .then(res => {
+        category.value = ''
+        question.value = ''
+        ///need to include positive submit message
+      })
+      
+
+  }
+
+
   render() {
 
     const { categories } = this.context
@@ -96,18 +116,18 @@ export class AddIssue extends Component {
     const options = categories.map(cat => <option key={cat}>{cat}</option>)
     return (
       <section className="addIssueCon">
-        <form>
+        <form onSubmit={this.submitNewQuestion}>
           <fieldset>
             <legend className="issueLegend">Add an issue</legend>
             <div className="issueInputCon">
               <label>Category</label>
-              <select>
+              <select name="category">
                 {options}
               </select>
             </div>
             <div className="issueInputCon">
               <label>Issue</label>
-              <input type='text'></input>
+              <input name="question" type="text"></input>
             </div>
           </fieldset>
           <button className="issueBtn" type="submit">Submit</button>

@@ -23,6 +23,7 @@ export default class RelationshipPage extends Component {
       currentSection: "home"
     })
   }
+  
   render() {
     let { currentSection } = this.state
     return (
@@ -45,7 +46,7 @@ export default class RelationshipPage extends Component {
         }
         { 
           currentSection === "issues" && 
-          <AddIssue />
+          <AddIssue submitNewQuestion={this.submitNewQuestion} />
         }
       </section>
     )
