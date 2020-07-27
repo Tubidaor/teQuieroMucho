@@ -33,7 +33,9 @@ componentWillUnmount() {
         QServices.getGenQuestions(token)
           .then(questions => {
             const openingQs = questions.filter(item => item.section === 'Opening')
+            const relationshipQs  = questions.filter(item => item.section === 'Relationship')
             this.context.setOpeningQuestions(openingQs)
+            this.context.setRelationshipQuestions(relationshipQs)
             this.props.handleLoginSuccess()
           })
         })

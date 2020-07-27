@@ -67,7 +67,23 @@ export default class JournalPage extends Component {
 
     console.log(formData)
     JournalServices.postFileEntry(formData)
-      .then(res => console.log(res))
+      .then(data => console.log(data))
+
+    this.setStateToHome()
+
+  }
+
+  handleVideoEntry = async (e, blobURL) => {
+    e.preventDefault()
+    const blob = await fetch(blobURL).then(res => res.blob() )
+
+    const file = new File([blob],{type: 'video'})
+    const formData = new FormData();
+    formData.append('files', file)
+
+    console.log(formData)
+    JournalServices.postFileEntry(formData)
+      .then(data => console.log(data))
 
     this.setStateToHome()
 
@@ -86,7 +102,7 @@ export default class JournalPage extends Component {
         { currentSection === "journalEntry" && <JournalEntry handlePostEntry={this.handlePostEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "fileEntry" && <FileEntry handleFileEntry={this.handleFileEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "audioEntry" && <AudioEntry handleAudioEntry={this.handleBlobEntry} handleCancel={this.handleCancel}/>}
-        { currentSection === "videoEntry" && <VideoEntry handleCancel={this.handleCancel} updateRec={this.handleUpdateRec}/>}
+        { currentSection === "videoEntry" && <VideoEntry handleVideoEntry={this.handleVideoEntry} handleCancel={this.handleCancel} updateRec={this.handleUpdateRec}/>}
       </section>
     )
   }

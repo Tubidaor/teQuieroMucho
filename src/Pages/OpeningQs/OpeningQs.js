@@ -29,7 +29,7 @@ export default class OpeningQs extends Component {
 
     return (
       <section className="qSection">
-        <Questions handlePushToHome={this.handlePushToHome} qType="Opening"/>
+        <Questions handlePushURL={this.handlePushToHome} qType="Opening"/>
       </section>
     )
   }

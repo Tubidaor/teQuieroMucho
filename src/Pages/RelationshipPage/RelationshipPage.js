@@ -18,6 +18,11 @@ export default class RelationshipPage extends Component {
       recording: !true,
     })
   }
+  handlePushToHome = () => {
+    this.setState({
+      currentSection: "home"
+    })
+  }
   render() {
     let { currentSection } = this.state
     return (
@@ -26,7 +31,8 @@ export default class RelationshipPage extends Component {
         { 
           currentSection === "questions" && 
           <Questions
-            qType="relationship"
+            handlePushURL={this.handlePushToHome}
+            qType="Relationship"
           />
         }
         { 

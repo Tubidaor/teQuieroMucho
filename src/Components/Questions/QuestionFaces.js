@@ -34,16 +34,12 @@ export default class QuestionFaces extends Component {
         value: 0,
         max: 0
       },
-      lastQ: 1,
-      currentQ: 1,
+      lastQ: this.props.lastQ,
+      currentQ: 0,
+      currentQId: 'null'
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      lastQ: this.props.lastQ
-    })
-  }
   
   updateState = (state) => {
     
@@ -132,7 +128,8 @@ export default class QuestionFaces extends Component {
 
     this.setState(
       {
-        currentQ: this.state.currentQ + 1
+        currentQ: this.state.currentQ + 1,
+        currentQId: this.props.questions[this.state.currentQ].question_id
       }
     )
   }
@@ -156,7 +153,7 @@ export default class QuestionFaces extends Component {
       currentQ: 0
     })
 
-    this.props.handlePushToHome()
+    this.props.handlePushURL()
 
   }
 
@@ -281,7 +278,7 @@ export default class QuestionFaces extends Component {
         </div>
 
       <div className='qBtnCon'>
-        {this.state.lastQ > currentQ &&
+        {this.state.lastQ !== this.state.currentQId &&
         <button
           onClick={event => this.handleQSubmit(event,questions[currentQ].question_id)}
           form={`qsForm`}
@@ -291,7 +288,7 @@ export default class QuestionFaces extends Component {
           <FontAwesomeIcon icon={faChevronCircleRight}/>
         </button>
         }
-        {this.state.lastQ === currentQ &&
+        {this.state.lastQ === this.state.currentQId &&
         <button
           onClick={event => this.handleEndSubmit(event,questions[currentQ].question_id)}
           form={`qsForm`}

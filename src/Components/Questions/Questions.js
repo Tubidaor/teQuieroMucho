@@ -17,18 +17,9 @@ export default class Questions extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      questions: 'Opening',
+      questions: this.props.qType,
     }
   }
-
-
-  componentDidMount() {
-    this.setState({
-      questions: this.props.qType
-    })
-  }
-
-
 
   questions = () => {
     if(this.state.questions === "Opening") {
@@ -42,11 +33,11 @@ export default class Questions extends Component {
   lastQuestion = () => {
     if(this.state.questions === "Opening") {
       let lastQ = this.context.openingQs.length - 2
-      return this.context.openingQs[lastQ].id
+      return this.context.openingQs[lastQ].question_id
     }
     if(this.state.questions === "Relationship") {
       let lastQ = this.context.relationshipQs.length - 2
-      return  this.context.relationshipQs[lastQ].id
+      return  this.context.relationshipQs[lastQ].question_id
     }
   }
   render() {
@@ -63,8 +54,7 @@ export default class Questions extends Component {
         handleQSubmit={this.handleQSubmit}
         handleEndSubmit={this.handleEndSubmit}
         lastQ={lastQ}
-        handlePushToHome={this.props.handlePushToHome}
-
+        handlePushURL={this.props.handlePushURL}
       />
     )
   }

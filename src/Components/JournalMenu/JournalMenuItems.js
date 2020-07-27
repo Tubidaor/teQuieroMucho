@@ -263,7 +263,8 @@ export class VideoEntry extends Component {
     
   }
 
-  startRec = () => {
+  startRec = (e) => {
+    e.preventDefault()
     this.mediaRecorder
       .start()
       
@@ -368,7 +369,7 @@ export class VideoEntry extends Component {
             >
               <FontAwesomeIcon icon={faSmokingBan}/>
             </button>
-            <button className="btnUpload" type="submit">
+            <button className="btnUpload" type="submit" onClick={event => this.props.handleVideoEntry(event, this.state.blobURL)}>
               <FontAwesomeIcon icon={faUpload}/>
             </button>
           </div>
@@ -381,7 +382,7 @@ export class VideoEntry extends Component {
 
     return (
       <section className="vSection">
-        <form onSubmit={this.handleVideoSubmit}className="vForm" id="vForm">
+        <form className="vForm" id="vForm">
           {recording === true && recordMenu}
           {recording === false && playMenu}
         </form>
