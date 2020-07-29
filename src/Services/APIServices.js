@@ -262,6 +262,23 @@ export const QServices = {
     )
   },
 
+  postNewUserQuestions(newQuestion) {
+    return fetch(`${config.API_ENDPOINT}/user-questions`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      },
+      body: JSON.stringify(newQuestion)
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+
+
 
 
 
@@ -284,8 +301,8 @@ export const JournalServices = {
     })
     .then(res =>
       (!res.ok)
-      ? res.json().then(e => Promise.reject(e))
-      : res.json()
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
       )
   },
   postFileEntry(files) {
@@ -297,29 +314,29 @@ export const JournalServices = {
       // },
       body: files
     })
-    .then(res => {
+    .then(res =>
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()
-    })
+    )
   },
-  postAudioEntry(files) {
-    return fetch(`${config.API_ENDPOINT}/files`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
-      },
-      body: files
-    })
-    .then(res => {
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    })
-  },
-  postVideoEntry(files) {
+  // postAudioEntry(files) {
+  //   return fetch(`${config.API_ENDPOINT}/files`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+  //     },
+  //     body: files
+  //   })
+  //   .then(res => {
+  //     (!res.ok)
+  //       ? res.json().then(e => Promise.reject(e))
+  //       : res.json()
+  //   })
+  // },
+  // postVideoEntry(files) {
     //post file to server
-  },
+  // },
   submitAnswer(answer) {
     console.log(answer)
     return fetch(`${config.API_ENDPOINT}/questionaire`, {
@@ -330,27 +347,65 @@ export const JournalServices = {
       },
       body: JSON.stringify(answer)
     })
-    .then(res => {
-      (!res.ok)
-      ? res.json().then(e => Promise.reject(e))
-      : res.json()
-    })
-  },
-  postNewUserQuestions(newQuestion) {
-    return fetch(`${config.API_ENDPOINT}/user-questions`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
-      },
-      body: JSON.stringify(newQuestion)
-    })
-    .then(res => {
+    .then(res =>
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()
+    )
+  },
+  getJournalData() {
+    return fetch(`${config.API_ENDPOINT}/text-entry`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
     })
-  }
+    .then(res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+  getAudioData() {
+    return fetch(`${config.API_ENDPOINT}/audio`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+  getVideoData() {
+    return fetch(`${config.API_ENDPOINT}/videos`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+  getImagesData() {
+    return fetch(`${config.API_ENDPOINT}/images`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+}
+
 
 
 

@@ -6,6 +6,8 @@ import NavBar from '../../Components/NavBar/NavBar';
 import './HomePage.css'
 import JournalPage from '../JournalPage/JournalPage';
 import RelationshipPage from '../RelationshipPage/RelationshipPage';
+import TokenServices from '../../Services/token-services';
+import EventsFeed from '../../Components/EventsFeed/EventsFeed'
 
 
 
@@ -32,6 +34,13 @@ export default class HomePage extends Component {
 
   }
 
+  handleLogout = () => {
+    
+    const { history } = this.props
+    TokenServices.clearAuthToken()
+    history.push('/')
+  }
+
   // handleCancel = () => {
   //   this.setState({
   //     currentSection: 'Journal'
@@ -46,12 +55,12 @@ export default class HomePage extends Component {
       <div>
 
         <StatusBar stateofMind={stateofMind} rQuality={rQuality}></StatusBar>
-
+        {currentSection === "home" && <EventsFeed/>}
         {currentSection === "Journal" && <JournalPage/>}
         {currentSection === "Relationship" && <RelationshipPage/>}
 
         <footer className="homeFooter">
-        <NavBar handleClick={this.handleClick}></NavBar>
+        <NavBar handleClick={this.handleClick} handleLogout={this.handleLogout}></NavBar>
         </footer>
       </div>
     )

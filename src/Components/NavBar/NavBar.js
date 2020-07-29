@@ -18,21 +18,6 @@ export default function NavBar(props) {
     document.getElementById("menuListExpand").classList.toggle("expandList")
   }
 
-  const menu = [
-    "Journal",
-    "Relationship",
-  ]
-
-
-
-  let menuDisplay = function(menu) {
-    let section = []
-    for(let i = 0; i <= menu.length; i++) {
-      section.push(<li key={i} className={`menuLi${i}`}><button onClick={e => props.handleClick(menu[i])}>{menu[i]}</button></li>)
-    }
-    return section
-  }
-
 
   return (
     <nav className="homeNav" id="menuExpand">
@@ -46,7 +31,9 @@ export default function NavBar(props) {
       </div>
       <div className="menuListCon" id="menuListExpand">
         <ul className="ulListCon">
-          {menuDisplay(menu)}
+        <li className={`menuLiJournal`}><button onClick={e => props.handleClick('Journal')}>Journal</button></li>
+        <li className={`menuLiRel`}><button onClick={e => props.handleClick('Relationship')}>Relationship</button></li>
+        <li className={`menuLiLogout`}><button onClick={e => props.handleLogout()}>Logout</button></li>
         </ul>
       </div>
     </nav>

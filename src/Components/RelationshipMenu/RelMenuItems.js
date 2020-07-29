@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { analyticsData} from '../../Services/APIServices';
 import Graphs from '../Graphs/Graphs';
 import TeQuieroContext from '../../Context';
-import { JournalServices } from '../../Services/APIServices';
+import { QServices } from '../../Services/APIServices';
 
 export class Analytics extends Component {
   state = {
@@ -98,7 +98,7 @@ export class AddIssue extends Component {
       category: category.value
     }
 
-    JournalServices.postNewUserQuestions(newQuestion)
+    QServices.postNewUserQuestions(newQuestion)
       .then(res => {
         category.value = ''
         question.value = ''
