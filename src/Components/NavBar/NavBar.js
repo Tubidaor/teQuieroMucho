@@ -31,6 +31,7 @@ export default function NavBar(props) {
       </div>
       <div className="menuListCon" id="menuListExpand">
         <ul className="ulListCon">
+        <li className={`menuLiJournal`}><button onClick={e => props.handleClick('Home')}>Home</button></li>
         <li className={`menuLiJournal`}><button onClick={e => props.handleClick('Journal')}>Journal</button></li>
         <li className={`menuLiRel`}><button onClick={e => props.handleClick('Relationship')}>Relationship</button></li>
         <li className={`menuLiLogout`}><button onClick={e => props.handleLogout()}>Logout</button></li>

@@ -1,0 +1,14 @@
+.eventsMenuCon {
+  top: 65px;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  width: 100%;
+}
+.eventsMenuItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-decoration: none;
+}
+

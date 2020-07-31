@@ -7,7 +7,7 @@ import './HomePage.css'
 import JournalPage from '../JournalPage/JournalPage';
 import RelationshipPage from '../RelationshipPage/RelationshipPage';
 import TokenServices from '../../Services/token-services';
-import EventsFeed from '../../Components/EventsFeed/EventsFeed'
+import EventsPage from '../EventsPage/EventsPage';
 
 
 
@@ -18,7 +18,7 @@ export default class HomePage extends Component {
 
   static contextType = TeQuieroContext
   state = {
-    currentSection: "home"
+    currentSection: "Home"
   }
 
   handleClick = (currentSection) => {
@@ -55,7 +55,7 @@ export default class HomePage extends Component {
       <div>
 
         <StatusBar stateofMind={stateofMind} rQuality={rQuality}></StatusBar>
-        {currentSection === "home" && <EventsFeed/>}
+        {currentSection === "Home" && <EventsPage/>}
         {currentSection === "Journal" && <JournalPage/>}
         {currentSection === "Relationship" && <RelationshipPage/>}
 
