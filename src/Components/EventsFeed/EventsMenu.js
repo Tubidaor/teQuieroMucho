@@ -26,9 +26,9 @@ export default function EventsMenu(props) {
           Images
         </span>
       </li>
-      <li className="eventMenuItem" onClick={e => props.handleClick("Audio")}>
+      <li className="eventMenuItem" onClick={e => props.handleClick("Video")}>
         <span>
-          <FontAwesomeIcon icon={faMicrophoneAlt}/>
+          <FontAwesomeIcon icon={faVideo}/>
         </span>
         <span>
           Video
