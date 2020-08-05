@@ -290,7 +290,8 @@ export class VideoEntry extends Component {
     });
     this.setState({recording: false})
     this.mediaRecorder.onstop = (ev)=> {
-      let blob = new Blob(this.chunks, { 'type' : 'video/mp4;' });
+      let blob = new Blob(this.chunks, { type : 'video/mp4' });
+      console.log(blob.type)
       this.chunks = [];
       let videoURL = window.URL.createObjectURL(blob);
       this.videoPlay.src = videoURL
