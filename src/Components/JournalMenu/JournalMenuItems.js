@@ -295,6 +295,9 @@ export class VideoEntry extends Component {
       this.chunks = [];
       let videoURL = window.URL.createObjectURL(blob);
       this.videoPlay.src = videoURL
+      this.setState({
+        vidURL: videoURL
+      })
     }
   }
 
@@ -370,7 +373,7 @@ export class VideoEntry extends Component {
             >
               <FontAwesomeIcon icon={faSmokingBan}/>
             </button>
-            <button className="btnUpload" type="submit" onClick={event => this.props.handleVideoEntry(event, this.state.blobURL)}>
+            <button className="btnUpload" type="submit" onClick={event => this.props.handleVideoEntry(event, this.state.vidURL)}>
               <FontAwesomeIcon icon={faUpload}/>
             </button>
           </div>

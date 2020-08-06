@@ -71,7 +71,10 @@ export default class JournalPage extends Component {
 
   handleBlobEntry = async (e, blobURL) => {
     e.preventDefault()
-    const blob = await fetch(blobURL).then(res => res.blob() )
+    const blob = await fetch(blobURL).then(res =>
+      res.blob()
+      )
+      .then(blobFile => new File([blobFile], {type: "video/mp4"}))
     const formData = new FormData();
     formData.append('files', blob)
 
@@ -85,13 +88,16 @@ export default class JournalPage extends Component {
 
   handleVideoEntry = async (e, blobURL) => {
     e.preventDefault()
-    const blob = await fetch(blobURL).then(res => res.blob({type: 'video/mp4'}))
+    const blob = await fetch(blobURL).then(res =>
+      res.blob()
+      )
+      .then(blobFile => {return new Blob([blobFile], {type: "video/mp4"})})
     
-    const file = new File([blob], 'videoEntry', { type: 'video/mp4' })
+    // const file = new File([blob], 'videoEntry', { type: 'video/mp4' })
     const formData = new FormData();
-    formData.append('files', file)
+    formData.append('files', blob)
 
-    console.log(blob, file.type)
+    console.log(blob,)
     JournalServices.postFileEntry(formData)
       .then(data => console.log(data))
 

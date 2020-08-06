@@ -8,20 +8,19 @@ export default class VideoFeed extends Component {
     source: []
   }
   componentDidMount() {
-    // this.handlePlay()
+    this.handlePlay()
   }
   handlePlay = () => {
-    fetch(`${config.API_ENDPOINT}/video-stream/${this.props.videoId}`, {
+    return fetch(`${config.API_ENDPOINT}/video-stream/${this.props.videoId}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${TokenServices.getAuthToken()}`
       }
     })
     .then(res =>
-      console.log(res)
-      // (!res.ok)
-      //   ? res.json().then(e => Promise.reject(e))
-      //   : res.blob()
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.blob()
     )
     .then(source => {
 
@@ -36,7 +35,8 @@ export default class VideoFeed extends Component {
     
     return (
       <li>
-        <video controls src={'http://localhost:8000/api/video-stream'} />
+        {/* <video controls src={'http://localhost:8000/api/video-stream'} /> */}
+        <video controls src={this.state.source} />
       </li>
     )
   }
