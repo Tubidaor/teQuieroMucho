@@ -69,12 +69,12 @@ export default class JournalPage extends Component {
 
   }
 
-  handleBlobEntry = async (e, blobURL) => {
+  handleAudioEntry = async (e, blobURL) => {
     e.preventDefault()
     const blob = await fetch(blobURL).then(res =>
       res.blob()
       )
-      .then(blobFile => new File([blobFile], {type: "video/mp4"}))
+      .then(blobFile => {return new Blob([blobFile], {type: "audio/mp3"})})
     const formData = new FormData();
     formData.append('files', blob)
 
@@ -93,7 +93,6 @@ export default class JournalPage extends Component {
       )
       .then(blobFile => {return new Blob([blobFile], {type: "video/mp4"})})
     
-    // const file = new File([blob], 'videoEntry', { type: 'video/mp4' })
     const formData = new FormData();
     formData.append('files', blob)
 
@@ -117,7 +116,7 @@ export default class JournalPage extends Component {
         
         { currentSection === "journalEntry" && <JournalEntry handlePostEntry={this.handlePostEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "fileEntry" && <FileEntry handleFileEntry={this.handleFileEntry} handleCancel={this.handleCancel}/>}
-        { currentSection === "audioEntry" && <AudioEntry handleAudioEntry={this.handleBlobEntry} handleCancel={this.handleCancel}/>}
+        { currentSection === "audioEntry" && <AudioEntry handleAudioEntry={this.handleAudioEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "videoEntry" && <VideoEntry handleVideoEntry={this.handleVideoEntry} handleCancel={this.handleCancel} updateRec={this.handleUpdateRec}/>}
       </section>
     )
