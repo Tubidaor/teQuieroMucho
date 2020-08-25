@@ -247,20 +247,20 @@ export const QServices = {
     )
   },
 
-  getUserQuestions() {
-    return fetch(`${config.API_ENDPOINT}/user-questions`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
-      }
-    })
-    .then(res =>
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    )
-  },
+  // getUserQuestions() {
+  //   return fetch(`${config.API_ENDPOINT}/user-questions`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //       'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+  //     }
+  //   })
+  //   .then(res =>
+  //     (!res.ok)
+  //       ? res.json().then(e => Promise.reject(e))
+  //       : res.json()
+  //   )
+  // },
 
   postNewUserQuestions(newQuestion) {
     return fetch(`${config.API_ENDPOINT}/user-questions`, {
@@ -278,6 +278,35 @@ export const QServices = {
     )
   },
 
+  getQuestionaireUserData() {
+    return fetch(`${config.API_ENDPOINT}/user-answers`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+
+  getQuestionaireRelData() {
+    return fetch(`${config.API_ENDPOINT}/rel-answers`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  }
 
 
 

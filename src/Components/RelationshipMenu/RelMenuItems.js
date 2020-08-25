@@ -9,6 +9,13 @@ export class Analytics extends Component {
     page: 'you'
   }
 
+  componentDidMount() {
+   QServices.getQuestionaireUserData()
+    .then(data => console.log(data))
+    QServices.getQuestionaireRelData()
+    .then(data => console.log(data))
+  }
+
   handleClickYou = (e) => {
     e.preventDefault()
     this.setState({

@@ -14,28 +14,29 @@ export default class Questions extends Component {
   
   static contextType = TeQuieroContext
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      questions: this.props.qType,
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     questions: this.props.qType,
+  //   }
+  // }
 
   questions = () => {
-    if(this.state.questions === "Opening") {
+    if(this.props.qType === "Opening") {
       return this.context.openingQs
     }
-    if(this.state.questions === "Relationship") {
+    if(this.props.qType === "Relationship") {
       return this.context.relationshipQs
     }
   }
 
   lastQuestion = () => {
-    if(this.state.questions === "Opening") {
+    if(this.props.qType === "Opening") {
       let lastQ = this.context.openingQs.length - 2
       return this.context.openingQs[lastQ].question_id
     }
-    if(this.state.questions === "Relationship") {
+    
+    if(this.props.qType === "Relationship") {
       let lastQ = this.context.relationshipQs.length - 2
       return  this.context.relationshipQs[lastQ].question_id
     }
