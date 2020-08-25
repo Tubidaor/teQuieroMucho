@@ -11,7 +11,7 @@ export default class Graphs extends Component {
   render() {
     return (
       <div className="graphsCon">
-        <VictoryZoom></VictoryZoom>
+        <VictoryZoom zoomDomain={this.props.zoomDomain} userJoyData={this.props.userJoyData}></VictoryZoom>
         <Spiderweb/>
         <StackedBars/>
       </div>

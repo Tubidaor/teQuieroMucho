@@ -22,13 +22,19 @@ export default class VictoryZoom extends Component {
   }
 
   render() {
+    const xAxisTicmarks = () => {
+      let tickmarks = []
+      const {userJoyData} = this.props
+      userJoyData.map(x => tickmarks.push(x.key))
+      return tickmarks
+    }
     return (
       <div>
-        <VictoryChart width={600} height={470} scale={{ x: "time" }}
+        <VictoryChart width={300} height={200} scale={{ x: "time" }}
           containerComponent={
             <VictoryZoomContainer
               zoomDimension="x"
-              zoomDomain={this.state.zoomDomain}
+              zoomDomain={this.props.zoomDomain}
               onZoomDomainChange={this.handleZoom.bind(this)}
             />
           }
@@ -37,28 +43,21 @@ export default class VictoryZoom extends Component {
               style={{
                 data: { stroke: "tomato" }
               }}
-              data={[
-                { a: new Date(1982, 1, 1), b: 125 },
-                { a: new Date(1987, 1, 1), b: 257 },
-                { a: new Date(1993, 1, 1), b: 345 },
-                { a: new Date(1997, 1, 1), b: 515 },
-                { a: new Date(2001, 1, 1), b: 132 },
-                { a: new Date(2005, 1, 1), b: 305 },
-                { a: new Date(2011, 1, 1), b: 270 },
-                { a: new Date(2015, 1, 1), b: 470 }
-              ]}
-              x="a"
+              data={this.props.userJoyData}
+              x="key"
               y="b"
             />
+            <VictoryAxis tickValues={xAxisTicmarks()} tickCount={3} tickFormat={date => date.toLocaleString('en-us', { day: 'numeric', month:'short', year: 'numeric' })}/>
+            
 
           </VictoryChart>
           <VictoryChart
             padding={{ top: 0, left: 50, right: 50, bottom: 30 }}
-            width={600} height={100} scale={{ x: "time" }}
+            width={300} height={100} scale={{ x: "time" }}
             containerComponent={
               <VictoryBrushContainer
                 brushDimension="x"
-                brushDomain={this.state.zoomDomain}
+                brushDomain={this.props.zoomDomain}
                 onBrushDomainChange={this.handleZoom.bind(this)}
               />
             }
@@ -70,16 +69,7 @@ export default class VictoryZoom extends Component {
               style={{
                 data: { stroke: "tomato" }
               }}
-              data={[
-                { key: new Date(1982, 1, 1), b: 125 },
-                { key: new Date(1987, 1, 1), b: 257 },
-                { key: new Date(1993, 1, 1), b: 345 },
-                { key: new Date(1997, 1, 1), b: 515 },
-                { key: new Date(2001, 1, 1), b: 132 },
-                { key: new Date(2005, 1, 1), b: 305 },
-                { key: new Date(2011, 1, 1), b: 270 },
-                { key: new Date(2015, 1, 1), b: 470 }
-              ]}
+              data={this.props.userJoyData}
               x="key"
               y="b"
             />

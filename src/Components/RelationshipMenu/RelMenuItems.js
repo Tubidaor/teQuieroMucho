@@ -6,14 +6,18 @@ import { QServices } from '../../Services/APIServices';
 
 export class Analytics extends Component {
   state = {
-    page: 'you'
+    page: 'you',
+    userData: [],
+    relData: []
   }
 
   componentDidMount() {
+
    QServices.getQuestionaireUserData()
-    .then(data => console.log(data))
+    .then(data => this.setState({userData: data}))
+
     QServices.getQuestionaireRelData()
-    .then(data => console.log(data))
+    .then(data => this.setState({relData: data}))
   }
 
   handleClickYou = (e) => {
@@ -33,11 +37,57 @@ export class Analytics extends Component {
 
   render() {
     // const data = analyticsData
+    const userQuestions = []
+    const {userData} = this.state
+    userData.map(qs => userQuestions.push(qs.question))
+    const uniqueUserQuestions = userQuestions.filter((v, i, a) => a.indexOf(v) === i);
+    const userQuestionData = [] 
+    uniqueUserQuestions.map(qs => userQuestionData.push({ question: qs, joy:[], disgust:[], sadness: [], anger: [], fear: [], mood: [] }))
+    const zoomDomain = () => {
+      let dates = []
+      for( let i =0; i < userData.length; i++) {
+        dates.push(new Date(userData[i].date_created).toLocaleDateString())
+      }
+      dates.sort((a,b) => new Date(a) - new Date(b))
 
+      const beg = new Date(dates.slice(0,1))
+      const end = new Date(dates.slice(-1))
+      const begYear = beg.getFullYear()
+      const endYear = end.getFullYear()
+      const begMonth = beg.getMonth()
+      const endMonth = end.getMonth()
+      const begDay = beg.getDate()
+      const endDay = end.getDate()
+      
+      // return begYear
+      return {x : [new Date(begYear, begMonth, begDay), new Date(endYear, endMonth, endDay)]}
+    }
+    // { key: new Date(1982, 1, 1), b: 125 },
+    
+    const userJoyData = []
+    userData.map(data => userJoyData.push({key: new Date(data.date_created), b: data.joy } ))
+    if(userQuestionData.length > 0) {
+      for(let i = 0; i < userQuestionData.length; i++) {
+        console.log(userQuestionData[i].question)
+        for(let j = 0; j < userData.length; j++) {
+          if(userQuestionData[i].question === userData[j].question) {
+            userQuestionData[i].joy.push({x: userData[j].date_created, y: userData[j].joy})
+            userQuestionData[i].disgust.push({x: userData[j].date_created, y: userData[j].disgust})
+            userQuestionData[i].sadness.push({x: userData[j].date_created, y: userData[j].sadness})
+            userQuestionData[i].anger.push({x: userData[j].date_created, y: userData[j].anger})
+            userQuestionData[i].fear.push({x: userData[j].date_created, y: userData[j].fear})
+            userQuestionData[i].mood.push({x: userData[j].date_created, y: userData[j].mood})
+
+          }
+        }
+      }
+      console.log(userQuestionData)
+    }
+  
     const displayYouSec = () => {
       return (
         <div className="youAnlSection">
-          <Graphs></Graphs>
+          <Graphs zoomDomain={zoomDomain} userJoyData={userJoyData}></Graphs>
         </div>
       )
     }
@@ -45,11 +95,12 @@ export class Analytics extends Component {
     const displayYourRelSec = () => {
       return (
         <div className="relAnlSection">
-          <Graphs></Graphs>
+          <Graphs zoomDomain={zoomDomain}></Graphs>
         </div>
       )
     }
-
+    console.log(userQuestionData)
+    console.log(userQuestionData[0])
 
     const { page } = this.state
     return (
