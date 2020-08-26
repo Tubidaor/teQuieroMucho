@@ -5,6 +5,7 @@ import {
   VictoryLine,
   VictoryAxis,
   VictoryBrushContainer,
+  VictoryLegend
 } from 'victory';
 
 
@@ -22,11 +23,54 @@ export default class VictoryZoom extends Component {
   }
 
   render() {
-    const xAxisTicmarks = () => {
-      let tickmarks = []
-      const {userJoyData} = this.props
-      userJoyData.map(x => tickmarks.push(x.key))
-      return tickmarks
+    // const xAxisTicmarks = () => {
+    //   let tickmarks = []
+    //   const {userJoyData} = this.props
+    //   userJoyData.map(x => tickmarks.push(x.key))
+    //   return tickmarks
+    // }
+    const { userData } = this.props
+    function userJoyData() {
+      if(userData.length > 0) {
+        console.log(userData[0].joy)
+        return userData[0].joy
+      }
+      return []
+    }
+    function userSadData() {
+      if(userData.length > 0) {
+        console.log(userData[0].sadness)
+        return userData[0].sadness
+      }
+      return []
+    }
+    function userDisData() {
+      if(userData.length > 0) {
+        console.log(userData[0].disgust)
+        return userData[0].disgust
+      }
+      return []
+    }
+    function userAngerData() {
+      if(userData.length > 0) {
+        console.log(userData[0].anger)
+        return userData[0].anger
+      }
+      return []
+    }
+    function userFearData() {
+      if(userData.length > 0) {
+        console.log(userData[0].fear)
+        return userData[0].fear
+      }
+      return []
+    }
+    function userMoodData() {
+      if(userData.length > 0) {
+        console.log(userData[0].mood)
+        return userData[0].mood
+      }
+      return []
     }
     return (
       <div>
@@ -39,15 +83,80 @@ export default class VictoryZoom extends Component {
             />
           }
         >
+          <VictoryLegend x={50} y={5}
+            title="Legend"
+            centerTitle
+            orientation="horizontal"
+            gutter={5}
+            height={50}
+            width={50}
+            style={{
+              data: { fill: "blue", stroke: "navy", strokeWidth: 2 },
+              labels: { fill: "black", fontSize: 6 },
+              border: { stroke: "black" },
+              title: {fontSize: 8 }
+            }}
+            data={[
+              { name: "Joy", symbol: { fill: "#ffff00" } },
+              { name: "Disgust", symbol: { fill: "#6ad3c2" } },
+              { name: "Sadness", symbol: { fill: "#87cefa" } },
+              { name: "Anger", symbol: { fill: "#ff0000" } },
+              { name: "Fear", symbol: { fill: "#8510d8" } },
+              { name: "Overall", symbol: { fill: "#0652c5" } }
+              
+            ]}
+            />
             <VictoryLine
               style={{
-                data: { stroke: "tomato" }
+                data: { stroke: "#ffff00" }
               }}
-              data={this.props.userJoyData}
-              x="key"
-              y="b"
+              data={userJoyData()}
+              name={'Joy'}
+              // x="key"
+              // y="b"
             />
-            <VictoryAxis tickValues={xAxisTicmarks()} tickCount={3} tickFormat={date => date.toLocaleString('en-us', { day: 'numeric', month:'short', year: 'numeric' })}/>
+            <VictoryLine
+              style={{
+                data: { stroke: "#6ad3c2" }
+              }}
+              data={userDisData()}
+              // x="key"
+              // y="b"
+            />
+            <VictoryLine
+              style={{
+                data: { stroke: "#87cefa" }
+              }}
+              data={userSadData()}
+              // x="key"
+              // y="b"
+            />
+            <VictoryLine
+              style={{
+                data: { stroke: "#ff0000" }
+              }}
+              data={userAngerData()}
+            // x="key"
+            // y="b"
+            />
+            <VictoryLine
+              style={{
+                data: { stroke: "#8510d8" }
+              }}
+              data={userFearData()}
+          // x="key"
+          // y="b"
+            />
+            <VictoryLine
+              style={{
+                data: { stroke: "#0652c5" }
+              }}
+              data={userMoodData()}
+        // x="key"
+        // y="b"
+            />
+
+            {/* <VictoryAxis tickValues={xAxisTicmarks()} tickCount={3} tickFormat={date => date.toLocaleString('en-us', { day: 'numeric', month:'short', year: 'numeric' })}/> */}
             
 
           </VictoryChart>
@@ -69,9 +178,17 @@ export default class VictoryZoom extends Component {
               style={{
                 data: { stroke: "tomato" }
               }}
-              data={this.props.userJoyData}
-              x="key"
-              y="b"
+              data={userJoyData()}
+              // x="key"
+              // y="b"
+            />
+            <VictoryLine
+              style={{
+                data: { stroke: "#c43a31" }
+              }}
+              data={userSadData()}
+              // x="key"
+              // y="b"
             />
           </VictoryChart>
       </div>

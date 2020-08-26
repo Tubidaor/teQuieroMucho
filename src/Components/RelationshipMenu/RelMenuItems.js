@@ -87,7 +87,7 @@ export class Analytics extends Component {
     const displayYouSec = () => {
       return (
         <div className="youAnlSection">
-          <Graphs zoomDomain={zoomDomain} userJoyData={userJoyData}></Graphs>
+          <Graphs zoomDomain={zoomDomain} userData={userQuestionData}></Graphs>
         </div>
       )
     }

@@ -114,7 +114,7 @@ export default class QuestionFaces extends Component {
   handleQSubmit = (e, question_id) => {
     e.preventDefault()
     const {joy, disgust, sadness, anger, fear } = document.getElementById('qsForm')
-    const mood = joy.value - (disgust.value - sadness.value - anger.value - fear.value)
+    const mood = (100 - disgust.value - sadness.value - anger.value - fear.value)
     const answer = {
       question_id,
       joy: joy.value,
@@ -125,7 +125,7 @@ export default class QuestionFaces extends Component {
       mood
     }
     JournalServices.submitAnswer(answer)
-
+    console.log(answer, mood)
     this.setState(
       {
         currentQ: this.state.currentQ + 1,
@@ -147,6 +147,7 @@ export default class QuestionFaces extends Component {
       fear: fear.value,
       mood
     }
+    console.log(answer)
     JournalServices.submitAnswer(answer)
     
     this.setState({
