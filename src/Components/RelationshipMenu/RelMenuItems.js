@@ -8,7 +8,8 @@ export class Analytics extends Component {
   state = {
     page: 'you',
     userData: [],
-    relData: []
+    relData: [],
+    qIndex: 0
   }
 
   componentDidMount() {
@@ -34,6 +35,13 @@ export class Analytics extends Component {
     })
   }
 
+  handleQChange = () => {
+    const index = document.getElementById('option')
+    console.log(index.value)
+    this.setState({
+      qIndex: index.value
+    })
+  }
 
   render() {
     // const data = analyticsData
@@ -83,11 +91,14 @@ export class Analytics extends Component {
       }
       console.log(userQuestionData)
     }
+
+    const questionOptions = uniqueUserQuestions.map(question => <option value={uniqueUserQuestions.indexOf(question)}>{question}</option>)
   
     const displayYouSec = () => {
       return (
         <div className="youAnlSection">
-          <Graphs zoomDomain={zoomDomain} userData={userQuestionData}></Graphs>
+          <h2><select id='option' onChange={this.handleQChange}>${questionOptions}</select></h2>
+          <Graphs zoomDomain={zoomDomain} userData={userQuestionData[this.state.qIndex]}></Graphs>
         </div>
       )
     }

@@ -1,0 +1,16 @@
+.addReqSec {
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+.labelCon {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.addReqBtn {
+
+  margin-top: 10px;
+}

@@ -30,48 +30,57 @@ export default class VictoryZoom extends Component {
     //   return tickmarks
     // }
     const { userData } = this.props
+    console.log(userData)
     function userJoyData() {
-      if(userData.length > 0) {
-        console.log(userData[0].joy)
-        return userData[0].joy
+      if(userData === undefined) {
+        return []
       }
-      return []
+      console.log(userData.joy)
+      return userData.joy
     }
     function userSadData() {
-      if(userData.length > 0) {
-        console.log(userData[0].sadness)
-        return userData[0].sadness
+      if(userData === undefined) {
+        return []
       }
-      return []
+      console.log(userData.sadness)
+      return userData.sadness
     }
     function userDisData() {
-      if(userData.length > 0) {
-        console.log(userData[0].disgust)
-        return userData[0].disgust
+      if(userData === undefined) {
+        return []
       }
-      return []
+      console.log(userData.disgust)
+      return userData.disgust
     }
     function userAngerData() {
-      if(userData.length > 0) {
-        console.log(userData[0].anger)
-        return userData[0].anger
+      if(userData === undefined) {
+        return []
       }
-      return []
+      console.log(userData.anger)
+      return userData.anger
     }
     function userFearData() {
-      if(userData.length > 0) {
-        console.log(userData[0].fear)
-        return userData[0].fear
+      if(userData === undefined) {
+        return []
       }
-      return []
+      console.log(userData.fear)
+      return userData.fear
     }
     function userMoodData() {
-      if(userData.length > 0) {
-        console.log(userData[0].mood)
-        return userData[0].mood
+      if(userData === undefined) {
+        return []
       }
-      return []
+      console.log(userData.mood)
+      return userData.mood
     }
+    function questionTitle() {
+      if(userData === undefined) {
+        return []
+      }
+      console.log(userData.question)
+      return userData.question
+    }
+
     return (
       <div>
         <VictoryChart width={300} height={200} scale={{ x: "time" }}
@@ -84,7 +93,7 @@ export default class VictoryZoom extends Component {
           }
         >
           <VictoryLegend x={50} y={5}
-            title="Legend"
+            title={questionTitle()}
             centerTitle
             orientation="horizontal"
             gutter={5}

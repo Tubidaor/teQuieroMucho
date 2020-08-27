@@ -6,6 +6,7 @@ import LoginPage from './Pages/LoginPage/LoginPage';
 import RegPage from './Pages/RegPage/RegPage';
 import OpeningQs from './Pages/OpeningQs/OpeningQs';
 import HomePage from './Pages/HomePage/HomePage';
+import AddReqPage from './Pages/AddReqPage/AddReqPage';
 
 function App() {
   return (

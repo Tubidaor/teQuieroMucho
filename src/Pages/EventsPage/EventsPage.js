@@ -47,6 +47,7 @@ export default class EventsPage extends Component {
           journals
         }, console.log('journals', this.state.journals))
       })
+      .catch(e => this.setState({journals: []}))
     
   }
 

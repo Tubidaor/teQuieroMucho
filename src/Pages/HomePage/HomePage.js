@@ -8,6 +8,7 @@ import JournalPage from '../JournalPage/JournalPage';
 import RelationshipPage from '../RelationshipPage/RelationshipPage';
 import TokenServices from '../../Services/token-services';
 import EventsPage from '../EventsPage/EventsPage';
+import AddReqPage from '../AddReqPage/AddReqPage';
 
 
 
@@ -58,6 +59,8 @@ export default class HomePage extends Component {
         {currentSection === "Home" && <EventsPage/>}
         {currentSection === "Journal" && <JournalPage/>}
         {currentSection === "Relationship" && <RelationshipPage/>}
+        {currentSection === "AddReq" && <AddReqPage/>}
+
 
         <footer className="homeFooter">
         <NavBar handleClick={this.handleClick} handleLogout={this.handleLogout}></NavBar>

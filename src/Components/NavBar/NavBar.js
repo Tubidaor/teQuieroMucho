@@ -1,5 +1,6 @@
 import React from 'react';
 import './NavBar.css'
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
@@ -34,6 +35,7 @@ export default function NavBar(props) {
         <li className={`menuLiJournal`}><button onClick={e => props.handleClick('Home')}>Home</button></li>
         <li className={`menuLiJournal`}><button onClick={e => props.handleClick('Journal')}>Journal</button></li>
         <li className={`menuLiRel`}><button onClick={e => props.handleClick('Relationship')}>Relationship</button></li>
+        <li className={`menuLiRel`}><button onClick={e => props.handleClick('AddReq')}>Add Request</button></li>
         <li className={`menuLiLogout`}><button onClick={e => props.handleLogout()}>Logout</button></li>
         </ul>
       </div>

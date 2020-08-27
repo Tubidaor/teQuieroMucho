@@ -476,10 +476,29 @@ export const AuthServices = {
   },
 
 }
+
+export const ReqServices = {
+  submitRelReq (partnerReq) {
+    return fetch(`${config.API_ENDPOINT}/user-relationship-request`, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      },
+      body: JSON.stringify({partnerReq})
+    })
+    .then(res =>
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+    )
+  }
+}
 export default {
   JournalServices,
   analyticsData,
   AuthServices,
-  QServices
+  QServices,
+  ReqServices
   
 }
