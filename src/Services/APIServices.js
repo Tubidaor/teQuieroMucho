@@ -306,11 +306,22 @@ export const QServices = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
+  },
+
+  openingQsToSessionStorage(data) {
+    window.sessionStorage.setItem(config.openingQData, data)
+  },
+  relQsToSessionStorage(data) {
+    window.sessionStorage.setItem(config.relQData, data)
+  },
+
+  getOpeningDataFromStorage() {
+    return JSON.parse(window.sessionStorage.getItem(config.openingQData))
+  },
+
+  getRelDataFromStorage() {
+    return JSON.parse(window.sessionStorage.getItem(config.relQData))
   }
-
-
-
-
 
 }
 export const JournalServices = {
@@ -475,17 +486,62 @@ export const AuthServices = {
     )
   },
 
+  
+
 }
 
 export const ReqServices = {
-  submitRelReq (partnerReq) {
+  submitRelReq (relRequest) {
     return fetch(`${config.API_ENDPOINT}/user-relationship-request`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         'content-type': 'application/json',
         'Authorization': `Bearer ${TokenServices.getAuthToken()}`
       },
-      body: JSON.stringify({partnerReq})
+      body: JSON.stringify(relRequest)
+    })
+    .then(res =>
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+    )
+  },
+  getRelRequests() {
+    return fetch(`${config.API_ENDPOINT}/user-relationship-request`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res => 
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+    )
+  },
+  acceptRequest(approvedRel) {
+    return fetch(`${config.API_ENDPOINT}/user-relationship`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      },
+      body: JSON.stringify(approvedRel)
+    })
+    .then(res => 
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+      )
+  },
+
+  deleteRequest() {
+    return fetch(`${config.API_ENDPOINT}/user-relationship-request`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
     })
     .then(res =>
       (!res.ok)

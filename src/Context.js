@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { alerts, categories } from './ContextData.js'
+import { QServices } from './Services/APIServices.js';
 
 const TeQuieroContext = React.createContext({
   stateofMind: null,
@@ -24,8 +25,8 @@ export class TeQuieroProvider extends Component {
     stateofMind: "Happy",
     rQuality: "Happy",
     error: null,
-    openingQs: '',
-    relationshipQs: [],
+    openingQs: QServices.getOpeningDataFromStorage(),
+    relationshipQs: QServices.getRelDataFromStorage(),
     userQs: [],
     alerts: alerts,
     categories: categories,
