@@ -20,7 +20,7 @@ export default class Questions extends Component {
   //     questions: this.props.qType,
   //   }
   // }
-
+  
   questions = () => {
     if(this.props.qType === "Opening") {
       return this.context.openingQs
@@ -54,7 +54,7 @@ export default class Questions extends Component {
         questions={qs}
         handleQSubmit={this.handleQSubmit}
         handleEndSubmit={this.handleEndSubmit}
-        lastQ={lastQ}
+        lastQ={lastQ ? lastQ : []}
         handlePushURL={this.props.handlePushURL}
       />
     )

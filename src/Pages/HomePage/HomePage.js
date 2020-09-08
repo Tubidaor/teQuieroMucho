@@ -9,6 +9,7 @@ import RelationshipPage from '../RelationshipPage/RelationshipPage';
 import TokenServices from '../../Services/token-services';
 import EventsPage from '../EventsPage/EventsPage';
 import AddReqPage from '../AddReqPage/AddReqPage';
+import { QServices } from '../../Services/APIServices';
 
 
 
@@ -39,6 +40,8 @@ export default class HomePage extends Component {
     
     const { history } = this.props
     TokenServices.clearAuthToken()
+    QServices.clearOpeningDataFromStorage()
+    QServices.clearRelDataFromStorage()
     history.push('/')
   }
 

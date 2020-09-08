@@ -29,56 +29,50 @@ export default class VictoryZoom extends Component {
     //   userJoyData.map(x => tickmarks.push(x.key))
     //   return tickmarks
     // }
-    const { userData } = this.props
-    console.log(userData)
+    const { lineZoomData } = this.props
+    
     function userJoyData() {
-      if(userData === undefined) {
+      if(lineZoomData === undefined) {
         return []
       }
-      console.log(userData.joy)
-      return userData.joy
+      return lineZoomData.joy
     }
     function userSadData() {
-      if(userData === undefined) {
+      if(lineZoomData === undefined) {
         return []
       }
-      console.log(userData.sadness)
-      return userData.sadness
+      return lineZoomData.sadness
     }
     function userDisData() {
-      if(userData === undefined) {
+      if(lineZoomData === undefined) {
         return []
       }
-      console.log(userData.disgust)
-      return userData.disgust
+      return lineZoomData.disgust
     }
     function userAngerData() {
-      if(userData === undefined) {
+      if(lineZoomData === undefined) {
         return []
       }
-      console.log(userData.anger)
-      return userData.anger
+      return lineZoomData.anger
     }
     function userFearData() {
-      if(userData === undefined) {
+      if(lineZoomData === undefined) {
         return []
       }
-      console.log(userData.fear)
-      return userData.fear
+      return lineZoomData.fear
     }
     function userMoodData() {
-      if(userData === undefined) {
+      if(lineZoomData === undefined) {
         return []
       }
-      console.log(userData.mood)
-      return userData.mood
+      return lineZoomData.mood
     }
     function questionTitle() {
-      if(userData === undefined) {
+      if(lineZoomData === undefined) {
         return []
       }
-      console.log(userData.question)
-      return userData.question
+
+      return lineZoomData.question
     }
 
     return (
@@ -169,7 +163,7 @@ export default class VictoryZoom extends Component {
             
 
           </VictoryChart>
-          <VictoryChart
+          {/* <VictoryChart
             padding={{ top: 0, left: 50, right: 50, bottom: 30 }}
             width={300} height={100} scale={{ x: "time" }}
             containerComponent={
@@ -187,19 +181,19 @@ export default class VictoryZoom extends Component {
               style={{
                 data: { stroke: "tomato" }
               }}
-              data={userJoyData()}
-              // x="key"
-              // y="b"
-            />
+              data={userJoyData()} */}
+              {/* // x="key"
+              // y="b" */}
+            {/* />
             <VictoryLine
               style={{
                 data: { stroke: "#c43a31" }
               }}
-              data={userSadData()}
-              // x="key"
-              // y="b"
-            />
-          </VictoryChart>
+              data={userSadData()} */}
+              {/* // x="key"
+              // y="b" */}
+            {/* />
+          </VictoryChart> */}
       </div>
     );
   }

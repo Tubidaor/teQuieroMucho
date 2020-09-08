@@ -321,6 +321,14 @@ export const QServices = {
 
   getRelDataFromStorage() {
     return JSON.parse(window.sessionStorage.getItem(config.relQData))
+  },
+
+  clearOpeningDataFromStorage() {
+    window.sessionStorage.removeItem(config.openingQData)
+  },
+
+  clearRelDataFromStorage() {
+    window.sessionStorage.removeItem(config.relQData)
   }
 
 }

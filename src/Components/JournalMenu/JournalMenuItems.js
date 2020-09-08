@@ -240,7 +240,7 @@ export class VideoEntry extends Component {
     } 
   }
   async componentDidMount() {
-    this.stream = await navigator.mediaDevices.getUserMedia({audio: false, video: true})
+    this.stream = await navigator.mediaDevices.getUserMedia({audio: true, video: true})
     this.mediaRecorder = new MediaRecorder(this.stream)
     this.videoRec = document.getElementById("vidRec")
     
