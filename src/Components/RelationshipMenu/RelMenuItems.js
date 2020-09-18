@@ -3,22 +3,26 @@ import React, { Component } from 'react';
 import Graphs from '../Graphs/Graphs';
 import TeQuieroContext from '../../Context';
 import { QServices } from '../../Services/APIServices';
+import { indexOf } from 'lodash';
 
 export class Analytics extends Component {
   state = {
     page: 'you',
     userData: [],
     relData: [],
+    alertData: [],
     qIndex: 0
   }
 
   componentDidMount() {
 
-   QServices.getQuestionaireUserData()
-    .then(data => this.setState({userData: data}))
+    QServices.getQuestionaireUserData()
+      .then(data => this.setState({userData: data}))
 
     QServices.getQuestionaireRelData()
-    .then(data => this.setState({relData: data}))
+      .then(data => this.setState({relData: data}))
+
+  
   }
 
   handleClickYou = (e) => {
@@ -119,7 +123,8 @@ export class Analytics extends Component {
             lineZoomData={userQuestionData[this.state.qIndex]}
             userData={this.state.userData}
             relData={this.state.relData}
-            page={this.state.page}>
+            page={this.state.page}
+          >
 
           </Graphs>
         </div>
@@ -130,6 +135,7 @@ export class Analytics extends Component {
     const { page } = this.state
 
     console.log(userQuestionData)
+    console.log('alert data', this.state.alertData)
     return (
 
       <section className="anlCon">
@@ -148,13 +154,55 @@ export class Analytics extends Component {
 export class Alerts extends Component {
 
   static contextType = TeQuieroContext
+  state = {
+    test: "test",
+    alertData: []
+  }
+
+  componentDidMount() {
+    QServices.getAlertsData()
+      .then(data => this.setState({alertData: data}, console.log(this.state.alertData)))
+  }
 
   render() {
-    const { alerts } = this.context
 
-    let displayAlerts = alerts.map(alert =>
-      <li key={alert.id} className="alertsLi" id={alert.id}>
-        <span className="alertsSpan">{alert.alert} </span>
+    const {alertData} = this.state
+    console.log(alertData)
+    // let allQuestions = []
+    // alertData.map(alert => allQuestions.push(alert.question))
+    let users = []
+    alertData.map(alert => users.push(alert.first_name))
+    // let uniqueQs = [...new Set(allQuestions)]
+    let uniqueUsers = [...new Set(users)]
+    console.log( uniqueUsers)
+    
+    let user1 = alertData.filter(alert => alert.first_name === uniqueUsers[0]).sort((a,b) => a.question > b.question)
+    let user2 = alertData.filter(alert => alert.first_name === uniqueUsers[1]).sort((a,b) => a.question > b.question)
+
+    let issues = []
+
+    for(let i = 0; i < user1.length; i ++) {
+      for(let j = 0; j < user2.length; j++) {
+        if(user1[i].question === user2[j].question) {
+          console.log(user1[i].scores.avgMood, user2[j].scores.avgMood)
+          if((user1[i].scores.avgMood - user2[j].scores.avgMood) > 20 || (user1[i].scores.avgMood - user2[j].scores.avgMood) < -20 || ((user1[i].scores.avgMood + user2.scores.avgMood) / 2) < 60) {
+            issues.push({
+              question: user1[i].question,
+              user1Mood: user1[i].scores.avgMood,
+              user2Mood: user2[j].scores.avgMood,
+              average: (user1[i].scores.avgMood + user2[j].scores.avgMood) / 2,
+              variance: user1[i].scores.avgMood - user2[j].scores.avgMood
+            })
+          }
+        }
+      }
+    }
+    console.log(issues)
+
+    let displayAlerts = issues.map(issue =>
+      <li key={indexOf(issue)} className="alertsLi" id={indexOf(issue)}>
+        <h4>There appears to be an issue with the following:</h4>
+        <span className="alertsSpan">{issue.question} </span>
         <div className="alertsBtnCon">
           <button>Dismiss</button>
           <button>Escalate</button>

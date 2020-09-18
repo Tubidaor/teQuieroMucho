@@ -308,6 +308,21 @@ export const QServices = {
     )
   },
 
+  getAlertsData() {
+    return fetch(`${config.API_ENDPOINT}/compare-users`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      }
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+
   openingQsToSessionStorage(data) {
     window.sessionStorage.setItem(config.openingQData, data)
   },
