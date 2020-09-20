@@ -77,3 +77,24 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+.highAlert {
+  background-color: red;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}
+
+.midAlert {
+  background-color: orange;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}
+
+.lowAlert {
+  background-color: yellow;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}

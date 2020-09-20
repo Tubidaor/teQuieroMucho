@@ -191,7 +191,7 @@ export class Alerts extends Component {
               user1Mood: user1[i].scores.avgMood,
               user2Mood: user2[j].scores.avgMood,
               average: (user1[i].scores.avgMood + user2[j].scores.avgMood) / 2,
-              variance: user1[i].scores.avgMood - user2[j].scores.avgMood
+              variance: Math.abs(user1[i].scores.avgMood - user2[j].scores.avgMood)
             })
           }
         }
@@ -204,8 +204,21 @@ export class Alerts extends Component {
         <h4>There appears to be an issue with the following:</h4>
         <span className="alertsSpan">{issue.question} </span>
         <div className="alertsBtnCon">
-          <button>Dismiss</button>
-          <button>Escalate</button>
+          { issue.variance > 20 || issue.average < 65
+              ? <div className="highAlert"> </div>
+              : null
+          }
+          { issue.variance > 15 && issue.variance <= 20
+              || issue.average > 65 && issue.average < 70
+              ? <div className="midAlert"> </div>
+              : null
+          }
+          { issue.variance >= 10 && issue.variance <= 15
+              || issue.average > 70 && issue.average < 75
+              ? <div className="lowAlert"> </div>
+              : null
+          }
+
         </div>
       </li>
     )
