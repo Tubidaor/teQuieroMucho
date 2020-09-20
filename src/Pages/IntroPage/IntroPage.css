@@ -1,16 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Tangerine&display=swap');
 
 .introPageContainer {
-  /* background: #1e3c72; */
-  /* background-color: -webkit-linear-gradient(to bottom, #1e3c72, #2a5298); */
-  /* background: linear-gradient(to bottom, #1e3c72, #2a5298); */
-  background: linear-gradient(to top, #780206, #061161); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to top, #780206, #061161);
   height: 100vh;
   padding-top: 100px;
 }
 .introH1 {
   text-align: center;
-  font-family: Pacifico, cursive;
+  font-family: 'Pacifico', cursive;
   color: #EEDD2C;
 }
 .introImg {
@@ -25,33 +22,42 @@
 }
 .introP {
   padding: 20px;
+  color: #EEDD2C;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 104%;
+  text-align: center;
+  font-family: 'Tangerine', cursive;
+  font-size: 1.618em;
+  font-weight: 800;
 }
 .introButtonContainer {
   display: flex;
-  justify-content: space-between;
-  width: 60%;
+  justify-content: space-evenly;
+  height: 144px;
+  width: 233px;
   margin-left: auto;
   margin-right: auto;
 }
-
 .introButtonContainer button {
   width: 80px;
   text-align: center;
-  background-color: rgba(152, 113, 84, .9);
-  /* background-image: linear-gradient(to right,#b16330,#b16330 ,#c46a34,#934f22); */
-  border-radius: 4px;
-  color: rgba(240, 240, 240, 1);
+  background-color: rgba(22, 15, 84, .65);
   font-weight: bold;
+  margin-top: auto;
+  margin-bottom: auto;
   border: none;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  border-radius: 4px;
+  color: #EEDD2C;
+  font-family: 'Pacifico', cursive;
 }
-/* .introLighting {
-  background-color: rgba(244, 247, 238, 1);
-  background-image: radial-gradient(circle at 50%, rgba(244, 247, 238, 1), rgba(255, 201, 157, 1));
-  height: 50px;
-  width: 100%;
-  position: relative;
-  top: -400px;
-  box-shadow: 0px 0px 10px 8px rgba(255, 201, 157, 1);
-} */
+.introButtonContainer button:active {
+  background-color: #5250B1;
+}
+.introPageTop {
+  height: 233px;
+  width: 233px;
+  margin-left: auto;
+  margin-right: auto;
+}
