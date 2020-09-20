@@ -1,12 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .introPageContainer {
-  background-color: rgba(240, 240, 240, 1);
-  background-image: linear-gradient(180deg, rgba(195, 202, 208, 1) 5%, rgba(240, 240, 240, 1) ,rgba(240, 240, 240, 1) 98%);
+  /* background: #1e3c72; */
+  /* background-color: -webkit-linear-gradient(to bottom, #1e3c72, #2a5298); */
+  /* background: linear-gradient(to bottom, #1e3c72, #2a5298); */
+  background: linear-gradient(to top, #780206, #061161); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 100vh;
   padding-top: 100px;
 }
 .introH1 {
   text-align: center;
-  color: rgba(19, 115, 127, 1);
+  font-family: Pacifico, cursive;
+  color: #EEDD2C;
 }
 .introImg {
   height: 100px;
@@ -16,6 +21,7 @@
   margin-right: auto;
   display: block;
   margin-top: 25px;
+  border: #EEDD2C solid 4px;
 }
 .introP {
   padding: 20px;
@@ -40,7 +46,7 @@
   padding-top: 2px;
   padding-bottom: 2px;
 }
-.introLighting {
+/* .introLighting {
   background-color: rgba(244, 247, 238, 1);
   background-image: radial-gradient(circle at 50%, rgba(244, 247, 238, 1), rgba(255, 201, 157, 1));
   height: 50px;
@@ -48,4 +54,4 @@
   position: relative;
   top: -400px;
   box-shadow: 0px 0px 10px 8px rgba(255, 201, 157, 1);
-}
+} */

@@ -1,6 +1,7 @@
 import  React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import './IntroPage.css'
+import config from '../../config'
 
 export default class IntroPage extends Component {
   render() {
@@ -8,7 +9,7 @@ export default class IntroPage extends Component {
     return (
       <div className="introPageContainer">
         <h1 className="introH1">Te Quiero Mucho</h1>
-        <img className="introImg" alt="logo for app" src="https://i.ibb.co/4tJQSVw/two-trees-love-looks-like-600w-426826279.jpg"/>
+        <img className="introImg" alt="logo for app" src={`${config.API_ENDPOINT}/uploads/static/treeOfLife2.png`}/>
         <p className="introP">We would like to think that all you need is love. However, a relationship can only grow if two people are committed to each other and the relationship.</p>
         <div className="introButtonContainer">
           <Link to="/login">
