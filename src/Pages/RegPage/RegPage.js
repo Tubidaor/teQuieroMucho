@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RegForm from '../../Components/Registration/RegForm';
-import Error from '../../Components/Error/Error'
 import TeQuieroContext from '../../Context';
+import './RegPage.css'
 
 export default class RegPage extends Component {
   static defaultProps = {
@@ -10,7 +10,6 @@ export default class RegPage extends Component {
       push: () => {},
     }
   }
-  static contextType = TeQuieroContext
 
   handleRegSuccess = () => {
     console.log('regran')
@@ -21,11 +20,8 @@ export default class RegPage extends Component {
   }
 
   render() {
-    const { error } = this.context
     return (
       <section className="regSection">
-        <h2 className="regFormH2">Sign Up</h2>
-        {error && <Error/> }
         <RegForm onRegSuccess={this.handleRegSuccess}/>
       </section>
     )

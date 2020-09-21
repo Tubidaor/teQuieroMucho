@@ -1,17 +1,22 @@
-.regSection {
-  margin-top: 100px;
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .regFormH2 {
   text-align: center;
+  font-family: 'Pacifico', cursive;
+  color: #EEDD2C;
 }
-.firstNameCon, .lastNameCon, .emailCon, .pwCon, .pwCCon, .bdCon, .genderCon {
+
+.firstNameCon {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 6px;
   width: 240px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.lastNameCon, .emailCon, .pwCon, .pwCCon, .bdCon, .genderCon {
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  margin-top: 6px;
   display: flex;
   justify-content: space-between;
 }
@@ -20,16 +25,60 @@
 }
 #monthSelect {
   width: 64px;
+  height: 20px;
+  border-radius: 4px;
 }
 #daysSelect {
   width: 50px;
+  height: 20px;
+  border-radius: 4px;
 }
 #yearSelect {
   width: 55px;
+  height: 20px;
+  border-radius: 4px;
 }
+#genSelect {
+  height: 20px;
+  border-radius: 4px;
+}
+
 .regSubmit {
-  display: block;
-  margin-top: 10px;
-  margin-right: auto;
+  margin-top: 80px;
   margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  background-color: rgba(22, 15, 84, .65);
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  color: #EEDD2C;
+  font-family: 'Pacifico', cursive;
+}
+.regSubmit:active {
+  background-color: #5250B1;
+}
+.regSubmit:hover {
+  cursor: pointer;
+}
+.regFormTopCon {
+  width: 289px;
+  height: 289px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+}
+.regFormTopCon label {
+  font-family: 'Tangerine', cursive;
+  color: #EEDD2C;
+  font-size: 1.61em;
+  font-weight: bold;
+}
+.regFormTopCon input {
+  height: 20px;
+  border-radius: 4px;
+}
+.errorCon {
+  margin-top: 6px;
 }

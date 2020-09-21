@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AuthServices } from '../../Services/APIServices';
 import './RegForm.css';
 import TeQuieroContext from '../../Context';
+import Error from '../Error/Error'
 
 
 export default class RegForm extends Component {
@@ -52,7 +53,7 @@ export default class RegForm extends Component {
           password: pw.value,
           birthday: month.value + "/" + day.value + "/" + year.value,
           gender: gender.value
-        }
+      }
         
         console.log(newUser)
         AuthServices.registerUser(newUser)
@@ -74,8 +75,8 @@ export default class RegForm extends Component {
       }
     }
       catch(e) {
-        console.log(e.message)
-        this.context.setError(e.message)
+        console.log(e.props)
+        this.context.setError(e.props)
       } 
 
 }
@@ -186,43 +187,47 @@ export default class RegForm extends Component {
 
     return (
         <form onSubmit={this.handleRegistration}>
-          <div className="firstNameCon">
-            <label htmlFor="firstName">First name</label>
-            <input name="firstName" id="firstName"></input>
-          </div>
-          <div className="lastNameCon">
-            <label htmlFor="lastName">Last name</label>
-            <input name="lastName" id="lastName"></input>
-          </div>
-          <div className="emailCon">
-            <label htmlFor="email">Email</label>
-            <input name="email" id="email"></input>
-          </div>
-          <div className="pwCon">
-            <label htmlFor="pw">Password</label>
-            <input name="pw" id="pw"></input>
-          </div>
-          <div className="pwCCon">
-            <label htmlFor="pwConfirm">Confirm</label>
-            <input name="pwConfirm" id="pwConfirm"></input>
-          </div>
-          <div className="bdCon">
-            <label htmlFor="birthday" aria-label="month">Birthday</label>
-            <select name="month" id="monthSelect">
-                {monthDisplay}
-            </select>
-            <select name="day" id="daysSelect">
-                {days()}
-            </select>
-            <select name="year" id="yearSelect">
-                {year()}
-            </select>
-          </div>
-          <div className="genderCon">
-            <label htmlFor="gender" aria-label="gender">Gender</label>
-            <select name="gender" id="genSelect">
-              {genderDisplay}
-            </select>
+          <div className="regFormTopCon">
+            <h2 className="regFormH2">Sign Up</h2>
+            {this.context.error && <Error/> }
+            <div className="firstNameCon">
+              <label htmlFor="firstName">First name:</label>
+              <input name="firstName" id="firstName"></input>
+            </div>
+            <div className="lastNameCon">
+              <label htmlFor="lastName">Last name:</label>
+              <input name="lastName" id="lastName"></input>
+            </div>
+            <div className="emailCon">
+              <label htmlFor="email">Email:</label>
+              <input name="email" id="email"></input>
+            </div>
+            <div className="pwCon">
+              <label htmlFor="pw">Password:</label>
+              <input name="pw" id="pw"></input>
+            </div>
+            <div className="pwCCon">
+              <label htmlFor="pwConfirm">Confirm:</label>
+              <input name="pwConfirm" id="pwConfirm"></input>
+            </div>
+            <div className="bdCon">
+              <label htmlFor="birthday" aria-label="month">Birthday:</label>
+              <select name="month" id="monthSelect">
+                  {monthDisplay}
+              </select>
+              <select name="day" id="daysSelect">
+                  {days()}
+              </select>
+              <select name="year" id="yearSelect">
+                  {year()}
+              </select>
+            </div>
+            <div className="genderCon">
+              <label htmlFor="gender" aria-label="gender">Gender:</label>
+              <select name="gender" id="genSelect">
+                {genderDisplay}
+              </select>
+            </div>
           </div>
           <button className="regSubmit" type="submit">Submit</button>
         </form>

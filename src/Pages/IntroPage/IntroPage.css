@@ -55,6 +55,9 @@
 .introButtonContainer button:active {
   background-color: #5250B1;
 }
+.introButtonContainer button:hover {
+  cursor: pointer;
+}
 .introPageTop {
   height: 233px;
   width: 233px;
