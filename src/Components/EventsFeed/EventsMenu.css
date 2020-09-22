@@ -28,6 +28,7 @@
 .jFeedCon {
   margin-top: 80px;
   overflow: auto;
+  height: 80vh;
 }
 .jFeedUl {
   margin-top: 50px;
@@ -36,18 +37,20 @@
   flex-wrap: wrap;
   margin-right: 0px;
   padding: 0px;
+  overflow: scroll;
   
 }
 .jFeedLi {
   list-style: none;
-  border: black 2px solid;
   border-radius: 4px;
   margin-bottom: 5px;
   padding: 4px;
   width: 280px;
   display: block;
   margin-left: auto;
-  margin-right: auto;  
+  margin-right: auto;
+  background-color: rgba(0,0,0,.8);
+  color: whitesmoke;
 }
 .jFeedIntroCon {
   display: flex;
@@ -63,36 +66,39 @@
   color: #EEDD2C;
   font-family: 'Pacifico', cursive;
 }
+.jFeedBtn:active {
+  background-color: #5250B1;
+}
+.jFeedBtn:hover {
+  cursor: pointer;
+}
 .jHidden {
-  /* display: none; */
-  border: 2px solid black;
-  height: 80vh;
-  width: 80vw;
-  z-index: 1;
-  background-color: blue;
-  margin-top: 100px;
-  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+
 
 }
 .xBar1 {
-  height: 2px;
-  width: 10px;
+  height: 4px;
+  width: 20px;
   background-color: #EEDD2C;
   transform: rotate(45deg);
+  border-radius: 2px;
 }
 .xBar2 {
-  height: 2px;
-  width: 10px;
+  height: 4px;
+  width: 20px;
   background-color: #EEDD2C;
   transform: rotate(-45deg);
-  margin-top: -2px;
+  border-radius: 2px;
+  margin-top: -4px;
 }
 .jClose {
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
   margin-left: auto;
   margin-right: 5px;
-  margin-top: 5px;
+  margin-top: 14px
 }
 .jClose:hover {
   cursor: pointer;

@@ -2,6 +2,14 @@
 
 .eFeedSec {
   margin-top: 50px;
-  background-image: linear-gradient(150deg, #d4418e 0%, #0652c5 60%);
+  /* background-image: linear-gradient(150deg, #d4418e 0%, #0652c5 60%); */
+  /* background-image: url("http://localhost:8000/api/uploads/static/bubbles.jpg"); */
+  /* background-image: url("http://localhost:8000/api/uploads/static/northernLights.jpg"); */
+  /* background-image: url("http://localhost:8000/api/uploads/static/mountains.jpg"); */
+  background-image: url("http://localhost:8000/api/uploads/static/journey.jpg");
+
+  background-position: fixed;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   height: 100vh;
 }

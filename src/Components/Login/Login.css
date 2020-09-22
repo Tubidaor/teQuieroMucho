@@ -44,7 +44,7 @@
 .loginButton:active {
   background-color: #5250B1;
 }
-.loginButtonutton:hover {
+.loginButton:hover {
   cursor: pointer;
 }
 .loginLabel {

@@ -28,7 +28,11 @@ export default class JournalFeed extends Component {
     backgroundColor: 'blue',
     top: '100px',
     position: 'absolute',
-    display: 'none'
+    display: 'none',
+    left: '0px',
+    right: '0px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
   }
 
 
@@ -41,8 +45,8 @@ export default class JournalFeed extends Component {
           <p><span>Intro: </span>{journal.text.slice(0,20)}</p>
           <button className="jFeedBtn" onClick={e => this.handleOpenJournal(`jShow${journals.indexOf(journal)}`)}>View</button>
         </div>
-        <div className={`jHidden${journals.indexOf(journal)}`} id={`jShow${journals.indexOf(journal)}`} style={style}>
-          <div id={`jClose${journals.indexOf(journal)}`} onClick={e => this.handleOpenJournal(`jShow${journals.indexOf(journal)}`)}>
+        <div className="jHidden" id={`jShow${journals.indexOf(journal)}`} style={style}>
+          <div className="jClose" onClick={e => this.handleOpenJournal(`jShow${journals.indexOf(journal)}`)}>
             <div className="xBar1">
             </div>
             <div className="xBar2">
