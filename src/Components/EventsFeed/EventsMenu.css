@@ -1,15 +1,20 @@
 .eventsMenuCon {
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(0,0,0,.75);
   height: 30px;
   top: 50px;
   display: flex;
   justify-content: space-evenly;
   position: fixed;
   width: 100%;
+  padding-left: 0px;
+  /* background-color: rgba(210, 217, 220, 1);
+  color: #40616e; */
+  /* background-color: rgba(64, 97, 110, 1); */
+  color: rgba(210, 217, 220, 1);
 }
 .eventMenuItem {
   list-style: none;
-  color: #EEDD2C;
+  /* color: #EEDD2C; */
   font-weight: bold;
   padding-top: 5px;
 }
@@ -31,7 +36,7 @@
   height: 80vh;
 }
 .jFeedUl {
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -49,8 +54,17 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgba(0,0,0,.8);
-  color: whitesmoke;
+  background-color: rgba(0,0,0,.75);
+  color: rgba(210, 217, 220, 1);
+
+}
+.jFeedLi p {
+  font-family: 'Buda', cursive;
+  font-size: 1em;
+}
+.jFeedLi span {
+  font-family: 'Tangerine', cursive;
+  font-size: 1.61em;
 }
 .jFeedIntroCon {
   display: flex;
@@ -59,11 +73,19 @@
 }
 .jFeedBtn {
   text-align: center;
-  background-color: rgba(22, 15, 84, .65);
+  /* background-color: rgba(22, 15, 84, .65); */
+  /* background-image: url("http://localhost:8000/api/uploads/static/blueLightbulb.jpg"); */
+  
+  /* background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat; */
+  
   font-weight: bold;
   border: none;
   border-radius: 4px;
-  color: #EEDD2C;
+  /* color: #EEDD2C; */
+  background-color: rgba(210, 217, 220, 1);
+  color: #40616e;
   font-family: 'Pacifico', cursive;
 }
 .jFeedBtn:active {
@@ -81,14 +103,14 @@
 .xBar1 {
   height: 4px;
   width: 20px;
-  background-color: #EEDD2C;
+  background-color: rgba(210, 217, 220, 1);
   transform: rotate(45deg);
   border-radius: 2px;
 }
 .xBar2 {
   height: 4px;
   width: 20px;
-  background-color: #EEDD2C;
+  background-color: rgba(210, 217, 220, 1);
   transform: rotate(-45deg);
   border-radius: 2px;
   margin-top: -4px;

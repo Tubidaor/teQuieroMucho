@@ -25,14 +25,19 @@ export default class JournalFeed extends Component {
     height: '80vh',
     width: '80vw',
     zIndex: '1',
-    backgroundColor: 'blue',
     top: '100px',
     position: 'absolute',
     display: 'none',
     left: '0px',
     right: '0px',
     marginLeft: 'auto',
-    marginRight: 'auto'
+    marginRight: 'auto',
+    // backgroundColor: 'rgba(210, 217, 220, 1)',
+    // color: '#40616e',
+    // backgroundColor: 'rgba(64, 97, 110, 1)',
+    // color: 'rgba(210, 217, 220, 1)',
+    backgroundColor: 'rgba(0, 0, 0, .85)',
+    color: 'rgba(210, 217, 220, 1)',
   }
 
 
@@ -42,7 +47,7 @@ export default class JournalFeed extends Component {
       <div>
         <p><span>Date: </span>{new Date(journal.date_created).toLocaleDateString()}</p>
         <div className="jFeedIntroCon">
-          <p><span>Intro: </span>{journal.text.slice(0,20)}</p>
+          <p><span>Intro: </span>{journal.text.slice(0,25) + "..."}</p>
           <button className="jFeedBtn" onClick={e => this.handleOpenJournal(`jShow${journals.indexOf(journal)}`)}>View</button>
         </div>
         <div className="jHidden" id={`jShow${journals.indexOf(journal)}`} style={style}>
