@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faFileWord} from '@fortawesome/free-regular-svg-icons';
 import {faImages, faMicrophoneAlt, faVideo} from '@fortawesome/free-solid-svg-icons';
+import './EventsMenu.css';
 
 
 
