@@ -1,4 +1,5 @@
 .homeFooter {
   position: fixed;
   bottom: 0px;
+  background: rgba( 0, 0, 0, .7);
 }

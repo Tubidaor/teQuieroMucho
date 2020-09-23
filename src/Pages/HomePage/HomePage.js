@@ -66,7 +66,7 @@ export default class HomePage extends Component {
 
 
         <footer className="homeFooter">
-        <NavBar handleClick={this.handleClick} handleLogout={this.handleLogout}></NavBar>
+          <NavBar handleClick={this.handleClick} handleLogout={this.handleLogout}></NavBar>
         </footer>
       </div>
     )
