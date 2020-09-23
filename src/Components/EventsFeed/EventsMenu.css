@@ -11,12 +11,13 @@
   color: #40616e; */
   /* background-color: rgba(64, 97, 110, 1); */
   color: rgba(210, 217, 220, 1);
+  font-family: "Pacifico", cursive;
 }
 .eventMenuItem {
   list-style: none;
   /* color: #EEDD2C; */
   font-weight: bold;
-  padding-top: 5px;
+  /* padding-top: 5px; */
 }
 .eventMenuItem:hover {
   cursor: pointer;

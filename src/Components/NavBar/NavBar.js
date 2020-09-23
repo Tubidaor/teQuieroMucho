@@ -33,11 +33,11 @@ export default function NavBar(props) {
       <div className="menuListCon" id="menuListExpand">
         <div className="menuConForUl">
           <ul className="ulListCon">
-            <li className={`menuLiJournal`}><button onClick={e => props.handleClick('Home')}>Home</button></li>
-            <li className={`menuLiJournal`}><button onClick={e => props.handleClick('Journal')}>Journal</button></li>
-            <li className={`menuLiRel`}><button onClick={e => props.handleClick('Relationship')}>Relationship</button></li>
-            <li className={`menuLiRel`}><button onClick={e => props.handleClick('AddReq')}>Add Request</button></li>
-            <li className={`menuLiLogout`}><button onClick={e => props.handleLogout()}>Logout</button></li>
+            <li className={`menuLiHome`}><button className="navBtn" onClick={e => props.handleClick('Home')}>Home</button></li>
+            <li className={`menuLiJournal`}><button className="navBtn" onClick={e => props.handleClick('Journal')}>Journal</button></li>
+            <li className={`menuLiRel`}><button className="navBtn" onClick={e => props.handleClick('Relationship')}>Relationship</button></li>
+            <li className={`menuLiAdd`}><button className="navBtn" onClick={e => props.handleClick('AddReq')}>Add Request</button></li>
+            <li className={`menuLiLogout`}><button className="navBtn" onClick={e => props.handleLogout()}>Logout</button></li>
           </ul>
         </div>
       </div>
