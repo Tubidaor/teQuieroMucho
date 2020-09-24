@@ -12,7 +12,7 @@ export default class ImagesFeed extends Component {
     // const displayImageFeed = images.map(image => <ImagesFeed key={image.id} imageURL={staticURL+"/"+ image.file_path}/>)
     const displayImages = images.map(image =>
       <li key={images.indexOf(image)} className="imageFeedLi">
-        <img alt='userimage' src={staticURL+"/"+ image.file_path}/>
+        <img className="imgFeed" alt='userimage' src={staticURL+"/"+ image.file_path}/>
       </li>
     )
     return (

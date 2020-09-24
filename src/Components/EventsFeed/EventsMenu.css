@@ -39,12 +39,37 @@
   margin-left: 4px;
 }
 .imageFeedCon {
-  margin-top: 150px;
+  margin-top: 80px;
+}
+.imageFeedUl {
+  overflow: auto;
+  margin: 0px;
+  padding-left: 0px;
+  padding-top: 30px;
+  height: 78vh;
+  /* margin-left: auto;
+  margin-right: auto;
+  left: 0px;
+  right: 0px;
+  display: block */
+}
+.imgFeed {
+  height: 280px;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 10px;
+}
+.imageFeedLi {
+  /* width: 280px;
+  height: 280px; */
+  margin-bottom: 4px;
 }
 .jFeedCon {
   margin-top: 80px;
   overflow: auto;
-  height: 80vh;
+  height: 78vh;
 }
 .jFeedUl {
   margin-top: 20px;

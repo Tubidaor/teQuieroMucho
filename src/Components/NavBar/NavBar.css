@@ -99,6 +99,9 @@
   margin-left: auto;
   margin-right: auto;
 }
+.menuCon:hover {
+  cursor: pointer;
+}
 .expand {
   height: 120px;
 }
