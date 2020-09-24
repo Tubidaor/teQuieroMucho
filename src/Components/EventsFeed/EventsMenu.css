@@ -11,7 +11,17 @@
   color: #40616e; */
   /* background-color: rgba(64, 97, 110, 1); */
   color: rgba(210, 217, 220, 1);
-  font-family: "Pacifico", cursive;
+ /* font-family: 'Buda', cursive;
+  font-family: 'Cinzel Decorative', cursive;
+  font-family: 'Delius Swash Caps', cursive;
+  font-family: 'Emilys Candy', cursive; */
+  font-family: 'Nothing You Could Do', cursive;
+  /* font-family: 'Oleo Script', cursive;
+  font-family: 'Pacifico', cursive;
+  font-family: 'Tangerine', cursive; */
+  padding-top: 5px;
+  font-weight: bold;
+  font-size: 1.05em;
 }
 .eventMenuItem {
   list-style: none;
@@ -61,11 +71,26 @@
 }
 .jFeedLi p {
   font-family: 'Buda', cursive;
+  /* font-family: 'Cinzel Decorative', cursive;
+  font-family: 'Delius Swash Caps', cursive;
+  font-family: 'Emilys Candy', cursive;
+  /* font-family: 'Nothing You Could Do', cursive;
+  font-family: 'Oleo Script', cursive;
+  font-family: 'Pacifico', cursive;
+  font-family: 'Tangerine', cursive; */
   font-size: 1em;
 }
 .jFeedLi span {
-  font-family: 'Tangerine', cursive;
-  font-size: 1.61em;
+  /* font-family: 'Buda', cursive;
+  font-family: 'Cinzel Decorative', cursive;
+  font-family: 'Delius Swash Caps', cursive;
+  font-family: 'Emilys Candy', cursive; */
+  font-family: 'Nothing You Could Do', cursive;
+  /* font-family: 'Oleo Script', cursive;
+  font-family: 'Pacifico', cursive;
+  font-family: 'Tangerine', cursive; */
+  font-size: .83em;
+  font-weight: bold;
 }
 .jFeedIntroCon {
   display: flex;
@@ -86,8 +111,19 @@
   border-radius: 4px;
   /* color: #EEDD2C; */
   background-color: rgba(210, 217, 220, 1);
-  color: #40616e;
+ /* font-family: 'Buda', cursive;
+  font-family: 'Cinzel Decorative', cursive;
+  font-family: 'Delius Swash Caps', cursive;
+  font-family: 'Emilys Candy', cursive; */
+  font-family: 'Nothing You Could Do', cursive;
+  /* font-family: 'Oleo Script', cursive;
   font-family: 'Pacifico', cursive;
+  font-family: 'Tangerine', cursive; */  color: #40616e;
+  font-size: 1em;
+  padding-bottom: -6px;
+  position: relative;
+  right: 2px;
+  top: -6px;
 }
 .jFeedBtn:active {
   background-color: #5250B1;
