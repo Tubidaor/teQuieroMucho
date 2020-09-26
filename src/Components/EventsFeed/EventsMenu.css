@@ -39,14 +39,16 @@
   margin-left: 4px;
 }
 .imageFeedCon {
-  margin-top: 80px;
+  margin-top: 20px;
+  height: 71vh;
+  overflow: auto;
 }
 .imageFeedUl {
   overflow: auto;
   margin: 0px;
   padding-left: 0px;
-  padding-top: 30px;
-  height: 78vh;
+  /* padding-top: 30px; */
+  /* height: 78vh; */
   /* margin-left: auto;
   margin-right: auto;
   left: 0px;
@@ -54,8 +56,8 @@
   display: block */
 }
 .imgFeed {
-  height: 280px;
-  width: 280px;
+  height: 200px;
+  width: 200px;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -67,12 +69,12 @@
   margin-bottom: 4px;
 }
 .jFeedCon {
-  margin-top: 80px;
+  margin-top: 20px;
   overflow: auto;
-  height: 78vh;
+  height: 67vh;
 }
 .jFeedUl {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -186,4 +188,103 @@
 }
 .jClose:hover {
   cursor: pointer;
+}
+.audioFeedCon {
+  margin-top: 20px;
+}
+.audioUl {
+  padding-left: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 74vh;
+  overflow: auto;
+}
+.audioLi {
+  list-style: none;
+  border-radius: 10px;
+  /* background-color: rgba(0,0,0,.5); */
+  margin-bottom: 5px;
+}
+.audioLi p {
+  color: rgba(210, 217, 220, 1);
+  font-family: 'Nothing You Could Do', cursive;
+  position: relative;
+  display: block;
+  text-align: center;
+  top: 4px;
+}
+.audioLi span {
+  color: rgba(210, 217, 220, 1);
+  font-family: "buda", cursive;
+}
+.audioLi audio {
+  /* width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 4px;
+  height: 35px;
+  background-color: blue; */
+
+  /* color: rgba(210, 217, 220, 1); */
+
+}
+/* .controlBar {
+  color: rgba(210, 217, 220, 1);
+  background-color: blue;
+} */
+.rhap_container {
+  background-color: rgba( 0, 0, 0, .75);
+  width: 90%;
+  border-radius: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Buda", cursive;
+  font-size: .83em;
+  margin-top: -20px;
+  height: 54px;
+}
+.rhap_controls-section {
+  margin-top: -12px !important;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.rhap_progress-section {
+  margin-top: 6px !important;
+}
+.rhap_progress-indicator {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 3;
+  width: 10px;
+  height: 10px;
+  /* margin-left: 0px; */
+  left: 0px;
+  top: -4px;
+  background: #868686;
+  border-radius: 50px;
+  box-shadow: rgba(134, 134, 134, 0.5) 0 0 5px;
+
+}
+.rhap_progress-bar {
+  height: 2px;
+}
+
+.rhap_time {
+  color: rgba(210, 217, 220, 1);
+  font-size: 1em;
+}
+.rhap_progress-bar-show-download {
+  background-color: rgba(210, 217, 220, 1);
+}
+
+.rhap_repeat-button, .rhap_button-clear {
+  font-size: 1.2em;
+  color: rgba(210, 217, 220, 1);
+}
+
+.rhap_main-controls {
+  width: 70px;
 }

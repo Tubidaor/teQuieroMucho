@@ -66,7 +66,7 @@ export default class EventsPage extends Component {
     // const staticURL = config.API_ENDPOINT
     const displayAudioFeed = audio.map(entry => <AudioFeed key={entry.id} audioId={entry.entry_id}/>)
     // const displayImageFeed = images.map(image => <ImagesFeed key={image.id} imageURL={staticURL+"/"+ image.file_path}/>)
-    const displayJournalFeed = journals.map(journal => <JournalFeed key={journal.id} date={journal.date_created} journal={journal.text}/>)
+    // const displayJournalFeed = journals.map(journal => <JournalFeed key={journal.id} date={journal.date_created} journal={journal.text}/>)
     const displayVideosFeed = videos.map(video => <VideoFeed key={video.id} videoId={video.entry_id}/>)
     return (
       <section className="eFeedSec">
@@ -75,7 +75,7 @@ export default class EventsPage extends Component {
           {/* {this.state.section === 'Journal' && displayJournalFeed} */}
           {this.state.section === 'Journal' && <JournalFeed journals={journals}/>}
 
-          {this.state.section === 'Audio' && displayAudioFeed}
+          {this.state.section === 'Audio' && <AudioFeed audio={audio}/>}
           {this.state.section === 'Video' && displayVideosFeed}
       </section>
     )

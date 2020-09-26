@@ -13,16 +13,17 @@ export default function NavBar(props) {
     return section
   }
 
-  const expand = function() {
-    console.log("expandrand")
-    document.getElementById("menuExpand").classList.toggle("expand")
-    document.getElementById("menuListExpand").classList.toggle("expandList")
-  }
+  // const expand = function() {
+  //   console.log("expandrand")
+  //   document.getElementById("menuExpand").classList.toggle("expand")
+  //   document.getElementById("menuListExpand").classList.toggle("expandList")
+  //   document.getElementById('homeFooter').classList.toggle('expandFooter')
+  // }
 
 
   return (
     <nav className="homeNav" id="menuExpand">
-      <div className="menuCon"  onClick={expand}>
+      <div className="menuCon"  onClick={e => props.expand()}>
         <ul className="figureConLeft">
           {bodyParts(7)}
         </ul>

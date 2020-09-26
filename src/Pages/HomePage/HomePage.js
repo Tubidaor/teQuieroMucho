@@ -23,13 +23,16 @@ export default class HomePage extends Component {
     currentSection: "Home"
   }
 
+  expand = () => {
+    console.log("expandrand")
+    document.getElementById("menuExpand").classList.toggle("expand")
+    document.getElementById("menuListExpand").classList.toggle("expandList")
+    document.getElementById('homeFooter').classList.toggle('expandFooter')
+  }
+
   handleClick = (currentSection) => {
-    const expand = function() {
-      console.log("expandrand")
-      document.getElementById("menuExpand").classList.toggle("expand")
-      document.getElementById("menuListExpand").classList.toggle("expandList")
-    }
-    expand()
+    
+    this.expand()
     this.setState({
       currentSection
     })
@@ -65,8 +68,8 @@ export default class HomePage extends Component {
         {currentSection === "AddReq" && <AddReqPage/>}
 
 
-        <footer className="homeFooter">
-          <NavBar handleClick={this.handleClick} handleLogout={this.handleLogout}></NavBar>
+        <footer className="homeFooter" id="homeFooter">
+          <NavBar expand={this.expand} handleClick={this.handleClick} handleLogout={this.handleLogout}></NavBar>
         </footer>
       </div>
     )
