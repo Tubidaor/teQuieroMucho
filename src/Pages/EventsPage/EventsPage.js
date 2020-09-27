@@ -58,25 +58,23 @@ export default class EventsPage extends Component {
   } 
 
   render() {
-    console.log(this.state.audio)
-    console.log(this.state.videos)
-    console.log(this.state.journals)
-    console.log(this.state.images)
+    // console.log(this.state.audio)
+    // console.log(this.state.videos)
+    // console.log(this.state.journals)
+    // console.log(this.state.images)
     const  { audio, images, journals, videos } = this.state
     // const staticURL = config.API_ENDPOINT
-    const displayAudioFeed = audio.map(entry => <AudioFeed key={entry.id} audioId={entry.entry_id}/>)
+    // const displayAudioFeed = audio.map(entry => <AudioFeed key={entry.id} audioId={entry.entry_id}/>)
     // const displayImageFeed = images.map(image => <ImagesFeed key={image.id} imageURL={staticURL+"/"+ image.file_path}/>)
     // const displayJournalFeed = journals.map(journal => <JournalFeed key={journal.id} date={journal.date_created} journal={journal.text}/>)
-    const displayVideosFeed = videos.map(video => <VideoFeed key={video.id} videoId={video.entry_id}/>)
+    // const displayVideosFeed = videos.map(video => <VideoFeed key={video.id} videoId={video.entry_id}/>)
     return (
       <section className="eFeedSec">
         <EventsMenu handleClick={this.handleClick} />
           {this.state.section === 'Images' && <ImagesFeed images={images}/>}
-          {/* {this.state.section === 'Journal' && displayJournalFeed} */}
           {this.state.section === 'Journal' && <JournalFeed journals={journals}/>}
-
           {this.state.section === 'Audio' && <AudioFeed audio={audio}/>}
-          {this.state.section === 'Video' && displayVideosFeed}
+          {this.state.section === 'Video' && <VideoFeed videos={videos}/>}
       </section>
     )
   }

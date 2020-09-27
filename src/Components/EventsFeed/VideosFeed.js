@@ -1,43 +1,21 @@
 import React, { Component } from 'react';
-import config from '../../config';
-import TokenServices from '../../Services/token-services';
+import VideoLi from './VideosLi';
 
 export default class VideoFeed extends Component {
 
-  state = {
-    source: []
-  }
-  componentDidMount() {
-    this.handlePlay()
-  }
-  handlePlay = () => {
-    return fetch(`${config.API_ENDPOINT}/video-stream/${this.props.videoId}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
-      }
-    })
-    .then(res =>
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.blob()
-    )
-    .then(source => {
-
-      const blobURL = URL.createObjectURL(source)
-      this.setState({
-        source: blobURL
-      }, console.log(this.state.source))
-    })
-  }
   
   render() {
-    
+    const { videos } = this.props
+    const displayVideos = videos.map(video =>
+      <VideoLi key={videos.indexOf(video)} date={video.date_created} videoId={video.entry_id}/>
+    )
+
     return (
-      <li>
-        {/* <video controls src={'http://localhost:8000/api/video-stream'} /> */}
-        <video controls src={this.state.source} />
-      </li>
+      <div className="videosFeedCon">
+        <ul className="videosUl">
+          { displayVideos }
+        </ul>
+      </div>
     )
   }
 }
