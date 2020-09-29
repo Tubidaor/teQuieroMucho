@@ -4,19 +4,19 @@ import JournalMenu from '../../Components/JournalMenu/JournalMenu';
 import { JournalServices } from '../../Services/APIServices';
 import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';
 import { text } from '@fortawesome/fontawesome-svg-core';
-
+import Error from '../../Components/Error/Error';
+import TeQuieroContext from '../../Context'
 
 export default class JournalPage extends Component {
+
+  static contextType = TeQuieroContext
+
   state = {
-    currentSection: "home",
-    recording: true,
+    currentSection: "journalEntry",
+    recording: false,
   }
   
-  setStateToHome = () => {
-    this.setState({
-      currentSection: 'home'
-    })
-  }
+  
   handleClick = (currentSection) => {
     this.setState({
       currentSection
@@ -30,7 +30,7 @@ export default class JournalPage extends Component {
 
   handleCancel = (e) => {
     e.preventDefault();
-    this.setStateToHome()
+    this.handleClick('home')
   }
   handlePostEntry = (e) => {
     e.preventDefault()
@@ -40,7 +40,8 @@ export default class JournalPage extends Component {
       text: jEText.value
     }
     JournalServices.postJournalEntry(newTextEntry)
-    this.setStateToHome()
+      .then(this.handleClick("home"))
+      .catch(e => this.context.setError(e.error))
   }
 
   handleFileEntry = (e) => {
@@ -63,9 +64,8 @@ export default class JournalPage extends Component {
     }
 
     JournalServices.postFileEntry(formData)
-      .then(res => console.log(res))
-
-    this.setStateToHome()
+      .then(this.handleClick("home"))
+      .catch(e => this.context.setError(e.error))
 
   }
 
@@ -82,7 +82,7 @@ export default class JournalPage extends Component {
     JournalServices.postFileEntry(formData)
       .then(data => console.log(data))
 
-    this.setStateToHome()
+    this.handleClick("home")
 
   }
 
@@ -100,7 +100,7 @@ export default class JournalPage extends Component {
     JournalServices.postFileEntry(formData)
       .then(data => console.log(data))
 
-    this.setStateToHome()
+    this.handleClick("home")
 
   }
 
@@ -111,9 +111,9 @@ export default class JournalPage extends Component {
     let { currentSection } = this.state
 
     return (
-      <section className="journalCon">
+      <section className="journalSection">
         <JournalMenu handleClick={this.handleClick}/>
-        
+        { this.context.error && <Error/> }
         { currentSection === "journalEntry" && <JournalEntry handlePostEntry={this.handlePostEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "fileEntry" && <FileEntry handleFileEntry={this.handleFileEntry} handleCancel={this.handleCancel}/>}
         { currentSection === "audioEntry" && <AudioEntry handleAudioEntry={this.handleAudioEntry} handleCancel={this.handleCancel}/>}

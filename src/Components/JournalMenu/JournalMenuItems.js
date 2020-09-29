@@ -25,6 +25,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { faHandPaper } from '@fortawesome/free-regular-svg-icons';
+import AudioPlayer from 'react-h5-audio-player';
+
+
 
 registerPlugin(
   FilePondPluginFileEncode,
@@ -41,21 +44,24 @@ export function JournalEntry(props) {
  
 
   return(
-    <section className="jEntrySection">
+    <div className="jEntryCon">
       <div className="dateButtonCon">
-        <h5 className="jPageH5">Today's Date: {getDate()}</h5>
-        <button className="jInputButton" onClick={e => props.handleCancel(e)}>
-          <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
-        </button>
-        <button form="jForm" className="jInputButton" onClick={e => props.handlePostEntry(e)}>
-          <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
-        </button>
+        <h5 className="jPageH5">Today's Date: <span> {getDate()} </span> </h5>
+        <div className="aBtnCon">
+
+          <button className="jInputButton" onClick={e => props.handleCancel(e)}>
+            <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
+          </button>
+          <button form="jForm" className="jInputButton" onClick={e => props.handlePostEntry(e)}>
+            <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
+          </button>
+        </div>
       </div>
       <form id="jForm">
         <textarea type="paragraph" id="jInputBox" name='jEText' className="jInputBox" cols="50"></textarea>
       </form>    
         
-    </section>
+    </div>
   )
 }
 
@@ -65,21 +71,26 @@ export function FileEntry(props) {
   return (
     <section className="pEntrySection">
       <div className="dateButtonCon">
-      <h5 className="pPageH5">Today's Date: {getDate()}</h5>
-        <button className="pInputButton" onClick={e => props.handleCancel(e)}>
-          <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
-        </button>
-        <button form={"pForm"} className="pInputButton">
-          <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
-        </button>
+        <h5 className="pPageH5">Today's Date: <span>{getDate()}</span></h5>
+        <div className="aBtnCon">
+
+          <button className="pInputButton" onClick={e => props.handleCancel(e)}>
+            <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
+          </button>
+          <button form={"pForm"} className="pInputButton">
+            <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
+          </button>
+        </div>
       </div>
-      <form action="/action_page.php" id="pForm" onSubmit={e => props.handleFileEntry(e)}>
+      <form className="upForm" action="/action_page.php" id="pForm" onSubmit={e => props.handleFileEntry(e)}>
         <input
           type="file"
           id="pInputBox"
           className="pInputBox"
           name='files'
           multiple
+          max="10"
+          // value="Please select files"
         />
       </form>   
     </section>
@@ -96,7 +107,7 @@ export class AudioEntry extends Component {
       isRecording: false,
       blobURL: '',
       isBlocked: false,
-      menu: "rec",
+      // menu: "rec",
     }
   }
 
@@ -126,12 +137,36 @@ export class AudioEntry extends Component {
       Mp3Recorder
         .start()
         .then(() => {
+          
+          let start = document.getElementById("btnStart");
+          let stop = document.getElementById("btnStop");
+          start.style.display = "none"
+          console.log(stop.style.display)
+          if (stop.style.display === "") {
+            console.log('hidestart')
+            stop.style.display = "block";
+            start.style.display = "none"
+          } else {
+            stop.style.display = "none";
+          }
           this.setState({isRecording: true })
+          console.log('startran')
         }).catch((e) => console.error(e));
     }
   }
 
-  stop = () => {
+  stop = (e) => {
+    e.preventDefault();
+    let upload = document.getElementById("aUploadBtn");
+    let stop = document.getElementById("btnStop");
+    console.log(stop.style.display)
+    if (stop.style.display === "block") {
+      console.log('hidestart')
+      stop.style.display = "none";
+      upload.style.display = "block"
+    } else {
+      stop.style.display = "block";
+    }
     Mp3Recorder
       .stop()
       .getMp3()
@@ -139,26 +174,90 @@ export class AudioEntry extends Component {
         const blobURL = URL.createObjectURL(blob)
         this.setState({ blobURL, isRecording: false });
       }).catch((e) => console.log(e));
-    this.setState({
-      menu: "play"
-    })
+    // this.setState({
+    //   menu: "play"
+    // })
   };
   
 
   render() {
 
-    const recMenu = (
-      <form  className="aDateButtonCon">
-        <h5 className="aPageH5">Today's Date: {getDate()}</h5>
+    // const recMenu = (
+      
+    //   <form  className="dateButtonCon">
+    //     <h5 className="aPageH5">Today's Date: <span>{getDate()}</span></h5>
+    //     <div className="aBtnCon">
+    //       <button  className="aButton" id="btnStart" onClick={this.start} disabled={this.state.isRecording}>
+    //         <FontAwesomeIcon className="aIcon" icon={faRecordVinyl}/>
+    //       </button>
+    //       <button className="btnStop" id="btnStop" onClick={this.stop} disabled={!this.state.isRecording}>
+    //         <FontAwesomeIcon  icon={faHandPaper}/>
+    //       </button>
+        {/* </div>
+        <div className="aBtnCon"> */}
+    //       <button
+    //           id="vCancelBtn"
+    //           type="reset"
+    //           className="vCancelBtn"
+    //           onClick={e => this.props.handleCancel(e)}
+    //           >
+    //         <FontAwesomeIcon className="fStopIcon" icon={faSmokingBan}/>
+    //       </button>
+    //       <button className="aUploadBtn" id="aUploadBtn">
+    //         <FontAwesomeIcon className="aIcon" icon={faUpload}/>
+    //       </button>
+    //     </div>
+    //   </form>
+    // )
+    
+    // const playMenu = (
+    //   <form  className="aDateButtonCon">
+
+    //     <div className="playMenu">
+    //       <div className="vMenuCon">
+    //         <button className="btnRwn" >
+    //           <FontAwesomeIcon icon={faFastBackward}/>
+    //         </button>
+    //         <button className="btnPlay" onClick={this.play}>
+    //           <FontAwesomeIcon icon={faGooglePlay}/>
+    //           <span id="demo"></span>
+    //         </button>
+    //         <button className="btnFwd">
+    //           <FontAwesomeIcon icon={faFastForward}/>
+    //         </button> 
+    //         <button className="btnStop" onClick={this.stop}>
+    //           <FontAwesomeIcon icon={faHandPaper}/>
+    //         </button>
+    //       </div>
+    //       <div className="cancelUploadCon">
+    //         <button className="vCancelBtn" type="reset"
+    //           onClick={e => this.props.handleCancel(e)}
+    //         >
+    //           <FontAwesomeIcon icon={faSmokingBan}/>
+    //         </button>
+    //         <button className="btnUpload" type="submit" onClick={event => this.props.handleAudioEntry(event, this.state.blobURL)}>
+    //           <FontAwesomeIcon icon={faUpload}/>
+    //         </button>
+    //       </div>
+    //     </div>
+    //   </form>
+    // )
+    
+    return (
+      <section className="audioSection">
+        {/* {this.state.menu === "rec" && recMenu}
+        {this.state.menu === "play" && playMenu } */}
+        <form  className="dateButtonCon">
+        <h5 className="aPageH5">Today's Date: <span>{getDate()}</span></h5>
         <div className="aBtnCon">
-          <button  className="aButton" onClick={this.start} disabled={this.state.isRecording}>
-            <FontAwesomeIcon className="aIcon"icon={faRecordVinyl}/>
+          <button  className="aButton" id="btnStart" onClick={this.start} disabled={this.state.isRecording}>
+            <FontAwesomeIcon className="aIcon" icon={faRecordVinyl}/>
           </button>
-          <button className="btnStop" onClick={this.stop} disabled={!this.state.isRecording}>
+          <button className="btnStop" id="btnStop" onClick={this.stop} disabled={!this.state.isRecording}>
             <FontAwesomeIcon  icon={faHandPaper}/>
           </button>
-        </div>
-        <div className="aBtnCon">
+        {/* </div>
+        <div className="aBtnCon"> */}
           <button
               id="vCancelBtn"
               type="reset"
@@ -167,52 +266,18 @@ export class AudioEntry extends Component {
               >
             <FontAwesomeIcon className="fStopIcon" icon={faSmokingBan}/>
           </button>
-          <button className="aButton">
+          <button className="aUploadBtn" id="aUploadBtn" type="submit" onClick={event => this.props.handleAudioEntry(event, this.state.blobURL)}>
             <FontAwesomeIcon className="aIcon" icon={faUpload}/>
           </button>
         </div>
       </form>
-    )
-
-    const playMenu = (
-      <form  className="aDateButtonCon">
-
-        <div className="playMenu">
-          <div className="vMenuCon">
-            <button className="btnRwn" >
-              <FontAwesomeIcon icon={faFastBackward}/>
-            </button>
-            <button className="btnPlay" onClick={this.play}>
-              <FontAwesomeIcon icon={faGooglePlay}/>
-              <span id="demo"></span>
-            </button>
-            <button className="btnFwd">
-              <FontAwesomeIcon icon={faFastForward}/>
-            </button> 
-            <button className="btnStop" onClick={this.stop}>
-              <FontAwesomeIcon icon={faHandPaper}/>
-            </button>
-          </div>
-          <div className="cancelUploadCon">
-            <button className="vCancelBtn" type="reset"
-              onClick={e => this.props.handleCancel(e)}
-            >
-              <FontAwesomeIcon icon={faSmokingBan}/>
-            </button>
-            <button className="btnUpload" type="submit" onClick={event => this.props.handleAudioEntry(event, this.state.blobURL)}>
-              <FontAwesomeIcon icon={faUpload}/>
-            </button>
-          </div>
+      { this.state.isRecording === true &&
+        <div className="recMessage">
+            <p>Recording in progress.</p>
         </div>
-      </form>
-    )
-
-    return (
-      <section className="audioSection">
-        {this.state.menu === "rec" && recMenu}
-        {this.state.menu === "play" && playMenu }
-        {/* <audio controls="controls" src={this.state.blobURL} type="audio/mpeg"/> */}
-        <audio className="rhap_container aPlayer" src={this.state.blobURL} controls/>
+      } 
+      {/* <audio controls="controls" src={this.state.blobURL} type="audio/mpeg"/> */}
+        <AudioPlayer className="rhap_container aPlayer" src={this.state.blobURL} controls/>
       </section>
     )
   }
