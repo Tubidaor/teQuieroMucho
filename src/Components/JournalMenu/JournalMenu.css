@@ -80,7 +80,7 @@
   align-self: flex-end;
   display: block;
 }
-.aUploadBtn {
+.aUploadBtn, .btnUpload {
   padding: 0px;
   height: 10px;
   align-self: flex-end;
@@ -105,8 +105,13 @@
 }
 
 .vCon, .vPlay {
-  height: 300px;
-  width: 300px;
+  /* height: 300px; */
+  width: 280px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  display: block;
 }
 
 span {
@@ -120,11 +125,7 @@ span {
   margin-left: auto;
   margin-right: auto;
 }
-.recStopCon {
-  display: flex;
-  justify-content: space-evenly;
-  width: 60px;
-}
+
 .playMenu {
   display: flex;
   justify-content: space-evenly;
@@ -152,7 +153,7 @@ span {
   height: 25px;
   width: 25px;
 }
-.btnStartRec:hover, .btnStop , .vCancelBtn:hover, .btnRwn:hover, .btnPlay:hover, .btnFwd:hover, .aUploadBtn:hover, .jInputButton:hover, .pInputButton:hover, .aButton:hover {
+.btnStartRec:hover, .btnStop, .btnRwn:hover, .btnPlay:hover, .btnFwd:hover, .aUploadBtn:hover, .jInputButton:hover, .pInputButton:hover, .aButton:hover {
   cursor: pointer;
 }
 .btnStartRec:active, .btnStop, .vCancelBtn:active, .btnRwn:active, .btnPlay:active, .btnFwd:active, .aUploadBtn:active, .jInputButton:active, .pInputButton:active, .aButton:active {

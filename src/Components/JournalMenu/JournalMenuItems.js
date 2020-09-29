@@ -26,6 +26,7 @@ import {
 import { faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { faHandPaper } from '@fortawesome/free-regular-svg-icons';
 import AudioPlayer from 'react-h5-audio-player';
+import TeQuieroContext from '../../Context';
 
 
 
@@ -39,20 +40,22 @@ registerPlugin(
 
 
 
-export function JournalEntry(props) {
+export class JournalEntry extends Component {
+  static contextType = TeQuieroContext
+  componentDidMount() {
+    this.context.setError(null)
+  }
+  render() {
+    return (
+      <div className="jEntryCon">
+        <div className="dateButtonCon">
+          <h5 className="jPageH5">Today's Date: <span> {getDate()} </span> </h5>
+          <div className="aBtnCon">
 
- 
-
-  return(
-    <div className="jEntryCon">
-      <div className="dateButtonCon">
-        <h5 className="jPageH5">Today's Date: <span> {getDate()} </span> </h5>
-        <div className="aBtnCon">
-
-          <button className="jInputButton" onClick={e => props.handleCancel(e)}>
+          <button className="jInputButton" onClick={e => this.props.handleCancel(e)}>
             <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
           </button>
-          <button form="jForm" className="jInputButton" onClick={e => props.handlePostEntry(e)}>
+          <button form="jForm" className="jInputButton" onClick={e => this.props.handlePostEntry(e)}>
             <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
           </button>
         </div>
@@ -62,19 +65,26 @@ export function JournalEntry(props) {
       </form>    
         
     </div>
-  )
+    )
+  }
 }
 
-export function FileEntry(props) {
+export class FileEntry extends Component {
+static contextType = TeQuieroContext
 
+ componentDidMount() {
+  this.context.setError(null)
 
+ }
+
+ render() {
   return (
     <section className="pEntrySection">
       <div className="dateButtonCon">
         <h5 className="pPageH5">Today's Date: <span>{getDate()}</span></h5>
         <div className="aBtnCon">
 
-          <button className="pInputButton" onClick={e => props.handleCancel(e)}>
+          <button className="pInputButton" onClick={e => this.props.handleCancel(e)}>
             <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
           </button>
           <button form={"pForm"} className="pInputButton">
@@ -82,7 +92,7 @@ export function FileEntry(props) {
           </button>
         </div>
       </div>
-      <form className="upForm" action="/action_page.php" id="pForm" onSubmit={e => props.handleFileEntry(e)}>
+      <form className="upForm" action="/action_page.php" id="pForm" onSubmit={e => this.props.handleFileEntry(e)}>
         <input
           type="file"
           id="pInputBox"
@@ -95,11 +105,13 @@ export function FileEntry(props) {
       </form>   
     </section>
   )
+ }
 }
 
 const Mp3Recorder = new MicRecorder({bitRate: 128});
 
 export class AudioEntry extends Component {
+  static contextType = TeQuieroContext
 
   constructor(props) {
     super(props)
@@ -112,6 +124,8 @@ export class AudioEntry extends Component {
   }
 
   async componentDidMount() {
+    this.context.setError(null)
+
     
     this.stream = await navigator.mediaDevices.getUserMedia({audio: true},
     () => {
@@ -259,9 +273,9 @@ export class AudioEntry extends Component {
         {/* </div>
         <div className="aBtnCon"> */}
           <button
-              id="vCancelBtn"
+              id="pInputButton"
               type="reset"
-              className="vCancelBtn"
+              className="pInputButton"
               onClick={e => this.props.handleCancel(e)}
               >
             <FontAwesomeIcon className="fStopIcon" icon={faSmokingBan}/>
@@ -286,11 +300,12 @@ export class AudioEntry extends Component {
 
 
 export class VideoEntry extends Component {
+  static contextType = TeQuieroContext
   
   constructor(props) {
     super(props)
     this.state = {
-      recording: true,
+      recording: null,
       blocked: false,
       blobURL: "",
       vidURL: "",
@@ -305,6 +320,8 @@ export class VideoEntry extends Component {
     } 
   }
   async componentDidMount() {
+    this.context.setError(null)
+
     this.stream = await navigator.mediaDevices.getUserMedia({audio: true, video: true})
     this.mediaRecorder = new MediaRecorder(this.stream)
     this.videoRec = document.getElementById("vidRec")
@@ -330,6 +347,17 @@ export class VideoEntry extends Component {
 
   startRec = (e) => {
     e.preventDefault()
+    let start = document.getElementById("btnStart");
+    let stop = document.getElementById("btnStop");
+    start.style.display = "none"
+    console.log(stop.style.display)
+    if (stop.style.display === "") {
+      console.log('hidestart')
+      stop.style.display = "block";
+      start.style.display = "none"
+    } else {
+      stop.style.display = "none";
+    }
     this.mediaRecorder
       .start()
       
@@ -347,7 +375,22 @@ export class VideoEntry extends Component {
     
   
 
-  stopRec = () => {
+  stopRec = (e) => {
+    e.preventDefault()
+    let upload = document.getElementById("aUploadBtn");
+    let stop = document.getElementById("btnStop");
+    let vidRec = document.getElementById("vidRec")
+
+    console.log(stop.style.display)
+    if (stop.style.display === "block") {
+      console.log('hidestart')
+      stop.style.display = "none"
+      upload.style.display = "block"
+      vidRec.style.display = "none"
+    }
+    // } else {
+    //   stop.style.display = "block";
+    // }
     this.mediaRecorder
       .stop()
     this.stream.getTracks().forEach(function(track) {
@@ -386,35 +429,44 @@ export class VideoEntry extends Component {
   render() {
 
     //MAKE RECORD CHANGE COLOR WHILE RECORDING
-    const recordMenu = (
-      <>
-        <div className="recordMenu">
-          <h5 className="vPageH5">Today's Date: {getDate()}</h5>
-          <div className="recStopCon">
-            <button className="btnStartRec" onClick={this.startRec}>
-              <FontAwesomeIcon icon={faRecordVinyl}/>
-            </button>
-            <button className="btnStop" onClick={this.stopRec}>
-              <FontAwesomeIcon className="fStopIcon" icon={faHandPaper}/>
-            </button>
-          </div>
-          <div className="cancelCon">
-            <button
-              id="vCancelBtn"
-              type="reset"
-              className="vCancelBtn"
-              onClick={e => this.props.handleCancel(e)}
-              >
-              <FontAwesomeIcon icon={faSmokingBan}/>
-            </button>
-          </div>
-        </div>
-        <video id="vidRec" className="vCon"></video>
-      </>
-    )
+    // const recordMenu = (
+    //   <>
+    //     <form className="recordMenu">
+
+    //         <h5 className="vPageH5">Today's Date: {getDate()}</h5>
+    //         <div className="aBtnCon">
+    //           <button className="btnStartRec" onClick={this.startRec}>
+    //             <FontAwesomeIcon icon={faRecordVinyl}/>
+    //           </button>
+    //           <button className="btnStop" onClick={this.stopRec}>
+    //             <FontAwesomeIcon className="fStopIcon" icon={faHandPaper}/>
+    //           </button>
+          
+    //           <button
+    //             id="vCancelBtn"
+    //             type="reset"
+    //             className="vCancelBtn"
+    //             onClick={e => this.props.handleCancel(e)}
+    //             >
+    //             <FontAwesomeIcon icon={faSmokingBan}/>
+    //           </button>
+              
+    //           <button
+    //             className="btnUpload"
+    //             type="submit"
+    //             onClick={event => this.props.handleVideoEntry(event, this.state.vidURL)
+    //             }>
+    //             <FontAwesomeIcon icon={faUpload}/>
+    //           </button>
+
+    //       </div>
+        
+    //     <video id="vidRec" className="vCon"></video>
+    //   </>
+    // )
     
     //make handstop multiple colors of raibow as to not have it be hands
-    const playMenu = (
+    {/* const playMenu = (
       <>
         <div className="playMenu">
           <div className="vMenuCon">
@@ -445,16 +497,67 @@ export class VideoEntry extends Component {
         </div>
         <video id="vidPlay" className="vPlay" onTimeUpdate={this.updateTime}></video>
       </>
-    )
+    ) */}
     
     let { recording } = this.state
 
     return (
       <section className="vSection">
-        <form className="vForm" id="vForm">
+        {/* <form className="vForm" id="vForm">
           {recording === true && recordMenu}
           {recording === false && playMenu}
+        </form> */}
+        <form className="dateButtonCon">
+
+          <h5 className="aPageH5">Today's Date: <span>{getDate()}</span> </h5>
+          <div className="aBtnCon">
+            <button  className="aButton" id="btnStart" onClick={this.startRec}>
+              <FontAwesomeIcon icon={faRecordVinyl}/>
+            </button>
+            <button className="btnStop" id="btnStop" onClick={this.stopRec}>
+              <FontAwesomeIcon className="fStopIcon" icon={faHandPaper}/>
+            </button>
+
+            <button
+              id="pInputButton"
+              type="reset"
+              className="pInputButton"
+              onClick={e => this.props.handleCancel(e)}
+              >
+              <FontAwesomeIcon icon={faSmokingBan}/>
+            </button>
+  
+            <button
+              className="aUploadBtn"
+              type="submit"
+              id="aUploadBtn"
+              onClick={event => this.props.handleVideoEntry(event, this.state.vidURL)
+              }>
+              <FontAwesomeIcon icon={faUpload}/>
+            </button>
+
+          </div>
         </form>
+        { recording === true &&
+        <div className="recMessage">
+            <p>Recording in progress.</p>
+        </div>
+      } 
+      
+      <video
+        id="vidRec"
+        className="vCon"
+      />
+        { recording === false &&
+          <video
+            id="vidPlay"
+            className="vPlay"
+            // onTimeUpdate={this.updateTime}
+            controls
+          >
+          </video>
+        }
+
       </section>
     )
   }
