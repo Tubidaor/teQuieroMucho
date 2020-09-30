@@ -38,7 +38,7 @@ export default function RelMenu(props) {
           <FontAwesomeIcon icon={faQuestionCircle}/>
         </span>
         <span>
-          Add Question
+          Add Q's
         </span>
       </li>
     </ul>

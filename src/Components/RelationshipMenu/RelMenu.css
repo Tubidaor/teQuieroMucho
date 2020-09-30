@@ -1,15 +1,29 @@
 .relMenuCon {
-  top: 65px;
+  top: 50px;
   display: flex;
   justify-content: space-evenly;
   position: fixed;
   width: 100%;
+  background-color: rgba(0 , 0, 0, .75);
+  padding: 5px;
+  color: rgba(210, 217, 220, 1);
+  font-family: "Nothing You Could Do", cursive;
+  height: 30px;
 }
 .relMenuItem {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
   text-decoration: none;
+}
+.relMenuItem span {
+  margin-right: 2px;
+}
+.relMenuItem:hover {
+  cursor: pointer;
+}
+.relMenuItem:active {
+  color: rgba(0 , 0, 0, .75)
 }
 .alertsLi { 
   list-style: none;
@@ -32,29 +46,55 @@
   margin-right: auto;
   margin-top: 10px;
 }
-
+.youAnlCon h2 {
+  text-align: center;
+  /* background-color: rgba(0 , 0, 0, .75); */
+}
+.youAnlCon select {
+  background-color: rgba(0 , 0, 0, .75);
+  color: rgba(210, 217, 220, 1);
+  border: none;
+  border-radius: 5px;
+}
 .anlCon, .alertsCon {
-  margin-top: 110px;
+  margin-top: 20px;
 }
 
 .anlBtnCon {
   display: flex;
   justify-content: space-evenly;
-  width: 200px;
+  width: 210px;
   margin-left: auto;
   margin-right: auto;
 }
 .anlYouBtn {
-  background-color: hotpink;
+  background-color: rgba(0 , 0, 0, .75);
   width: 100px;
+  color: #ffff00;
+  font-weight: bold;
+  font-family: "Nothing You Could Do", cursive;
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
 }
 
 .anlRelBtn {
-  background-color: black;
-  color: hotpink;
+  background-color: rgba(0 , 0, 0, .75);
   width: 100px;
+  color: #ff0000;
+  font-weight: bold;
+  font-family: "Nothing You Could Do", cursive;
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
 }
 
+.anlYouBtn:active, .anlRelBtn:active {
+  color: rgba(0 , 0, 0, .75);
+}
+.anlYouBtn:hover, .anlRelBtn:hover {
+  cursor: pointer;
+}
 .anlH2 {
   text-align: center;
   margin-top: 10px;

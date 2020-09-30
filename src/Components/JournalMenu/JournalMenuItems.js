@@ -119,7 +119,6 @@ export class AudioEntry extends Component {
       isRecording: false,
       blobURL: '',
       isBlocked: false,
-      // menu: "rec",
     }
   }
 
@@ -188,79 +187,13 @@ export class AudioEntry extends Component {
         const blobURL = URL.createObjectURL(blob)
         this.setState({ blobURL, isRecording: false });
       }).catch((e) => console.log(e));
-    // this.setState({
-    //   menu: "play"
-    // })
   };
   
 
   render() {
-
-    // const recMenu = (
-      
-    //   <form  className="dateButtonCon">
-    //     <h5 className="aPageH5">Today's Date: <span>{getDate()}</span></h5>
-    //     <div className="aBtnCon">
-    //       <button  className="aButton" id="btnStart" onClick={this.start} disabled={this.state.isRecording}>
-    //         <FontAwesomeIcon className="aIcon" icon={faRecordVinyl}/>
-    //       </button>
-    //       <button className="btnStop" id="btnStop" onClick={this.stop} disabled={!this.state.isRecording}>
-    //         <FontAwesomeIcon  icon={faHandPaper}/>
-    //       </button>
-        {/* </div>
-        <div className="aBtnCon"> */}
-    //       <button
-    //           id="vCancelBtn"
-    //           type="reset"
-    //           className="vCancelBtn"
-    //           onClick={e => this.props.handleCancel(e)}
-    //           >
-    //         <FontAwesomeIcon className="fStopIcon" icon={faSmokingBan}/>
-    //       </button>
-    //       <button className="aUploadBtn" id="aUploadBtn">
-    //         <FontAwesomeIcon className="aIcon" icon={faUpload}/>
-    //       </button>
-    //     </div>
-    //   </form>
-    // )
-    
-    // const playMenu = (
-    //   <form  className="aDateButtonCon">
-
-    //     <div className="playMenu">
-    //       <div className="vMenuCon">
-    //         <button className="btnRwn" >
-    //           <FontAwesomeIcon icon={faFastBackward}/>
-    //         </button>
-    //         <button className="btnPlay" onClick={this.play}>
-    //           <FontAwesomeIcon icon={faGooglePlay}/>
-    //           <span id="demo"></span>
-    //         </button>
-    //         <button className="btnFwd">
-    //           <FontAwesomeIcon icon={faFastForward}/>
-    //         </button> 
-    //         <button className="btnStop" onClick={this.stop}>
-    //           <FontAwesomeIcon icon={faHandPaper}/>
-    //         </button>
-    //       </div>
-    //       <div className="cancelUploadCon">
-    //         <button className="vCancelBtn" type="reset"
-    //           onClick={e => this.props.handleCancel(e)}
-    //         >
-    //           <FontAwesomeIcon icon={faSmokingBan}/>
-    //         </button>
-    //         <button className="btnUpload" type="submit" onClick={event => this.props.handleAudioEntry(event, this.state.blobURL)}>
-    //           <FontAwesomeIcon icon={faUpload}/>
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </form>
-    // )
     
     return (
       <section className="audioSection">
-        {/* {this.state.menu === "rec" && recMenu}
-        {this.state.menu === "play" && playMenu } */}
         <form  className="dateButtonCon">
         <h5 className="aPageH5">Today's Date: <span>{getDate()}</span></h5>
         <div className="aBtnCon">
@@ -270,8 +203,7 @@ export class AudioEntry extends Component {
           <button className="btnStop" id="btnStop" onClick={this.stop} disabled={!this.state.isRecording}>
             <FontAwesomeIcon  icon={faHandPaper}/>
           </button>
-        {/* </div>
-        <div className="aBtnCon"> */}
+      
           <button
               id="pInputButton"
               type="reset"
@@ -290,7 +222,6 @@ export class AudioEntry extends Component {
             <p>Recording in progress.</p>
         </div>
       } 
-      {/* <audio controls="controls" src={this.state.blobURL} type="audio/mpeg"/> */}
         <AudioPlayer className="rhap_container aPlayer" src={this.state.blobURL} controls/>
       </section>
     )
@@ -388,9 +319,7 @@ export class VideoEntry extends Component {
       upload.style.display = "block"
       vidRec.style.display = "none"
     }
-    // } else {
-    //   stop.style.display = "block";
-    // }
+    
     this.mediaRecorder
       .stop()
     this.stream.getTracks().forEach(function(track) {
@@ -409,104 +338,29 @@ export class VideoEntry extends Component {
     }
   }
 
-  play = () => {
-    this.videoPlay.play()
-  }
-  stop = () => {
-    this.videoPlay.pause()
-    this.videoPlay.currentTime = 0
-  }
+  // play = () => {
+  //   this.videoPlay.play()
+  // }
+  // stop = () => {
+  //   this.videoPlay.pause()
+  //   this.videoPlay.currentTime = 0
+  // }
 
-  updateTime = () => {
-      let time = this.videoPlay.currentTime.toFixed(0)
-      document.getElementById("demo").innerHTML = time
-  }
+  // updateTime = () => {
+  //     let time = this.videoPlay.currentTime.toFixed(0)
+  //     document.getElementById("demo").innerHTML = time
+  // }
   
 
   handleVideoSubmit = (e) => {
     e.preventDefault();
   } 
   render() {
-
-    //MAKE RECORD CHANGE COLOR WHILE RECORDING
-    // const recordMenu = (
-    //   <>
-    //     <form className="recordMenu">
-
-    //         <h5 className="vPageH5">Today's Date: {getDate()}</h5>
-    //         <div className="aBtnCon">
-    //           <button className="btnStartRec" onClick={this.startRec}>
-    //             <FontAwesomeIcon icon={faRecordVinyl}/>
-    //           </button>
-    //           <button className="btnStop" onClick={this.stopRec}>
-    //             <FontAwesomeIcon className="fStopIcon" icon={faHandPaper}/>
-    //           </button>
-          
-    //           <button
-    //             id="vCancelBtn"
-    //             type="reset"
-    //             className="vCancelBtn"
-    //             onClick={e => this.props.handleCancel(e)}
-    //             >
-    //             <FontAwesomeIcon icon={faSmokingBan}/>
-    //           </button>
-              
-    //           <button
-    //             className="btnUpload"
-    //             type="submit"
-    //             onClick={event => this.props.handleVideoEntry(event, this.state.vidURL)
-    //             }>
-    //             <FontAwesomeIcon icon={faUpload}/>
-    //           </button>
-
-    //       </div>
-        
-    //     <video id="vidRec" className="vCon"></video>
-    //   </>
-    // )
-    
-    //make handstop multiple colors of raibow as to not have it be hands
-    {/* const playMenu = (
-      <>
-        <div className="playMenu">
-          <div className="vMenuCon">
-            <button className="btnRwn" >
-              <FontAwesomeIcon icon={faFastBackward}/>
-            </button>
-            <button className="btnPlay" onClick={this.play}>
-              <FontAwesomeIcon icon={faGooglePlay}/>
-              <span id="demo"></span>
-            </button>
-            <button className="btnFwd">
-              <FontAwesomeIcon icon={faFastForward}/>
-            </button> 
-            <button className="btnStop" onClick={this.stop}>
-              <FontAwesomeIcon icon={faHandPaper}/>
-            </button>
-          </div>
-          <div className="cancelUploadCon">
-            <button className="vCancelBtn" type="reset"
-              onClick={e => this.props.handleCancel(e)}
-            >
-              <FontAwesomeIcon icon={faSmokingBan}/>
-            </button>
-            <button className="btnUpload" type="submit" onClick={event => this.props.handleVideoEntry(event, this.state.vidURL)}>
-              <FontAwesomeIcon icon={faUpload}/>
-            </button>
-          </div>
-        </div>
-        <video id="vidPlay" className="vPlay" onTimeUpdate={this.updateTime}></video>
-      </>
-    ) */}
-    
+      
     let { recording } = this.state
 
     return (
       <section className="vSection">
-        {/* <form className="vForm" id="vForm">
-          {recording === true && recordMenu}
-          {recording === false && playMenu}
-        </form> */}
         <form className="dateButtonCon">
 
           <h5 className="aPageH5">Today's Date: <span>{getDate()}</span> </h5>
@@ -552,7 +406,6 @@ export class VideoEntry extends Component {
           <video
             id="vidPlay"
             className="vPlay"
-            // onTimeUpdate={this.updateTime}
             controls
           >
           </video>

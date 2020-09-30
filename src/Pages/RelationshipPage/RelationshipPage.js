@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RelMenu from '../../Components/RelationshipMenu/RelMenu';
 import Questions from '../../Components/Questions/Questions';
 import { Analytics, Alerts, AddIssue } from '../../Components/RelationshipMenu/RelMenuItems';
+import './RelationshipPage.css'
 
 export default class RelationshipPage extends Component {
   state = {

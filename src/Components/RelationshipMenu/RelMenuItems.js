@@ -100,7 +100,7 @@ export class Analytics extends Component {
       
     const displayYouSec = () => {
       return (
-        <div className="youAnlSection">
+        <div className="youAnlCon">
           <h2><select id='option' onChange={this.handleQChange}>${questionOptions}</select></h2>
           <Graphs
             zoomDomain={zoomDomain}
@@ -116,7 +116,7 @@ export class Analytics extends Component {
 
     const displayYourRelSec = () => {
       return (
-        <div className="relAnlSection">
+        <div className="relAnlCon">
           <h2><select id='option' onChange={this.handleQChange}>${questionOptions}</select></h2>
           <Graphs
             zoomDomain={zoomDomain}
@@ -138,14 +138,14 @@ export class Analytics extends Component {
     console.log('alert data', this.state.alertData)
     return (
 
-      <section className="anlCon">
+      <div className="anlCon">
         <div className="anlBtnCon">
           <button className="anlYouBtn" onClick={e => this.handleClickYou(e)}>You</button>
           <button className="anlRelBtn" onClick={e => this.handleClickRel(e)}>Relationship</button>
         </div>
         <h2 className="anlH2">{page === 'you'? 'User Data': 'Relationship Data'}</h2>
         { page === 'you'? displayYouSec(): displayYourRelSec()}
-      </section>
+      </div>
 
     )
   }
