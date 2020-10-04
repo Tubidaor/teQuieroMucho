@@ -1,0 +1,12 @@
+.zoomCon {
+  /* background-color: rgba( 0, 0, 0, .6); */
+
+  border-radius: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+.graphsCon {
+  margin-top: 10px;
+}

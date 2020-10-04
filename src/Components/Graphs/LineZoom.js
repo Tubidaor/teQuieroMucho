@@ -5,7 +5,9 @@ import {
   VictoryLine,
   VictoryAxis,
   VictoryBrushContainer,
-  VictoryLegend
+  VictoryLegend,
+  Background, 
+  VictoryLabel
 } from 'victory';
 
 
@@ -23,14 +25,38 @@ export default class VictoryZoom extends Component {
   }
 
   render() {
-    // const xAxisTicmarks = () => {
-    //   let tickmarks = []
-    //   const {userJoyData} = this.props
-    //   userJoyData.map(x => tickmarks.push(x.key))
-    //   return tickmarks
-    // }
     const { lineZoomData } = this.props
     
+    function xAxisTicmarks() {
+      let tickmarks = []
+      if(lineZoomData === undefined) {
+        return []
+      }
+      lineZoomData.joy.map(x => tickmarks.push(x.x))
+      console.log("tickmarks", tickmarks)
+      return tickmarks
+    }
+    function formatDate(date) {
+      const d = new Date(date)
+      const month = d.getMonth() + 1
+      const year = d.getFullYear()
+      const day = d.getDate()
+      const fDate = month + "/" + day + "/" + year
+      console.log(
+        { rdate: d,
+          fDate: fDate,
+          month,
+          day,
+          year
+        }
+        )
+      return fDate
+
+    }
+
+    const trialFormat = xAxisTicmarks().map(date => formatDate(date))
+    console.log(trialFormat)
+
     function userJoyData() {
       if(lineZoomData === undefined) {
         return []
@@ -74,9 +100,14 @@ export default class VictoryZoom extends Component {
 
       return lineZoomData.question
     }
-
+  
+    const strokeDasharray = "10, 5";
+    const strokeLinecap = "round";
+    const strokeLinejoin = "round";
+    console.log("lineZoomData", lineZoomData)
+    console.log("xAxixLength", xAxisTicmarks()[47])
     return (
-      <div>
+      <div className="zoomCon">
         <VictoryChart width={300} height={200} scale={{ x: "time" }}
           containerComponent={
             <VictoryZoomContainer
@@ -85,8 +116,67 @@ export default class VictoryZoom extends Component {
               onZoomDomainChange={this.handleZoom.bind(this)}
             />
           }
+          style={{
+            parent: {
+              border: "1px solid #ccc",
+              borderRadius: "10px",
+              backgroundColor: "rgba( 0, 0, 0, .75)",
+              grid: {
+                fill: "white",
+                stroke: "white",
+                strokeDasharray,
+                strokeLinecap,
+                strokeLinejoin,
+                pointerEvents: "painted"
+              },
+            },
+            background: {
+              fill: "rgba( 0, 0, 0, .75)",
+              grid: {
+                fill: "white",
+                stroke: "white",
+                strokeDasharray,
+                strokeLinecap,
+                strokeLinejoin,
+                pointerEvents: "painted"
+              },
+              axis: {
+                fill: "white",
+                stroke: "white",
+                strokeWidth: 2,
+                strokeLinecap,
+                strokeLinejoin
+              },
+            },
+            grid: {
+              fill: "white",
+              stroke: "white",
+              strokeDasharray,
+              strokeLinecap,
+              strokeLinejoin,
+              pointerEvents: "painted"
+            },
+            axis: {
+              fill: "white",
+              stroke: "white",
+              strokeWidth: 2,
+              strokeLinecap,
+              strokeLinejoin
+            },
+            ticks: {
+              fill: "white",
+              size: 5,
+              stroke: "white",
+              strokeWidth: 1,
+              strokeLinecap,
+              strokeLinejoin
+            },
+            
+
+          }}
+          // backgroundComponent={<Background y={40} x={10} height={110} width={250}/>}
         >
-          <VictoryLegend x={50} y={5}
+          <VictoryLegend x={60} y={5}
             title={questionTitle()}
             centerTitle
             orientation="horizontal"
@@ -94,10 +184,12 @@ export default class VictoryZoom extends Component {
             height={50}
             width={50}
             style={{
-              data: { fill: "blue", stroke: "navy", strokeWidth: 2 },
-              labels: { fill: "black", fontSize: 6 },
-              border: { stroke: "black" },
-              title: {fontSize: 8 }
+              // data: { fill: "black", stroke: "rgba(210, 217, 220, 1)", strokeWidth: 2 },
+              labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
+              // border: { fill: "rgba( 0, 0, 0, .75)", stroke: "black"},
+              border: { borderRadius: "10px", stroke: "#0652c5", borderRadius: "#0652c5"},
+
+              title: {fill: "rgba(210, 217, 220, 1)", fontSize: 8, fontFamily: "Buda, cursive", fontWeight: "bold" },
             }}
             data={[
               { name: "Joy", symbol: { fill: "#ffff00" } },
@@ -108,6 +200,7 @@ export default class VictoryZoom extends Component {
               { name: "Overall", symbol: { fill: "#0652c5" } }
               
             ]}
+
             />
             <VictoryLine
               style={{
@@ -158,8 +251,61 @@ export default class VictoryZoom extends Component {
         // x="key"
         // y="b"
             />
+            <VictoryAxis
+              dependentAxis={true}
+              style={
+                { 
+                  tickLabels: { 
+                    fill: "rgba(210, 217, 220, 1)",
+                    fontSize: 8,
+                    padding: 2,
+                    fontFamily: "Buda, cursive",
+                    fontWeight: "bold"
 
-            {/* <VictoryAxis tickValues={xAxisTicmarks()} tickCount={3} tickFormat={date => date.toLocaleString('en-us', { day: 'numeric', month:'short', year: 'numeric' })}/> */}
+                  // grid: { stroke: "rgba(210, 217, 220, 1)",
+                  // strokeWidth: 0.5 },
+                  },
+                  grid: { stroke: "rgba(210, 217, 220, 1)",
+                  strokeWidth: 0.5 },
+                
+                }}
+              tickFormat={t => `${t}%`}
+                
+                />
+            <VictoryAxis
+              tickValues={xAxisTicmarks()}
+              tickCount={4}
+              label= "Date"
+              // scale={{ x: "linear" }}
+              // maxDomain={{ x: xAxisTicmarks()[47] }}
+              // minDomain={{ x: xAxisTicmarks()[0] }}
+
+              width={50}
+              tickFormat={t => formatDate(t)}
+              style={
+                { 
+                  tickLabels: { 
+                    fill: "rgba(210, 217, 220, 1)",
+                    fontSize: 8,
+                    padding: 2,
+                    fontFamily: "Buda, cursive",
+                    fontWeight: "bold"
+
+                  // grid: { stroke: "rgba(210, 217, 220, 1)",
+                  // strokeWidth: 0.5 },
+                  },
+                  axisLabel: {
+                    fontSize: 10,
+                    fontFamily: "Buda, cursive",
+                    fill: "rgba(210, 217, 220, 1)",
+                    fontWeight: "bold",
+                    padding: 35,
+
+                  },
+                }
+                }
+                tickLabelComponent={<VictoryLabel dy={15} angle={-45}/>}
+              />
             
 
           </VictoryChart>

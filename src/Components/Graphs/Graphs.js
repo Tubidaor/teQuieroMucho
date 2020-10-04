@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import VictoryZoom from './LineZoom';
 import Spiderweb from './Spiderweb';
 import StackedBars from './StackedBars';
-
+import './Graphs.css'
 
 
 export default class Graphs extends Component {
