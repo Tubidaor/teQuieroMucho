@@ -143,8 +143,21 @@ d
       <VictoryChart polar
         theme={VictoryTheme.material}
         domain={{ y: [ 0, 1 ] }}
+        style={
+          {
+            parent: {
+              backgroundColor: "rgba( 0, 0, 0, .75)",
+              borderRadius: 10,
+              border: "2px rgba(210, 217, 220, 1) solid",
+              width: "90%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginTop: 10
+            } 
+          }
+        }
       >
-        <VictoryGroup colorScale={["gold", "orange"]}
+        <VictoryGroup colorScale={["transparent", "orange"]}
           style={{ data: { fillOpacity: 0.2, strokeWidth: 2 } }}
         >
           {
@@ -159,10 +172,17 @@ d
           return (
             <VictoryPolarAxis key={i} dependentAxis
               style={{
-                axisLabel: { padding: 10 },
+                axisLabel: { padding: 30, fill: "rgba(210, 217, 220, 1)" },
                 axis: { stroke: "none" },
-                grid: { stroke: "grey", strokeWidth: 0.25, opacity: 0.5 }
+                grid: { stroke: "rgba(210, 217, 220, 1)", strokeWidth: 0.25, opacity: 0.5 },
+                tickLabels: { 
+                  fill: "rgba(210, 217, 220, 1)",
+                  fontSize: 14,
+                  padding: 2,
+                  fontFamily: "Buda, cursive",
+                  fontWeight: "bold"
               }}
+            }
               tickLabelComponent={
                 <VictoryLabel labelPlacement="vertical"/>
               }
@@ -179,7 +199,7 @@ d
           tickFormat={() => ""}
           style={{
             axis: { stroke: "none" },
-            grid: { stroke: "grey", opacity: 0.5 }
+            grid: { stroke: "grey", opacity: 0.5, fill: "rgba( 0, 0, 0, .75)" }
           }}
         />
 

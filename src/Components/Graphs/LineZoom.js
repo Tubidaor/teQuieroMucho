@@ -33,7 +33,7 @@ export default class VictoryZoom extends Component {
         return []
       }
       lineZoomData.joy.map(x => tickmarks.push(x.x))
-      console.log("tickmarks", tickmarks)
+      // console.log("tickmarks", tickmarks)
       return tickmarks
     }
     function formatDate(date) {
@@ -42,20 +42,20 @@ export default class VictoryZoom extends Component {
       const year = d.getFullYear()
       const day = d.getDate()
       const fDate = month + "/" + day + "/" + year
-      console.log(
-        { rdate: d,
-          fDate: fDate,
-          month,
-          day,
-          year
-        }
-        )
+      // console.log(
+      //   { rdate: d,
+      //     fDate: fDate,
+      //     month,
+      //     day,
+      //     year
+      //   }
+       // )
       return fDate
 
     }
 
     const trialFormat = xAxisTicmarks().map(date => formatDate(date))
-    console.log(trialFormat)
+    // console.log(trialFormat)
 
     function userJoyData() {
       if(lineZoomData === undefined) {
@@ -104,8 +104,8 @@ export default class VictoryZoom extends Component {
     const strokeDasharray = "10, 5";
     const strokeLinecap = "round";
     const strokeLinejoin = "round";
-    console.log("lineZoomData", lineZoomData)
-    console.log("xAxixLength", xAxisTicmarks()[47])
+    // console.log("lineZoomData", lineZoomData)
+    // console.log("xAxixLength", xAxisTicmarks()[47])
     return (
       <div className="zoomCon">
         <VictoryChart width={300} height={200} scale={{ x: "time" }}
@@ -118,59 +118,59 @@ export default class VictoryZoom extends Component {
           }
           style={{
             parent: {
-              border: "1px solid #ccc",
+              border: "2px solid rgba(210, 217, 220, 1)",
               borderRadius: "10px",
               backgroundColor: "rgba( 0, 0, 0, .75)",
-              grid: {
-                fill: "white",
-                stroke: "white",
-                strokeDasharray,
-                strokeLinecap,
-                strokeLinejoin,
-                pointerEvents: "painted"
-              },
+              // grid: {
+              //   fill: "white",
+              //   stroke: "white",
+              //   strokeDasharray,
+              //   strokeLinecap,
+              //   strokeLinejoin,
+              //   pointerEvents: "painted"
+              // },
             },
-            background: {
-              fill: "rgba( 0, 0, 0, .75)",
-              grid: {
-                fill: "white",
-                stroke: "white",
-                strokeDasharray,
-                strokeLinecap,
-                strokeLinejoin,
-                pointerEvents: "painted"
-              },
-              axis: {
-                fill: "white",
-                stroke: "white",
-                strokeWidth: 2,
-                strokeLinecap,
-                strokeLinejoin
-              },
-            },
-            grid: {
-              fill: "white",
-              stroke: "white",
-              strokeDasharray,
-              strokeLinecap,
-              strokeLinejoin,
-              pointerEvents: "painted"
-            },
-            axis: {
-              fill: "white",
-              stroke: "white",
-              strokeWidth: 2,
-              strokeLinecap,
-              strokeLinejoin
-            },
-            ticks: {
-              fill: "white",
-              size: 5,
-              stroke: "white",
-              strokeWidth: 1,
-              strokeLinecap,
-              strokeLinejoin
-            },
+            // background: {
+            //   fill: "rgba( 0, 0, 0, .75)",
+            //   grid: {
+            //     fill: "white",
+            //     stroke: "white",
+            //     strokeDasharray,
+            //     strokeLinecap,
+            //     strokeLinejoin,
+            //     pointerEvents: "painted"
+            //   },
+              // axis: {
+              //   fill: "white",
+              //   stroke: "white",
+              //   strokeWidth: 2,
+              //   strokeLinecap,
+              //   strokeLinejoin
+              // },
+            // },
+            // grid: {
+            //   fill: "white",
+            //   stroke: "white",
+            //   strokeDasharray,
+            //   strokeLinecap,
+            //   strokeLinejoin,
+            //   pointerEvents: "painted"
+            // },
+            // axis: {
+            //   fill: "white",
+            //   stroke: "white",
+            //   strokeWidth: 2,
+            //   strokeLinecap,
+            //   strokeLinejoin
+            // },
+            // ticks: {
+            //   fill: "white",
+            //   size: 5,
+            //   stroke: "white",
+            //   strokeWidth: 1,
+            //   strokeLinecap,
+            //   strokeLinejoin
+            // },
             
 
           }}
@@ -187,7 +187,7 @@ export default class VictoryZoom extends Component {
               // data: { fill: "black", stroke: "rgba(210, 217, 220, 1)", strokeWidth: 2 },
               labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
               // border: { fill: "rgba( 0, 0, 0, .75)", stroke: "black"},
-              border: { borderRadius: "10px", stroke: "#0652c5", borderRadius: "#0652c5"},
+              border: { borderRadius: "10px", stroke: "#0652c5"},
 
               title: {fill: "rgba(210, 217, 220, 1)", fontSize: 8, fontFamily: "Buda, cursive", fontWeight: "bold" },
             }}
