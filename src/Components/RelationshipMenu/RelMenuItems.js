@@ -135,6 +135,7 @@ export class Analytics extends Component {
     const { page } = this.state
 
     console.log(userQuestionData)
+    console.log("userData", this.state.userData)
     console.log('alert data', this.state.alertData)
     return (
 

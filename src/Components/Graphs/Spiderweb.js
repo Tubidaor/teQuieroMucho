@@ -67,6 +67,8 @@ export default class Spiderweb extends Component {
     let fear = []
     let mood = []
 
+    console.log("uQData", userQuestionData)
+
     userQuestionData.forEach(question => {
       
       for (let i = 0; i < question.joy.length; i++) {
@@ -98,7 +100,7 @@ export default class Spiderweb extends Component {
 
   }
 
-d
+
   render() {
 
     console.log(this.props.userData)
@@ -136,7 +138,11 @@ d
     const spiderData = this.processData(this.totalAvgScores(userQuestionData))
     const maxima = this.getMaxima(this.totalAvgScores(userQuestionData))
 
-    console.log(spiderData, maxima)
+    console.log({
+      userQuestionData: userQuestionData[0],
+      spiderData: spiderData,
+      userData: userData
+    })
     console.log(this.processData(characterData), this.getMaxima(characterData))
 
     return (
@@ -157,8 +163,8 @@ d
           }
         }
       >
-        <VictoryGroup colorScale={["transparent", "orange"]}
-          style={{ data: { fillOpacity: 0.2, strokeWidth: 2 } }}
+        <VictoryGroup colorScale={["transparent", "#0652c5"]}
+          style={{ data: { fillOpacity: 0.4, strokeWidth: 2 } }}
         >
           {
               spiderData.map((data, i) => {
