@@ -105,8 +105,7 @@ export class Analytics extends Component {
           <Graphs
             zoomDomain={zoomDomain}
             lineZoomData={userQuestionData[this.state.qIndex]}
-            userData={this.state.userData}
-            relData={this.state.relData}
+            userData={userQuestionData[this.state.qIndex]}
             page={this.state.page}>
 
           </Graphs>

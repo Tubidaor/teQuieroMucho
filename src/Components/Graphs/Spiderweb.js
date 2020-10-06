@@ -35,6 +35,10 @@ export default class Spiderweb extends Component {
 
   
   getMaxima(data) {
+    console.log(data)
+    if(data.length === 0) {
+      return []
+    }
     const groupedData = Object.keys(data[0]).reduce((memo, key) => {
     
       memo[key] = data.map((d) => d[key]);
@@ -68,9 +72,11 @@ export default class Spiderweb extends Component {
     let mood = []
 
     console.log("uQData", userQuestionData)
-
-    userQuestionData.forEach(question => {
-      
+    const question = userQuestionData
+    // userQuestionData.forEach(question => {
+    if(question === undefined) {
+      return []
+    } else {
       for (let i = 0; i < question.joy.length; i++) {
         joy.push(question.joy[i].y)
         disgust.push(question.disgust[i].y)
@@ -81,7 +87,7 @@ export default class Spiderweb extends Component {
 
       }
 
-    })
+    // })
     
     function arrAvg(arr) {
       return arr.reduce((a,b) => a + b, 0) / arr.length
@@ -97,53 +103,52 @@ export default class Spiderweb extends Component {
       { Joy: 100, Disgust: 100, Sadness: 100, Anger: 100, Fear: 100, Overall: 100 },
       { Joy: avgJoy, Disgust: avgDisgust, Sadness: avgSadness, Anger: avgAnger, Fear: avgFear, Overall: avgMood }
     ]
-
+  }
   }
 
 
   render() {
 
     console.log(this.props.userData)
-    const userQuestions = []
+    // const userQuestions = []
     let {userData} = this.props
-    if( this.props.page === 'relationship') {
-      userData = this.props.relData
-    }
-    userData.map(qs => userQuestions.push(qs.question))
-    const uniqueUserQuestions = userQuestions.filter((v, i, a) => a.indexOf(v) === i);
-    const userQuestionData = [] 
-    uniqueUserQuestions.map(qs => userQuestionData.push({ question: qs, joy:[], disgust:[], sadness: [], anger: [], fear: [], mood: [] }))
+    // if( this.props.page === 'relationship') {
+    //   userData = this.props.relData
+    // }
+    // userData.map(qs => userQuestions.push(qs.question))
+    // const uniqueUserQuestions = userQuestions.filter((v, i, a) => a.indexOf(v) === i);
+    // const userQuestionData = [] 
+    // uniqueUserQuestions.map(qs => userQuestionData.push({ question: qs, joy:[], disgust:[], sadness: [], anger: [], fear: [], mood: [] }))
     
     
-    const userJoyData = []
-    userData.map(data => userJoyData.push({key: new Date(data.date_created), b: data.joy } ))
-    if(userQuestionData.length > 0) {
-      for(let i = 0; i < userQuestionData.length; i++) {
+    // const userJoyData = []
+    // userData.map(data => userJoyData.push({key: new Date(data.date_created), b: data.joy } ))
+    // if(userQuestionData.length > 0) {
+    //   for(let i = 0; i < userQuestionData.length; i++) {
         
-        for(let j = 0; j < userData.length; j++) {
-          if(userQuestionData[i].question === userData[j].question) {
-            userQuestionData[i].joy.push({x: userData[j].date_created, y: userData[j].joy})
-            userQuestionData[i].disgust.push({x: userData[j].date_created, y: userData[j].disgust})
-            userQuestionData[i].sadness.push({x: userData[j].date_created, y: userData[j].sadness})
-            userQuestionData[i].anger.push({x: userData[j].date_created, y: userData[j].anger})
-            userQuestionData[i].fear.push({x: userData[j].date_created, y: userData[j].fear})
-            userQuestionData[i].mood.push({x: userData[j].date_created, y: userData[j].mood})
+    //     for(let j = 0; j < userData.length; j++) {
+    //       if(userQuestionData[i].question === userData[j].question) {
+    //         userQuestionData[i].joy.push({x: userData[j].date_created, y: userData[j].joy})
+    //         userQuestionData[i].disgust.push({x: userData[j].date_created, y: userData[j].disgust})
+    //         userQuestionData[i].sadness.push({x: userData[j].date_created, y: userData[j].sadness})
+    //         userQuestionData[i].anger.push({x: userData[j].date_created, y: userData[j].anger})
+    //         userQuestionData[i].fear.push({x: userData[j].date_created, y: userData[j].fear})
+    //         userQuestionData[i].mood.push({x: userData[j].date_created, y: userData[j].mood})
 
-          }
-        }
-      }
-    }
+    //       }
+    //     }
+    //   }
+    // }
 
     
-    const spiderData = this.processData(this.totalAvgScores(userQuestionData))
-    const maxima = this.getMaxima(this.totalAvgScores(userQuestionData))
+    const spiderData = this.processData(this.totalAvgScores(userData))
+    const maxima = this.getMaxima(this.totalAvgScores(userData))
 
     console.log({
-      userQuestionData: userQuestionData[0],
+      // userQuestionData: userQuestionData[0],
       spiderData: spiderData,
       userData: userData
     })
-    console.log(this.processData(characterData), this.getMaxima(characterData))
 
     return (
       <VictoryChart polar
