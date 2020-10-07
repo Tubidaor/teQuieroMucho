@@ -101,9 +101,6 @@ export default class VictoryZoom extends Component {
       return lineZoomData.question
     }
   
-    const strokeDasharray = "10, 5";
-    const strokeLinecap = "round";
-    const strokeLinejoin = "round";
     // console.log("lineZoomData", lineZoomData)
     // console.log("xAxixLength", xAxisTicmarks()[47])
     return (
@@ -121,60 +118,10 @@ export default class VictoryZoom extends Component {
               border: "2px solid rgba(210, 217, 220, 1)",
               borderRadius: "10px",
               backgroundColor: "rgba( 0, 0, 0, .75)",
-              // grid: {
-              //   fill: "white",
-              //   stroke: "white",
-              //   strokeDasharray,
-              //   strokeLinecap,
-              //   strokeLinejoin,
-              //   pointerEvents: "painted"
-              // },
+              
             },
-            // background: {
-            //   fill: "rgba( 0, 0, 0, .75)",
-            //   grid: {
-            //     fill: "white",
-            //     stroke: "white",
-            //     strokeDasharray,
-            //     strokeLinecap,
-            //     strokeLinejoin,
-            //     pointerEvents: "painted"
-            //   },
-              // axis: {
-              //   fill: "white",
-              //   stroke: "white",
-              //   strokeWidth: 2,
-              //   strokeLinecap,
-              //   strokeLinejoin
-              // },
-            // },
-            // grid: {
-            //   fill: "white",
-            //   stroke: "white",
-            //   strokeDasharray,
-            //   strokeLinecap,
-            //   strokeLinejoin,
-            //   pointerEvents: "painted"
-            // },
-            // axis: {
-            //   fill: "white",
-            //   stroke: "white",
-            //   strokeWidth: 2,
-            //   strokeLinecap,
-            //   strokeLinejoin
-            // },
-            // ticks: {
-            //   fill: "white",
-            //   size: 5,
-            //   stroke: "white",
-            //   strokeWidth: 1,
-            //   strokeLinecap,
-            //   strokeLinejoin
-            // },
-            
 
           }}
-          // backgroundComponent={<Background y={40} x={10} height={110} width={250}/>}
         >
           <VictoryLegend x={60} y={5}
             title={questionTitle()}
@@ -184,12 +131,9 @@ export default class VictoryZoom extends Component {
             height={50}
             width={50}
             style={{
-              // data: { fill: "black", stroke: "rgba(210, 217, 220, 1)", strokeWidth: 2 },
               labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
-              // border: { fill: "rgba( 0, 0, 0, .75)", stroke: "black"},
               border: { borderRadius: "10px", stroke: "#0652c5"},
-
-              title: {fill: "rgba(210, 217, 220, 1)", fontSize: 8, fontFamily: "Buda, cursive", fontWeight: "bold" },
+              title: {fill: "rgba(210, 217, 220, 1)", fontSize: 9, fontFamily: "Buda, cursive", fontWeight: "bold" },
             }}
             data={[
               { name: "Joy", symbol: { fill: "#ffff00" } },

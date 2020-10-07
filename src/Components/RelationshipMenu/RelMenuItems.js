@@ -133,9 +133,9 @@ export class Analytics extends Component {
 
     const { page } = this.state
 
-    console.log(userQuestionData)
-    console.log("userData", this.state.userData)
-    console.log('alert data', this.state.alertData)
+    // console.log(userQuestionData)
+    // console.log("userData", this.state.userData)
+    // console.log('alert data', this.state.alertData)
     return (
 
       <div className="anlCon">
@@ -161,20 +161,20 @@ export class Alerts extends Component {
 
   componentDidMount() {
     QServices.getAlertsData()
-      .then(data => this.setState({alertData: data}, console.log(this.state.alertData)))
+      .then(data => this.setState({alertData: data}))
   }
 
   render() {
 
     const {alertData} = this.state
-    console.log(alertData)
+    // console.log(alertData)
     // let allQuestions = []
     // alertData.map(alert => allQuestions.push(alert.question))
     let users = []
     alertData.map(alert => users.push(alert.first_name))
     // let uniqueQs = [...new Set(allQuestions)]
     let uniqueUsers = [...new Set(users)]
-    console.log( uniqueUsers)
+    // console.log( uniqueUsers)
     
     let user1 = alertData.filter(alert => alert.first_name === uniqueUsers[0]).sort((a,b) => a.question > b.question)
     let user2 = alertData.filter(alert => alert.first_name === uniqueUsers[1]).sort((a,b) => a.question > b.question)
@@ -184,7 +184,7 @@ export class Alerts extends Component {
     for(let i = 0; i < user1.length; i ++) {
       for(let j = 0; j < user2.length; j++) {
         if(user1[i].question === user2[j].question) {
-          console.log(user1[i].scores.avgMood, user2[j].scores.avgMood)
+          // console.log(user1[i].scores.avgMood, user2[j].scores.avgMood)
           if((user1[i].scores.avgMood - user2[j].scores.avgMood) > 20 || (user1[i].scores.avgMood - user2[j].scores.avgMood) < -20 || ((user1[i].scores.avgMood + user2.scores.avgMood) / 2) < 60) {
             issues.push({
               question: user1[i].question,
@@ -197,7 +197,7 @@ export class Alerts extends Component {
         }
       }
     }
-    console.log(issues)
+    // console.log(issues)
 
     let displayAlerts = issues.map(issue =>
       <li key={indexOf(issue)} className="alertsLi" id={indexOf(issue)}>

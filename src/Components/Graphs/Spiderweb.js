@@ -6,6 +6,7 @@ import {
   VictoryLabel,
   VictoryTheme,
   VictoryArea,
+  VictoryLegend
 } from 'victory';
 
 
@@ -35,7 +36,7 @@ export default class Spiderweb extends Component {
 
   
   getMaxima(data) {
-    console.log(data)
+    // console.log(data)
     if(data.length === 0) {
       return []
     }
@@ -52,14 +53,14 @@ export default class Spiderweb extends Component {
 
   processData(data) {
     const maxByGroup = this.getMaxima(data);
-    console.log(data)
-    console.log(maxByGroup)
+    // console.log(data)
+    // console.log(maxByGroup)
     const makeDataArray = (d) => {
       return Object.keys(d).map((key) => {
         return { x: key, y: d[key] / maxByGroup[key] };
       });
     };
-    console.log(data.map((datum) => makeDataArray(datum)))
+    // console.log(data.map((datum) => makeDataArray(datum)))
     return data.map((datum) => makeDataArray(datum));
   }
 
@@ -71,7 +72,7 @@ export default class Spiderweb extends Component {
     let fear = []
     let mood = []
 
-    console.log("uQData", userQuestionData)
+    // console.log("uQData", userQuestionData)
     const question = userQuestionData
     // userQuestionData.forEach(question => {
     if(question === undefined) {
@@ -109,7 +110,7 @@ export default class Spiderweb extends Component {
 
   render() {
 
-    console.log(this.props.userData)
+    // console.log(this.props.userData)
     // const userQuestions = []
     let {userData} = this.props
     // if( this.props.page === 'relationship') {
@@ -144,16 +145,13 @@ export default class Spiderweb extends Component {
     const spiderData = this.processData(this.totalAvgScores(userData))
     const maxima = this.getMaxima(this.totalAvgScores(userData))
 
-    console.log({
-      // userQuestionData: userQuestionData[0],
-      spiderData: spiderData,
-      userData: userData
-    })
+ 
 
     return (
       <VictoryChart polar
         theme={VictoryTheme.material}
         domain={{ y: [ 0, 1 ] }}
+        padding={{ top: 70, bottom: 60 }}
         style={
           {
             parent: {
@@ -163,11 +161,30 @@ export default class Spiderweb extends Component {
               width: "90%",
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: 10
-            } 
+              marginTop: 10,
+            }
           }
+
         }
       >
+        <VictoryLegend x={80} y={5}
+            title={userData == undefined ?'':userData.question}
+            centerTitle
+            orientation="horizontal"
+            itemsPerRow={2}
+            gutter={70}
+            height={20}
+            width={50}
+            style={{
+              labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
+              border: { borderRadius: "10px", stroke: "#0652c5"},
+              title: {fill: "rgba(210, 217, 220, 1)", fontSize: 10, fontFamily: "Buda, cursive", fontWeight: "bold" },
+            }}
+            data={[
+              { name: "", symbol: { fill: "transparent" } },
+              { name: "Total Avg", symbol: { fill: "rgba(6, 82, 197, .7)" } },
+            ]}
+        />
         <VictoryGroup colorScale={["transparent", "#0652c5"]}
           style={{ data: { fillOpacity: 0.4, strokeWidth: 2 } }}
         >
