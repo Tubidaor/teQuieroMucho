@@ -104,7 +104,7 @@ export default class StackedBars extends Component {
             height: "auto",
             marginLeft: "auto",
             marginRight: "auto",
-            marginTop: "10px",
+            marginTop: -75,
             border: "2px solid rgba(210, 217, 220, 1)",
             borderRadius: 10
           }
@@ -120,8 +120,8 @@ export default class StackedBars extends Component {
           // height={10}
           width={50}
           style={{
-            border: { borderRadius: "10px", stroke: "#0652c5"},
-            title: {fill: "rgba(210, 217, 220, 1)", fontSize: 12, fontFamily: "Buda, cursive", fontWeight: "bold", marginTop: 40  },
+            // border: { borderRadius: "10px", stroke: "#0652c5"},
+            title: {fill: "#ffff00", fontSize: 12, fontFamily: "Buda, cursive", fontWeight: "bold", marginTop: 40  },
           }}
           data={[
             { name: "", symbol: { fill: "transparent" } },

@@ -152,6 +152,8 @@ export default class Spiderweb extends Component {
         theme={VictoryTheme.material}
         domain={{ y: [ 0, 1 ] }}
         padding={{ top: 70, bottom: 60 }}
+        borderPadding={{ top: 0, bottom: 0, left: 2, right: 2 }}
+
         style={
           {
             parent: {
@@ -167,18 +169,17 @@ export default class Spiderweb extends Component {
 
         }
       >
-        <VictoryLegend x={80} y={5}
+        <VictoryLegend x={30} y={5}
             title={userData == undefined ?'':userData.question}
-            centerTitle
             orientation="horizontal"
             itemsPerRow={2}
-            gutter={70}
+            gutter={-6}
             height={20}
             width={50}
             style={{
               labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
-              border: { borderRadius: "10px", stroke: "#0652c5"},
-              title: {fill: "rgba(210, 217, 220, 1)", fontSize: 10, fontFamily: "Buda, cursive", fontWeight: "bold" },
+              // border: { borderRadius: "10px", stroke: "#0652c5"},
+              title: {fill: "#ffff00", fontSize: 10, fontFamily: "Buda, cursive", fontWeight: "bold" },
             }}
             data={[
               { name: "", symbol: { fill: "transparent" } },

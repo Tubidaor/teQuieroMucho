@@ -13,7 +13,6 @@ export default class Graphs extends Component {
       <div className="graphsCon">
         <VictoryZoom zoomDomain={this.props.zoomDomain} lineZoomData={this.props.lineZoomData}></VictoryZoom>
         <Spiderweb userData={this.props.userData}/>
-        <StackedBars/>
       </div>
     )
   }

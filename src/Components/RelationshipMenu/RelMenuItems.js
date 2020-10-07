@@ -4,6 +4,7 @@ import Graphs from '../Graphs/Graphs';
 import TeQuieroContext from '../../Context';
 import { QServices } from '../../Services/APIServices';
 import { indexOf } from 'lodash';
+import StackedBars from '../Graphs/StackedBars';
 
 export class Analytics extends Component {
   state = {
@@ -100,28 +101,28 @@ export class Analytics extends Component {
       
     const displayYouSec = () => {
       return (
-        <div className="youAnlCon">
+        <div className="analyticCon">
           <h2><select id='option' onChange={this.handleQChange}>${questionOptions}</select></h2>
           <Graphs
             zoomDomain={zoomDomain}
             lineZoomData={userQuestionData[this.state.qIndex]}
             userData={userQuestionData[this.state.qIndex]}
             page={this.state.page}>
-
           </Graphs>
+          <StackedBars/>
+
         </div>
       )
     }
 
     const displayYourRelSec = () => {
       return (
-        <div className="relAnlCon">
+        <div className="analyticCon">
           <h2><select id='option' onChange={this.handleQChange}>${questionOptions}</select></h2>
           <Graphs
             zoomDomain={zoomDomain}
             lineZoomData={userQuestionData[this.state.qIndex]}
-            userData={this.state.userData}
-            relData={this.state.relData}
+            userData={userQuestionData[this.state.qIndex]}
             page={this.state.page}
           >
 

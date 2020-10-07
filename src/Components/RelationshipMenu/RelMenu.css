@@ -46,12 +46,12 @@
   margin-right: auto;
   margin-top: 10px;
 }
-.youAnlCon h2 {
+.analyticCon h2 {
   text-align: center;
   margin-top: 10px;
   /* background-color: rgba(0 , 0, 0, .75); */
 }
-.youAnlCon select {
+.analyticCon select {
   background-color: rgba(0 , 0, 0, .75);
   color: rgba(210, 217, 220, 1);
   border: none;
@@ -64,6 +64,7 @@
 }
 .anlCon, .alertsCon {
   margin-top: 20px;
+  margin-bottom: 80px;
 }
 
 .anlBtnCon {

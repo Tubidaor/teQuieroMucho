@@ -123,17 +123,18 @@ export default class VictoryZoom extends Component {
 
           }}
         >
-          <VictoryLegend x={60} y={5}
+          <VictoryLegend x={30} y={5}
             title={questionTitle()}
-            centerTitle
             orientation="horizontal"
             gutter={5}
             height={50}
             width={50}
+            borderPadding={{ top: 0, bottom: 0, left: 2, right: 2 }}
             style={{
               labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
-              border: { borderRadius: "10px", stroke: "#0652c5"},
-              title: {fill: "rgba(210, 217, 220, 1)", fontSize: 9, fontFamily: "Buda, cursive", fontWeight: "bold" },
+              // border: { borderRadius: "10px", stroke: "#0652c5"},
+              title: {fill: "#ffff00", fontSize: 9, fontFamily: "Buda, cursive", fontWeight: "bold" },
+              
             }}
             data={[
               { name: "Joy", symbol: { fill: "#ffff00" } },
