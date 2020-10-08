@@ -168,14 +168,9 @@ export class Alerts extends Component {
   render() {
 
     const {alertData} = this.state
-    // console.log(alertData)
-    // let allQuestions = []
-    // alertData.map(alert => allQuestions.push(alert.question))
     let users = []
     alertData.map(alert => users.push(alert.first_name))
-    // let uniqueQs = [...new Set(allQuestions)]
     let uniqueUsers = [...new Set(users)]
-    // console.log( uniqueUsers)
     
     let user1 = alertData.filter(alert => alert.first_name === uniqueUsers[0]).sort((a,b) => a.question > b.question)
     let user2 = alertData.filter(alert => alert.first_name === uniqueUsers[1]).sort((a,b) => a.question > b.question)
@@ -185,7 +180,6 @@ export class Alerts extends Component {
     for(let i = 0; i < user1.length; i ++) {
       for(let j = 0; j < user2.length; j++) {
         if(user1[i].question === user2[j].question) {
-          // console.log(user1[i].scores.avgMood, user2[j].scores.avgMood)
           if((user1[i].scores.avgMood - user2[j].scores.avgMood) > 20 || (user1[i].scores.avgMood - user2[j].scores.avgMood) < -20 || ((user1[i].scores.avgMood + user2.scores.avgMood) / 2) < 60) {
             issues.push({
               question: user1[i].question,
@@ -198,34 +192,54 @@ export class Alerts extends Component {
         }
       }
     }
-    // console.log(issues)
-
+    console.log(issues)
+    function returnStatus(issue) {
+      let status = null
+      if(issue.variance > 15 && issue.variance <= 20
+        || issue.average > 65 && issue.average <= 70) {
+          status = "yellow"
+        }
+      if( issue.variance > 15 && issue.variance <= 20
+        || issue.average > 65 && issue.average <= 70) {
+          status = "orange"
+        }
+      if(issue.variance > 20 || issue.average < 65) {
+        status = "red"
+      }
+      return status
+    }
     let displayAlerts = issues.map(issue =>
       <li key={indexOf(issue)} className="alertsLi" id={indexOf(issue)}>
-        <h4>There appears to be an issue with the following:</h4>
         <span className="alertsSpan">{issue.question} </span>
-        <div className="alertsBtnCon">
-          { issue.variance > 20 || issue.average < 65
-              ? <div className="highAlert"> </div>
-              : null
-          }
-          { issue.variance > 15 && issue.variance <= 20
-              || issue.average > 65 && issue.average < 70
-              ? <div className="midAlert"> </div>
-              : null
-          }
-          { issue.variance >= 10 && issue.variance <= 15
-              || issue.average > 70 && issue.average < 75
-              ? <div className="lowAlert"> </div>
-              : null
-          }
-
+        <div className="alertsStatusCon">
+          <span>Status:</span>
+          { returnStatus(issue) === 'yellow' && <div className="lowAlert status"> </div>}
+          { returnStatus(issue) === 'orange' && <div className="midAlert status"> </div>}
+          { returnStatus(issue) === 'red' && <div className="highAlert status"> </div>}
         </div>
       </li>
     )
     
     return (
       <section className="alertsCon">
+        <div className="alertsLegend">
+          <h2 className="alertsH2">Issues Danger Level</h2>
+          <div className="statusLegCon">
+            <div className="statusCon">
+              <div className="highAlert"/><span>High</span>
+            </div>
+            <div className="statusCon">
+              <div className="midAlert"/><span>Moderate</span>
+            </div>
+            <div className="statusCon">
+              <div className="lowAlert"/><span>Low</span>
+            </div>
+          </div>
+        </div>
+        {issues.length > 0
+          ? <h4 className="alertsH4">The following needs your attention:</h4>
+          : <h4 className="alertsH4">No News Is Good News:</h4>
+        }
         <ul className="alertsUL">
           {displayAlerts}
         </ul>
@@ -249,7 +263,6 @@ export class AddIssue extends Component {
       .then(res => {
         category.value = ''
         question.value = ''
-        ///need to include positive submit message
       })
       
 

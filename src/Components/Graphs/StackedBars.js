@@ -121,7 +121,7 @@ export default class StackedBars extends Component {
           width={50}
           style={{
             // border: { borderRadius: "10px", stroke: "#0652c5"},
-            title: {fill: "#ffff00", fontSize: 12, fontFamily: "Buda, cursive", fontWeight: "bold", marginTop: 40  },
+            title: {fill: "rgba( 255, 255, 0, .8)", fontSize: 12, fontFamily: "Buda, cursive", fontWeight: "bold", marginTop: 40  },
           }}
           data={[
             { name: "", symbol: { fill: "transparent" } },

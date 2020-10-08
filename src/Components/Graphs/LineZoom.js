@@ -133,7 +133,7 @@ export default class VictoryZoom extends Component {
             style={{
               labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
               // border: { borderRadius: "10px", stroke: "#0652c5"},
-              title: {fill: "#ffff00", fontSize: 9, fontFamily: "Buda, cursive", fontWeight: "bold" },
+              title: {fill: "rgba(255, 255, 0, .8)", fontSize: 9, fontFamily: "Buda, cursive", fontWeight: "bold", stroke: "none" },
               
             }}
             data={[
