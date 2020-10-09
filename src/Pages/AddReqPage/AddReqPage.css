@@ -14,3 +14,12 @@
 
   margin-top: 10px;
 }
+.addReqSection {
+  margin-top: 50px;
+  background-image: url("http://localhost:8000/api/uploads/static/journey.jpg");
+  background-position: fixed;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 91vh;
+  overflow: auto;
+}

@@ -14,10 +14,10 @@ export default class AddReqPage extends Component {
 
 
     return (
-      <div className="addReqDiv">
+      <section className="addReqSection">
         <AddReqForm></AddReqForm>
         <AddApproval></AddApproval>
-      </div>
+      </section>
     )
   }
 }

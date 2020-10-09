@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ReqServices } from '../../Services/APIServices'
+import './AddRequest.css'
 
 
 export default class AddApproval extends Component {
@@ -43,21 +44,22 @@ export default class AddApproval extends Component {
     console.log(relRequests)
 
     const displayRequests = relRequests.map(request =>
-      <li>
-        {request.user_first_name + " " + request.user_last_name}
-        <button onClick={this.handleAccept} type="submit">Accept</button>
-        <button onClick= {this.handleCancel} type="cancel">Cancel</button>
+      <li className="addAppLi">
+        <span>{request.user_first_name + " " + request.user_last_name}</span>
+        <div className="addAppBtnCon">
+          <button className="addAppBtn" onClick={this.handleAccept} type="submit">Accept</button>
+          <button className="addAppBtn" onClick= {this.handleCancel} type="cancel">Cancel</button>
+        </div>
       </li>
     )
 
     return (
-      <section>
-
-        <h1>Add Approval</h1>
+      <div className="addAppCon">
+        <h4>Add Approval</h4>
         <ul className="addAppUl">
           {displayRequests}
         </ul>
-      </section>
+      </div>
     )
   }
 }

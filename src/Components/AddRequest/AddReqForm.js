@@ -54,7 +54,7 @@ export default class AddReqForm extends Component {
 
   const monthDisplay = bdayMonth.map(mon => <option value={mon}> {mon} </option>)
     return (
-      <section className='addReqSec'>
+      <div className='addReqCon'>
         <form onSubmit={this.handleAddReqSubmit} id="addReqForm" className="addReqForm">
           <legend className="addReqLeg">Add Request</legend>
           <div className="labelCon">
@@ -62,7 +62,7 @@ export default class AddReqForm extends Component {
             <input name="email" id="addReqInput"></input>
           </div>
           <div className="addReqAnnCon">
-            <label htmlFor="birthday" aria-label="month">Anniversary</label>
+            <label className="addReqLabel" htmlFor="birthday" aria-label="month">Anniversary</label>
             <select name="month" id="monthSelect">
                 {monthDisplay}
             </select>
@@ -75,7 +75,7 @@ export default class AddReqForm extends Component {
           </div>
           <button className="addReqBtn" type='submit'>Submit</button>
         </form>
-      </section>
+      </div>
     )
   }
 }
