@@ -26,7 +26,7 @@ export default class VictoryZoom extends Component {
 
   render() {
     const { lineZoomData } = this.props
-    
+
     function xAxisTicmarks() {
       let tickmarks = []
       if(lineZoomData === undefined) {
@@ -43,64 +43,101 @@ export default class VictoryZoom extends Component {
       const day = d.getDate()
       const fDate = month + "/" + day + "/" + year
       // console.log(
-      //   { rdate: d,
-      //     fDate: fDate,
-      //     month,
-      //     day,
-      //     year
-      //   }
-       // )
-      return fDate
+        //   { rdate: d,
+        //     fDate: fDate,
+        //     month,
+        //     day,
+        //     year
+        //   }
+        // )
+        return fDate
+        
+      }
+      
+      const trialFormat = xAxisTicmarks().map(date => formatDate(date))
+      // console.log(trialFormat)
+      
+      function userJoyData() {
+        if(lineZoomData === undefined) {
+          return []
+        }
+        return lineZoomData.joy
+      }
+      function userSadData() {
+        if(lineZoomData === undefined) {
+          return []
+        }
+        return lineZoomData.sadness
+      }
+      function userDisData() {
+        if(lineZoomData === undefined) {
+          return []
+        }
+        return lineZoomData.disgust
+      }
+      function userAngerData() {
+        if(lineZoomData === undefined) {
+          return []
+        }
+        return lineZoomData.anger
+      }
+      function userFearData() {
+        if(lineZoomData === undefined) {
+          return []
+        }
+        return lineZoomData.fear
+      }
+      function userMoodData() {
+        if(lineZoomData === undefined) {
+          return []
+        }
+        return lineZoomData.mood
+      }
+      function questionTitle() {
+        if(lineZoomData === undefined) {
+          return []
+        }
+        
+        return lineZoomData.question
+      }
+      
+      console.log(lineZoomData === !undefined)
+      function axis(lineZoomData) {
+        if(lineZoomData === undefined) {
+          return []
+        }
+        return (
+          <VictoryAxis
+            tickValues={xAxisTicmarks()}
+            tickCount={4}
+            label= "Date"
+            width={50}
+            tickFormat={t => formatDate(t)}
+            style={
+              { 
+                tickLabels: { 
+                fill: "rgba(210, 217, 220, 1)",
+                fontSize: 8,
+                padding: 2,
+                fontFamily: "Buda, cursive",
+                fontWeight: "bold"
+              },
+              axisLabel: {
+                fontSize: 10,
+                fontFamily: "Buda, cursive",
+                fill: "rgba(210, 217, 220, 1)",
+                fontWeight: "bold",
+                padding: 35,
+              },
+              }
+            }
+              tickLabelComponent={<VictoryLabel dy={15} angle={-45}/>}
+              />
+            )
+
 
     }
-
-    const trialFormat = xAxisTicmarks().map(date => formatDate(date))
-    // console.log(trialFormat)
-
-    function userJoyData() {
-      if(lineZoomData === undefined) {
-        return []
-      }
-      return lineZoomData.joy
-    }
-    function userSadData() {
-      if(lineZoomData === undefined) {
-        return []
-      }
-      return lineZoomData.sadness
-    }
-    function userDisData() {
-      if(lineZoomData === undefined) {
-        return []
-      }
-      return lineZoomData.disgust
-    }
-    function userAngerData() {
-      if(lineZoomData === undefined) {
-        return []
-      }
-      return lineZoomData.anger
-    }
-    function userFearData() {
-      if(lineZoomData === undefined) {
-        return []
-      }
-      return lineZoomData.fear
-    }
-    function userMoodData() {
-      if(lineZoomData === undefined) {
-        return []
-      }
-      return lineZoomData.mood
-    }
-    function questionTitle() {
-      if(lineZoomData === undefined) {
-        return []
-      }
-
-      return lineZoomData.question
-    }
-  
+    console.log(axis(lineZoomData))
     // console.log("lineZoomData", lineZoomData)
     // console.log("xAxixLength", xAxisTicmarks()[47])
     return (
@@ -217,41 +254,9 @@ export default class VictoryZoom extends Component {
               tickFormat={t => `${t}%`}
                 
                 />
-            <VictoryAxis
-              tickValues={xAxisTicmarks()}
-              tickCount={4}
-              label= "Date"
-              // scale={{ x: "linear" }}
-              // maxDomain={{ x: xAxisTicmarks()[47] }}
-              // minDomain={{ x: xAxisTicmarks()[0] }}
-
-              width={50}
-              tickFormat={t => formatDate(t)}
-              style={
-                { 
-                  tickLabels: { 
-                    fill: "rgba(210, 217, 220, 1)",
-                    fontSize: 8,
-                    padding: 2,
-                    fontFamily: "Buda, cursive",
-                    fontWeight: "bold"
-
-                  // grid: { stroke: "rgba(210, 217, 220, 1)",
-                  // strokeWidth: 0.5 },
-                  },
-                  axisLabel: {
-                    fontSize: 10,
-                    fontFamily: "Buda, cursive",
-                    fill: "rgba(210, 217, 220, 1)",
-                    fontWeight: "bold",
-                    padding: 35,
-
-                  },
-                }
-                }
-                tickLabelComponent={<VictoryLabel dy={15} angle={-45}/>}
-              />
-            
+            {
+              axis(lineZoomData)
+            }
 
           </VictoryChart>
           {/* <VictoryChart

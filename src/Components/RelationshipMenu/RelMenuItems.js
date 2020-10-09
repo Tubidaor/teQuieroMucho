@@ -96,7 +96,7 @@ export class Analytics extends Component {
       }
     }
 
-    const questionOptions = uniqueUserQuestions.map(question => <option value={uniqueUserQuestions.indexOf(question)}>{question}</option>)
+    const questionOptions = uniqueUserQuestions.map(question => <option className="qOptions" value={uniqueUserQuestions.indexOf(question)}>{question}</option>)
     
       
     const displayYouSec = () => {
@@ -249,40 +249,78 @@ export class Alerts extends Component {
 }
 
 export class AddIssue extends Component {
-  static contextType = TeQuieroContext
 
+  state = {
+    section: "Yourself"
+  }
   submitNewQuestion = (e) => {
     e.preventDefault()
-    const { question, category } = e.target
+    const { question, category, section } = e.target
+
+    let sectionV = section.value
+
+    if(sectionV === "Yourself") {
+      sectionV = "Opening"
+    }
+
     const newQuestion = {
       question: question.value,
-      category: category.value
+      category: category.value,
+      section: sectionV
     }
+    console.log(newQuestion, sectionV)
 
     QServices.postNewUserQuestions(newQuestion)
       .then(res => {
-        category.value = ''
-        question.value = ''
-      })
+        category.value = 'Yourself'
+        question.value = 'Personal'
+        section.value = ''
+      }
+    )
+    .catch(e => console.log(e))
       
 
+  }
+
+  handleOptionSel = () => {
+    const section = document.getElementById("section").value
+    console.log(section)
+    this.setState({
+      section
+    })
   }
 
 
   render() {
 
-    const { categories } = this.context
+    const categories = [
+      'Sex',
+      'Chores',
+      'Communication',
+      'Parenting',
+      'Friendship',
+      'Trust'
+    ]
+    console.log(this.state)
+    const relOptions = categories.map(cat => <option key={categories.indexOf(cat)} value={cat}>{cat}</option>)
+    const youOptions = <option value="Personal">Personal</option>
 
-    const options = categories.map(cat => <option key={cat}>{cat}</option>)
     return (
       <section className="addIssueCon">
-        <form onSubmit={this.submitNewQuestion}>
-          <fieldset>
+        <form className="issueForm" onSubmit={this.submitNewQuestion}>
+          <fieldset className="issueFS">
             <legend className="issueLegend">Add an issue</legend>
+            <div className="issueInputCon">
+              <label>Section</label>
+              <select name="section" id="section" onChange={this.handleOptionSel}>
+                <option value="Yourself">Yourself</option>
+                <option value="Relationship">Relationship</option>
+              </select>
+            </div>
             <div className="issueInputCon">
               <label>Category</label>
               <select name="category">
-                {options}
+                { this.state.section === "Relationship"? relOptions: youOptions}
               </select>
             </div>
             <div className="issueInputCon">

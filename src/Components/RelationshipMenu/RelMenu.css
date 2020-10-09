@@ -84,10 +84,19 @@
   border: none;
   border-radius: 5px;
   font-family: "Buda", cursive;
-  padding: 4px;
-  align-self: center;
-  font-family: bold;
+  padding: 2px 0px 2px 2px;
+  font-weight: bold;
   font-size: .6em;
+  /* overflow: auto; */
+  width: 250px;
+}
+.qOptions {
+  font-weight: bold;
+  font-family: "Buda", cursive;
+  font-size: .6em;
+  color: rgba(210, 217, 220, 1);
+
+  
 }
 .anlCon, .alertsCon {
   margin-top: 20px;
@@ -143,11 +152,13 @@
 
 }
 .addIssueCon {
-  margin-top: 110px;
+  margin-top: 20px;
 }
 .issueInputCon {
   display: flex;
   justify-content: space-between;
+  margin-top: 6px;
+
 }
 .issueBtn {
   margin-top: 10px;
@@ -159,6 +170,10 @@
 .issueLegend {
   margin-right: auto;
   margin-left: auto;
+  color: rgba(210, 217, 220, 1);
+  font-family: "Buda", cursive;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .highAlert {
@@ -210,4 +225,48 @@
   margin-left: 4px;
   font-family: "Buda", cursive;
   color: rgba(210, 217, 220, 1);
+}
+.addIssueCon {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0 , 0, 0, .75);
+  border-radius: 10px;
+}
+.issueFS {
+  border: none;
+}
+.issueForm {
+  padding: 10px;
+}
+.issueInputCon label {
+  font-family: "Buda", cursive;
+  color: rgba(210, 217, 220, 1);
+  font-weight: bold;
+}
+.issueBtn {
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(210, 217, 220, 1);
+  font-family: 'Nothing You Could Do', cursive;
+  color: #40616e;
+  font-size: 1em;
+  padding-bottom: -6px;
+  position: relative;
+  right: 2px;
+  top: -6px;
+}
+.issueBtn:active {
+  background-color: #5250B1;
+}
+.issueBtn:hover {
+  cursor: pointer;
+}
+
+.issueForm select, .issueForm option {
+  font-family: "Buda", cursive;
+  font-weight: bold;
+  font-size: .9em;
 }
