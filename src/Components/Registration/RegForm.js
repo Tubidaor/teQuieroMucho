@@ -186,32 +186,32 @@ export default class RegForm extends Component {
 
 
     return (
-        <form onSubmit={this.handleRegistration}>
+        <form className="regForm" onSubmit={this.handleRegistration}>
           <div className="regFormTopCon">
             <h2 className="regFormH2">Sign Up</h2>
             {this.context.error && <Error/> }
             <div className="firstNameCon">
-              <label htmlFor="firstName">First name:</label>
+              <label htmlFor="firstName">First name</label>
               <input name="firstName" id="firstName"></input>
             </div>
             <div className="lastNameCon">
-              <label htmlFor="lastName">Last name:</label>
+              <label htmlFor="lastName">Last name</label>
               <input name="lastName" id="lastName"></input>
             </div>
             <div className="emailCon">
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">Email</label>
               <input name="email" id="email"></input>
             </div>
             <div className="pwCon">
-              <label htmlFor="pw">Password:</label>
+              <label htmlFor="pw">Password</label>
               <input name="pw" id="pw"></input>
             </div>
             <div className="pwCCon">
-              <label htmlFor="pwConfirm">Confirm:</label>
+              <label htmlFor="pwConfirm">Confirm</label>
               <input name="pwConfirm" id="pwConfirm"></input>
             </div>
             <div className="bdCon">
-              <label htmlFor="birthday" aria-label="month">Birthday:</label>
+              <label htmlFor="birthday" aria-label="month">Birthday</label>
               <select name="month" id="monthSelect">
                   {monthDisplay}
               </select>
@@ -223,7 +223,7 @@ export default class RegForm extends Component {
               </select>
             </div>
             <div className="genderCon">
-              <label htmlFor="gender" aria-label="gender">Gender:</label>
+              <label htmlFor="gender" aria-label="gender">Gender</label>
               <select name="gender" id="genSelect">
                 {genderDisplay}
               </select>

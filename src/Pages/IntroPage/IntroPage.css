@@ -1,56 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Tangerine&display=swap');
-
 .introPageContainer {
-  background: linear-gradient(to top, #780206, #061161);
+  background-image: url("http://localhost:8000/api/uploads/static/starrySky.jpg");
+  background-position: fixed;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   height: 100vh;
-  padding-top: 100px;
+  overflow: auto;
 }
 .introH1 {
   text-align: center;
-  font-family: 'Pacifico', cursive;
-  color: #EEDD2C;
+  font-family: 'Cinzel Decorative';
+  color: rgba(210, 217, 220, 1);
 }
 .introImg {
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 160px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
   display: block;
   margin-top: 25px;
-  border: #EEDD2C solid 4px;
+  color: rgba(210, 217, 220, 1);
 }
+
+
 .introP {
   padding: 20px;
-  color: #EEDD2C;
+  color: rgba(210, 217, 220, 1);
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 104%;
+  width: 100%;
   text-align: center;
-  font-family: 'Tangerine', cursive;
-  font-size: 1.618em;
-  font-weight: 800;
+  /* font-family: 'Tangerine', cursive; */
+  font-family: 'Cinzel Decorative';
+  /* font-family: 'Buda', cursive;
+  font-family: 'Delius Swash Caps';
+  font-family: 'Nothing You Could Do', cursive;
+  font-family: 'Oleo Script';
+  font-family: 'Pacifico', cursive; */
+  font-size: .83em;
 }
+
 .introButtonContainer {
   display: flex;
   justify-content: space-evenly;
-  height: 144px;
-  width: 233px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 100px;
+  width: 200px;
 }
 .introButtonContainer button {
-  width: 80px;
-  text-align: center;
-  background-color: rgba(22, 15, 84, .65);
   font-weight: bold;
-  margin-top: auto;
-  margin-bottom: auto;
   border: none;
   border-radius: 4px;
-  color: #EEDD2C;
-  font-family: 'Pacifico', cursive;
+  background-color: rgba(210, 217, 220, 1);
+  font-family: 'Nothing You Could Do', cursive;
+  color: #40616e;
+  font-size: 1em;
+  /* position: relative;
+  margin-left: auto;
+  margin-right: auto; */
+  /* display: block; */
+  width: 75px;
 }
 .introButtonContainer button:active {
   background-color: #5250B1;
@@ -63,4 +74,5 @@
   width: 233px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 50px;
 }

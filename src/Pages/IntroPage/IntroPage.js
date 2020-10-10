@@ -26,7 +26,7 @@ export default class IntroPage extends Component {
       <div className="introPageContainer">
         <div className="introPageTop">
         <h2 className="introH1">Te Quiero Mucho</h2>
-        <img className="introImg" alt="logo for app" src={`${config.API_ENDPOINT}/uploads/static/treeOfLife2.png`}/>
+        <img className="introImg" alt="logo for app" src={`${config.API_ENDPOINT}/uploads/static/hands.png`}/>
         <p className="introP">Relationships need cultivating: we're here to help.</p>
         </div>
         <div className="introButtonContainer">

@@ -55,11 +55,11 @@ componentWillUnmount() {
             <h2 className="loginH2">Login</h2>
             {this.context.error && <Error/>}
             <div className="email">
-              <label className="loginLabel" htmlFor="loginForm_email">Email:</label>
+              <label className="loginLabel" htmlFor="loginForm_email">Email</label>
               <input name="email" id="loginForm_email"></input>
             </div>
             <div className="password">
-              <label  className="loginLabel" htmlFor="password">Password:</label>
+              <label  className="loginLabel" htmlFor="password">Password</label>
               <input name="password" id="password"></input>
             </div>
           </div>
