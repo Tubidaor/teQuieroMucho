@@ -1,18 +1,35 @@
 import React, {Component} from 'react';
 import { ReqServices } from '../../Services/APIServices';
+import TeQuieroContext from '../../Context';
 
 
 export default class AddReqForm extends Component {
+  static contextType = TeQuieroContext
+
   handleAddReqSubmit = (e) => {
     e.preventDefault()
+    this.context.setError(null)
+    const regexAnn = RegExp(/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/)
+    const regexE = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
     const { email, month, day, year } = e.target
+    const anniversary = month.value + "/" + day.value + "/" + year.value
+    console.log(regexAnn.test(anniversary), anniversary)
+    if(!regexAnn.test(anniversary)) {
+      this.context.setError("Please select date correctly.")
+      return
+    }
+    console.log(regexE.test(email.value))
+    if(!regexE.test(email.value)) {
+      this.context.setError("Please enter a correct email address.")
+      return
+    }
     const relRequest = {
       partner_email: email.value,
-      anniversary: month.value + "/" + day.value + "/" + year.value
+      anniversary,
     }
     console.log(relRequest)
     ReqServices.submitRelReq(relRequest)
-      .then(rel => console.log(rel))
+      .catch(e => this.context.setError(e.error))
   }
 
   render() {

@@ -27,6 +27,7 @@ import { faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { faHandPaper } from '@fortawesome/free-regular-svg-icons';
 import AudioPlayer from 'react-h5-audio-player';
 import TeQuieroContext from '../../Context';
+import Error from '../Error/Error';
 
 
 
@@ -137,15 +138,18 @@ export class AudioEntry extends Component {
   }
 
   componentWillUnmount() {
+    if(this.stream) {
     this.stream.getTracks().forEach(function(track) {
       track.stop()
       })
+    }
   }
     
   start = (e) => {
     e.preventDefault()
-    if (this.state.isBlocked) {
-      console.log("Permission Denied")
+    if (!this.stream) {
+      this.context.setError("Please enable Microphone.")
+      return
     } else {
       Mp3Recorder
         .start()
@@ -280,8 +284,12 @@ export class VideoEntry extends Component {
     e.preventDefault()
     let start = document.getElementById("btnStart");
     let stop = document.getElementById("btnStop");
-    start.style.display = "none"
     console.log(stop.style.display)
+    if(!this.stream) {
+      this.context.setError("Please enable Microphone and Camera.")
+      return
+    }
+    start.style.display = "none"
     if (stop.style.display === "") {
       console.log('hidestart')
       stop.style.display = "block";
@@ -299,9 +307,13 @@ export class VideoEntry extends Component {
   }
 
   componentWillUnmount() {
+    if(this.stream) {
+
+    
     this.stream.getTracks().forEach(function(track) {
       track.stop()
       })
+    }
   }
     
   
@@ -338,18 +350,7 @@ export class VideoEntry extends Component {
     }
   }
 
-  // play = () => {
-  //   this.videoPlay.play()
-  // }
-  // stop = () => {
-  //   this.videoPlay.pause()
-  //   this.videoPlay.currentTime = 0
-  // }
 
-  // updateTime = () => {
-  //     let time = this.videoPlay.currentTime.toFixed(0)
-  //     document.getElementById("demo").innerHTML = time
-  // }
   
 
   handleVideoSubmit = (e) => {
@@ -361,6 +362,7 @@ export class VideoEntry extends Component {
 
     return (
       <section className="vSection">
+        {/* {this.context.error && <Error error={this.context.error}/>} */}
         <form className="dateButtonCon">
 
           <h5 className="aPageH5">Today's Date: <span>{getDate()}</span> </h5>

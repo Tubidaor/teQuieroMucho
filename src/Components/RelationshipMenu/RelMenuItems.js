@@ -7,6 +7,8 @@ import { indexOf } from 'lodash';
 import StackedBars from '../Graphs/StackedBars';
 
 export class Analytics extends Component {
+  static contextType = TeQuieroContext
+  
   state = {
     page: 'you',
     userData: [],
@@ -16,6 +18,7 @@ export class Analytics extends Component {
   }
 
   componentDidMount() {
+    this.context.setError(null)
 
     QServices.getQuestionaireUserData()
       .then(data => this.setState({userData: data}))
@@ -24,6 +27,9 @@ export class Analytics extends Component {
       .then(data => this.setState({relData: data}))
 
   
+  }
+  componentWillUnmount() {
+    this.context.setError(null)
   }
 
   handleClickYou = (e) => {
@@ -161,8 +167,12 @@ export class Alerts extends Component {
   }
 
   componentDidMount() {
+    this.context.setError(null)
     QServices.getAlertsData()
       .then(data => this.setState({alertData: data}))
+  }
+  componentWillUnmount() {
+    this.context.setError(null)
   }
 
   render() {
@@ -249,9 +259,16 @@ export class Alerts extends Component {
 }
 
 export class AddIssue extends Component {
+  static contextType = TeQuieroContext
 
   state = {
     section: "Yourself"
+  }
+  componentDidMount() {
+    this.context.setError(null)
+  }
+  componentWillUnmount() {
+    this.context.setError(null)
   }
   submitNewQuestion = (e) => {
     e.preventDefault()
@@ -277,7 +294,7 @@ export class AddIssue extends Component {
         section.value = ''
       }
     )
-    .catch(e => console.log(e))
+    .catch(e => this.context.setError(e.error))
       
 
   }

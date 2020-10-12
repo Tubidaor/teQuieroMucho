@@ -3,8 +3,12 @@ import RelMenu from '../../Components/RelationshipMenu/RelMenu';
 import Questions from '../../Components/Questions/Questions';
 import { Analytics, Alerts, AddIssue } from '../../Components/RelationshipMenu/RelMenuItems';
 import './RelationshipPage.css'
+import Error from '../../Components/Error/Error';
+import TeQuieroContext from '../../Context';
 
 export default class RelationshipPage extends Component {
+  static contextType = TeQuieroContext
+  
   state = {
     currentSection: "home",
     recording: true,
@@ -29,6 +33,7 @@ export default class RelationshipPage extends Component {
     let { currentSection } = this.state
     return (
       <section className="relationshipSection">
+        {this.context.error && <Error/>}
         <RelMenu handleClick={this.handleClick}/>
         { 
           currentSection === "questions" && 

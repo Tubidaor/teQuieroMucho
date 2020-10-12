@@ -139,7 +139,8 @@
   top: -6px;
 }
 .jFeedBtn:active {
-  background-color: #5250B1;
+  background-color: #758f9a;
+  color: rgba(210, 217, 220, 1);
 }
 .jFeedBtn:hover {
   cursor: pointer;
