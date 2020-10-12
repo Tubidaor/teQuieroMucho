@@ -344,6 +344,39 @@ export const QServices = {
 
   clearRelDataFromStorage() {
     window.sessionStorage.removeItem(config.relQData)
+  },
+  getTQMState(you, relationship, page) {
+        console.log(you)
+    const userQuestions = []
+    let userData = you
+    if( page === 'relationship') {
+      userData = relationship
+    }
+    userData.map(qs => userQuestions.push(qs.question))
+    const uniqueUserQuestions = userQuestions.filter((v, i, a) => a.indexOf(v) === i);
+    const userQuestionData = [] 
+    uniqueUserQuestions.map(qs => userQuestionData.push({ question: qs, joy:[], disgust:[], sadness: [], anger: [], fear: [], mood: [] }))
+    
+    
+    const userJoyData = []
+    userData.map(data => userJoyData.push({key: new Date(data.date_created), b: data.joy } ))
+    if(userQuestionData.length > 0) {
+      for(let i = 0; i < userQuestionData.length; i++) {
+        
+        for(let j = 0; j < userData.length; j++) {
+          if(userQuestionData[i].question === userData[j].question) {
+            userQuestionData[i].joy.push({x: userData[j].date_created, y: userData[j].joy})
+            userQuestionData[i].disgust.push({x: userData[j].date_created, y: userData[j].disgust})
+            userQuestionData[i].sadness.push({x: userData[j].date_created, y: userData[j].sadness})
+            userQuestionData[i].anger.push({x: userData[j].date_created, y: userData[j].anger})
+            userQuestionData[i].fear.push({x: userData[j].date_created, y: userData[j].fear})
+            userQuestionData[i].mood.push({x: userData[j].date_created, y: userData[j].mood})
+
+          }
+        }
+      }
+    }
+    return userQuestionData
   }
 
 }

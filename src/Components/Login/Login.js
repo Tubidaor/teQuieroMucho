@@ -24,7 +24,6 @@ componentWillUnmount() {
       .then(res => {
         email.value = ''
         password.value = ''
-        console.log(res)
         TokenServices.saveAuthToken(res.authToken)
         let token = res.authToken
         return token
@@ -34,9 +33,10 @@ componentWillUnmount() {
           .then(questions => {
             const openingQs = questions.filter(item => item.section === 'Opening')
             const relationshipQs  = questions.filter(item => item.section === 'Relationship')
-            console.log(openingQs)
             QServices.openingQsToSessionStorage(JSON.stringify(openingQs))
             QServices.relQsToSessionStorage(JSON.stringify(relationshipQs))
+
+            
             this.props.handleLoginSuccess()
           })
         })
