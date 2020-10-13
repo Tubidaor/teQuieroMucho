@@ -204,7 +204,7 @@
   font-family: "buda", cursive;
 }
 .rhap_container {
-  background-color: rgba( 0, 0, 0, .5);
+  background-color: rgba( 0, 0, 0, .75);
   width: 280px;
   border-radius: 50px;
   margin-left: auto;

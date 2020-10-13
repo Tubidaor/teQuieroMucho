@@ -160,7 +160,6 @@ export default class Spiderweb extends Component {
               backgroundColor: "rgba( 0, 0, 0, .75)",
               borderRadius: 10,
               border: "2px rgba(210, 217, 220, 1) solid",
-              width: "90%",
               marginLeft: "auto",
               marginRight: "auto",
               marginTop: 10,

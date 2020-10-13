@@ -16,7 +16,7 @@
   .ulListCon {
     font-size: 1.2em;
   }
-  .eventsMenuCon {
+  .eventsMenuCon, .journalMenuCon, .relMenuCon {
     font-size: 1.2em !important;
   }
   .statusBarSection {
@@ -25,6 +25,12 @@
   .yourStateofMind, .rState {
     padding-top: 2px !important;
   }
+  .jInputBox {
+    width: 80% !important;
+  }
+}
+@media screen and (min-width: 769) {
+  
 }
 
 /* 320px — 480px: Mobile devices

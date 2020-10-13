@@ -100,7 +100,6 @@ export default class StackedBars extends Component {
         style={{
           parent: {
             background: "rgba( 0, 0, 0, .75)",
-            width: "90%",
             height: "auto",
             marginLeft: "auto",
             marginRight: "auto",
