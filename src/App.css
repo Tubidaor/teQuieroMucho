@@ -13,6 +13,18 @@
   .introImg {
     margin-top: 50px;
   }
+  .ulListCon {
+    font-size: 1.2em;
+  }
+  .eventsMenuCon {
+    font-size: 1.2em !important;
+  }
+  .statusBarSection {
+    font-size: 1.2em;
+  }
+  .yourStateofMind, .rState {
+    padding-top: 2px !important;
+  }
 }
 
 /* 320px — 480px: Mobile devices

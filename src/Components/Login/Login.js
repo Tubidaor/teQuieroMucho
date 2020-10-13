@@ -35,9 +35,9 @@ componentWillUnmount() {
             const relationshipQs  = questions.filter(item => item.section === 'Relationship')
             QServices.openingQsToSessionStorage(JSON.stringify(openingQs))
             QServices.relQsToSessionStorage(JSON.stringify(relationshipQs))
+              .then( this.props.handleLoginSuccess())
 
             
-            this.props.handleLoginSuccess()
           })
         })
       .catch(e => this.context.setError(e.error))
