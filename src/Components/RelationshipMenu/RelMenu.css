@@ -234,17 +234,19 @@
   color: rgba(210, 217, 220, 1);
 }
 .addIssueCon {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgba(0 , 0, 0, .75);
-  border-radius: 10px;
+  /* width: 300px; */
+  
 }
 .issueFS {
   border: none;
 }
 .issueForm {
   padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0 , 0, 0, .75);
+  border-radius: 10px;
+  width: 300px;
 }
 .issueInputCon label {
   font-family: "Buda", cursive;
