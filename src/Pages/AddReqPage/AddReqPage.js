@@ -19,7 +19,7 @@ static contextType = TeQuieroContext
     return (
       <section className="addReqSection">
         {this.context.error && <Error error={this.context.error}/>}
-        <AddReqForm></AddReqForm>
+        <AddReqForm redirect={this.props.redirect}/>
         <AddApproval></AddApproval>
       </section>
     )

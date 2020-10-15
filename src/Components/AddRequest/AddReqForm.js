@@ -5,6 +5,7 @@ import TeQuieroContext from '../../Context';
 
 export default class AddReqForm extends Component {
   static contextType = TeQuieroContext
+ 
 
   handleAddReqSubmit = (e) => {
     e.preventDefault()
@@ -30,6 +31,13 @@ export default class AddReqForm extends Component {
     console.log(relRequest)
     ReqServices.submitRelReq(relRequest)
       .catch(e => this.context.setError(e.error))
+
+    email.value = ''
+    month.value = 'Month'
+    day.value = 'Day'
+    year.value = 'Year'
+
+    // this.props.redirect()
   }
 
   render() {

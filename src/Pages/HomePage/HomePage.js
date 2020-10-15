@@ -68,6 +68,11 @@ export default class HomePage extends Component {
     history.push('/')
   }
 
+  redirect = () => {
+    this.setState({
+      currentSection: "Home"
+    })
+  }
 
   setMood = (userQuestionData) => {
     // let joy = []
@@ -142,7 +147,7 @@ export default class HomePage extends Component {
         {currentSection === "Home" && <EventsPage/>}
         {currentSection === "Journal" && <JournalPage/>}
         {currentSection === "Relationship" && <RelationshipPage/>}
-        {currentSection === "AddReq" && <AddReqPage/>}
+        {currentSection === "AddReq" && <AddReqPage redirect={this.redirect}/>}
 
 
         <footer className="homeFooter" id="homeFooter">
