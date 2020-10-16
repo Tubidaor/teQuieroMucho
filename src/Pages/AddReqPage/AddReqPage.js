@@ -26,7 +26,20 @@ componentDidMount() {
     )
    
 }
-  
+
+handleAccept = (user_id, anniversary) => {
+
+  const approvedRel = {
+    partner_id: user_id,
+    anniversary
+  }
+  console.log(approvedRel)
+  ReqServices.acceptRequest(approvedRel)
+
+  this.handleCancel(user_id)   
+    
+}
+
 handleCancel = (user_id) => {
   ReqServices.deleteRequest()
   this.setState({
@@ -36,6 +49,7 @@ handleCancel = (user_id) => {
   
 
 }
+
   render() {
     
     
@@ -43,7 +57,11 @@ handleCancel = (user_id) => {
       <section className="addReqSection">
         {this.context.error && <Error error={this.context.error}/>}
         <AddReqForm redirect={this.props.redirect}/>
-        <AddApproval requests={this.state.requests} handleCancel={this.handleCancel}/>
+        <AddApproval
+          requests={this.state.requests}
+          handleCancel={this.handleCancel}
+          handleAccept={this.handleAccept}
+        />
         
       </section>
     )
