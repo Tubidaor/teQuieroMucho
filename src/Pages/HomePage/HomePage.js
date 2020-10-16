@@ -68,9 +68,9 @@ export default class HomePage extends Component {
     history.push('/')
   }
 
-  redirect = () => {
+  redirect = (currentSection) => {
     this.setState({
-      currentSection: "Home"
+      currentSection
     })
   }
 

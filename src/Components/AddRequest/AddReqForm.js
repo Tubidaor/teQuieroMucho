@@ -5,7 +5,12 @@ import TeQuieroContext from '../../Context';
 
 export default class AddReqForm extends Component {
   static contextType = TeQuieroContext
- 
+  // defaultProps = {
+  //   location: {},
+  //   history: { 
+  //     push: () => {}
+  //   }
+  // }
 
   handleAddReqSubmit = (e) => {
     e.preventDefault()
