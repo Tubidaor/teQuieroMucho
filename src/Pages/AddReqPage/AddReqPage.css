@@ -23,3 +23,49 @@
   height: 92vh;
   overflow: auto;
 }
+.submitNotice {
+  width: 300px;
+  position: absolute;
+  background-color: rgba(210, 217, 220, 1);
+  color: rgba( 0, 0, 0, .75);
+  height: 100px;
+  border-radius: 10px;
+  z-index: 1;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0px;
+  right: 0px;
+  top: 250px;
+  justify-content: space-evenly;
+  flex-direction: column;
+  display: none;
+}
+.submitNotice h4 {
+margin-left: auto;
+margin-right: auto;
+width: 220px;
+align-self: center;
+font-family: "Buda", cursive;
+font-size: 1em;
+}
+.submitPromptBtn {
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba( 0, 0, 0, .75);
+  font-family: 'Nothing You Could Do', cursive;
+  color: rgba(210, 217, 220, 1);
+  font-size: .83em;
+  width: 60px;
+  padding: 4px;
+  margin-left: auto;
+  margin-right: auto;         
+}
+.submitPromptBtn:active {
+  background-color: #758f9a;
+  color: rgba(210, 217, 220, 1);
+}
+.submitPromptBtn:hover {
+  cursor: pointer;
+}

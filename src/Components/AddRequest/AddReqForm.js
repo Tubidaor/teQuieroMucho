@@ -12,38 +12,7 @@ export default class AddReqForm extends Component {
   //   }
   // }
 
-  handleAddReqSubmit = (e) => {
-    e.preventDefault()
-    this.context.setError(null)
-    const regexAnn = RegExp(/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/)
-    const regexE = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
-    const { email, month, day, year } = e.target
-    const anniversary = month.value + "/" + day.value + "/" + year.value
-    console.log(regexAnn.test(anniversary), anniversary)
-    if(!regexAnn.test(anniversary)) {
-      this.context.setError("Please select date correctly.")
-      return
-    }
-    console.log(regexE.test(email.value))
-    if(!regexE.test(email.value)) {
-      this.context.setError("Please enter a correct email address.")
-      return
-    }
-    const relRequest = {
-      partner_email: email.value,
-      anniversary,
-    }
-    console.log(relRequest)
-    ReqServices.submitRelReq(relRequest)
-      .catch(e => this.context.setError(e.error))
-
-    email.value = ''
-    month.value = 'Month'
-    day.value = 'Day'
-    year.value = 'Year'
-
-    // this.props.redirect()
-  }
+  
 
   render() {
     const bdayMonth = [
@@ -85,7 +54,7 @@ export default class AddReqForm extends Component {
   const monthDisplay = bdayMonth.map(mon => <option value={mon}> {mon} </option>)
     return (
       <div className='addReqCon'>
-        <form onSubmit={this.handleAddReqSubmit} id="addReqForm" className="addReqForm">
+        <form onSubmit={this.props.handleSubmit} id="addReqForm" className="addReqForm">
           <legend className="addReqLeg">Add Request</legend>
           <div className="labelCon">
             <label className="addReqLabel">Email</label>
@@ -105,6 +74,7 @@ export default class AddReqForm extends Component {
           </div>
           <button className="addReqBtn" type='submit'>Submit</button>
         </form>
+        
       </div>
     )
   }
