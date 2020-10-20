@@ -1,7 +1,5 @@
 import React from 'react';
 import './NavBar.css'
-import { Link } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
 
@@ -12,14 +10,6 @@ export default function NavBar(props) {
     }
     return section
   }
-
-  // const expand = function() {
-  //   console.log("expandrand")
-  //   document.getElementById("menuExpand").classList.toggle("expand")
-  //   document.getElementById("menuListExpand").classList.toggle("expandList")
-  //   document.getElementById('homeFooter').classList.toggle('expandFooter')
-  // }
-
 
   return (
     <nav className="homeNav" id="menuExpand">

@@ -8,7 +8,6 @@ import {
   VictoryLegend
 } from 'victory';
 import { JournalServices } from '../../Services/APIServices'
-import { forEach } from 'lodash';
 
 
 
@@ -39,7 +38,6 @@ export default class StackedBars extends Component {
       super(props)
       this.state = {
         dataA: [],
-        // dataB: []
       }
     }
   
@@ -77,7 +75,6 @@ export default class StackedBars extends Component {
           for(const [key, value] of entries) {
             graphData.push({x:`${key}`, y: value})
           }
-          console.log('graphdata', graphData)
           return graphData.sort((a,b) => a.y - b.y)
         }
 

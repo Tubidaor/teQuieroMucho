@@ -54,7 +54,6 @@ export class Analytics extends Component {
   }
 
   render() {
-    // const data = analyticsData
     const userQuestions = []
     let {userData} = this.state
     if( this.state.page === 'relationship') {
@@ -102,7 +101,7 @@ export class Analytics extends Component {
       }
     }
 
-    const questionOptions = uniqueUserQuestions.map(question => <option className="qOptions" value={uniqueUserQuestions.indexOf(question)}>{question}</option>)
+    const questionOptions = uniqueUserQuestions.map(question => <option key={uniqueUserQuestions.indexOf(question)} className="qOptions" value={uniqueUserQuestions.indexOf(question)}>{question}</option>)
     
       
     const displayYouSec = () => {
@@ -140,9 +139,7 @@ export class Analytics extends Component {
 
     const { page } = this.state
 
-    // console.log(userQuestionData)
-    // console.log("userData", this.state.userData)
-    // console.log('alert data', this.state.alertData)
+
     return (
 
       <div className="anlCon">
@@ -202,15 +199,14 @@ export class Alerts extends Component {
         }
       }
     }
-    console.log(issues)
     function returnStatus(issue) {
       let status = null
-      if(issue.variance > 15 && issue.variance <= 20
-        || issue.average > 65 && issue.average <= 70) {
+      if((issue.variance > 15 && issue.variance <= 20)
+        || (issue.average > 65 && issue.average <= 70)) {
           status = "yellow"
         }
-      if( issue.variance > 15 && issue.variance <= 20
-        || issue.average > 65 && issue.average <= 70) {
+      if( (issue.variance > 15 && issue.variance <= 20)
+        || (issue.average > 65 && issue.average <= 70)) {
           status = "orange"
         }
       if(issue.variance > 20 || issue.average < 65) {
@@ -219,7 +215,7 @@ export class Alerts extends Component {
       return status
     }
     let displayAlerts = issues.map(issue =>
-      <li key={indexOf(issue)} className="alertsLi" id={indexOf(issue)}>
+      <li key={issues.indexOf(issue)} className="alertsLi" id={indexOf(issue)}>
         <span className="alertsSpan">{issue.question} </span>
         <div className="alertsStatusCon">
           <span>Status:</span>
@@ -285,7 +281,6 @@ export class AddIssue extends Component {
       category: category.value,
       section: sectionV
     }
-    console.log(newQuestion, sectionV)
 
     QServices.postNewUserQuestions(newQuestion)
       .then(res => {
@@ -301,7 +296,6 @@ export class AddIssue extends Component {
 
   handleOptionSel = () => {
     const section = document.getElementById("section").value
-    console.log(section)
     this.setState({
       section
     })
@@ -318,7 +312,6 @@ export class AddIssue extends Component {
       'Friendship',
       'Trust'
     ]
-    console.log(this.state)
     const relOptions = categories.map(cat => <option key={categories.indexOf(cat)} value={cat}>{cat}</option>)
     const youOptions = <option value="Personal">Personal</option>
 

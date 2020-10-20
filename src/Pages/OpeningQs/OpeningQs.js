@@ -20,7 +20,6 @@ export default class OpeningQs extends Component {
   handlePushToHome = () => {
   const { history, location } = this.props
   const destination = (location.state || {}).from || '/home'
-  console.log(destination, history)
   history.push(destination)
   }
 

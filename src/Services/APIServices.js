@@ -5,7 +5,6 @@ import TokenServices from './token-services';
 export const QServices = {
 
   getGenQuestions(token) {
-    console.log(TokenServices.getAuthToken())
     return fetch(`${config.API_ENDPOINT}/general-questions`, {
       method: 'GET',
       headers: {
@@ -119,7 +118,6 @@ export const QServices = {
     window.sessionStorage.removeItem(config.relQData)
   },
   getTQMState(you, relationship, page) {
-        console.log(you)
     const userQuestions = []
     let userData = you
     if( page === 'relationship') {
@@ -157,8 +155,6 @@ export const JournalServices = {
 
   postJournalEntry(text) {
 
-    console.log(text)
-    
     return fetch(`${config.API_ENDPOINT}/text-entry`, {
       method: 'POST',
       headers: {
@@ -175,7 +171,6 @@ export const JournalServices = {
       )
   },
   postFileEntry(files) {
-    console.log(files)
     return fetch(`${config.API_ENDPOINT}/files`, {
       method: 'POST',
       // headers: {
@@ -207,7 +202,6 @@ export const JournalServices = {
     //post file to server
   // },
   submitAnswer(answer) {
-    console.log(answer)
     return fetch(`${config.API_ENDPOINT}/questionaire`, {
       method: 'POST',
       headers: {
@@ -300,7 +294,6 @@ export const AuthServices = {
   },
 
   registerUser(newUser) {
-    console.log(newUser)
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
       headers: {

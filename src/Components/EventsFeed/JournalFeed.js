@@ -7,9 +7,6 @@ export default class JournalFeed extends Component {
 
 
   handleOpenJournal = (container) => {
-    console.log(container)
-    const id = `'${container}'`
-    console.log(id)
     const x = document.getElementById(container);
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -32,18 +29,13 @@ export default class JournalFeed extends Component {
     right: '0px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    // backgroundColor: 'rgba(210, 217, 220, 1)',
-    // color: '#40616e',
-    // backgroundColor: 'rgba(64, 97, 110, 1)',
-    // color: 'rgba(210, 217, 220, 1)',
     backgroundColor: 'rgba(0, 0, 0, .85)',
     color: 'rgba(210, 217, 220, 1)',
   }
 
 
-  // const displayJournalFeed = journals.map(journal => <JournalFeed key={journal.id} date={journal.date_created} journal={journal.text}/>)
   const displayJournalFeed = journals.map(journal =>
-    <li className="jFeedLi">
+    <li key={journals.indexOf(journal)} className="jFeedLi">
       <div>
         <p><span>Date: </span>{new Date(journal.date_created).toLocaleDateString()}</p>
         <div className="jFeedIntroCon">

@@ -55,7 +55,6 @@ export default class RegForm extends Component {
           gender: gender.value
       }
         
-        console.log(newUser)
         AuthServices.registerUser(newUser)
           .then(res => {
             firstName.value = ''
@@ -71,11 +70,9 @@ export default class RegForm extends Component {
             this.props.onRegSuccess()
           })
           .catch(e => this.context.setError(e.error))
-          console.log(this.context.error)
       }
     }
       catch(e) {
-        console.log(e.props)
         this.context.setError(e.props)
       } 
 

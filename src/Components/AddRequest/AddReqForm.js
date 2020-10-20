@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
-import { ReqServices } from '../../Services/APIServices';
 import TeQuieroContext from '../../Context';
 
 
 export default class AddReqForm extends Component {
   static contextType = TeQuieroContext
-  // defaultProps = {
-  //   location: {},
-  //   history: { 
-  //     push: () => {}
-  //   }
-  // }
+
 
   
 
@@ -38,7 +32,7 @@ export default class AddReqForm extends Component {
       for(let i = currentYear; i >= 1950; i--) {
         yearOptions.push(i)
       }
-      return yearDisplay.map(y => <option value={y}>{y}</option>)
+      return yearDisplay.map(y => <option key={yearDisplay.indexOf(y)} value={y}>{y}</option>)
       
     }
     const days = function() {
@@ -48,10 +42,10 @@ export default class AddReqForm extends Component {
         let formatedNum = ("0" + date).slice(-2)
         dayOptions.push(formatedNum)
       }
-      return dayOptions.map(day => <option value={day}>{day}</option>)
+      return dayOptions.map(day => <option key={dayOptions.indexOf(day)} value={day}>{day}</option>)
     }
 
-  const monthDisplay = bdayMonth.map(mon => <option value={mon}> {mon} </option>)
+  const monthDisplay = bdayMonth.map(mon => <option key={bdayMonth.indexOf(mon)} value={mon}> {mon} </option>)
     return (
       <div className='addReqCon'>
         <form onSubmit={this.props.handleSubmit} id="addReqForm" className="addReqForm">

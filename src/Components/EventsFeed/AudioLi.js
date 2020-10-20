@@ -40,7 +40,7 @@ export default class AudioLi extends Component {
         <li className="audioLi">
           <p>Date: <span>{new Date(this.props.date).toLocaleDateString()}</span></p>
           {/* <audio controls src={this.state.source}/> */}
-          <AudioPlayer src={this.state.source}/>
+          <AudioPlayer src={this.state.source} type="audio/mp3"/>
         </li>
     )
   }

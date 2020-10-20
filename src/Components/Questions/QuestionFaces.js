@@ -34,9 +34,7 @@ export default class QuestionFaces extends Component {
         value: 0,
         max: 0
       },
-      lastQ: this.props.lastQ,
       currentQ: 0,
-      currentQId: 'null'
     }
   }
 
@@ -125,7 +123,6 @@ export default class QuestionFaces extends Component {
       mood
     }
     JournalServices.submitAnswer(answer)
-    console.log(answer, mood)
     this.setState(
       {
         currentQ: this.state.currentQ + 1,
@@ -147,7 +144,6 @@ export default class QuestionFaces extends Component {
       fear: fear.value,
       mood
     }
-    console.log(answer)
     JournalServices.submitAnswer(answer)
     
     this.setState({
@@ -279,7 +275,7 @@ export default class QuestionFaces extends Component {
         </div>
 
       <div className='qBtnCon'>
-        {this.state.lastQ !== this.state.currentQId &&
+        {this.props.lastQ !== questions[currentQ].question_id &&
         <button
           onClick={event => this.handleQSubmit(event,questions[currentQ].question_id)}
           form={`qsForm`}
@@ -289,7 +285,7 @@ export default class QuestionFaces extends Component {
           <FontAwesomeIcon icon={faChevronCircleRight}/>
         </button>
         }
-        {this.state.lastQ === this.state.currentQId &&
+        {this.props.lastQ === questions[currentQ].question_id &&
         <button
           onClick={event => this.handleEndSubmit(event,questions[currentQ].question_id)}
           form={`qsForm`}

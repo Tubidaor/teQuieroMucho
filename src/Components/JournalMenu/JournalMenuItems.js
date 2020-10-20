@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './JournalMenu.css';
 import { getDate } from '../Misc/Misc';
 import MicRecorder from 'mic-recorder-to-mp3';
-// import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import { JournalServices } from '../../Services/APIServices'
 import { registerPlugin } from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
@@ -12,22 +10,15 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-// import 'tui-image-editor/dist/tui-image-editor.css';
-// import ImageEditor from '@toast-ui/react-image-editor';
-// import AuthServices from '../../Services/APIServices';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faFastForward,
-  faFastBackward,
   faRecordVinyl,
   faSmokingBan, 
   faUpload,
 } from '@fortawesome/free-solid-svg-icons';
-import { faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { faHandPaper } from '@fortawesome/free-regular-svg-icons';
 import AudioPlayer from 'react-h5-audio-player';
 import TeQuieroContext from '../../Context';
-import Error from '../Error/Error';
 
 
 
@@ -158,16 +149,13 @@ export class AudioEntry extends Component {
           let start = document.getElementById("btnStart");
           let stop = document.getElementById("btnStop");
           start.style.display = "none"
-          console.log(stop.style.display)
           if (stop.style.display === "") {
-            console.log('hidestart')
             stop.style.display = "block";
             start.style.display = "none"
           } else {
             stop.style.display = "none";
           }
           this.setState({isRecording: true })
-          console.log('startran')
         }).catch((e) => console.error(e));
     }
   }
@@ -176,9 +164,7 @@ export class AudioEntry extends Component {
     e.preventDefault();
     let upload = document.getElementById("aUploadBtn");
     let stop = document.getElementById("btnStop");
-    console.log(stop.style.display)
     if (stop.style.display === "block") {
-      console.log('hidestart')
       stop.style.display = "none";
       upload.style.display = "block"
     } else {
@@ -284,14 +270,12 @@ export class VideoEntry extends Component {
     e.preventDefault()
     let start = document.getElementById("btnStart");
     let stop = document.getElementById("btnStop");
-    console.log(stop.style.display)
     if(!this.stream) {
       this.context.setError("Please enable Microphone and Camera.")
       return
     }
     start.style.display = "none"
     if (stop.style.display === "") {
-      console.log('hidestart')
       stop.style.display = "block";
       start.style.display = "none"
     } else {
@@ -303,7 +287,6 @@ export class VideoEntry extends Component {
       this.setState({recording: true})
   
   
-    console.log(this.mediaRecorder.state)
   }
 
   componentWillUnmount() {
@@ -324,9 +307,7 @@ export class VideoEntry extends Component {
     let stop = document.getElementById("btnStop");
     let vidRec = document.getElementById("vidRec")
 
-    console.log(stop.style.display)
     if (stop.style.display === "block") {
-      console.log('hidestart')
       stop.style.display = "none"
       upload.style.display = "block"
       vidRec.style.display = "none"
@@ -340,7 +321,6 @@ export class VideoEntry extends Component {
     this.setState({recording: false})
     this.mediaRecorder.onstop = (ev)=> {
       let blob = new Blob(this.chunks, { type : 'video/mp4' });
-      console.log(blob.type)
       this.chunks = [];
       let videoURL = window.URL.createObjectURL(blob);
       this.videoPlay.src = videoURL

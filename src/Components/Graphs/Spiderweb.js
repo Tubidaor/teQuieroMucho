@@ -10,13 +10,6 @@ import {
 } from 'victory';
 
 
-
-const characterData = [
-  { strength: 1, intelligence: 250, luck: 1, stealth: 40, charisma: 50 },
-  { strength: 2, intelligence: 300, luck: 2, stealth: 80, charisma: 90 },
-  { strength: 5, intelligence: 225, luck: 3, stealth: 60, charisma: 120 }
-];
-
 export default class Spiderweb extends Component {
   constructor(props) {
     super(props);
@@ -25,18 +18,8 @@ export default class Spiderweb extends Component {
       maxima: []
     };
   }
-
-  componentDidMount() {
-  //   // console.log(this.processData(this.totalAvgScores(this.props.spiderData)))
- 
-
-  
-  }
-
-
   
   getMaxima(data) {
-    // console.log(data)
     if(data.length === 0) {
       return []
     }
@@ -53,14 +36,12 @@ export default class Spiderweb extends Component {
 
   processData(data) {
     const maxByGroup = this.getMaxima(data);
-    // console.log(data)
-    // console.log(maxByGroup)
+
     const makeDataArray = (d) => {
       return Object.keys(d).map((key) => {
         return { x: key, y: d[key] / maxByGroup[key] };
       });
     };
-    // console.log(data.map((datum) => makeDataArray(datum)))
     return data.map((datum) => makeDataArray(datum));
   }
 
@@ -72,9 +53,7 @@ export default class Spiderweb extends Component {
     let fear = []
     let mood = []
 
-    // console.log("uQData", userQuestionData)
     const question = userQuestionData
-    // userQuestionData.forEach(question => {
     if(question === undefined) {
       return []
     } else {
@@ -110,42 +89,10 @@ export default class Spiderweb extends Component {
 
   render() {
 
-    // console.log(this.props.userData)
-    // const userQuestions = []
     let {userData} = this.props
-    // if( this.props.page === 'relationship') {
-    //   userData = this.props.relData
-    // }
-    // userData.map(qs => userQuestions.push(qs.question))
-    // const uniqueUserQuestions = userQuestions.filter((v, i, a) => a.indexOf(v) === i);
-    // const userQuestionData = [] 
-    // uniqueUserQuestions.map(qs => userQuestionData.push({ question: qs, joy:[], disgust:[], sadness: [], anger: [], fear: [], mood: [] }))
-    
-    
-    // const userJoyData = []
-    // userData.map(data => userJoyData.push({key: new Date(data.date_created), b: data.joy } ))
-    // if(userQuestionData.length > 0) {
-    //   for(let i = 0; i < userQuestionData.length; i++) {
-        
-    //     for(let j = 0; j < userData.length; j++) {
-    //       if(userQuestionData[i].question === userData[j].question) {
-    //         userQuestionData[i].joy.push({x: userData[j].date_created, y: userData[j].joy})
-    //         userQuestionData[i].disgust.push({x: userData[j].date_created, y: userData[j].disgust})
-    //         userQuestionData[i].sadness.push({x: userData[j].date_created, y: userData[j].sadness})
-    //         userQuestionData[i].anger.push({x: userData[j].date_created, y: userData[j].anger})
-    //         userQuestionData[i].fear.push({x: userData[j].date_created, y: userData[j].fear})
-    //         userQuestionData[i].mood.push({x: userData[j].date_created, y: userData[j].mood})
-
-    //       }
-    //     }
-    //   }
-    // }
-
     
     const spiderData = this.processData(this.totalAvgScores(userData))
     const maxima = this.getMaxima(this.totalAvgScores(userData))
-
- 
 
     return (
       <VictoryChart polar
@@ -169,7 +116,7 @@ export default class Spiderweb extends Component {
         }
       >
         <VictoryLegend x={30} y={5}
-            title={userData == undefined ?'':userData.question}
+            title={userData === undefined ?'':userData.question}
             orientation="horizontal"
             itemsPerRow={2}
             gutter={-6}

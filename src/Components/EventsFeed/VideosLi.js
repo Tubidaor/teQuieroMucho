@@ -27,7 +27,7 @@ export default class VideoLi extends Component {
       const blobURL = URL.createObjectURL(source)
       this.setState({
         source: blobURL
-      }, console.log(this.state.source))
+      })
     })
   }
   
@@ -37,7 +37,7 @@ export default class VideoLi extends Component {
       <li className="videosLi">
         <p>Date: <span>{new Date(this.props.date).toLocaleDateString()}</span></p>
 
-        <video controls src={this.state.source} />
+        <video controls src={this.state.source} type="video/mp4" />
       </li>
     )
   }

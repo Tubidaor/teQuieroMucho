@@ -1,26 +1,10 @@
 import React, { Component } from 'react';
 import './StatusBar.css'
-import { QServices } from '../../Services/APIServices';
 
 export default class StatusBar extends Component {
 
-  // state = {
-  //   userData: [],
-  //   relData: []
-  // }
 
-  // componentDidMount() {
-  //   QServices.getGenQuestions
-  // }
-  // setUserData = (userData) => {
-  //   this.setState({userData})
-  // }
-
-  // setRelData = (relData) => {
-  //   this.setState({relData})
-  // }
   render() {
-    console.log(this.props.stateofMind)
     return (
       <section className="statusBarSection">
         <div className="yourStateofMind">

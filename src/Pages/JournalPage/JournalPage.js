@@ -3,7 +3,6 @@ import './JournalPage.css';
 import JournalMenu from '../../Components/JournalMenu/JournalMenu';
 import { JournalServices } from '../../Services/APIServices';
 import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';
-import { text } from '@fortawesome/fontawesome-svg-core';
 import Error from '../../Components/Error/Error';
 import TeQuieroContext from '../../Context'
 
@@ -50,7 +49,6 @@ export default class JournalPage extends Component {
     
     const formData = new FormData();
     for(let i = 0; i < files.files.length; i++) {
-      console.log(files.files[i])
       if(files.files[i].type.includes('video')) {
         const blob = new Blob([files.files[i]], { type: 'video/mp4'})
         formData.append('files', blob) 
@@ -78,7 +76,6 @@ export default class JournalPage extends Component {
     const formData = new FormData();
     formData.append('files', blob)
 
-    console.log(formData)
     JournalServices.postFileEntry(formData)
       .then(data => console.log(data))
 
@@ -96,7 +93,6 @@ export default class JournalPage extends Component {
     const formData = new FormData();
     formData.append('files', blob)
 
-    console.log(blob,)
     JournalServices.postFileEntry(formData)
       .then(data => console.log(data))
 

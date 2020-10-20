@@ -24,9 +24,8 @@ componentDidMount() {
     .then(data =>
       this.setState({
         requests: [data]
-      }, console.log(this.state.requests))
+      })
     )
-   
 }
 
 handleAccept = (user_id, anniversary) => {
@@ -35,7 +34,6 @@ handleAccept = (user_id, anniversary) => {
     partner_id: user_id,
     anniversary
   }
-  console.log(approvedRel)
   ReqServices.acceptRequest(approvedRel)
 
   this.handleCancel(user_id)   
@@ -45,7 +43,7 @@ handleAccept = (user_id, anniversary) => {
 handleCancel = (user_id) => {
   ReqServices.deleteRequest()
   this.setState({
-    requests:  this.state.requests.filter(req => {return req.user_id != user_id})
+    requests:  this.state.requests.filter(req => {return req.user_id !== user_id})
 
   })
   
@@ -59,12 +57,10 @@ handleAddReqSubmit = (e) => {
   const regexE = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
   const { email, month, day, year } = e.target
   const anniversary = month.value + "/" + day.value + "/" + year.value
-  console.log(regexAnn.test(anniversary), anniversary)
   if(!regexAnn.test(anniversary)) {
     this.context.setError("Please select date correctly.")
     return
   }
-  console.log(regexE.test(email.value))
   if(!regexE.test(email.value)) {
     this.context.setError("Please enter a correct email address.")
     return
@@ -73,7 +69,6 @@ handleAddReqSubmit = (e) => {
     partner_email: email.value,
     anniversary,
   }
-  console.log(relRequest)
   ReqServices.submitRelReq(relRequest)
     .then(res => {
         const prompt = document.getElementById('subPrompt')

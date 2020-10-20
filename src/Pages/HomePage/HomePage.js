@@ -32,19 +32,18 @@ export default class HomePage extends Component {
     QServices.getQuestionaireUserData()
       .then(data => 
         this.setState({stateofMind: this.setMood(QServices.getTQMState(data,data,currentSection))
-        }, console.log(this.state.stateofMind))
+        })
       )
 
 
     QServices.getQuestionaireRelData()
       .then(data => 
         this.setState({stateofRel: this.setMood(QServices.getTQMState(data,data,currentSection))
-        }, console.log(this.state.stateofRel))
+        })
       )
   }
 
   expand = () => {
-    console.log("expandrand")
     document.getElementById("menuExpand").classList.toggle("expand")
     document.getElementById("menuListExpand").classList.toggle("expandList")
     document.getElementById('homeFooter').classList.toggle('expandFooter')
@@ -83,7 +82,6 @@ export default class HomePage extends Component {
     let mood = []
     let state = ''
 
-    // console.log("uQData", userQuestionData)
     // const question = userQuestionData
     userQuestionData.forEach(question => {
     if(question === undefined) {

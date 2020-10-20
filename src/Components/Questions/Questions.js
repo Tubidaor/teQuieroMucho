@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
 import QuestionFaces from './QuestionFaces';
 import TeQuieroContext from '../../Context';
-import { JournalServices } from '../../Services/APIServices';
+import { QServices } from '../../Services/APIServices';
 
 export default class Questions extends Component {
   
   static contextType = TeQuieroContext
 
+  
 
-
+  componentWillUnmount() {
+    this.context.setOpeningQuestions(QServices.getOpeningDataFromStorage())
+    this.context.setRelationshipQuestions(QServices.getRelDataFromStorage())
+  }
 
 
   render() {
-
-
+    const {openingQs, relationshipQs } = this.context.state
     return (
       <QuestionFaces
         questions={
           this.props.qType === 'Opening'
-          ? this.context.openingQs
-          : this.context.relationshipQs
+          ? openingQs
+          : relationshipQs
         }
         handleQSubmit={this.handleQSubmit}
         handleEndSubmit={this.handleEndSubmit}
         lastQ={
           this.props.qType === 'Opening'
-          ? this.context.openingQs[this.context.openingQs.length - 2].question_id
-          : this.context.relationshipQs[this.context.relationshipQs.length - 2].question_id
+          ? openingQs[openingQs.length - 1].question_id
+          : relationshipQs[relationshipQs.length - 1].question_id
       }
         handlePushURL={this.props.handlePushURL}
       />

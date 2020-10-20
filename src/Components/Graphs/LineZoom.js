@@ -4,9 +4,7 @@ import {
   VictoryZoomContainer,
   VictoryLine,
   VictoryAxis,
-  VictoryBrushContainer,
   VictoryLegend,
-  Background, 
   VictoryLabel
 } from 'victory';
 
@@ -33,7 +31,6 @@ export default class VictoryZoom extends Component {
         return []
       }
       lineZoomData.joy.map(x => tickmarks.push(x.x))
-      // console.log("tickmarks", tickmarks)
       return tickmarks
     }
     function formatDate(date) {
@@ -42,20 +39,11 @@ export default class VictoryZoom extends Component {
       const year = d.getFullYear()
       const day = d.getDate()
       const fDate = month + "/" + day + "/" + year
-      // console.log(
-        //   { rdate: d,
-        //     fDate: fDate,
-        //     month,
-        //     day,
-        //     year
-        //   }
-        // )
+
         return fDate
         
       }
       
-      const trialFormat = xAxisTicmarks().map(date => formatDate(date))
-      // console.log(trialFormat)
       
       function userJoyData() {
         if(lineZoomData === undefined) {
@@ -101,7 +89,6 @@ export default class VictoryZoom extends Component {
         return lineZoomData.question
       }
       
-      console.log(lineZoomData === !undefined)
       function axis(lineZoomData) {
         if(lineZoomData === undefined) {
           return []
@@ -137,19 +124,17 @@ export default class VictoryZoom extends Component {
 
 
     }
-    console.log(axis(lineZoomData))
-    // console.log("lineZoomData", lineZoomData)
-    // console.log("xAxixLength", xAxisTicmarks()[47])
+
     return (
       <div className="zoomCon">
         <VictoryChart width={300} height={200} scale={{ x: "time" }}
-          containerComponent={
-            <VictoryZoomContainer
-              zoomDimension="x"
-              zoomDomain={this.props.zoomDomain}
-              onZoomDomainChange={this.handleZoom.bind(this)}
-            />
-          }
+          // containerComponent={
+          //   <VictoryZoomContainer
+          //     zoomDimension="x"
+          //     zoomDomain={this.props.zoomDomain}
+          //     onZoomDomainChange={this.handleZoom.bind(this)}
+          //   />           
+          // }
           style={{
             parent: {
               border: "2px solid rgba(210, 217, 220, 1)",

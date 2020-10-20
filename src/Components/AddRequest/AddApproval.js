@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ReqServices } from '../../Services/APIServices'
 import './AddRequest.css'
 
 

@@ -4,8 +4,7 @@ import { QServices } from './Services/APIServices.js';
 
 const TeQuieroContext = React.createContext({
   error: null,
-  openingQs: [],
-  relationshipQs: [],
+  state: {},
   userQs: [],
   alerts: [],
   categories: [],
@@ -32,20 +31,19 @@ export class TeQuieroProvider extends Component {
   setError = (error) => {
     this.setState({
       error
-    }, () => console.log(this.state.error))
+    })
   }
 
-  setOpeningQuestions = (openingQs) => {
+  setOpeningQuestions = async (openingQs) => {
     this.setState({
       openingQs
-    }, console.log(this.state.openingQs))
-    
+    })
   }
 
-  setRelationshipQuestions = (relationshipQs) => {
+  setRelationshipQuestions = async (relationshipQs) => {
     this.setState({
       relationshipQs
-    }, console.log(this.state.relationshipQs))
+    })
   }
   setUserQuestions = (userQs) => {
     this.setState({userQs})
@@ -59,8 +57,7 @@ export class TeQuieroProvider extends Component {
       userData: this.state.userData,
       relData: this.state.relData,
       error: this.state.error,
-      openingQs: this.state.openingQs,
-      relationshipQs: this.state.relationshipQs,
+      state: this.state,
       userQs: this.state.userQs,
       alerts: this.state.alerts,
       categories: this.state.categories,
@@ -70,6 +67,7 @@ export class TeQuieroProvider extends Component {
       setRelationshipQuestions: this.setRelationshipQuestions,
       setUserQuestions: this.setUserQuestions
     }
+
     return(
       <TeQuieroContext.Provider value={value}>
         {this.props.children}
