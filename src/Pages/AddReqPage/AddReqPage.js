@@ -18,6 +18,8 @@ state = {
 }
 
 componentDidMount() {
+
+  this.context.setError(null)
   ReqServices.getRelRequests()
     .then(data =>
       this.setState({

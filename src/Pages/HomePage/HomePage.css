@@ -1,7 +1,7 @@
 .homeFooter {
   position: fixed;
   bottom: 0px;
-  background: rgba( 0, 0, 0, .7);
+  background: rgba( 0, 0, 0, 1);
 }
 .expandFooter {
   background-image: url('http://localhost:8000/api/uploads/static/brightStars.jpg');

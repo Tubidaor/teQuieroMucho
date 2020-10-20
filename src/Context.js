@@ -38,14 +38,14 @@ export class TeQuieroProvider extends Component {
   setOpeningQuestions = (openingQs) => {
     this.setState({
       openingQs
-    }, () => console.log(this.state.openingQs))
+    }, console.log(this.state.openingQs))
     
   }
 
   setRelationshipQuestions = (relationshipQs) => {
     this.setState({
       relationshipQs
-    }, () => console.log(this.state.relationshipQs))
+    }, console.log(this.state.relationshipQs))
   }
   setUserQuestions = (userQs) => {
     this.setState({userQs})
