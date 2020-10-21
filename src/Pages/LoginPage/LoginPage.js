@@ -19,7 +19,10 @@ export default class LoginPage extends Component {
     
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/openingQs'
-    history.push(destination)
+    setTimeout(() =>
+      history.push(destination), 500
+    )
+
   }
 
   render() {

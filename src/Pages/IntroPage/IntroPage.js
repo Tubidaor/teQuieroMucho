@@ -3,7 +3,7 @@ import './IntroPage.css'
 import config from '../../config'
 
 export default class IntroPage extends Component {
-  defaultProps = {
+  static defaultProps = {
     location: {},
     history: {
       push: () => {}

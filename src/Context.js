@@ -37,19 +37,19 @@ export class TeQuieroProvider extends Component {
   setOpeningQuestions = async (openingQs) => {
     this.setState({
       openingQs
-    })
+    }, console.log(this.state.openingQs))
   }
 
   setRelationshipQuestions = async (relationshipQs) => {
     this.setState({
       relationshipQs
-    })
+    }, console.log(this.state.relationshipQs))
   }
   setUserQuestions = (userQs) => {
     this.setState({userQs})
   }
 
- 
+
 
   render() {
     

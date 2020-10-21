@@ -41,12 +41,10 @@ componentWillUnmount() {
               .then(
                 QServices.relQsToSessionStorage(JSON.stringify(relationshipQs))
               )
-            
           })
           .then( this.props.handleLoginSuccess())
-
         })
-      .catch(e => this.context.setError(e.error))
+        .catch(e => this.context.setError(e.error))
   }
 
 
