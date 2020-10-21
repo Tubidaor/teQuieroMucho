@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './AddReqPage.css'
-import AddReqForm from '../../Components/AddRequest/AddReqForm';
-import AddApproval from '../../Components/AddRequest/AddApproval';
+import AddReqForm from '../../Components/AddRequest/add-req-form';
+import AddApproval from '../../Components/AddRequest/add-approval';
 import Error from '../../Components/Error/Error';
 import TeQuieroContext from '../../Context';
 import { ReqServices } from '../../Services/APIServices'

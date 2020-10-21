@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
-import './AddRequest.css'
+import React, { Component } from 'react'
+import './add-request.css'
 
 
 export default class AddApproval extends Component {
- 
-
-
-
   
-
   render() {
-
     const { requests } = this.props
     const displayRequests = requests.map(request =>
       <li className="addAppLi">
@@ -19,17 +13,16 @@ export default class AddApproval extends Component {
             <button className="addAppBtn" onClick={e => this.props.handleAccept(request.user_id, request.anniversary)} type="submit">Accept</button>
             <button className="addAppBtn" onClick= {e => this.props.handleCancel(request.user_id)} type="cancel">Cancel</button>
           </div>
-        </li>
+      </li>
     )
 
     return (
-      
       <div className="addAppCon">
-      <h4>Add Approval</h4>
-      <ul className="addAppUl">
-        {displayRequests}
-      </ul>
-    </div>
+        <h4>Add Approval</h4>
+        <ul className="addAppUl">
+          {displayRequests}
+        </ul>
+      </div>
     )
   }
 }
