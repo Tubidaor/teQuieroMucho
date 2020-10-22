@@ -17,6 +17,7 @@ export default class JournalFeed extends Component {
       border: '2px solid black',
       height: '80vh',
       width: '80vw',
+      maxWidth: "500px",
       zIndex: '1',
       top: '100px',
       position: 'absolute',
