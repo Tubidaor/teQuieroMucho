@@ -1,8 +1,11 @@
-import React from 'react';
-import './RelMenu.css'
-import { li } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestionCircle, faExclamationTriangle, faChartPie } from '@fortawesome/free-solid-svg-icons'
+import React from 'react'
+import './rel-menu.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faQuestionCircle,
+  faExclamationTriangle,
+  faChartPie
+} from '@fortawesome/free-solid-svg-icons'
 
 
 export default function RelMenu(props) {

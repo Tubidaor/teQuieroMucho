@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import './Slider.css'
-
-
+import './slider.css'
 
 export default class Slider extends Component {
 
   handleChange = (e) => {
     let value = e.target.value
-    
     this.props.changeOnSlider(value)
   }
-
 
   render() {
     
@@ -30,7 +26,10 @@ export default class Slider extends Component {
         />
         <div className="sliderValues">
           <p>
-            {this.props.face}: <span className="sliderValue">{this.props.value}</span>
+            {this.props.face}: 
+              <span className="sliderValue">
+                {this.props.value}
+              </span>
           </p>
           <p>
             Max: <span id="sliderMax">{this.props.maxValue}</span>

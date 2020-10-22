@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import config from '../../config';
-import TokenServices from '../../Services/token-services';
-import AudioPlayer from 'react-h5-audio-player';
+import React, { Component } from 'react'
+import config from '../../config'
+import TokenServices from '../../Services/token-services'
+import AudioPlayer from 'react-h5-audio-player'
 
 
 export default class AudioLi extends Component {
@@ -10,7 +10,6 @@ export default class AudioLi extends Component {
     source: []
   }
 
-  
   componentDidMount() {
     this.handlePlay()
   }
@@ -22,11 +21,11 @@ export default class AudioLi extends Component {
         'Authorization': `Bearer ${TokenServices.getAuthToken()}`
       }
     })
-    .then(res => res.blob()
+    .then(res =>
+        res.blob()
     )
     .then(source => {
       const blobURL = URL.createObjectURL(source)
-
       this.setState({
         source: blobURL
       })
@@ -38,8 +37,11 @@ export default class AudioLi extends Component {
     
     return (
         <li className="audioLi">
-          <p>Date: <span>{new Date(this.props.date).toLocaleDateString()}</span></p>
-          {/* <audio controls src={this.state.source}/> */}
+          <p>Date:
+            <span>
+              {new Date(this.props.date).toLocaleDateString()}
+            </span>
+          </p>
           <AudioPlayer src={this.state.source} type="audio/mp3"/>
         </li>
     )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RegForm from '../../Components/Registration/RegForm';
+import RegForm from '../../Components/Registration/reg-form';
 import './RegPage.css'
 
 export default class RegPage extends Component {

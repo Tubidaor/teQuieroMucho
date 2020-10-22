@@ -36,7 +36,6 @@
   padding: 4px 8px;
   color: rgba(210, 217, 220, 1);
   background-color: rgba(0 , 0, 0, .75);
-
 }
 .alertsH4 {
   font-family: "Buda", cursive;
@@ -56,9 +55,7 @@
   font-family: "Buda", cursive;
   font-size: 1em;
   color: rgba(210, 217, 220, 1);
-
 }
-
 .alertsUL {
   padding: 0px;
 }
@@ -68,7 +65,6 @@
   width: 200px;
   margin-left: auto;
   margin-right: auto;
-  /* margin-top: 10px; */
   align-items: center;
 }
 .status {
@@ -83,7 +79,6 @@
 .analyticCon h2 {
   text-align: center;
   margin-top: 10px;
-  /* background-color: rgba(0 , 0, 0, .75); */
 }
 .analyticCon select {
   background-color: rgba(0 , 0, 0, .75);
@@ -94,7 +89,6 @@
   padding: 2px 0px 2px 2px;
   font-weight: bold;
   font-size: .6em;
-  /* overflow: auto; */
   max-width: 90%;
 }
 .qOptions {
@@ -102,15 +96,12 @@
   font-family: "Buda", cursive;
   font-size: .6em;
   color: rgba(210, 217, 220, 1);
-
-  
 }
 .anlCon, .alertsCon {
   margin-top: 20px;
   margin-bottom: 80px;
   width: 100vw;
 }
-
 .anlBtnCon {
   display: flex;
   justify-content: space-evenly;
@@ -128,7 +119,6 @@
   border: none;
   border-radius: 5px;
 }
-
 .anlRelBtn {
   background-color: rgba(0 , 0, 0, .75);
   width: 100px;
@@ -139,7 +129,6 @@
   border: none;
   border-radius: 5px;
 }
-
 .anlYouBtn:active, .anlRelBtn:active {
   color: rgba(0 , 0, 0, .75);
 }
@@ -156,7 +145,6 @@
   margin-left: auto;
   margin-right: auto;
   font-family: "Buda", cursive;
-
 }
 .addIssueCon {
   margin-top: 20px;
@@ -165,7 +153,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 6px;
-
 }
 .issueBtn {
   margin-top: 10px;
@@ -173,7 +160,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 .issueLegend {
   margin-right: auto;
   margin-left: auto;
@@ -182,21 +168,18 @@
   font-weight: bold;
   font-size: 1.2em;
 }
-
 .highAlert {
   background-color: red;
   height: 10px;
   width: 10px;
   border-radius: 50%;
 }
-
 .midAlert {
   background-color: orange;
   height: 10px;
   width: 10px;
   border-radius: 50%;
 }
-
 .lowAlert {
   background-color: yellow;
   height: 10px;
@@ -220,7 +203,6 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  
 }
 .statusCon {
   display: flex;
@@ -233,7 +215,6 @@
   font-family: "Buda", cursive;
   color: rgba(210, 217, 220, 1);
 }
-
 .issueFS {
   border: none;
 }
@@ -271,7 +252,6 @@
 .issueBtn:hover {
   cursor: pointer;
 }
-
 .issueForm select, .issueForm option {
   font-family: "Buda", cursive;
   font-weight: bold;

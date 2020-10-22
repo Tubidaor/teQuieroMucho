@@ -1,10 +1,7 @@
-
-
 .figureConLeft {
   margin-left: 0px;
   width: 40px;
   position: relative;
-
 }
 .figureConLeft li {
   list-style: none;
@@ -44,7 +41,6 @@
   margin-top: -12px;
   margin-left: -4px;
   transform: rotate(22deg)
-
 }
 .navLi4 {
   border-right-width: 2px;
@@ -82,14 +78,12 @@
   border-radius: 38%;
   border-color: rgba(210, 217, 220, 1);
 }
-
 .figureConRight {
   margin-left: 82px;
   width: 40px;
   transform: scale(-1,1);
   margin-top: -25px;
   position: relative;
-
 }
 .figureConRight li {
   list-style: none;
@@ -107,19 +101,18 @@
 }
 .menuListCon {
   display: none;
-  /* background-color: rgba(64, 97, 110, .7); */
-  background-image: url("http://localhost:8000/api/uploads/static/streetSnow.jpg");
+  background-image: url(
+    "http://localhost:8000/api/uploads/static/streetSnow.jpg"
+  );
   background-size: 150% 400%;
   background-position: center;
   background-position-y: 100%;
   height: 100px;
   background-position-x: 47%;
-  /* box-shadow: 0px 0px 5px 10px rgba( 0, 0, 0, .5); */
 }
 .menuListCon::before {
   content: "";
   display: block;
-  /* height: 5px; */
   width: 100vw;
   box-shadow: 0px 0px 5px 10px rgba( 0, 0, 0, .5);
   width: 100vw;
@@ -128,22 +121,16 @@
 .menuListCon::after {
   content: "";
   display: block;
-  /* border-top: 2px solid black; */
   margin-top: -42px;
   margin-left: -10px;
   width: 110%;
-
 }
 .expandList {
   display: block;
-  /* border-top: 2px solid black; */
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  /* background-image: url('http://localhost:8000/api/uploads/static/brightStars.jpg'); */
-
 }
-
 .ulListCon {
   width: 96%;
   position: relative;
@@ -175,20 +162,11 @@
   font-size: .75em;
   padding-left: 3px;
   padding-right: 3px;
-  /* font-family: 'Buda', cursive;
-  font-family: 'Cinzel Decorative', cursive;
-  font-family: 'Delius Swash Caps', cursive;
-  font-family: 'Emilys Candy', cursive; */
   font-family: 'Nothing You Could Do', cursive;
-  /* font-family: 'Oleo Script', cursive;
-  font-family: 'Pacifico', cursive;
-  font-family: 'Tangerine', cursive; */
 }
-
 .navBtn:hover {
   cursor: pointer;
 }
-
 .navBtn:active {
   background-color: #758f9a;
   color: rgba(210, 217, 220, 1);

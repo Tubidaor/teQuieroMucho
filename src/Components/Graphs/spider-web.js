@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   VictoryChart,
   VictoryGroup,
@@ -7,16 +7,17 @@ import {
   VictoryTheme,
   VictoryArea,
   VictoryLegend
-} from 'victory';
+} from 'victory'
 
 
 export default class Spiderweb extends Component {
+
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       data: [],
       maxima: []
-    };
+    }
   }
   
   getMaxima(data) {
@@ -24,25 +25,23 @@ export default class Spiderweb extends Component {
       return []
     }
     const groupedData = Object.keys(data[0]).reduce((memo, key) => {
-    
-      memo[key] = data.map((d) => d[key]);
-      return memo;
-    }, {});
+      memo[key] = data.map((d) => d[key])
+      return memo
+    }, {})
     return Object.keys(groupedData).reduce((memo, key) => {
-      memo[key] = Math.max(...groupedData[key]);
-      return memo;
-    }, {});
+      memo[key] = Math.max(...groupedData[key])
+      return memo
+    }, {})
   }
 
   processData(data) {
     const maxByGroup = this.getMaxima(data);
-
     const makeDataArray = (d) => {
       return Object.keys(d).map((key) => {
-        return { x: key, y: d[key] / maxByGroup[key] };
-      });
-    };
-    return data.map((datum) => makeDataArray(datum));
+        return { x: key, y: d[key] / maxByGroup[key] }
+      })
+    }
+    return data.map((datum) => makeDataArray(datum))
   }
 
   totalAvgScores = (userQuestionData) => {
@@ -52,7 +51,6 @@ export default class Spiderweb extends Component {
     let anger = []
     let fear = []
     let mood = []
-
     const question = userQuestionData
     if(question === undefined) {
       return []
@@ -64,14 +62,12 @@ export default class Spiderweb extends Component {
         anger.push(question.anger[i].y)
         fear.push(question.fear[i].y)
         mood.push(question.mood[i].y)
-
       }
-
-    // })
     
     function arrAvg(arr) {
       return arr.reduce((a,b) => a + b, 0) / arr.length
     }
+
     const avgJoy = Math.round(arrAvg(joy))
     const avgDisgust = Math.round(arrAvg(disgust))
     const avgSadness = Math.round(arrAvg(sadness))
@@ -80,17 +76,29 @@ export default class Spiderweb extends Component {
     const avgMood = Math.round(arrAvg(mood))
     
     return [
-      { Joy: 100, Disgust: 100, Sadness: 100, Anger: 100, Fear: 100, Overall: 100 },
-      { Joy: avgJoy, Disgust: avgDisgust, Sadness: avgSadness, Anger: avgAnger, Fear: avgFear, Overall: avgMood }
+      { 
+        Joy: 100,
+        Disgust: 100,
+        Sadness: 100,
+        Anger: 100,
+        Fear: 100,
+        Overall: 100
+      },
+      {
+        Joy: avgJoy,
+        Disgust: avgDisgust,
+        Sadness: avgSadness,
+        Anger: avgAnger,
+        Fear: avgFear,
+        Overall: avgMood
+      }
     ]
+    }
   }
-  }
-
 
   render() {
-
-    let {userData} = this.props
     
+    let {userData} = this.props
     const spiderData = this.processData(this.totalAvgScores(userData))
     const maxima = this.getMaxima(this.totalAvgScores(userData))
 
@@ -100,7 +108,6 @@ export default class Spiderweb extends Component {
         domain={{ y: [ 0, 1 ] }}
         padding={{ top: 70, bottom: 60 }}
         borderPadding={{ top: 0, bottom: 0, left: 2, right: 2 }}
-
         style={
           {
             parent: {
@@ -109,10 +116,9 @@ export default class Spiderweb extends Component {
               border: "2px rgba(210, 217, 220, 1) solid",
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: 10,
+              marginTop: 10
             }
           }
-
         }
       >
         <VictoryLegend x={30} y={5}
@@ -124,22 +130,25 @@ export default class Spiderweb extends Component {
             width={50}
             style={{
               labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
-              // border: { borderRadius: "10px", stroke: "#0652c5"},
-              title: {fill: "rgba( 255, 255, 0, .8)", fontSize: 10, fontFamily: "Buda, cursive", fontWeight: "bold" },
+              title: {
+                fill: "rgba( 255, 255, 0, .8)",
+                fontSize: 10,
+                fontFamily: "Buda, cursive",
+                fontWeight: "bold"
+              }
             }}
             data={[
               { name: "", symbol: { fill: "transparent" } },
-              { name: "Total Avg", symbol: { fill: "rgba(6, 82, 197, .7)" } },
+              { name: "Total Avg", symbol: { fill: "rgba(6, 82, 197, .7)" } }
             ]}
         />
         <VictoryGroup colorScale={["transparent", "#0652c5"]}
           style={{ data: { fillOpacity: 0.4, strokeWidth: 2 } }}
         >
           {
-              spiderData.map((data, i) => {
-                  return <VictoryArea key={i} data={data}/>;
-                })
-              
+            spiderData.map((data, i) => {
+              return <VictoryArea key={i} data={data}/>;
+            })
           }
         </VictoryGroup>
       {
@@ -149,7 +158,11 @@ export default class Spiderweb extends Component {
               style={{
                 axisLabel: { padding: 30, fill: "rgba(210, 217, 220, 1)" },
                 axis: { stroke: "none" },
-                grid: { stroke: "rgba(210, 217, 220, 1)", strokeWidth: 0.25, opacity: 0.5 },
+                grid: {
+                  stroke: "rgba(210, 217, 220, 1)",
+                  strokeWidth: 0.25,
+                  opacity: 0.5
+                },
                 tickLabels: { 
                   fill: "rgba(210, 217, 220, 1)",
                   fontSize: 14,
@@ -166,7 +179,7 @@ export default class Spiderweb extends Component {
               tickFormat={(t) => Math.ceil(t * maxima[key])}
               tickValues={[0.25, 0.5, 0.75, 1]}
             />
-          );
+          )
         })
       }
         <VictoryPolarAxis
@@ -177,8 +190,7 @@ export default class Spiderweb extends Component {
             grid: { stroke: "grey", opacity: 0.5, fill: "rgba( 0, 0, 0, .75)" }
           }}
         />
-
       </VictoryChart>
-    );
+    )
   }
 }

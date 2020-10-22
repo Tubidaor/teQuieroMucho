@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './JournalPage.css';
-import JournalMenu from '../../Components/JournalMenu/JournalMenu';
+import JournalMenu from '../../Components/JournalMenu/journal-menu';
 import { JournalServices } from '../../Services/APIServices';
-import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/JournalMenuItems';
-import Error from '../../Components/Error/Error';
+import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/journal-menu-items';
+import Error from '../../Components/Error/error';
 import TeQuieroContext from '../../Context'
 
 export default class JournalPage extends Component {

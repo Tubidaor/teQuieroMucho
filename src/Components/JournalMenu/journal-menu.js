@@ -1,8 +1,8 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faFileWord} from '@fortawesome/free-regular-svg-icons';
-import {faImages, faMicrophoneAlt, faVideo} from '@fortawesome/free-solid-svg-icons';
-import './JournalMenu.css'
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faFileWord} from '@fortawesome/free-regular-svg-icons'
+import {faImages, faMicrophoneAlt, faVideo} from '@fortawesome/free-solid-svg-icons'
+import './journal-menu.css'
 
 export default function JournalMenu(props) {
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   VictoryChart,
   VictoryStack,
@@ -6,31 +6,11 @@ import {
   VictoryAxis,
   VictoryLabel,
   VictoryLegend
-} from 'victory';
+} from 'victory'
 import { JournalServices } from '../../Services/APIServices'
 
-
-
-
-// const dataA = [
-//   { x: "Personal Drones", y: 57 },
-//   { x: "Smart Thermostat", y: 40 },
-//   { x: "Television", y: 38 },
-//   { x: "Smartwatch", y: 37 },
-//   { x: "Fitness Monitor", y: 25 },
-//   { x: "Tablet", y: 19 },
-//   { x: "Camera", y: 15 },
-//   { x: "Laptop", y: 13 },
-//   { x: "Phone", y: 12 }
-// ];
-
-// const dataB = dataA.map((point) => {
-//   const y = Math.round(point.y + 3 * (Math.random() - 0.5));
-//   return { ...point, y };
-// });
-
-const width = 400;
-const height = 400;
+const width = 400
+const height = 400
 
 export default class StackedBars extends Component {
 
@@ -85,26 +65,27 @@ export default class StackedBars extends Component {
       .catch(e => console.log(e))
   }
 
-
   render() {
- 
+
     const {dataA} = this.state
+    
     return (
       <VictoryChart horizontal
         height={height}
         width={width}
         padding={{top: 70, bottom: 40, left: 40, right: 40}}
-        style={{
-          parent: {
-            background: "rgba( 0, 0, 0, .75)",
-            height: "auto",
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginTop: -75,
-            border: "2px solid rgba(210, 217, 220, 1)",
-            borderRadius: 10
+        style={
+          {
+            parent: {
+              background: "rgba( 0, 0, 0, .75)",
+              height: "auto",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginTop: -75,
+              border: "2px solid rgba(210, 217, 220, 1)",
+              borderRadius: 10
+            }
           }
-        }
         }
       >
         <VictoryLegend x={110} y={5}
@@ -113,20 +94,36 @@ export default class StackedBars extends Component {
           orientation="horizontal"
           itemsPerRow={0}
           gutter={70}
-          // height={10}
           width={50}
-          style={{
-            // border: { borderRadius: "10px", stroke: "#0652c5"},
-            title: {fill: "rgba( 255, 255, 0, .8)", fontSize: 12, fontFamily: "Buda, cursive", fontWeight: "bold", marginTop: 40  },
-          }}
-          data={[
-            { name: "", symbol: { fill: "transparent" } },
-            { name: "", symbol: { fill: "transparent" } },
-          ]}
-
+          style={
+            {
+              title: {
+                fill: "rgba( 255, 255, 0, .8)",
+                fontSize: 12,
+                fontFamily: "Buda, cursive",
+                fontWeight: "bold",
+                marginTop: 40 
+              }
+            }
+          }
+          data={
+            [
+              { name: "", symbol: { fill: "transparent" } },
+              { name: "", symbol: { fill: "transparent" } }
+            ]
+          }
         />
         <VictoryStack
-          style={{ data: { width: 25 }, labels: { fontSize: 15, fill: "rgba(210, 217, 220, 1)", fontFamily: "Buda, cursive" } }}
+          style={
+            {
+              data: { width: 25 },
+              labels: {
+                fontSize: 15,
+                fill: "rgba(210, 217, 220, 1)",
+                fontFamily: "Buda, cursive"
+              }
+            }
+          }
         >
           <VictoryBar
             style={{ data: { fill: "rgba(6, 82, 197, .7)" } }}
@@ -140,19 +137,18 @@ export default class StackedBars extends Component {
             labels={({ datum }) => (`${Math.abs(datum.y)}`)}
           />
         </VictoryStack>
-
         <VictoryAxis
-          style={{
-            axis: { stroke: "transparent" },
-            ticks: { stroke: "transparent" },
-            tickLabels: { fontSize: 15, fill: "rgba(210, 217, 220, 1)", fontFamily: "Buda, cursive" }
-          }}
-          /*
-            Use a custom tickLabelComponent with
-            an absolutely positioned x value to position
-            your tick labels in the center of the chart. The correct
-            y values are still provided by VictoryAxis for each tick
-          */
+          style={
+            {
+              axis: { stroke: "transparent" },
+              ticks: { stroke: "transparent" },
+              tickLabels: {
+                fontSize: 15,
+                fill: "rgba(210, 217, 220, 1)",
+                fontFamily: "Buda, cursive"
+              }
+            }
+          }
           tickLabelComponent={
             <VictoryLabel
               x={width / 2}
@@ -162,6 +158,6 @@ export default class StackedBars extends Component {
           tickValues={dataA.map((point) => point.x).reverse()}
         />
       </VictoryChart>
-    );
+    )
   }
 }

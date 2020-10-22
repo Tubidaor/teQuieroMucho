@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Link, Switch, Route } from 'react-router-dom';
 import TeQuieroContext from '../../Context';
 import StatusBar from '../../Components/StatusBar/StatusBar';
-import NavBar from '../../Components/NavBar/NavBar';
+import NavBar from '../../Components/NavBar/nav-bar';
 import './HomePage.css'
 import JournalPage from '../JournalPage/JournalPage';
 import RelationshipPage from '../RelationshipPage/RelationshipPage';

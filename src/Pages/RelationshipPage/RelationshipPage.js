@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import RelMenu from '../../Components/RelationshipMenu/RelMenu';
-import Questions from '../../Components/Questions/Questions';
-import { Analytics, Alerts, AddIssue } from '../../Components/RelationshipMenu/RelMenuItems';
+import RelMenu from '../../Components/RelationshipMenu/rel-menu';
+import Questions from '../../Components/Questions/questions';
+import { Analytics, Alerts, AddIssue } from '../../Components/RelationshipMenu/rel-menu-items';
 import './RelationshipPage.css'
-import Error from '../../Components/Error/Error';
+import Error from '../../Components/Error/error';
 import TeQuieroContext from '../../Context';
 
 export default class RelationshipPage extends Component {

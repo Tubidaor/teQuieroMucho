@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import './Error.css'
+import './error.css'
 import TeQuieroContext from '../../Context'
 
 export default class Error extends Component {
-  
+
   static contextType = TeQuieroContext
 
   render() {

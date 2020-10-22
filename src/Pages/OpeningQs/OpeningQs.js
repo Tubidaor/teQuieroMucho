@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Questions from '../../Components/Questions/Questions';
+import Questions from '../../Components/Questions/questions';
 import TeQuieroContext from '../../Context';
 import './OpeningQs.css';
 

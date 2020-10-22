@@ -1,22 +1,14 @@
-import React, { Component } from 'react';
-import QuestionFaces from './QuestionFaces';
-import TeQuieroContext from '../../Context';
-import { QServices } from '../../Services/APIServices';
+import React, { Component } from 'react'
+import QuestionFaces from './question-faces'
+import TeQuieroContext from '../../Context'
 
 export default class Questions extends Component {
-  
+
   static contextType = TeQuieroContext
-
-  
-
-  componentWillUnmount() {
-    this.context.setOpeningQuestions(QServices.getOpeningDataFromStorage())
-    this.context.setRelationshipQuestions(QServices.getRelDataFromStorage())
-  }
-
 
   render() {
     const {openingQs, relationshipQs } = this.context.state
+
     return (
       <QuestionFaces
         questions={
@@ -30,7 +22,7 @@ export default class Questions extends Component {
           this.props.qType === 'Opening'
           ? openingQs[openingQs.length - 1].question_id
           : relationshipQs[relationshipQs.length - 1].question_id
-      }
+        }
         handlePushURL={this.props.handlePushURL}
       />
     )

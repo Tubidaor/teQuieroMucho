@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from '../../Components/Login/Login';
+import Login from '../../Components/Login/login';
 import TeQuieroContext from '../../Context';
 import './LoginPage.css'
 

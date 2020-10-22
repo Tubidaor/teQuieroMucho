@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import TeQuieroContext from '../../Context';
-import './Login.css'
-import { AuthServices, QServices } from '../../Services/APIServices';
-import Error from '../Error/Error';
-import TokenServices from '../../Services/token-services';
+import React, { Component } from 'react'
+import TeQuieroContext from '../../Context'
+import './login.css'
+import { AuthServices, QServices } from '../../Services/APIServices'
+import Error from '../Error/error'
+import TokenServices from '../../Services/token-services'
 
 export default class Login extends Component {
 
 static contextType = TeQuieroContext
 
-componentWillUnmount() {
-  this.context.setError(null)
-}
+  componentWillUnmount() {
+    this.context.setError(null)
+  }
 
   handleLoginJwtAuth = (e) => {
     e.preventDefault()
@@ -31,8 +31,12 @@ componentWillUnmount() {
       .then(token => {
         QServices.getGenQuestions(token)
           .then(questions => {
-            const openingQs = questions.filter(item => item.section === 'Opening')
-            const relationshipQs  = questions.filter(item => item.section === 'Relationship')
+            const openingQs = questions.filter(item =>
+              item.section === 'Opening'
+            )
+            const relationshipQs  = questions.filter(item =>
+              item.section === 'Relationship'
+            )
             this.context.setOpeningQuestions(openingQs)
               .then(
                 QServices.openingQsToSessionStorage(JSON.stringify(openingQs))
@@ -43,12 +47,10 @@ componentWillUnmount() {
               )
           })
           .then( this.props.handleLoginSuccess())
-        })
-        .catch(e => this.context.setError(e.error))
+        }
+      )
+      .catch(e => this.context.setError(e.error))
   }
-
-
-
 
   render() {
 
@@ -58,7 +60,9 @@ componentWillUnmount() {
             <h2 className="loginH2">Login</h2>
             {this.context.error && <Error/>}
             <div className="email">
-              <label className="loginLabel" htmlFor="loginForm_email">Email</label>
+              <label className="loginLabel" htmlFor="loginForm_email">
+                Email
+              </label>
               <input name="email" id="loginForm_email"></input>
             </div>
             <div className="password">

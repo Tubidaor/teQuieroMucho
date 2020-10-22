@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import './JournalMenu.css';
-import { getDate } from '../Misc/Misc';
-import MicRecorder from 'mic-recorder-to-mp3';
-import 'react-h5-audio-player/lib/styles.css';
-import { registerPlugin } from 'react-filepond';
-import 'filepond/dist/filepond.min.css';
-import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
-import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { Component } from 'react'
+import './journal-menu.css'
+import { getDate } from '../Misc/misc'
+import MicRecorder from 'mic-recorder-to-mp3'
+import 'react-h5-audio-player/lib/styles.css'
+import { registerPlugin } from 'react-filepond'
+import 'filepond/dist/filepond.min.css'
+import FilePondPluginImageExifOrientation
+  from 'filepond-plugin-image-exif-orientation'
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import FilePondPluginFileEncode from 'filepond-plugin-file-encode'
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faRecordVinyl,
   faSmokingBan, 
   faUpload,
-} from '@fortawesome/free-solid-svg-icons';
-import { faHandPaper } from '@fortawesome/free-regular-svg-icons';
-import AudioPlayer from 'react-h5-audio-player';
-import TeQuieroContext from '../../Context';
-
+} from '@fortawesome/free-solid-svg-icons'
+import { faHandPaper } from '@fortawesome/free-regular-svg-icons'
+import AudioPlayer from 'react-h5-audio-player'
+import TeQuieroContext from '../../Context'
 
 
 registerPlugin(
@@ -27,82 +27,100 @@ registerPlugin(
   FilePondPluginFileValidateSize,
   FilePondPluginImageExifOrientation,
   FilePondPluginImagePreview,
-  )
-
-
-
+)
 
 export class JournalEntry extends Component {
+
   static contextType = TeQuieroContext
+
   componentDidMount() {
     this.context.setError(null)
   }
+
   render() {
     return (
       <div className="jEntryCon">
         <div className="dateButtonCon">
           <h5 className="jPageH5">Today's Date: <span> {getDate()} </span> </h5>
           <div className="aBtnCon">
-
-          <button className="jInputButton" onClick={e => this.props.handleCancel(e)}>
+          <button
+            className="jInputButton"
+            onClick={e => this.props.handleCancel(e)}
+          >
             <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
           </button>
-          <button form="jForm" className="jInputButton" onClick={e => this.props.handlePostEntry(e)}>
+          <button
+            form="jForm"
+            className="jInputButton"
+            onClick={e => this.props.handlePostEntry(e)}
+          >
             <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
           </button>
         </div>
       </div>
       <form id="jForm">
-        <textarea type="paragraph" id="jInputBox" name='jEText' className="jInputBox" cols="50"></textarea>
+        <textarea
+          type="paragraph"
+          id="jInputBox"
+          name='jEText'
+          className="jInputBox"
+          cols="50">
+        </textarea>
       </form>    
-        
     </div>
     )
   }
 }
 
 export class FileEntry extends Component {
+
 static contextType = TeQuieroContext
 
- componentDidMount() {
-  this.context.setError(null)
+  componentDidMount() {
+    this.context.setError(null)
+  }
 
- }
-
- render() {
-  return (
-    <section className="pEntrySection">
-      <div className="dateButtonCon">
-        <h5 className="pPageH5">Today's Date: <span>{getDate()}</span></h5>
-        <div className="aBtnCon">
-
-          <button className="pInputButton" onClick={e => this.props.handleCancel(e)}>
-            <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
-          </button>
-          <button form={"pForm"} className="pInputButton">
-            <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
-          </button>
+  render() {
+    return (
+      <section className="pEntrySection">
+        <div className="dateButtonCon">
+          <h5 className="pPageH5">Today's Date: <span>{getDate()}</span></h5>
+          <div className="aBtnCon">
+            <button
+              className="pInputButton"
+              onClick={e => this.props.handleCancel(e)}
+            >
+              <FontAwesomeIcon className="jEntryIcon" icon={faSmokingBan}/>
+            </button>
+            <button form={"pForm"} className="pInputButton">
+              <FontAwesomeIcon className="jEntryIcon" icon={faUpload}/>
+            </button>
+          </div>
         </div>
-      </div>
-      <form className="upForm" action="/action_page.php" id="pForm" onSubmit={e => this.props.handleFileEntry(e)}>
-        <input
-          type="file"
-          id="pInputBox"
-          className="pInputBox"
-          name='files'
-          multiple
-          max="10"
-          // value="Please select files"
-        />
-      </form>   
-    </section>
-  )
- }
+        <form
+          className="upForm"
+          action="/action_page.php"
+          id="pForm"
+          onSubmit={e => this.props.handleFileEntry(e)}
+        >
+          <input
+            type="file"
+            id="pInputBox"
+            className="pInputBox"
+            name='files'
+            multiple
+            max="10"
+          />
+        </form>   
+      </section>
+    )
+  }
 }
 
-const Mp3Recorder = new MicRecorder({bitRate: 128});
+const Mp3Recorder = new MicRecorder({bitRate: 128})
 
 export class AudioEntry extends Component {
+
   static contextType = TeQuieroContext
 
   constructor(props) {
@@ -110,21 +128,19 @@ export class AudioEntry extends Component {
     this.state = {
       isRecording: false,
       blobURL: '',
-      isBlocked: false,
+      isBlocked: false
     }
   }
 
   async componentDidMount() {
     this.context.setError(null)
-
-    
     this.stream = await navigator.mediaDevices.getUserMedia({audio: true},
-    () => {
-      this.setState({ isBlocked: false })
-    },
-    () => {
-      this.setState({ iBlocked: true })
-    }
+      () => {
+        this.setState({ isBlocked: false })
+      },
+      () => {
+        this.setState({ iBlocked: true })
+      }
     )
   }
 
@@ -146,40 +162,42 @@ export class AudioEntry extends Component {
         .start()
         .then(() => {
           
-          let start = document.getElementById("btnStart");
-          let stop = document.getElementById("btnStop");
+          let start = document.getElementById("btnStart")
+          let stop = document.getElementById("btnStop")
           start.style.display = "none"
           if (stop.style.display === "") {
-            stop.style.display = "block";
+            stop.style.display = "block"
             start.style.display = "none"
           } else {
-            stop.style.display = "none";
+            stop.style.display = "none"
           }
           this.setState({isRecording: true })
-        }).catch((e) => console.error(e));
+        })
+        .catch((e) => console.error(e))
     }
   }
 
   stop = (e) => {
-    e.preventDefault();
-    let upload = document.getElementById("aUploadBtn");
-    let stop = document.getElementById("btnStop");
+    e.preventDefault()
+    let upload = document.getElementById("aUploadBtn")
+    let stop = document.getElementById("btnStop")
     if (stop.style.display === "block") {
-      stop.style.display = "none";
+      stop.style.display = "none"
       upload.style.display = "block"
     } else {
-      stop.style.display = "block";
+      stop.style.display = "block"
     }
+
     Mp3Recorder
       .stop()
       .getMp3()
       .then(([buffer, blob]) => {
         const blobURL = URL.createObjectURL(blob)
-        this.setState({ blobURL, isRecording: false });
-      }).catch((e) => console.log(e));
-  };
+        this.setState({ blobURL, isRecording: false })
+      })
+      .catch((e) => console.log(e))
+  }
   
-
   render() {
     
     return (
@@ -187,13 +205,22 @@ export class AudioEntry extends Component {
         <form  className="dateButtonCon">
         <h5 className="aPageH5">Today's Date: <span>{getDate()}</span></h5>
         <div className="aBtnCon">
-          <button  className="aButton" id="btnStart" onClick={this.start} disabled={this.state.isRecording}>
+          <button 
+            className="aButton"
+            id="btnStart"
+            onClick={this.start}
+            disabled={this.state.isRecording}
+          >
             <FontAwesomeIcon className="aIcon" icon={faRecordVinyl}/>
           </button>
-          <button className="btnStop" id="btnStop" onClick={this.stop} disabled={!this.state.isRecording}>
+          <button
+            className="btnStop"
+            id="btnStop"
+            onClick={this.stop}
+            disabled={!this.state.isRecording}
+          >
             <FontAwesomeIcon  icon={faHandPaper}/>
           </button>
-      
           <button
               id="pInputButton"
               type="reset"
@@ -202,7 +229,13 @@ export class AudioEntry extends Component {
               >
             <FontAwesomeIcon className="fStopIcon" icon={faSmokingBan}/>
           </button>
-          <button className="aUploadBtn" id="aUploadBtn" type="submit" onClick={event => this.props.handleAudioEntry(event, this.state.blobURL)}>
+          <button
+            className="aUploadBtn"
+            id="aUploadBtn"
+            type="submit"
+            onClick={event =>
+              this.props.handleAudioEntry(event, this.state.blobURL)}
+            >
             <FontAwesomeIcon className="aIcon" icon={faUpload}/>
           </button>
         </div>
@@ -212,15 +245,18 @@ export class AudioEntry extends Component {
             <p>Recording in progress.</p>
         </div>
       } 
-        <AudioPlayer className="rhap_container aPlayer" src={this.state.blobURL} controls/>
+        <AudioPlayer
+          className="rhap_container aPlayer"
+          src={this.state.blobURL}
+          controls
+        />
       </section>
     )
   }
 }
 
-
-
 export class VideoEntry extends Component {
+
   static contextType = TeQuieroContext
   
   constructor(props) {
@@ -240,10 +276,15 @@ export class VideoEntry extends Component {
         } 
     } 
   }
+
   async componentDidMount() {
     this.context.setError(null)
-
-    this.stream = await navigator.mediaDevices.getUserMedia({audio: true, video: true})
+    this.stream = await navigator.mediaDevices.getUserMedia(
+      {
+        audio: true,
+        video: true
+      }
+    )
     this.mediaRecorder = new MediaRecorder(this.stream)
     this.videoRec = document.getElementById("vidRec")
     
@@ -256,55 +297,46 @@ export class VideoEntry extends Component {
     this.chunks = []
     this.mediaRecorder.ondataavailable = e => {
       if(e.data && e.data.size > 0) {
-        this.chunks.push(e.data);
+        this.chunks.push(e.data)
       }
     }
   }
 
   componentDidUpdate() {
     this.videoPlay = document.getElementById("vidPlay")
-    
   }
 
   startRec = (e) => {
     e.preventDefault()
-    let start = document.getElementById("btnStart");
-    let stop = document.getElementById("btnStop");
+    let start = document.getElementById("btnStart")
+    let stop = document.getElementById("btnStop")
     if(!this.stream) {
       this.context.setError("Please enable Microphone and Camera.")
       return
     }
     start.style.display = "none"
     if (stop.style.display === "") {
-      stop.style.display = "block";
+      stop.style.display = "block"
       start.style.display = "none"
     } else {
-      stop.style.display = "none";
+      stop.style.display = "none"
     }
-    this.mediaRecorder
-      .start()
-      
-      this.setState({recording: true})
-  
-  
+    this.mediaRecorder.start()
+    this.setState({recording: true})
   }
 
   componentWillUnmount() {
     if(this.stream) {
-
-    
     this.stream.getTracks().forEach(function(track) {
       track.stop()
       })
     }
   }
-    
-  
 
   stopRec = (e) => {
     e.preventDefault()
-    let upload = document.getElementById("aUploadBtn");
-    let stop = document.getElementById("btnStop");
+    let upload = document.getElementById("aUploadBtn")
+    let stop = document.getElementById("btnStop")
     let vidRec = document.getElementById("vidRec")
 
     if (stop.style.display === "block") {
@@ -313,16 +345,15 @@ export class VideoEntry extends Component {
       vidRec.style.display = "none"
     }
     
-    this.mediaRecorder
-      .stop()
+    this.mediaRecorder.stop()
     this.stream.getTracks().forEach(function(track) {
       track.stop()
-    });
+    })
     this.setState({recording: false})
     this.mediaRecorder.onstop = (ev)=> {
-      let blob = new Blob(this.chunks, { type : 'video/mp4' });
+      let blob = new Blob(this.chunks, { type : 'video/mp4' })
       this.chunks = [];
-      let videoURL = window.URL.createObjectURL(blob);
+      let videoURL = window.URL.createObjectURL(blob)
       this.videoPlay.src = videoURL
       this.setState({
         vidURL: videoURL
@@ -330,21 +361,12 @@ export class VideoEntry extends Component {
     }
   }
 
-
-  
-
-  handleVideoSubmit = (e) => {
-    e.preventDefault();
-  } 
   render() {
-      
     let { recording } = this.state
 
     return (
       <section className="vSection">
-        {/* {this.context.error && <Error error={this.context.error}/>} */}
         <form className="dateButtonCon">
-
           <h5 className="aPageH5">Today's Date: <span>{getDate()}</span> </h5>
           <div className="aBtnCon">
             <button  className="aButton" id="btnStart" onClick={this.startRec}>
@@ -353,38 +375,38 @@ export class VideoEntry extends Component {
             <button className="btnStop" id="btnStop" onClick={this.stopRec}>
               <FontAwesomeIcon className="fStopIcon" icon={faHandPaper}/>
             </button>
-
             <button
               id="pInputButton"
               type="reset"
               className="pInputButton"
               onClick={e => this.props.handleCancel(e)}
-              >
+            >
               <FontAwesomeIcon icon={faSmokingBan}/>
             </button>
-  
             <button
               className="aUploadBtn"
               type="submit"
               id="aUploadBtn"
-              onClick={event => this.props.handleVideoEntry(event, this.state.vidURL)
-              }>
+              onClick={event =>
+                this.props.handleVideoEntry(event, this.state.vidURL)
+              }
+            >
               <FontAwesomeIcon icon={faUpload}/>
             </button>
-
           </div>
         </form>
-        { recording === true &&
-        <div className="recMessage">
+        { 
+          recording === true &&
+          <div className="recMessage">
             <p>Recording in progress.</p>
-        </div>
-      } 
-      
-      <video
-        id="vidRec"
-        className="vCon"
-      />
-        { recording === false &&
+          </div>
+        } 
+        <video
+          id="vidRec"
+          className="vCon"
+        />
+        {
+          recording === false &&
           <video
             id="vidPlay"
             className="vPlay"
@@ -392,7 +414,6 @@ export class VideoEntry extends Component {
           >
           </video>
         }
-
       </section>
     )
   }

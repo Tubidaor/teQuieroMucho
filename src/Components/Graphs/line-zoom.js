@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   VictoryChart,
   VictoryZoomContainer,
@@ -6,20 +6,19 @@ import {
   VictoryAxis,
   VictoryLegend,
   VictoryLabel
-} from 'victory';
-
+} from 'victory'
 
 export default class VictoryZoom extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       zoomDomain: { x: [new Date(1990, 1, 1), new Date(2009, 1, 1)] }
-    };
+    }
   }
 
   handleZoom(domain) {
-    this.setState({ zoomDomain: domain });
+    this.setState({ zoomDomain: domain })
   }
 
   render() {
@@ -33,17 +32,15 @@ export default class VictoryZoom extends Component {
       lineZoomData.joy.map(x => tickmarks.push(x.x))
       return tickmarks
     }
+
     function formatDate(date) {
       const d = new Date(date)
       const month = d.getMonth() + 1
       const year = d.getFullYear()
       const day = d.getDate()
       const fDate = month + "/" + day + "/" + year
-
         return fDate
-        
       }
-      
       
       function userJoyData() {
         if(lineZoomData === undefined) {
@@ -51,41 +48,46 @@ export default class VictoryZoom extends Component {
         }
         return lineZoomData.joy
       }
+
       function userSadData() {
         if(lineZoomData === undefined) {
           return []
         }
         return lineZoomData.sadness
       }
+
       function userDisData() {
         if(lineZoomData === undefined) {
           return []
         }
         return lineZoomData.disgust
       }
+
       function userAngerData() {
         if(lineZoomData === undefined) {
           return []
         }
         return lineZoomData.anger
       }
+
       function userFearData() {
         if(lineZoomData === undefined) {
           return []
         }
         return lineZoomData.fear
       }
+
       function userMoodData() {
         if(lineZoomData === undefined) {
           return []
         }
         return lineZoomData.mood
       }
+
       function questionTitle() {
         if(lineZoomData === undefined) {
           return []
         }
-        
         return lineZoomData.question
       }
       
@@ -119,11 +121,9 @@ export default class VictoryZoom extends Component {
               }
             }
               tickLabelComponent={<VictoryLabel dy={15} angle={-45}/>}
-              />
-            )
-
-
-    }
+          />
+        )
+      }
 
     return (
       <div className="zoomCon">
@@ -154,9 +154,13 @@ export default class VictoryZoom extends Component {
             borderPadding={{ top: 0, bottom: 0, left: 2, right: 2 }}
             style={{
               labels: { fill: "rgba(210, 217, 220, 1)", fontSize: 6 },
-              // border: { borderRadius: "10px", stroke: "#0652c5"},
-              title: {fill: "rgba(255, 255, 0, .8)", fontSize: 9, fontFamily: "Buda, cursive", fontWeight: "bold", stroke: "none" },
-              
+              title: {
+                fill: "rgba(255, 255, 0, .8)",
+                fontSize: 9,
+                fontFamily: "Buda, cursive",
+                fontWeight: "bold",
+                stroke: "none" 
+              }
             }}
             data={[
               { name: "Joy", symbol: { fill: "#ffff00" } },
@@ -165,9 +169,7 @@ export default class VictoryZoom extends Component {
               { name: "Anger", symbol: { fill: "#ff0000" } },
               { name: "Fear", symbol: { fill: "#8510d8" } },
               { name: "Overall", symbol: { fill: "#0652c5" } }
-              
             ]}
-
             />
             <VictoryLine
               style={{
@@ -175,48 +177,36 @@ export default class VictoryZoom extends Component {
               }}
               data={userJoyData()}
               name={'Joy'}
-              // x="key"
-              // y="b"
             />
             <VictoryLine
               style={{
                 data: { stroke: "#6ad3c2" }
               }}
               data={userDisData()}
-              // x="key"
-              // y="b"
             />
             <VictoryLine
               style={{
                 data: { stroke: "#87cefa" }
               }}
               data={userSadData()}
-              // x="key"
-              // y="b"
             />
             <VictoryLine
               style={{
                 data: { stroke: "#ff0000" }
               }}
               data={userAngerData()}
-            // x="key"
-            // y="b"
             />
             <VictoryLine
               style={{
                 data: { stroke: "#8510d8" }
               }}
               data={userFearData()}
-          // x="key"
-          // y="b"
             />
             <VictoryLine
               style={{
                 data: { stroke: "#0652c5" }
               }}
               data={userMoodData()}
-        // x="key"
-        // y="b"
             />
             <VictoryAxis
               dependentAxis={true}
@@ -228,21 +218,17 @@ export default class VictoryZoom extends Component {
                     padding: 2,
                     fontFamily: "Buda, cursive",
                     fontWeight: "bold"
-
-                  // grid: { stroke: "rgba(210, 217, 220, 1)",
-                  // strokeWidth: 0.5 },
                   },
-                  grid: { stroke: "rgba(210, 217, 220, 1)",
-                  strokeWidth: 0.5 },
-                
+                  grid: {
+                    stroke: "rgba(210, 217, 220, 1)",
+                    strokeWidth: 0.5
+                  }
                 }}
               tickFormat={t => `${t}%`}
-                
-                />
+            />
             {
               axis(lineZoomData)
             }
-
           </VictoryChart>
           {/* <VictoryChart
             padding={{ top: 0, left: 50, right: 50, bottom: 30 }}
@@ -276,6 +262,6 @@ export default class VictoryZoom extends Component {
             {/* />
           </VictoryChart> */}
       </div>
-    );
+    )
   }
 }

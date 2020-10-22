@@ -1,6 +1,3 @@
-// import React from 'react';
-
-
 export function getDate() {
   let dt = new Date()
   let mm = dt.getMonth() + 1

@@ -7,27 +7,15 @@
   position: fixed;
   width: 100%;
   padding-left: 0px;
-  /* background-color: rgba(210, 217, 220, 1);
-  color: #40616e; */
-  /* background-color: rgba(64, 97, 110, 1); */
   color: rgba(210, 217, 220, 1);
- /* font-family: 'Buda', cursive;
-  font-family: 'Cinzel Decorative', cursive;
-  font-family: 'Delius Swash Caps', cursive;
-  font-family: 'Emilys Candy', cursive; */
   font-family: 'Nothing You Could Do', cursive;
-  /* font-family: 'Oleo Script', cursive;
-  font-family: 'Pacifico', cursive;
-  font-family: 'Tangerine', cursive; */
   padding-top: 5px;
   font-weight: bold;
   font-size: 1.05em;
 }
 .eventMenuItem {
   list-style: none;
-  /* color: #EEDD2C; */
   font-weight: bold;
-  /* padding-top: 5px; */
 }
 .eventMenuItem:hover {
   cursor: pointer;
@@ -47,13 +35,6 @@
   overflow: auto;
   margin: 0px;
   padding-left: 0px;
-  /* padding-top: 30px; */
-  /* height: 78vh; */
-  /* margin-left: auto;
-  margin-right: auto;
-  left: 0px;
-  right: 0px;
-  display: block */
 }
 .imgFeed {
   height: 200px;
@@ -64,8 +45,6 @@
   border-radius: 10px;
 }
 .imageFeedLi {
-  /* width: 280px;
-  height: 280px; */
   margin-bottom: 4px;
 }
 .jFeedCon {
@@ -74,14 +53,11 @@
   height: 70vh;
 }
 .jFeedUl {
-  /* margin-top: 20px; */
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   margin-right: 0px;
-  padding: 0px;
-  /* overflow: scroll; */
-  
+  padding: 0px;  
 }
 .jFeedLi {
   list-style: none;
@@ -94,28 +70,13 @@
   margin-right: auto;
   background-color: rgba(0,0,0,.75);
   color: rgba(210, 217, 220, 1);
-
 }
 .jFeedLi p {
   font-family: 'Buda', cursive;
-  /* font-family: 'Cinzel Decorative', cursive;
-  font-family: 'Delius Swash Caps', cursive;
-  font-family: 'Emilys Candy', cursive;
-  /* font-family: 'Nothing You Could Do', cursive;
-  font-family: 'Oleo Script', cursive;
-  font-family: 'Pacifico', cursive;
-  font-family: 'Tangerine', cursive; */
   font-size: 1em;
 }
 .jFeedLi span {
-  /* font-family: 'Buda', cursive;
-  font-family: 'Cinzel Decorative', cursive;
-  font-family: 'Delius Swash Caps', cursive;
-  font-family: 'Emilys Candy', cursive; */
   font-family: 'Nothing You Could Do', cursive;
-  /* font-family: 'Oleo Script', cursive;
-  font-family: 'Pacifico', cursive;
-  font-family: 'Tangerine', cursive; */
   font-size: .83em;
   font-weight: bold;
 }
@@ -181,14 +142,12 @@
   padding-left: 0px;
   margin-left: auto;
   margin-right: auto;
-  /* width: 300px; */
   height: 74vh;
   overflow: auto;
 }
 .audioLi {
   list-style: none;
   border-radius: 10px;
-  /* background-color: rgba(0,0,0,.5); */
   margin-bottom: 5px;
 }
 .audioLi p {
@@ -229,7 +188,6 @@
   z-index: 3;
   width: 10px;
   height: 10px;
-  /* margin-left: 0px; */
   left: 0px;
   top: -4px;
   background: #868686;
@@ -258,7 +216,6 @@
 }
 .videosUl {
   padding-left: 0px;
-  /* width: 90%; */
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
