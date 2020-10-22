@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import RegForm from '../../Components/Registration/reg-form';
-import './RegPage.css'
+import React, { Component } from 'react'
+import RegForm from '../../Components/Registration/reg-form'
+import './reg-page.css'
 
 export default class RegPage extends Component {
+  
   static defaultProps = {
     location: {},
     history: {

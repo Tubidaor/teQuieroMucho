@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
-import RelMenu from '../../Components/RelationshipMenu/rel-menu';
-import Questions from '../../Components/Questions/questions';
-import { Analytics, Alerts, AddIssue } from '../../Components/RelationshipMenu/rel-menu-items';
-import './RelationshipPage.css'
-import Error from '../../Components/Error/error';
-import TeQuieroContext from '../../Context';
+import React, { Component } from 'react'
+import RelMenu from '../../Components/RelationshipMenu/rel-menu'
+import Questions from '../../Components/Questions/questions'
+import {
+  Analytics,
+  Alerts,
+  AddIssue
+} from '../../Components/RelationshipMenu/rel-menu-items'
+import './relationship-page.css'
+import Error from '../../Components/Error/error'
+import TeQuieroContext from '../../Context'
 
 export default class RelationshipPage extends Component {
+
   static contextType = TeQuieroContext
   
   state = {
     currentSection: "home",
     recording: true,
   }
+
   handleClick = (currentSection) => {
     this.setState({
       currentSection
     })
   }
+
   handleUpdateRec = () => {
     this.setState({
       recording: !true,
     })
   }
+
   handlePushToHome = () => {
     this.setState({
       currentSection: "home"
@@ -31,6 +39,7 @@ export default class RelationshipPage extends Component {
   
   render() {
     let { currentSection } = this.state
+    
     return (
       <section className="relationshipSection">
         {this.context.error && <Error/>}

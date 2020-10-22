@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
-import './JournalPage.css';
-import JournalMenu from '../../Components/JournalMenu/journal-menu';
-import { JournalServices } from '../../Services/APIServices';
-import { JournalEntry, FileEntry, AudioEntry, VideoEntry } from '../../Components/JournalMenu/journal-menu-items';
-import Error from '../../Components/Error/error';
+import React, { Component } from 'react'
+import './journal-page.css'
+import JournalMenu from '../../Components/JournalMenu/journal-menu'
+import { JournalServices } from '../../Services/APIServices'
+import {
+  JournalEntry,
+  FileEntry,
+  AudioEntry,
+  VideoEntry
+} from '../../Components/JournalMenu/journal-menu-items'
+import Error from '../../Components/Error/error'
 import TeQuieroContext from '../../Context'
 
 export default class JournalPage extends Component {
@@ -15,12 +20,12 @@ export default class JournalPage extends Component {
     recording: false,
   }
   
-  
   handleClick = (currentSection) => {
     this.setState({
       currentSection
     })
   }
+
   handleUpdateRec = () => {
     this.setState({
       recording: !true,
@@ -31,13 +36,14 @@ export default class JournalPage extends Component {
     e.preventDefault();
     this.handleClick('home')
   }
+
   handlePostEntry = (e) => {
     e.preventDefault()
-
     const { jEText } = document.getElementById('jForm')
     const newTextEntry = {
       text: jEText.value
     }
+
     JournalServices.postJournalEntry(newTextEntry)
       .then(this.handleClick("home"))
       .catch(e => this.context.setError(e.error))
@@ -46,7 +52,6 @@ export default class JournalPage extends Component {
   handleFileEntry = (e) => {
     e.preventDefault()
     const { files } = document.getElementById('pForm')
-    
     const formData = new FormData();
     for(let i = 0; i < files.files.length; i++) {
       if(files.files[i].type.includes('video')) {
@@ -64,7 +69,6 @@ export default class JournalPage extends Component {
     JournalServices.postFileEntry(formData)
       .then(this.handleClick("home"))
       .catch(e => this.context.setError(e.error))
-
   }
 
   handleAudioEntry = async (e, blobURL) => {
@@ -75,12 +79,9 @@ export default class JournalPage extends Component {
       .then(blobFile => {return new Blob([blobFile], {type: "audio/mp3"})})
     const formData = new FormData();
     formData.append('files', blob)
-
     JournalServices.postFileEntry(formData)
       .then(data => console.log(data))
-
     this.handleClick("home")
-
   }
 
   handleVideoEntry = async (e, blobURL) => {
@@ -89,31 +90,48 @@ export default class JournalPage extends Component {
       res.blob()
       )
       .then(blobFile => {return new Blob([blobFile], {type: "video/mp4"})})
-    
     const formData = new FormData();
     formData.append('files', blob)
-
     JournalServices.postFileEntry(formData)
       .then(data => console.log(data))
-
     this.handleClick("home")
-
   }
 
-  
-  
   render() {
-
     let { currentSection } = this.state
 
     return (
       <section className="journalSection">
         <JournalMenu handleClick={this.handleClick}/>
         { this.context.error && <Error/> }
-        { currentSection === "journalEntry" && <JournalEntry handlePostEntry={this.handlePostEntry} handleCancel={this.handleCancel}/>}
-        { currentSection === "fileEntry" && <FileEntry handleFileEntry={this.handleFileEntry} handleCancel={this.handleCancel}/>}
-        { currentSection === "audioEntry" && <AudioEntry handleAudioEntry={this.handleAudioEntry} handleCancel={this.handleCancel}/>}
-        { currentSection === "videoEntry" && <VideoEntry handleVideoEntry={this.handleVideoEntry} handleCancel={this.handleCancel} updateRec={this.handleUpdateRec}/>}
+        {
+          currentSection === "journalEntry" &&
+          <JournalEntry
+            handlePostEntry={this.handlePostEntry}
+            handleCancel={this.handleCancel}
+          />
+        }
+        { 
+          currentSection === "fileEntry" &&
+          <FileEntry 
+            handleFileEntry={this.handleFileEntry}
+            handleCancel={this.handleCancel}
+          />
+        }
+        { 
+          currentSection === "audioEntry" &&
+          <AudioEntry
+            handleAudioEntry={this.handleAudioEntry}
+            handleCancel={this.handleCancel}
+          />
+        }
+        { currentSection === "videoEntry" && 
+          <VideoEntry
+            handleVideoEntry={this.handleVideoEntry}
+            handleCancel={this.handleCancel}
+            updateRec={this.handleUpdateRec}
+          />
+        }
       </section>
     )
   }

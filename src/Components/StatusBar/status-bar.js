@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import './StatusBar.css'
+import React, { Component } from 'react'
+import './status-bar.css'
 
 export default class StatusBar extends Component {
-
 
   render() {
     return (

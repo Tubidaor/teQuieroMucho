@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import Login from '../../Components/Login/login';
-import TeQuieroContext from '../../Context';
-import './LoginPage.css'
+import React, { Component } from 'react'
+import Login from '../../Components/Login/login'
+import TeQuieroContext from '../../Context'
+import './login-page.css'
 
 
 
 export default class LoginPage extends Component {
+
   static defaultProps = {
     location: {},
     history: {
@@ -16,13 +17,12 @@ export default class LoginPage extends Component {
   static contextType = TeQuieroContext
 
   handleLoginSuccess = () => {
-    
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/openingQs'
+    
     setTimeout(() =>
       history.push(destination), 500
     )
-
   }
 
   render() {

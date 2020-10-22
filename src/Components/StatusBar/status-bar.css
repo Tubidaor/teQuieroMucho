@@ -1,0 +1,32 @@
+.statusBarSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  top: 0px;
+  background-image: url("http://localhost:8000/api/uploads/static/nightStars.jpg");
+  background-position-y: 48%;
+  background-size: 200% 425%;
+  background-repeat: no-repeat;
+  height: 50px;
+  background-position-x: 62%;
+}
+.yourStateofMind, .rState {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba( 0, 0, 0, .3);
+  color:rgba(210, 217, 220, 1);
+  padding-top: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+  box-shadow: 0px 0px 20px 10px rgba( 0, 0, 0, .3);
+  font-family: 'Emilys Candy', cursive;
+}
+.stateofMindScore, .stateofRScore {
+  text-align: center;
+}

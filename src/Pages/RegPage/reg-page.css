@@ -1,5 +1,7 @@
 .regSection {
-  background-image: url("http://localhost:8000/api/uploads/static/starrySky.jpg");
+  background-image: url(
+    "http://localhost:8000/api/uploads/static/starrySky.jpg"
+  );
   background-position: fixed;
   background-size: 100% 100%;
   background-repeat: no-repeat;

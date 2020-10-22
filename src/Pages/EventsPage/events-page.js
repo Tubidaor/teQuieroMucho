@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import  { JournalServices } from '../../Services/APIServices';
-import AudioFeed from '../../Components/EventsFeed/audio-feed';
-import ImagesFeed from '../../Components/EventsFeed/images-feed';
-import JournalFeed from '../../Components/EventsFeed/journal-feed';
-import EventsMenu from '../../Components/EventsFeed/events-menu';
-import './EventsPage.css';
-import VideoFeed from '../../Components/EventsFeed/videos-feed';
-
+import React, { Component } from 'react'
+import  { JournalServices } from '../../Services/APIServices'
+import AudioFeed from '../../Components/EventsFeed/audio-feed'
+import ImagesFeed from '../../Components/EventsFeed/images-feed'
+import JournalFeed from '../../Components/EventsFeed/journal-feed'
+import EventsMenu from '../../Components/EventsFeed/events-menu'
+import './events-page.css'
+import VideoFeed from '../../Components/EventsFeed/videos-feed'
 
 export default class EventsPage extends Component {
 
@@ -47,7 +46,6 @@ export default class EventsPage extends Component {
         })
       })
       .catch(e => this.setState({journals: []}))
-    
   }
 
   handleClick = (section) => {
@@ -57,14 +55,17 @@ export default class EventsPage extends Component {
   } 
 
   render() {
- 
+
     const  { audio, images, journals, videos } = this.state
 
     return (
       <section className="eFeedSec">
         <EventsMenu handleClick={this.handleClick} />
           {this.state.section === 'Images' && <ImagesFeed images={images}/>}
-          {this.state.section === 'Journal' && <JournalFeed journals={journals}/>}
+          {
+            this.state.section === 'Journal' &&
+            <JournalFeed journals={journals}/>
+          }
           {this.state.section === 'Audio' && <AudioFeed audio={audio}/>}
           {this.state.section === 'Video' && <VideoFeed videos={videos}/>}
       </section>
