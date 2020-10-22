@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import RelMenu from '../../Components/RelationshipMenu/rel-menu'
-import Questions from '../../Components/Questions/questions'
+import RelMenu from '../../components/relationship-menu/rel-menu'
+import Questions from '../../components/questions/questions'
 import {
   Analytics,
   Alerts,
   AddIssue
-} from '../../Components/RelationshipMenu/rel-menu-items'
+} from '../../components/relationship-menu/rel-menu-items'
 import './relationship-page.css'
-import Error from '../../Components/Error/error'
-import TeQuieroContext from '../../Context'
+import Error from '../../components/Error/error'
+import TeQuieroContext from '../../context'
 
 export default class RelationshipPage extends Component {
 

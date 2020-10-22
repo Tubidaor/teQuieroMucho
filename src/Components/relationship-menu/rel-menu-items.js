@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Graphs from '../Graphs/graphs'
-import TeQuieroContext from '../../Context'
-import { QServices } from '../../Services/api-services'
+import Graphs from '../graphs/graphs'
+import TeQuieroContext from '../../context'
+import { QServices } from '../../services/api-services'
 import { indexOf } from 'lodash'
-import StackedBars from '../Graphs/stacked-bars'
+import StackedBars from '../graphs/stacked-bars'
 
 export class Analytics extends Component {
 

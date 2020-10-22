@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import './journal-page.css'
-import JournalMenu from '../../Components/JournalMenu/journal-menu'
-import { JournalServices } from '../../Services/api-services'
+import JournalMenu from '../../components/journal-menu/journal-menu'
+import { JournalServices } from '../../services/api-services'
 import {
   JournalEntry,
   FileEntry,
   AudioEntry,
   VideoEntry
-} from '../../Components/JournalMenu/journal-menu-items'
-import Error from '../../Components/Error/error'
-import TeQuieroContext from '../../Context'
+} from '../../components/journal-menu/journal-menu-items'
+import Error from '../../components/Error/error'
+import TeQuieroContext from '../../context'
 
 export default class JournalPage extends Component {
 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import  { JournalServices } from '../../Services/api-services'
-import AudioFeed from '../../Components/EventsFeed/audio-feed'
-import ImagesFeed from '../../Components/EventsFeed/images-feed'
-import JournalFeed from '../../Components/EventsFeed/journal-feed'
-import EventsMenu from '../../Components/EventsFeed/events-menu'
+import  { JournalServices } from '../../services/api-services'
+import AudioFeed from '../../components/events-feed/audio-feed'
+import ImagesFeed from '../../components/events-feed/images-feed'
+import JournalFeed from '../../components/events-feed/journal-feed'
+import EventsMenu from '../../components/events-feed/events-menu'
 import './events-page.css'
-import VideoFeed from '../../Components/EventsFeed/videos-feed'
+import VideoFeed from '../../components/events-feed/videos-feed'
 
 export default class EventsPage extends Component {
 

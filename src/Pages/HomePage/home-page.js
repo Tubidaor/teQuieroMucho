@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import TeQuieroContext from '../../Context'
-import StatusBar from '../../Components/StatusBar/status-bar'
-import NavBar from '../../Components/NavBar/nav-bar'
+import TeQuieroContext from '../../context'
+import StatusBar from '../../components/status-bar/status-bar'
+import NavBar from '../../components/nav-bar/nav-bar'
 import './home-page.css'
 import JournalPage from '../JournalPage/journal-page'
 import RelationshipPage from '../RelationshipPage/relationship-page'
-import TokenServices from '../../Services/token-services'
+import TokenServices from '../../services/token-services'
 import EventsPage from '../EventsPage/events-page'
 import AddReqPage from '../AddReqPage/add-req-page'
-import { QServices } from '../../Services/api-services'
+import { QServices } from '../../services/api-services'
 
 export default class HomePage extends Component {
 

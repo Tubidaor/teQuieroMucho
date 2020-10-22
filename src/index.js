@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import { TeQuieroProvider } from './Context'
+import { TeQuieroProvider } from './context'
 
 ReactDOM.render(
   <BrowserRouter>

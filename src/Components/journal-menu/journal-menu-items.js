@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './journal-menu.css'
-import { getDate } from '../Misc/misc'
+import { getDate } from '../misc/misc'
 import MicRecorder from 'mic-recorder-to-mp3'
 import 'react-h5-audio-player/lib/styles.css'
 import { registerPlugin } from 'react-filepond'
@@ -19,7 +19,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faHandPaper } from '@fortawesome/free-regular-svg-icons'
 import AudioPlayer from 'react-h5-audio-player'
-import TeQuieroContext from '../../Context'
+import TeQuieroContext from '../../context'
 
 
 registerPlugin(

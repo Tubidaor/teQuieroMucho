@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import TeQuieroContext from '../../Context'
+import TeQuieroContext from '../../context'
 import './login.css'
-import { AuthServices, QServices } from '../../Services/api-services'
+import { AuthServices, QServices } from '../../services/api-services'
 import Error from '../Error/error'
-import TokenServices from '../../Services/token-services'
+import TokenServices from '../../services/token-services'
 
 export default class Login extends Component {
 

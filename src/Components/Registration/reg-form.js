@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { AuthServices } from '../../Services/api-services'
+import { AuthServices } from '../../services/api-services'
 import './reg-form.css'
-import TeQuieroContext from '../../Context'
+import TeQuieroContext from '../../context'
 import Error from '../Error/error'
 
 export default class RegForm extends Component {

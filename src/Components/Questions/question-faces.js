@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './question-faces.css'
-import Slider from '../Slider/slider'
-import  { JournalServices } from '../../Services/api-services'
+import Slider from '../slider/slider'
+import  { JournalServices } from '../../services/api-services'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronCircleRight,

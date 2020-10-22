@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TeQuieroContext from '../../Context'
+import TeQuieroContext from '../../context'
 
 
 export default class AddReqForm extends Component {

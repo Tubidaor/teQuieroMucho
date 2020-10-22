@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Questions from '../../Components/Questions/questions'
-import TeQuieroContext from '../../Context'
+import Questions from '../../components/questions/questions'
+import TeQuieroContext from '../../context'
 import './opening-qs.css'
 
 export default class OpeningQs extends Component {

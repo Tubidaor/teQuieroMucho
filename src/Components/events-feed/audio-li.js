@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import config from '../../config'
-import TokenServices from '../../Services/token-services'
+import TokenServices from '../../services/token-services'
 import AudioPlayer from 'react-h5-audio-player'
 
 

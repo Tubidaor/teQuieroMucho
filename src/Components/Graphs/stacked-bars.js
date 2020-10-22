@@ -7,7 +7,7 @@ import {
   VictoryLabel,
   VictoryLegend
 } from 'victory'
-import { JournalServices } from '../../Services/api-services'
+import { JournalServices } from '../../services/api-services'
 
 const width = 400
 const height = 400

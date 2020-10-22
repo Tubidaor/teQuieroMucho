@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Login from '../../Components/Login/login'
-import TeQuieroContext from '../../Context'
+import Login from '../../components/login/login'
+import TeQuieroContext from '../../context'
 import './login-page.css'
 
 
@@ -19,7 +19,7 @@ export default class LoginPage extends Component {
   handleLoginSuccess = () => {
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/openingQs'
-    
+
     setTimeout(() =>
       history.push(destination), 500
     )

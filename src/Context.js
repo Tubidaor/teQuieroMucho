@@ -1,30 +1,23 @@
 import React, { Component } from 'react'
-import { alerts, categories } from './ContextData.js'
-import { QServices } from './Services/api-services.js'
+import { alerts, categories } from './context-data.js'
+import { QServices } from './services/api-services.js'
 
 const TeQuieroContext = React.createContext({
   error: null,
   state: {},
-  // userQs: [],
-  alerts: [],
-  categories: [],
-  setStateofMind: () => {},
   setError: () => {},
   setOpeningQuestions: () => {},
   setRelationshipQuestions: () => {},
-  // setUserQuestions: () => {}
 })
 
 export default TeQuieroContext
 
 export class TeQuieroProvider extends Component {
+
   state = {
     error: null,
     openingQs: QServices.getOpeningDataFromStorage(),
     relationshipQs: QServices.getRelDataFromStorage(),
-    userQs: [],
-    alerts: alerts,
-    categories: categories,
   }
 
   setError = (error) => {
@@ -48,18 +41,11 @@ export class TeQuieroProvider extends Component {
   render() {
     
     const value = {
-      userData: this.state.userData,
-      relData: this.state.relData,
       error: this.state.error,
       state: this.state,
-      userQs: this.state.userQs,
-      alerts: this.state.alerts,
-      categories: this.state.categories,
-      setStateofMind: this.setStateofMind,
       setError: this.setError,
       setOpeningQuestions: this.setOpeningQuestions,
       setRelationshipQuestions: this.setRelationshipQuestions,
-      setUserQuestions: this.setUserQuestions
     }
 
     return(

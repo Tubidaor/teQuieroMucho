@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import './add-req-page.css'
-import AddReqForm from '../../Components/AddRequest/add-req-form'
-import AddApproval from '../../Components/AddRequest/add-approval'
-import Error from '../../Components/Error/error'
-import TeQuieroContext from '../../Context'
-import { ReqServices } from '../../Services/api-services'
+import AddReqForm from '../../components/add-request/add-req-form'
+import AddApproval from '../../components/add-request/add-approval'
+import Error from '../../components/Error/error'
+import TeQuieroContext from '../../context'
+import { ReqServices } from '../../services/api-services'
 
 export default class AddReqPage extends Component {
 
