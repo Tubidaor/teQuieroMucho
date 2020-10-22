@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './journal-page.css'
 import JournalMenu from '../../Components/JournalMenu/journal-menu'
-import { JournalServices } from '../../Services/APIServices'
+import { JournalServices } from '../../Services/api-services'
 import {
   JournalEntry,
   FileEntry,
@@ -28,12 +28,12 @@ export default class JournalPage extends Component {
 
   handleUpdateRec = () => {
     this.setState({
-      recording: !true,
+      recording: !true
     })
   }
 
   handleCancel = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     this.handleClick('home')
   }
 
@@ -52,7 +52,7 @@ export default class JournalPage extends Component {
   handleFileEntry = (e) => {
     e.preventDefault()
     const { files } = document.getElementById('pForm')
-    const formData = new FormData();
+    const formData = new FormData()
     for(let i = 0; i < files.files.length; i++) {
       if(files.files[i].type.includes('video')) {
         const blob = new Blob([files.files[i]], { type: 'video/mp4'})
@@ -77,10 +77,10 @@ export default class JournalPage extends Component {
       res.blob()
       )
       .then(blobFile => {return new Blob([blobFile], {type: "audio/mp3"})})
-    const formData = new FormData();
+    const formData = new FormData()
     formData.append('files', blob)
     JournalServices.postFileEntry(formData)
-      .then(data => console.log(data))
+      .then(data => this.context.setError(data))
     this.handleClick("home")
   }
 
@@ -90,10 +90,10 @@ export default class JournalPage extends Component {
       res.blob()
       )
       .then(blobFile => {return new Blob([blobFile], {type: "video/mp4"})})
-    const formData = new FormData();
+    const formData = new FormData()
     formData.append('files', blob)
     JournalServices.postFileEntry(formData)
-      .then(data => console.log(data))
+      .then(data => this.context.setError(data))
     this.handleClick("home")
   }
 

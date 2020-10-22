@@ -4,7 +4,7 @@ import AddReqForm from '../../Components/AddRequest/add-req-form'
 import AddApproval from '../../Components/AddRequest/add-approval'
 import Error from '../../Components/Error/error'
 import TeQuieroContext from '../../Context'
-import { ReqServices } from '../../Services/APIServices'
+import { ReqServices } from '../../Services/api-services'
 
 export default class AddReqPage extends Component {
 

@@ -7,7 +7,7 @@ import {
   VictoryLabel,
   VictoryLegend
 } from 'victory'
-import { JournalServices } from '../../Services/APIServices'
+import { JournalServices } from '../../Services/api-services'
 
 const width = 400
 const height = 400
@@ -62,7 +62,7 @@ export default class StackedBars extends Component {
 
         this.setState({ dataA: graphData })
       })
-      .catch(e => console.log(e))
+      .catch(e => this.context.setError(e))
   }
 
   render() {

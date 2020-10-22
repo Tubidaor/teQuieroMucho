@@ -1,5 +1,5 @@
-import config from '../config';
-import TokenServices from './token-services';
+import config from '../config'
+import TokenServices from './token-services'
 
 
 export const QServices = {
@@ -18,22 +18,6 @@ export const QServices = {
         : res.json()
     )
   },
-
-  // getUserQuestions() {
-  //   return fetch(`${config.API_ENDPOINT}/user-questions`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //       'Authorization': `Bearer ${TokenServices.getAuthToken()}`
-  //     }
-  //   })
-  //   .then(res =>
-  //     (!res.ok)
-  //       ? res.json().then(e => Promise.reject(e))
-  //       : res.json()
-  //   )
-  // },
-
   postNewUserQuestions(newQuestion) {
     return fetch(`${config.API_ENDPOINT}/user-questions`, {
       method: 'POST',
@@ -49,7 +33,6 @@ export const QServices = {
         : res.json()
     )
   },
-
   getQuestionaireUserData() {
     return fetch(`${config.API_ENDPOINT}/user-answers`, {
       method: 'GET',
@@ -64,7 +47,6 @@ export const QServices = {
         : res.json()
     )
   },
-
   getQuestionaireRelData() {
     return fetch(`${config.API_ENDPOINT}/rel-answers`, {
       method: 'GET',
@@ -79,7 +61,6 @@ export const QServices = {
         : res.json()
     )
   },
-
   getAlertsData() {
     return fetch(`${config.API_ENDPOINT}/compare-users`, {
       method: 'GET',
@@ -94,67 +75,110 @@ export const QServices = {
         : res.json()
     )
   },
-
   openingQsToSessionStorage(data) {
     window.sessionStorage.setItem(config.openingQData, data)
   },
   relQsToSessionStorage(data) {
     window.sessionStorage.setItem(config.relQData, data)
   },
-
   getOpeningDataFromStorage() {
     return JSON.parse(window.sessionStorage.getItem(config.openingQData))
   },
-
   getRelDataFromStorage() {
     return JSON.parse(window.sessionStorage.getItem(config.relQData))
   },
-
   clearOpeningDataFromStorage() {
     window.sessionStorage.removeItem(config.openingQData)
   },
-
   clearRelDataFromStorage() {
     window.sessionStorage.removeItem(config.relQData)
   },
   getTQMState(you, relationship, page) {
     const userQuestions = []
     let userData = you
+
     if( page === 'relationship') {
       userData = relationship
     }
+
     userData.map(qs => userQuestions.push(qs.question))
-    const uniqueUserQuestions = userQuestions.filter((v, i, a) => a.indexOf(v) === i);
+    const uniqueUserQuestions = userQuestions.filter((v, i, a) =>
+      a.indexOf(v) === i
+    )
     const userQuestionData = [] 
-    uniqueUserQuestions.map(qs => userQuestionData.push({ question: qs, joy:[], disgust:[], sadness: [], anger: [], fear: [], mood: [] }))
-    
+    uniqueUserQuestions.map(qs => userQuestionData.push(
+      {
+        question: qs,
+        joy:[],
+        disgust:[],
+        sadness: [],
+        anger: [],
+        fear: [],
+        mood: []
+      }
+    ))
     
     const userJoyData = []
-    userData.map(data => userJoyData.push({key: new Date(data.date_created), b: data.joy } ))
+    userData.map(data => userJoyData.push(
+      {
+        key: new Date(data.date_created),
+        b: data.joy
+      }
+    ))
+
     if(userQuestionData.length > 0) {
       for(let i = 0; i < userQuestionData.length; i++) {
         
         for(let j = 0; j < userData.length; j++) {
           if(userQuestionData[i].question === userData[j].question) {
-            userQuestionData[i].joy.push({x: userData[j].date_created, y: userData[j].joy})
-            userQuestionData[i].disgust.push({x: userData[j].date_created, y: userData[j].disgust})
-            userQuestionData[i].sadness.push({x: userData[j].date_created, y: userData[j].sadness})
-            userQuestionData[i].anger.push({x: userData[j].date_created, y: userData[j].anger})
-            userQuestionData[i].fear.push({x: userData[j].date_created, y: userData[j].fear})
-            userQuestionData[i].mood.push({x: userData[j].date_created, y: userData[j].mood})
-
+            userQuestionData[i].joy.push(
+              {
+                x: userData[j].date_created,
+                y: userData[j].joy
+              }
+            )
+            userQuestionData[i].disgust.push(
+              {
+                x: userData[j].date_created,
+                y: userData[j].disgust
+              }
+            )
+            userQuestionData[i].sadness.push(
+              {
+                x: userData[j].date_created,
+                y: userData[j].sadness
+              }
+            )
+            userQuestionData[i].anger.push(
+              {
+                x: userData[j].date_created,
+                y: userData[j].anger
+              }
+            )
+            userQuestionData[i].fear.push(
+              {
+                x: userData[j].date_created,
+                y: userData[j].fear
+              }
+            )
+            userQuestionData[i].mood.push(
+              {
+                x: userData[j].date_created,
+                y: userData[j].mood
+              }
+            )
           }
         }
       }
     }
+
     return userQuestionData
   }
-
 }
+
 export const JournalServices = {
 
   postJournalEntry(text) {
-
     return fetch(`${config.API_ENDPOINT}/text-entry`, {
       method: 'POST',
       headers: {
@@ -184,23 +208,6 @@ export const JournalServices = {
         : res.json()
     )
   },
-  // postAudioEntry(files) {
-  //   return fetch(`${config.API_ENDPOINT}/files`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Authorization': `Bearer ${TokenServices.getAuthToken()}`
-  //     },
-  //     body: files
-  //   })
-  //   .then(res => {
-  //     (!res.ok)
-  //       ? res.json().then(e => Promise.reject(e))
-  //       : res.json()
-  //   })
-  // },
-  // postVideoEntry(files) {
-    //post file to server
-  // },
   submitAnswer(answer) {
     return fetch(`${config.API_ENDPOINT}/questionaire`, {
       method: 'POST',
@@ -267,18 +274,12 @@ export const JournalServices = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
-}
-
-
-
-
-
+  }
 }
 
 export const AuthServices = {
 
   login(credentials) {
-
     return fetch(`${config.API_ENDPOINT}/login`, {
       method: 'POST',
       headers: {
@@ -290,9 +291,8 @@ export const AuthServices = {
       (!res.ok)
       ? res.json().then(e => Promise.reject(e))
       : res.json()
-      )
+    )
   },
-
   registerUser(newUser) {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
@@ -307,12 +307,10 @@ export const AuthServices = {
       : res.json()
     )
   },
-
-  
-
 }
 
 export const ReqServices = {
+
   submitRelReq (relRequest) {
     return fetch(`${config.API_ENDPOINT}/user-relationship-request`, {
       method: 'POST',
@@ -355,9 +353,8 @@ export const ReqServices = {
       (!res.ok)
       ? res.json().then(e => Promise.reject(e))
       : res.json()
-      )
+    )
   },
-
   deleteRequest() {
     return fetch(`${config.API_ENDPOINT}/user-relationship-request`, {
       method: 'DELETE',
@@ -372,10 +369,10 @@ export const ReqServices = {
     )
   }
 }
+
 export default {
   JournalServices,
   AuthServices,
   QServices,
   ReqServices
-  
 }

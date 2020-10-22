@@ -195,7 +195,7 @@ export class AudioEntry extends Component {
         const blobURL = URL.createObjectURL(blob)
         this.setState({ blobURL, isRecording: false })
       })
-      .catch((e) => console.log(e))
+      .catch((e) => this.context.setError(e))
   }
   
   render() {
@@ -352,7 +352,7 @@ export class VideoEntry extends Component {
     this.setState({recording: false})
     this.mediaRecorder.onstop = (ev)=> {
       let blob = new Blob(this.chunks, { type : 'video/mp4' })
-      this.chunks = [];
+      this.chunks = []
       let videoURL = window.URL.createObjectURL(blob)
       this.videoPlay.src = videoURL
       this.setState({

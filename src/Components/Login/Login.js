@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TeQuieroContext from '../../Context'
 import './login.css'
-import { AuthServices, QServices } from '../../Services/APIServices'
+import { AuthServices, QServices } from '../../Services/api-services'
 import Error from '../Error/error'
 import TokenServices from '../../Services/token-services'
 

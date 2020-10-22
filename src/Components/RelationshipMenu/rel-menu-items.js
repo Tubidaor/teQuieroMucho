@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Graphs from '../Graphs/graphs'
 import TeQuieroContext from '../../Context'
-import { QServices } from '../../Services/APIServices'
+import { QServices } from '../../Services/api-services'
 import { indexOf } from 'lodash'
 import StackedBars from '../Graphs/stacked-bars'
 
@@ -265,8 +265,8 @@ export class Alerts extends Component {
                 user1Mood: user1[i].scores.avgMood,
                 user2Mood: user2[j].scores.avgMood,
                 average: (
-                  [i].scores.avgMood + user2[j].scores.avgMood
-                  ) / 2,
+                  user1[i].scores.avgMood + user2[j].scores.avgMood
+                ) / 2,
                 variance: Math.abs(
                   user1[i].scores.avgMood - user2[j].scores.avgMood
                 )

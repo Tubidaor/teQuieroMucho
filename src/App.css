@@ -3,33 +3,22 @@
   position: fixed;
   bottom: 0px;
 }
-
 .addReqDiv {
   margin-top: 100px;
 }
-
-
-
-/* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px #40616e; 
   border-radius: 10px;
   background-color: rgba(210, 217, 220, 1);
-  /* color: #40616e; */
 }
- 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba( 0, 0, 0, .6); 
   border-radius: 10px;
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #40616e; 
 }
 @media screen and (min-width: 481px) {
-
   .introImg {
     margin-top: 50px;
   }
@@ -52,12 +41,3 @@
     width: 20px;
   }
 }
-@media screen and (min-width: 769) {
-  
-}
-
-/* 320px — 480px: Mobile devices
-481px — 768px: iPads, Tablets
-769px — 1024px: Small screens, laptops
-1025px — 1200px: Desktops, large screens
-1201px and more —  Extra large screens, TV */

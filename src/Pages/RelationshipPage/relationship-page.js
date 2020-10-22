@@ -16,7 +16,7 @@ export default class RelationshipPage extends Component {
   
   state = {
     currentSection: "home",
-    recording: true,
+    recording: true
   }
 
   handleClick = (currentSection) => {
@@ -27,7 +27,7 @@ export default class RelationshipPage extends Component {
 
   handleUpdateRec = () => {
     this.setState({
-      recording: !true,
+      recording: !true
     })
   }
 
@@ -39,7 +39,7 @@ export default class RelationshipPage extends Component {
   
   render() {
     let { currentSection } = this.state
-    
+
     return (
       <section className="relationshipSection">
         {this.context.error && <Error/>}

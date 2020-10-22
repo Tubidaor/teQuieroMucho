@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import  { JournalServices } from '../../Services/APIServices'
+import  { JournalServices } from '../../Services/api-services'
 import AudioFeed from '../../Components/EventsFeed/audio-feed'
 import ImagesFeed from '../../Components/EventsFeed/images-feed'
 import JournalFeed from '../../Components/EventsFeed/journal-feed'

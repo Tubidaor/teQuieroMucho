@@ -35,7 +35,7 @@ export default class Spiderweb extends Component {
   }
 
   processData(data) {
-    const maxByGroup = this.getMaxima(data);
+    const maxByGroup = this.getMaxima(data)
     const makeDataArray = (d) => {
       return Object.keys(d).map((key) => {
         return { x: key, y: d[key] / maxByGroup[key] }
@@ -97,7 +97,7 @@ export default class Spiderweb extends Component {
   }
 
   render() {
-    
+
     let {userData} = this.props
     const spiderData = this.processData(this.totalAvgScores(userData))
     const maxima = this.getMaxima(this.totalAvgScores(userData))
@@ -147,7 +147,7 @@ export default class Spiderweb extends Component {
         >
           {
             spiderData.map((data, i) => {
-              return <VictoryArea key={i} data={data}/>;
+              return <VictoryArea key={i} data={data}/>
             })
           }
         </VictoryGroup>

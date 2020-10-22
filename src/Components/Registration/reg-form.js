@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AuthServices } from '../../Services/APIServices'
+import { AuthServices } from '../../Services/api-services'
 import './reg-form.css'
 import TeQuieroContext from '../../Context'
 import Error from '../Error/error'

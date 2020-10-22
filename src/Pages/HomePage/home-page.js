@@ -8,7 +8,7 @@ import RelationshipPage from '../RelationshipPage/relationship-page'
 import TokenServices from '../../Services/token-services'
 import EventsPage from '../EventsPage/events-page'
 import AddReqPage from '../AddReqPage/add-req-page'
-import { QServices } from '../../Services/APIServices'
+import { QServices } from '../../Services/api-services'
 
 export default class HomePage extends Component {
 
