@@ -197,9 +197,9 @@ export const JournalServices = {
   postFileEntry(files) {
     return fetch(`${config.API_ENDPOINT}/files`, {
       method: 'POST',
-      // headers: {
-      //   'Authorization': `Bearer ${TokenServices.getAuthToken()}`
-      // },
+      headers: {
+        'Authorization': `Bearer ${TokenServices.getAuthToken()}`
+      },
       body: files
     })
     .then(res =>

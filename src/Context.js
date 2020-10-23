@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { alerts, categories } from './context-data.js'
 import { QServices } from './services/api-services.js'
 
 const TeQuieroContext = React.createContext({

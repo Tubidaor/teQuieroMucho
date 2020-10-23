@@ -1,11 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import IntroPage from './pages/IntroPage/intro-page'
-import './App.css'
-import LoginPage from './pages/LoginPage/login-page'
-import RegPage from './pages/RegPage/reg-page'
-import OpeningQs from './pages/OpeningQs/opening-qs'
-import HomePage from './pages/HomePage/home-page'
+import IntroPage from './pages/intro-page/intro-page'
+import './app.css'
+import LoginPage from './pages/login-page/login-page'
+import RegPage from './pages/req-page/reg-page'
+import OpeningQs from './pages/opening-qs/opening-qs'
+import HomePage from './pages/home-page/home-page'
 
 function App() {
   return (
