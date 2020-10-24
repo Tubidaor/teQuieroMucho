@@ -8,7 +8,7 @@ import {
   AudioEntry,
   VideoEntry
 } from '../../components/journal-menu/journal-menu-items'
-import Error from '../../components/Error/error'
+import Error from '../../components/error/error'
 import TeQuieroContext from '../../context'
 
 export default class JournalPage extends Component {

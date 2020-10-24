@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './add-req-page.css'
 import AddReqForm from '../../components/add-request/add-req-form'
 import AddApproval from '../../components/add-request/add-approval'
-import Error from '../../components/Error/error'
+import Error from '../../components/error/error'
 import TeQuieroContext from '../../context'
 import { ReqServices } from '../../services/api-services'
 

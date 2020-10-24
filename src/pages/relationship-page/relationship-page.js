@@ -7,7 +7,7 @@ import {
   AddIssue
 } from '../../components/relationship-menu/rel-menu-items'
 import './relationship-page.css'
-import Error from '../../components/Error/error'
+import Error from '../../components/error/error'
 import TeQuieroContext from '../../context'
 
 export default class RelationshipPage extends Component {
