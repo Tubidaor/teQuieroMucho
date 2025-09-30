@@ -17,7 +17,7 @@
     "filepond-plugin-image-edit": "^1.6.1",
     "filepond-plugin-image-exif-orientation": "^1.0.9",
     "filepond-plugin-image-preview": "^4.6.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mic-recorder-to-mp3": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
